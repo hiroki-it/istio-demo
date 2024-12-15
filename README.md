@@ -67,7 +67,7 @@ kubectl label node minikube-m02 node.kubernetes.io/nodegroup=app \
 3. Nodeを確認します。
 
 ```bash
-kubectl get nodes  
+kubectl get nodes
                                                                                                                                                          (minikube/default)
 NAME           STATUS   ROLES           AGE    VERSION
 minikube       Ready    control-plane   105s   v1.32.0

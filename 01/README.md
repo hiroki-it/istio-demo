@@ -1,6 +1,6 @@
 # 1章
 
-1章では、マイクロサービスアプリケーションを構築します。
+1章では、マイクロサービスアーキテクチャーで設計されたBookinfoアプリケーションを構築します。
 
 サービスメッシュツールのIstioを使用せずに、アプリケーションを動かします。
 
@@ -26,7 +26,7 @@ reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
 
-3. Istioを使用せずに接続します。ここでは、ingress-nginxを使用します。
+3. Nginx Ingress Controllerをデプロイします。
 
 ```bash
 
