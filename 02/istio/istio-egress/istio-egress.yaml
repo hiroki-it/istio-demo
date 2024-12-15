@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   name: istio-egress
   labels:
-    # istio-proxyコンテナのインジェクションを有効化する。
+    # istio-proxyコンテナのインジェクションを有効化します
     istio.io/rev: default
