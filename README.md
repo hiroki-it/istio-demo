@@ -33,18 +33,22 @@ $ asdf install
 # バージョン
 $ KUBERNETES_VERSION=1.32.0
 
-# パス
-$ PROJECT_DIR=$(dirname $(pwd))
+# Node数
+$ NODE_COUNT=5
+
+# ハードウェアリソース
+$ CPU=6
+$ MEMORY=6144
 
 $ minikube start \
-    --nodes 5 \
+    --nodes ${NODE_COUNT} \
     --container-runtime=containerd \
     --driver=docker \
     --mount=true \
-	--mount-string="${PROJECT_DIR}/istio-demo:/data" \
+	--mount-string="$(dirname $(pwd))/istio-demo:/data" \
 	--kubernetes-version=v${KUBERNETES_VERSION} \
-	--cpus=8 \
-	--memory=12288
+	--cpus=${CPU} \
+	--memory=${MEMORY}
 ```
 
 2. ワーカーNodeにラベルを設定する
