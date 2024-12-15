@@ -2,7 +2,7 @@
 
 ## プロジェクトについて
 
-Bookinfoアプリを使用して、Istioをデモンストレーションする。
+Bookinfoアプリを使用して、Istioをデモンストレーションします。
 
 ## 始める
 
@@ -10,56 +10,77 @@ Bookinfoアプリを使用して、Istioをデモンストレーションする�
 
 #### Mac
 
-1. asdfをインストールする
+1. asdfをインストールします。
 
 ```bash
-$ brew install asdf
+brew install asdf
 ```
 
-2. [Docker Desktop](https://docs.docker.com/desktop/) をインストールする
+2. [Docker Desktop](https://docs.docker.com/desktop/) をインストールします。
 
 ### インストール
 
 ```bash
-$ asdf plugin add helmfile
-$ asdf plugin add istioctl
-$ asdf plugin add kubectl
-$ asdf plugin add minikube
+asdf plugin add helmfile
+asdf plugin add istioctl
+asdf plugin add kubectl
+asdf plugin add minikube
 
-$ asdf install
+asdf install
 ```
 
 ### Minikubeのセットアップ
 
-1. Minikubeを起動する
+1. Minikubeを起動します
 
 ```bash
 # バージョン
-$ KUBERNETES_VERSION=1.32.0
+KUBERNETES_VERSION=1.32.0
 
 # Node数
-$ NODE_COUNT=5
+NODE_COUNT=5
 
 # ハードウェアリソース
-$ CPU=6
-$ MEMORY=6144
+CPU=6
+MEMORY=6144
 
-$ minikube start \
-    --nodes ${NODE_COUNT} \
-    --container-runtime containerd \
-    --driver docker \
-    --mount true \
-	--mount-string "$(dirname $(pwd))/istio-demo:/data" \
-	--kubernetes-version v${KUBERNETES_VERSION} \
-	--cpus ${CPU} \
-	--memory ${MEMORY}
+minikube start \
+  --nodes ${NODE_COUNT} \
+  --container-runtime containerd \
+  --driver docker \
+  --mount true \
+  --mount-string "$(dirname $(pwd))/istio-demo:/data" \
+  --kubernetes-version v${KUBERNETES_VERSION} \
+  --cpus ${CPU} \
+  --memory ${MEMORY}
 ```
 
-2. ワーカーNodeにラベルを設定する
+2. ワーカーNodeにラベルを設定します。
 
 ```bash
-$ kubectl label node minikube-m02 node.kubernetes.io/nodegroup=app \
+kubectl label node minikube-m02 node.kubernetes.io/nodegroup=app \
   && kubectl label node minikube-m04 node.kubernetes.io/nodegroup=ingress \
   && kubectl label node minikube-m04 node.kubernetes.io/nodegroup=egress \
   && kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system
+```
+
+3. Nodeを確認します。
+
+```bash
+kubectl get nodes  
+                                                                                                                                                         (minikube/default)
+NAME           STATUS   ROLES           AGE    VERSION
+minikube       Ready    control-plane   105s   v1.32.0
+minikube-m02   Ready    <none>          93s    v1.32.0
+minikube-m03   Ready    <none>          84s    v1.32.0
+minikube-m04   Ready    <none>          71s    v1.32.0
+minikube-m05   Ready    <none>          61s    v1.32.0
+```
+
+### 掃除
+
+1. Minikubeを削除します。
+
+```bash
+minikube delete --all --purge
 ```
