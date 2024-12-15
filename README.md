@@ -10,9 +10,13 @@ Bookinfoアプリを使用して、Istioをデモンストレーションする�
 
 #### Mac
 
+1. asdfをインストールする
+
 ```bash
 $ brew install asdf
 ```
+
+2. [Docker Desktop](https://docs.docker.com/desktop/) をインストールする
 
 ### インストール
 
@@ -42,13 +46,13 @@ $ MEMORY=6144
 
 $ minikube start \
     --nodes ${NODE_COUNT} \
-    --container-runtime=containerd \
-    --driver=docker \
-    --mount=true \
-	--mount-string="$(dirname $(pwd))/istio-demo:/data" \
-	--kubernetes-version=v${KUBERNETES_VERSION} \
-	--cpus=${CPU} \
-	--memory=${MEMORY}
+    --container-runtime containerd \
+    --driver docker \
+    --mount true \
+	--mount-string "$(dirname $(pwd))/istio-demo:/data" \
+	--kubernetes-version v${KUBERNETES_VERSION} \
+	--cpus ${CPU} \
+	--memory ${MEMORY}
 ```
 
 2. ワーカーNodeにラベルを設定する
