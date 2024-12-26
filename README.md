@@ -20,6 +20,12 @@ $ mise trust
 $ mise install
 ```
 
+2. Helmプラグインをインストールします
+
+```bash
+$ helm plugin install https://github.com/databus23/helm-diff
+```
+
 ### Minikubeのセットアップ
 
 1. Minikubeを起動します
