@@ -14,7 +14,7 @@ spec:
                 name: productpage
                 port:
                   number: 9080
-          - path: /static/
+          - path: /static
             pathType: Prefix
             backend:
               service:
