@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: gateway
+  name: ingress-nginx
 spec:
   ingressClassName: nginx
   rules:
