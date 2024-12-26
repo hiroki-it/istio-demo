@@ -5,8 +5,7 @@ repositories:
 releases:
   - name: ingress-nginx
     chart: ingress-nginx/ingress-nginx
-    version: 4.11.3
-    atomic: true
+    version: 4.10.5
   - name: extra-ingress-nginx
     chart: ../extra
     version: 1.0.0
