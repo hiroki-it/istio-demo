@@ -8,25 +8,16 @@ Bookinfoアプリを使用して、Istioをデモンストレーションしま�
 
 ### 前提
 
-#### Mac
-
-1. asdfをインストールします。
-
-```bash
-brew install asdf
-```
-
-2. [Docker Desktop](https://docs.docker.com/desktop/) をインストールします。
+- [mise](https://mise.jdx.dev/getting-started.html) をインストールする
+- [Docker Desktop](https://docs.docker.com/desktop/) をインストールする
 
 ### インストール
 
-```bash
-asdf plugin add helmfile
-asdf plugin add istioctl
-asdf plugin add kubectl
-asdf plugin add minikube
+1. miseを使用して、必要なツールをインストールします
 
-asdf install
+```bash
+$ mise trust
+$ mise install
 ```
 
 ### Minikubeのセットアップ
