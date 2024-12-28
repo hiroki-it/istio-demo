@@ -4,15 +4,12 @@ controller:
     type: NodePort
     nodePorts:
       http: 30000
-      https: 30001
     ports:
       # Serviceの宛先となるNginx Ingress Controller Podのポート番号
       http: 80
-      https: 443
   # Nginx Ingress Controller Podが公開するポート番号
   containerPort:
     http: 80
-    https: 443
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
