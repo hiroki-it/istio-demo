@@ -55,10 +55,10 @@ minikube start \
 2. ワーカーNodeにラベルを設定します。
 
 ```bash
-kubectl label node minikube-m02 node.kubernetes.io/nodegroup=app \
-  && kubectl label node minikube-m04 node.kubernetes.io/nodegroup=ingress \
-  && kubectl label node minikube-m04 node.kubernetes.io/nodegroup=egress \
-  && kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system
+kubectl label node minikube-m02 node.kubernetes.io/nodegroup=app --overwrite \
+  && kubectl label node minikube-m03 node.kubernetes.io/nodegroup=ingress --overwrite \
+  && kubectl label node minikube-m04 node.kubernetes.io/nodegroup=egress --overwrite \
+  && kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system --overwrite
 ```
 
 3. Nodeを確認します。
