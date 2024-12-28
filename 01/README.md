@@ -55,3 +55,15 @@ minikube service ingress-nginx-controller --url -n ingress-nginx
 
 http://127.0.0.1:<発行されたポート番号>
 ```
+
+7. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、The Comedy of Errorsページを閲覧できることを確認する。
+
+8. 接続を確認できたら、以降の章で不要なリソースを削除します。
+
+```bash
+$ kubectl -f 01/k8s-manifests/ingress.yaml delete
+
+$ kubectl -f 01/k8s-manifests/namespace.yaml delete
+
+$ helmfile -f 01/ingress-nginx/helmfile.yaml destroy
+```
