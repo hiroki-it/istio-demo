@@ -29,13 +29,13 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 3. Bookinfoアプリケーション用のIngressを事前に作成します。
 
 ```bash
-kubectl -f 01/k8s-namespaces/ingress.yaml apply
+kubectl -f 01/k8s-manifests/ingress.yaml apply
 ```
 
 4. Namespaceを事前に作成します。
 
 ```bash
-kubectl -f 01/k8s-namespaces/namespace.yaml apply
+kubectl -f 01/k8s-manifests/namespace.yaml apply
 ```
 
 5. Nginx Ingress Controllerをデプロイします。
@@ -44,7 +44,7 @@ kubectl -f 01/k8s-namespaces/namespace.yaml apply
 helmfile -f 01/ingress-nginx/helmfile.yaml apply
 ```
 
-6Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
+6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
 
 ```bash
 minikube service ingress-nginx-controller --url -n ingress-nginx
