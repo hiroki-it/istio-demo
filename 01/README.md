@@ -31,3 +31,11 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```bash
 helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply     
 ```
+
+4. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
+
+```bash
+minikube service ingress-nginx-controller --url
+
+http://127.0.0.1:<発行されたポート番号>
+```
