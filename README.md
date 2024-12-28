@@ -81,14 +81,14 @@ kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system --overwrite 
 3. Nodeを確認します。
 
 ```bash
-kubectl get nodes
+kubectl get nodes -L nodegroup
                                                                                                                                                          (minikube/default)
-NAME           STATUS   ROLES           AGE   VERSION
-minikube       Ready    control-plane   13d   v1.32.0
-minikube-m02   Ready    worker          13d   v1.32.0
-minikube-m03   Ready    worker          13d   v1.32.0
-minikube-m04   Ready    worker          13d   v1.32.0
-minikube-m05   Ready    worker          13d   v1.32.0
+NAME           STATUS   ROLES           AGE   VERSION   NODEGROUP
+minikube       Ready    control-plane   13d   v1.32.0   
+minikube-m02   Ready    worker          13d   v1.32.0   app
+minikube-m03   Ready    worker          13d   v1.32.0   ingress
+minikube-m04   Ready    worker          13d   v1.32.0   egress
+minikube-m05   Ready    worker          13d   v1.32.0   system
 ```
 
 ### 掃除
