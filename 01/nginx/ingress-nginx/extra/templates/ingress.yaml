@@ -7,35 +7,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /productpage
-            pathType: Exact
-            backend:
-              service:
-                name: productpage
-                port:
-                  number: 9080
-          - path: /static
-            pathType: Prefix
-            backend:
-              service:
-                name: productpage
-                port:
-                  number: 9080
-          - path: /login
-            pathType: Exact
-            backend:
-              service:
-                name: productpage
-                port:
-                  number: 9080
-          - path: /logout
-            pathType: Exact
-            backend:
-              service:
-                name: productpage
-                port:
-                  number: 9080
-          - path: /api/v1/products
+          - path: /
             pathType: Prefix
             backend:
               service:

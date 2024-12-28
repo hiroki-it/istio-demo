@@ -5,12 +5,13 @@ controller:
       http: 30000
       https: 30001
     ports:
-      http: 8080
+      # Serviceの宛先となるNginx Ingress Controller Podのポート番号
+      http: 80
       https: 443
-  # Nginx Ingress Controllerが公開するポート番号である
-  # Istio Gatewayで設定するポート番号に相当する
+  # Nginx Ingress Controller Podが公開するポート番号
   containerPort:
-    http: 8080
+    http: 80
+    https: 443
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
