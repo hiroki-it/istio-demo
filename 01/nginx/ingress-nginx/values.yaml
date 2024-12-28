@@ -1,0 +1,18 @@
+controller:
+  service:
+    type: NodePort
+    nodePorts:
+      http: 30000
+      https: 30001
+    ports:
+      http: 8080
+      https: 443
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - ingress
