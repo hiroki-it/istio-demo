@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bookinfo-gateway
-  namespace: ingress-nginx
+  namespace: {{ .Release.Namespace }}
 spec:
   ingressClassName: nginx
   rules:
