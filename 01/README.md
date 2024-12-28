@@ -29,5 +29,5 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 3. Nginx Ingress Controllerをデプロイします。
 
 ```bash
-helmfile -f 01/nginx/ingress-nginx apply
+helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply     
 ```
