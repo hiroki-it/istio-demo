@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.global.serviceName }}
+  http:
+    - match:
+        - port: 9080
+      route:
+        - destination:
+            host: {{ .Values.global.serviceName }}
+            port:
+              number: 9080

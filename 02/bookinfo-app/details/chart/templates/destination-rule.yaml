@@ -1,0 +1,8 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ .Values.global.serviceName }}
+spec:
+  exportTo:
+    - "*"
+  host: {{ .Values.global.serviceName }}
