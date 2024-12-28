@@ -1,8 +1,10 @@
 # 1章
 
-1章では、マイクロサービスアーキテクチャーで設計されたBookinfoアプリケーションを構築します。
+1章では、マイクロサービスアーキテクチャーで設計されたBookinfoアプリケーションに接続します。
 
-サービスメッシュツールのIstioを使用せずに、アプリケーションを動かします。
+まずは、サービスメッシュツールのIstioを使用せずに、接続してみます。
+
+## Bookinfoアプリケーションを構築する
 
 1. Bookinfoアプリケーションをデプロイします。
 
@@ -25,6 +27,8 @@ reviews-v1-848b8749df-7svtl      1/1     Running   0          8m21s
 reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
+
+## Bookinfoアプリケーションに接続する
 
 3. Bookinfoアプリケーション用のIngressを事前に作成します。
 
