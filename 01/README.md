@@ -35,7 +35,7 @@ kubectl -f 01/k8s-namespaces/namespace.yaml apply
 4. Nginx Ingress Controllerをデプロイします。
 
 ```bash
-helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply     
+helmfile -f 01/ingress-nginx/helmfile.yaml apply
 ```
 
 5. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
