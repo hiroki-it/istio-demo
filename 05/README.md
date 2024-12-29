@@ -36,8 +36,8 @@ docker compose -f 05/mysql/docker-compose.yaml up -d
 
 4. Istio EgressGatewayをデプロイします。
 
-```bash
-helmfile -f 05/istio/istio-egress/helmfile.yaml apply
+```bashhelmfile -f 05/istio/istio-egress/helmfile.yaml apply
+
 ```
 
 5. ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。

@@ -6,3 +6,12 @@ spec:
   exportTo:
     - "*"
   host: {{ .Values.global.serviceName }}
+---
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.global.serviceName }}-mysql
+spec:
+  exportTo:
+    - "*"
+  host: mysqldb

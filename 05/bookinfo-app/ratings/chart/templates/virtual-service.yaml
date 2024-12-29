@@ -15,3 +15,35 @@ spec:
             host: {{ .Values.global.serviceName }}
             port:
               number: 9080
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - mysqldb
+  gateways:
+    - {{ .Values.global.serviceName }}
+    - mesh
+  http:
+    - match:
+        - gateways:
+            - mesh
+          port: 3306
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: 3306
+    - match:
+        - gateways:
+            - {{ .Values.global.serviceName }}
+          port: 3306
+      route:
+        - destination:
+            host: mysqldb
+            port:
+              number: 3306
