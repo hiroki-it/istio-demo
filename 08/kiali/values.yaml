@@ -1,6 +1,19 @@
 auth:
   strategy: anonymous
 external_services:
+  grafana:
+    enabled: true
+    in_cluster_url: http://kube-prometheus-stack-grafana.prometheus
+    url: http://bookinfo.grafana.com
+    auth:
+      type: basic
+      username: admin
+      password: prom-operator
+  prometheus:
+    url: http://kube-prometheus-stack-prometheus.prometheus:9090
+  custom_dashboards:
+    prometheus:
+      url: http://kube-prometheus-stack-prometheus.prometheus:9090
   tracing:
     enabled: false
   istio:
