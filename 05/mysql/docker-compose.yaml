@@ -12,7 +12,6 @@ services:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
       interval: 10s
       retries: 5
-    hostname: mysqldb
     image: docker.io/istio/examples-bookinfo-mysqldb:1.20.2
     ports:
       - 3306:3306
