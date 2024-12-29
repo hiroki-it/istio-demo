@@ -6,7 +6,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - "*"
+    - {{ .Values.global.serviceName }}
   http:
     - match:
         - port: 9080

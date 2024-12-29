@@ -6,7 +6,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - "*"
+    - {{ .Values.global.serviceName }}
   gateways:
     - {{ .Values.global.serviceName }}
   http:
