@@ -28,7 +28,7 @@ helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
 
 ## サービスメッシュ外への通信を管理する
 
-3. 外部のサービスを作成する。
+3. 外部のサービスとして、MySQLコンテナを作成します。
 
 ```bash
 docker compose -f 05/mysql/docker-compose.yaml up -d
@@ -38,4 +38,10 @@ docker compose -f 05/mysql/docker-compose.yaml up -d
 
 ```bash
 helmfile -f 02/istio/istio-egress/helmfile.yaml apply
+```
+
+5. ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
+
+```bash
+kubectl -f https://raw.githubusercontent.com/istio/istio/refs/heads/master/samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml apply
 ```
