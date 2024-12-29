@@ -12,7 +12,7 @@ kubectl apply -f 02/k8s-manifests/namespace.yaml
 helmfile -f 02/istio/base/helmfile.yaml apply
 ```
 
-2. Istioコントロールプレーンをデプロイします。
+2. Istiodコントロールプレーンをデプロイします。
 
 ```bash
 helmfile -f 02/istio/istio-istiod/helmfile.yaml apply
@@ -54,4 +54,12 @@ kubectl label ns default istio.io/rev=stable
 
 ```bash
 kubectl rollout restart deployment
+```
+
+8. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
+
+```bash
+minikube service istio-ingressgateway --url -n istio-ingress
+
+http://127.0.0.1:<発行されたポート番号>
 ```
