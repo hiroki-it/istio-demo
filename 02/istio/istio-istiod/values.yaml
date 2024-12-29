@@ -18,7 +18,7 @@ meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
   rootNamespace: null
-  # IstioコントロールプレーンがwatchするNamespaceを限定する
+  # IstiodコントロールプレーンがwatchするNamespaceを限定する
   discoverySelectors:
     - matchLabels:
         # サイドカーをインジェクションしているNamespaceのみをwatchすることにより、Istiodの負荷を下げる
