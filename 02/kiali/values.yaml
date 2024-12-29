@@ -1,0 +1,20 @@
+auth:
+  strategy: anonymous
+external_services:
+  tracing:
+    enabled: false
+  istio:
+    component_status:
+      components:
+        - app_label: istiod
+        - app_label: istio-ingressgateway
+          namespace: istio-ingress
+        - app_label: istio-egressgateway
+          namespace: istio-egress
+      enabled: true
+    config_map_name: istio-1-24-2
+    istio_sidecar_injector_config_map_name: istio-sidecar-injector-1-24-2
+    istiod_deployment_name: istiod-1-24-2
+    root_namespace: istio-system
+    url_service_version: http://istiod-1-24-2:15014/version
+
