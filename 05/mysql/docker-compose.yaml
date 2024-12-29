@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+
+  mysql:
+    container_name: bookinfo-mysql
+    environment:
+      MYSQL_DATABASE: bookinfo
+      MYSQL_USER: bookinfo
+      TZ: 'Asia/Tokyo'
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
+      interval: 10s
+      retries: 5
+    hostname: mysql
+    image: mysql:8.0.32
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
