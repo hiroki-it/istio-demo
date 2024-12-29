@@ -9,7 +9,7 @@
 ```bash
 kubectl apply -f 02/k8s-manifests/namespace.yaml
 
-helmfile -f 02/istio/base/helmfile.yaml apply
+helmfile -f 02/istio/istio-base/helmfile.yaml apply
 ```
 
 2. Istiodコントロールプレーンをデプロイします。

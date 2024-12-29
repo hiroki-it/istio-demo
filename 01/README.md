@@ -45,7 +45,7 @@ kubectl -f 01/k8s-manifests/namespace.yaml apply
 5. Nginx Ingress Controllerをデプロイします。
 
 ```bash
-helmfile -f 01/ingress-nginx/helmfile.yaml apply
+helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply
 ```
 
 6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
@@ -65,5 +65,5 @@ $ kubectl -f 01/k8s-manifests/ingress.yaml delete
 
 $ kubectl -f 01/k8s-manifests/namespace.yaml delete
 
-$ helmfile -f 01/ingress-nginx/helmfile.yaml destroy
+$ helmfile -f 01/nginx/ingress-nginx/helmfile.yaml destroy
 ```
