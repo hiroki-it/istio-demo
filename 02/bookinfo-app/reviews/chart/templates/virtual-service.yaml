@@ -7,8 +7,6 @@ spec:
     - "*"
   hosts:
     - "*"
-  gateways:
-    - {{ .Values.global.serviceName }}
   http:
     - match:
         - port: 9080
