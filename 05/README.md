@@ -43,5 +43,5 @@ docker compose -f 05/mysql/docker-compose.yaml up -d
 5. ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
 
 ```bash
-kubectl -f https://raw.githubusercontent.com/istio/istio/refs/heads/master/samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml apply
+kubectl -f https://raw.githubusercontent.com/istio/istio/refs/tags/1.24.2/samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml apply
 ```
