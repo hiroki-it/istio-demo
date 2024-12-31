@@ -27,7 +27,7 @@ spec:
   hosts:
     - mysqldb
   gateways:
-    - {{ .Values.global.serviceName }}
+    - {{ .Values.global.serviceName }}-egress
     - mesh
   http:
     - match:
