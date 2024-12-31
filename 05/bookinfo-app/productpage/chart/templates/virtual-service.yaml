@@ -8,7 +8,7 @@ spec:
   hosts:
     - "*"
   gateways:
-    - {{ .Values.global.serviceName }}
+    - {{ .Values.global.serviceName }}-ingress
   http:
     - match:
         - port: 9080
