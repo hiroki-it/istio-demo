@@ -43,7 +43,7 @@ helmfile -f 05/istio/istio-egress/helmfile.yaml apply
 5. ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
 
 ```bash
-ISTIO_VERSION=1.24.1
+ISTIO_VERSION=1.24.2
 
 kubectl -f https://raw.githubusercontent.com/istio/istio/refs/tags/${ISTIO_VERSION}/samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml apply
 ```

@@ -9,7 +9,7 @@
 1. Bookinfoアプリケーションをデプロイします。
 
 ```bash
-ISTIO_VERSION=1.24.1
+ISTIO_VERSION=1.24.2
 
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/refs/tags/${ISTIO_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
