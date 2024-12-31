@@ -14,6 +14,15 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
+  name: {{ .Values.global.serviceName }}-egress
+spec:
+  exportTo:
+    - "*"
+  host: istio-egressgateway.istio-system.svc.cluster.local
+---
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
   name: {{ .Values.global.serviceName }}-mysql
 spec:
   exportTo:
