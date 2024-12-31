@@ -3,6 +3,8 @@ kind: ServiceEntry
 metadata:
   name: {{ .Values.global.serviceName }}
 spec:
+  exportTo:
+    - "*"
   hosts:
     - mysqldb
   location: MESH_EXTERNAL
