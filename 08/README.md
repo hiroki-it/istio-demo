@@ -25,15 +25,27 @@ kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-oper
 helmfile -f 08/prometheus/kube-prometheus-stack/helmfile.yaml apply
 ```
 
+3. メトリクスの監視ダッシュボードに接続します。
+
+```bash
+$ kubectl port-forward svc/kube-prometheus-stack-prometheus -n prometheus 9090:9090
+
+$ kubectl port-forward svc/kube-prometheus-stack-alertmanager -n prometheus 9093:9093
+
+# ユーザ名: admin
+# パスワード: prom-operator
+$ kubectl port-forward svc/kube-prometheus-stack-grafana -n prometheus 8000:80
+```
+
 ## メッシュトポロジーを監視する
 
-3. Kialiをデプロイします。
+4. Kialiをデプロイします。
 
 ```bash
 helmfile -f 08/kiali/helmfile.yaml apply
 ```
 
-4. メッシュトポロジーを監視できるようにします。
+5. メッシュトポロジーの監視ダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
