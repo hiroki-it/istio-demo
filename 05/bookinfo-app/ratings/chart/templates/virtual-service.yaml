@@ -41,7 +41,7 @@ spec:
               number: 3306
     - match:
         - gateways:
-            - {{ .Values.global.serviceName }}
+            - {{ .Values.global.serviceName }}-egress
           port: 3306
       route:
         - destination:
