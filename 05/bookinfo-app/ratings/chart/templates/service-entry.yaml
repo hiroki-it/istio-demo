@@ -10,6 +10,6 @@ spec:
   location: MESH_EXTERNAL
   ports:
     - number: 3306
-      name: mysql-{{ .Values.global.serviceName }}
+      name: tcp-mysql
       protocol: TCP
   resolution: DNS
