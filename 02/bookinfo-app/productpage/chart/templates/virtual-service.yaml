@@ -17,3 +17,4 @@ spec:
             host: {{ .Values.global.serviceName }}
             port:
               number: 9080
+            subset: v1
