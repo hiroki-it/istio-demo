@@ -1,15 +1,16 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: {{ .Values.global.serviceName }}
+  name: {{ .Values.global.serviceName }}-mysqldb
 spec:
   exportTo:
     - "*"
   hosts:
     - mysqldb
+  address:
+    - 192.168.49.5/32
   location: MESH_EXTERNAL
   ports:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
-  resolution: DNS
