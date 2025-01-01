@@ -1,6 +1,7 @@
 services:
 
   mysql:
+    command: ["--default-authentication-plugin", "mysql_native_password"]
     container_name: mysqldb
     hostname: mysqldb
     environment:
