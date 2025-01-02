@@ -30,4 +30,4 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: mysqldb
+  host: mysqldb.tcp
