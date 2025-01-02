@@ -14,3 +14,17 @@ spec:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
+---
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: {{ .Values.global.serviceName }}-httpbin
+spec:
+  hosts:
+    - httpbin.org
+  location: MESH_EXTERNAL
+  ports:
+    - number: 80
+      name: http-{{ .Values.global.serviceName }}-curl
+      protocol: HTTP
+  resolution: DNS

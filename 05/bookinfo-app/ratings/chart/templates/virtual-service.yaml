@@ -55,3 +55,36 @@ spec:
             host: mysqldb.tcp
             port:
               number: 3306
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}-curl-egress
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - httpbin.org
+  gateways:
+    - mesh
+    - {{ .Values.global.serviceName }}-curl-egress
+  tcp:
+    - match:
+        - gateways:
+            - mesh
+          port: 80
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: 80
+    - match:
+        - gateways:
+            - {{ .Values.global.serviceName }}-curl-egress
+          port: 80
+      route:
+        - destination:
+            host: httpbin.org
+            port:
+              number: 80
+---
