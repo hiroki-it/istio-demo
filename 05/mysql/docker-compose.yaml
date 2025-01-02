@@ -15,12 +15,12 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - db-data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     networks:
       - minikube
 
 volumes:
-  db-data:
+  db_data:
 
 networks:
   minikube:
