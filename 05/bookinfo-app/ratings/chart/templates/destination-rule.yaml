@@ -22,12 +22,3 @@ spec:
   exportTo:
     - "*"
   host: istio-egressgateway.istio-egress.svc.cluster.local
----
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: {{ .Values.global.serviceName }}-mysqldb
-spec:
-  exportTo:
-    - "*"
-  host: mysqldb.tcp
