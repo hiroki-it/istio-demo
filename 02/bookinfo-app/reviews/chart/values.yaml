@@ -1,6 +1,2 @@
 global:
   serviceName: reviews
-
-virtualService:
-  targetPort:
-    http: 50003
