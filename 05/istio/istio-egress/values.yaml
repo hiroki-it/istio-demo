@@ -3,9 +3,18 @@ revision: 1-24-2
 service:
   type: ClusterIP
   ports:
-    - name: tcp-mysql
+    - name: mysql
+      appProtocol: mysql
       port: 3306
       targetPort: 3306
+    - name: http
+      appProtocol: http
+      port: 80
+      targetPort: 80
+    - name: https
+      appProtocol: https
+      port: 443
+      targetPort: 443
 
 affinity:
   nodeAffinity:
