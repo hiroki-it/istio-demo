@@ -32,7 +32,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - mysqldb.tcp
+    - mysqldb
   gateways:
     - mesh
     - {{ .Values.global.serviceName }}-egress
