@@ -68,7 +68,7 @@ spec:
   gateways:
     - mesh
     - {{ .Values.global.serviceName }}-curl-egress
-  tcp:
+  http:
     - match:
         - gateways:
             - mesh
