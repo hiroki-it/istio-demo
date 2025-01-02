@@ -33,33 +33,24 @@ spec:
     - "*"
   hosts:
     - mysqldb
-  http:
+  gateways:
+    - {{ .Values.global.serviceName }}-egress
+  tcp:
     - match:
-        - port: 3306
+        - gateways:
+            - mesh
+          port: 3306
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
               number: 3306
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.global.serviceName }}-mysql
-spec:
-  exportTo:
-    - "*"
-  hosts:
-    - mysqldb
-  gateways:
-    - {{ .Values.global.serviceName }}-egress
-  http:
     - match:
         - gateways:
             - {{ .Values.global.serviceName }}-egress
           port: 3306
       route:
         - destination:
-            host: mysqldb
+            host: mysqldb.tcp
             port:
               number: 3306
