@@ -1,5 +1,8 @@
+revision: 1-24-2
+
 service:
   type: ClusterIP
+
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
