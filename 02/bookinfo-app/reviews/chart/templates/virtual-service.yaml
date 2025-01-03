@@ -15,17 +15,4 @@ spec:
             host: {{ .Values.global.serviceName }}
             port:
               number: 9080
-            subset: v1
-          weight: 0
-        - destination:
-            host: {{ .Values.global.serviceName }}
-            port:
-              number: 9080
-            subset: v2
-          weight: 0
-        - destination:
-            host: {{ .Values.global.serviceName }}
-            port:
-              number: 9080
             subset: v3
-          weight: 100
