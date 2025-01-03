@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.global.serviceName }}-database-egress
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: tcp-{{ .Values.global.serviceName }}
+        protocol: TCP
+        number: 3306
+      hosts:
+        - "*"
+
