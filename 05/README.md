@@ -7,7 +7,7 @@
 1. サービスメッシュ外のサービスとして、MySQLコンテナを作成します。
 
 ```bash
-docker compose -f 05/mysql/docker-compose.yaml up -d
+docker compose -f 05/bookinfo-app/database/docker-compose.yaml up -d
 ```
 
 2. 次のようなテーブルを持つMySQLコンテナです。
@@ -43,15 +43,7 @@ helmfile -f 05/istio/istio-egress/helmfile.yaml apply
 
 ## 各マイクロサービスをサービスメッシュの管理下にする
 
-5. ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
-
-```bash
-ISTIO_VERSION=1.24.2
-
-kubectl -f https://raw.githubusercontent.com/istio/istio/refs/tags/${ISTIO_VERSION}/samples/bookinfo/platform/kube/bookinfo-ratings-v2-mysql.yaml apply
-```
-
-6. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+5. 各マイクロサービスにIstioカスタムリソースをデプロイします。合わせて、ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
 
 ```bash
 helmfile -f 05/bookinfo-app/productpage/helmfile.yaml apply
