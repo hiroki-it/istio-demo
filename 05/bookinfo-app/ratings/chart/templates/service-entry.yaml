@@ -20,11 +20,14 @@ kind: ServiceEntry
 metadata:
   name: {{ .Values.global.serviceName }}-httpbin
 spec:
+  exportTo:
+    - "*"
   hosts:
     - httpbin.local
+  address:
+    - 192.168.49.8/24
   location: MESH_EXTERNAL
   ports:
     - number: 80
       name: http-{{ .Values.global.serviceName }}-curl
       protocol: HTTP
-  resolution: DNS
