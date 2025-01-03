@@ -27,15 +27,15 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.global.serviceName }}-egress
+  name: {{ .Values.global.serviceName }}-database
 spec:
   exportTo:
     - "*"
   hosts:
-    - mysqldb
+    - mysql.local
   gateways:
     - mesh
-    - {{ .Values.global.serviceName }}-egress
+    - {{ .Values.global.serviceName }}-database-egress
   tcp:
     - match:
         - gateways:
@@ -48,42 +48,10 @@ spec:
               number: 3306
     - match:
         - gateways:
-            - {{ .Values.global.serviceName }}-egress
+            - {{ .Values.global.serviceName }}-database-egress
           port: 3306
       route:
         - destination:
-            host: mysqldb.local
+            host: mysql.local
             port:
               number: 3306
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.global.serviceName }}-curl-egress
-spec:
-  exportTo:
-    - "*"
-  hosts:
-    - httpbin.local
-  gateways:
-    - mesh
-    - {{ .Values.global.serviceName }}-curl-egress
-  http:
-    - match:
-        - gateways:
-            - mesh
-          port: 80
-      route:
-        - destination:
-            host: istio-egressgateway.istio-egress.svc.cluster.local
-            port:
-              number: 80
-    - match:
-        - gateways:
-            - {{ .Values.global.serviceName }}-curl-egress
-          port: 80
-      route:
-        - destination:
-            host: httpbin.local
-            port:
-              number: 80

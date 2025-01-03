@@ -1,23 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.global.serviceName }}-curl
+  name: {{ .Values.global.serviceName }}-v2
+  labels:
+    app: {{ .Values.global.serviceName }}
+    version: v2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.global.serviceName }}-curl
+      app: {{ .Values.global.serviceName }}
+      version: v2
   template:
     metadata:
       labels:
-        app: {{ .Values.global.serviceName }}-curl
+        app: {{ .Values.global.serviceName }}
+        version: v2
     spec:
       containers:
-        - name: curl
-          image: curlimages/curl:8.5.0
+        - name: {{ .Values.global.serviceName }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.global.serviceName }}-v2:1.20.2
           imagePullPolicy: IfNotPresent
-          # コンテナ起動後にすぐに終了してCrashLoopBackOffになってしまうため、ずっとスリープするようにする
-          # @see https://vamdemicsystem.black/kubernetes/%E3%80%90kubernetes%E3%80%91kubernetes%E3%81%A7ubuntu%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8Bdeployment%E3%81%AE%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
-          command:
-            - sleep
-            - infinity
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: MYSQL_DB_HOST
+              value: mysql.local
+            - name: MYSQL_DB_PORT
+              value: "3306"
+            - name: MYSQL_DB_USER
+              value: root
+            - name: MYSQL_DB_PASSWORD
+              value: password
+          ports:
+            - containerPort: 9080
