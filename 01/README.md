@@ -33,7 +33,7 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 3. Namespaceを事前にデプロイします。
 
 ```bash
-kubectl --server-side -f 01/nginx/shared/namespace.yaml apply
+kubectl apply --server-side -f 01/nginx/shared/namespace.yaml
 ```
 
 4. Bookinfoアプリケーション用のIngressをデプロイします。
@@ -69,5 +69,5 @@ helmfile -f 01/bookinfo-app/productpage/helmfile.yaml destroy
 
 helmfile -f 01/nginx/ingress-nginx/helmfile.yaml destroy
 
-kubectl -f 01/nginx/shared/namespace.yaml delete
+kubectl delete -f 01/nginx/shared/namespace.yaml
 ```
