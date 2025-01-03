@@ -11,7 +11,7 @@
 ```bash
 ISTIO_VERSION=1.24.2
 
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/refs/tags/${ISTIO_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/istio/istio/refs/tags/${ISTIO_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
 2. アプリケーションが正常に稼働していることを確認します。
@@ -33,7 +33,7 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 3. Namespaceを事前にデプロイします。
 
 ```bash
-kubectl -f 01/nginx/shared/namespace.yaml apply
+kubectl --server-side -f 01/nginx/shared/namespace.yaml apply
 ```
 
 4. Bookinfoアプリケーション用のIngressをデプロイします。
@@ -65,9 +65,9 @@ http://127.0.0.1:<発行されたポート番号>
 8. 接続を確認できたら、以降の章で不要なリソースを削除します。
 
 ```bash
-$ kubectl -f 01/k8s-manifests/ingress.yaml delete
+helmfile -f 01/bookinfo-app/productpage/helmfile.yaml destroy
 
-$ kubectl -f 01/k8s-manifests/namespace.yaml delete
+helmfile -f 01/nginx/ingress-nginx/helmfile.yaml destroy
 
-$ helmfile -f 01/nginx/ingress-nginx/helmfile.yaml destroy
+kubectl -f 01/nginx/shared/namespace.yaml delete
 ```
