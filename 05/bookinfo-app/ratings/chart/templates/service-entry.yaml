@@ -26,6 +26,6 @@ spec:
   location: MESH_EXTERNAL
   ports:
     - number: 80
-      name: http-{{ .Values.global.serviceName }}-curl
+      name: http-curl
       protocol: HTTP
   resolution: DNS
