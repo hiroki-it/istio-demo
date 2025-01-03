@@ -30,7 +30,7 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 
 
 
-3. Namespaceを事前にデプロイします。
+3. Namespaceをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 01/shared/namespace.yaml

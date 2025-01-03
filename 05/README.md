@@ -4,7 +4,7 @@
 
 ## セットアップ
 
-1. サービスメッシュ外のサービスとして、MySQLコンテナを作成します。
+1. サービスメッシュ外にMySQLコンテナを作成します。
 
 ```bash
 docker compose -f 05/mysql/docker-compose.yaml up -d

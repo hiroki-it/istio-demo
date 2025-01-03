@@ -4,17 +4,17 @@
 
 ## セットアップする
 
-1. Istioの構築に必要なリソースを事前に準備します。
+1. Namespaceをデプロイします。
 
 ```bash
 kubectl apply -f 02/shared/namespace.yaml
-
-helmfile -f 02/istio/istio-base/helmfile.yaml apply
 ```
 
 2. Istiodコントロールプレーンをデプロイします。
 
 ```bash
+helmfile -f 02/istio/istio-base/helmfile.yaml apply
+
 helmfile -f 02/istio/istio-istiod/helmfile.yaml apply
 ```
 
