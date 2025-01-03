@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: {{ .Values.global.serviceName }}-database
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - mysql.local
+  location: MESH_EXTERNAL
+  ports:
+    - number: 3306
+      name: tcp-{{ .Values.global.serviceName }}
+      protocol: TCP
+  resolution: DNS
