@@ -4,6 +4,8 @@
 
 Bookinfoアプリを使用して、Istioをデモンストレーションします。
 
+[mesh-topology](./images/mesh-topology.png)
+
 ## 始める
 
 ### 前提
