@@ -52,7 +52,7 @@ spec:
           port: 3306
       route:
         - destination:
-            host: mysqldb.tcp
+            host: mysqldb.local
             port:
               number: 3306
 ---

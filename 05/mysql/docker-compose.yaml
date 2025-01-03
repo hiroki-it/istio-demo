@@ -3,7 +3,7 @@ services:
   mysql:
     command: --default-authentication-plugin=mysql_native_password
     container_name: mysqldb
-    hostname: mysqldb
+    hostname: mysqldb.local
     environment:
       MYSQL_ROOT_PASSWORD: password
       TZ: 'Asia/Tokyo'

@@ -6,7 +6,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - mysqldb.tcp
+    - mysqldb.local
   address:
     - 192.168.49.5/32
   location: MESH_EXTERNAL
