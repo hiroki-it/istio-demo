@@ -7,13 +7,12 @@ spec:
     - "*"
   hosts:
     - mysqldb.local
-  address:
-    - 192.168.49.7/24
   location: MESH_EXTERNAL
   ports:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
+  resolution: DNS
 ---
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
@@ -24,10 +23,9 @@ spec:
     - "*"
   hosts:
     - httpbin.local
-  address:
-    - 192.168.49.8/24
   location: MESH_EXTERNAL
   ports:
     - number: 80
       name: http-{{ .Values.global.serviceName }}-curl
       protocol: HTTP
+  resolution: DNS
