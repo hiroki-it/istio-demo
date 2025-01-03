@@ -39,16 +39,16 @@ helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
 helmfile -f 05/istio/istio-egress/helmfile.yaml apply
 ```
 
-5. 各マイクロサービスにIstioカスタムリソースをデプロイします。合わせて、ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
+5. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
-helmfile -f 05/bookinfo-app/productpage/helmfile.yaml apply
-
-helmfile -f 05/bookinfo-app/reviews/helmfile.yaml apply
-
 helmfile -f 05/bookinfo-app/details/helmfile.yaml apply
 
+helmfile -f 05/bookinfo-app/productpage/helmfile.yaml apply
+
 helmfile -f 05/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f 05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 ## 機能を実践する

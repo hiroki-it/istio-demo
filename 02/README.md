@@ -27,13 +27,13 @@ helmfile -f 02/istio/istio-ingress/helmfile.yaml apply
 4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
-helmfile -f 02/bookinfo-app/productpage/helmfile.yaml apply
-
-helmfile -f 02/bookinfo-app/reviews/helmfile.yaml apply
-
 helmfile -f 02/bookinfo-app/details/helmfile.yaml apply
 
+helmfile -f 02/bookinfo-app/productpage/helmfile.yaml apply
+
 helmfile -f 02/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f 02/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 5. Kubernetes Namespaceのラベルに `istio.io/rev` を設定します。
