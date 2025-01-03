@@ -64,7 +64,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - httpbin.org
+    - httpbin.local
   gateways:
     - mesh
     - {{ .Values.global.serviceName }}-curl-egress
@@ -84,6 +84,6 @@ spec:
           port: 80
       route:
         - destination:
-            host: httpbin.org
+            host: httpbin.local
             port:
               number: 80

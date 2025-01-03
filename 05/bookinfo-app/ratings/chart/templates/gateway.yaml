@@ -26,4 +26,4 @@ spec:
         protocol: HTTP
         number: 80
       hosts:
-        - httpbin.org
+        - "*"

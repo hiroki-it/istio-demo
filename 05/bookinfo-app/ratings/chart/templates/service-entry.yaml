@@ -21,7 +21,7 @@ metadata:
   name: {{ .Values.global.serviceName }}-httpbin
 spec:
   hosts:
-    - httpbin.org
+    - httpbin.local
   location: MESH_EXTERNAL
   ports:
     - number: 80
