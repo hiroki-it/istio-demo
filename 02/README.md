@@ -7,7 +7,7 @@
 1. Istioの構築に必要なリソースを事前に準備します。
 
 ```bash
-kubectl apply -f 02/k8s-manifests/namespace.yaml
+kubectl apply -f 02/istio/shared/namespace.yaml
 
 helmfile -f 02/istio/istio-base/helmfile.yaml apply
 ```

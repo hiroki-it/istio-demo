@@ -28,16 +28,18 @@ reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
 
-3. Bookinfoアプリケーション用のIngressを事前に作成します。
+
+
+3. Namespaceを事前にデプロイします。
 
 ```bash
-kubectl -f 01/k8s-manifests/ingress.yaml apply
+kubectl -f 01/nginx/shared/namespace.yaml apply
 ```
 
-4. Namespaceを事前に作成します。
+4. Bookinfoアプリケーション用のIngressをデプロイします。
 
 ```bash
-kubectl -f 01/k8s-manifests/namespace.yaml apply
+helmfile -f 01/bookinfo-app/productpage/helmfile.yaml apply
 ```
 
 5. Nginx Ingress Controllerをデプロイします。
@@ -56,7 +58,7 @@ http://127.0.0.1:<発行されたポート番号>
 
 ## 機能を実践する
 
-7. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、The Comedy of Errorsページを閲覧できることを確認する。
+7. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、The Comedy of Errorsページを閲覧できることを確認します。
 
 ## 掃除する
 
