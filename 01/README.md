@@ -4,7 +4,7 @@
 
 まずは、サービスメッシュツールのIstioを使用せずに、接続してみます。
 
-## Bookinfoアプリケーションを構築する
+## セットアップ
 
 1. Bookinfoアプリケーションをデプロイします。
 
@@ -27,8 +27,6 @@ reviews-v1-848b8749df-7svtl      1/1     Running   0          8m21s
 reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
-
-## Bookinfoアプリケーションに接続する
 
 3. Bookinfoアプリケーション用のIngressを事前に作成します。
 
@@ -56,7 +54,11 @@ minikube service ingress-nginx-controller --url -n ingress-nginx
 http://127.0.0.1:<発行されたポート番号>
 ```
 
+## 機能を実践する
+
 7. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、The Comedy of Errorsページを閲覧できることを確認する。
+
+## 掃除する
 
 8. 接続を確認できたら、以降の章で不要なリソースを削除します。
 

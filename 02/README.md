@@ -2,7 +2,7 @@
 
 2章では、マイクロサービスアーキテクチャにIstioを導入します。
 
-## Istioを構築する
+## セットアップする
 
 1. Istioの構築に必要なリソースを事前に準備します。
 
@@ -23,8 +23,6 @@ helmfile -f 02/istio/istio-istiod/helmfile.yaml apply
 ```bash
 helmfile -f 02/istio/istio-ingress/helmfile.yaml apply
 ```
-
-## 各マイクロサービスをサービスメッシュの管理下にする
 
 4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
@@ -57,3 +55,7 @@ minikube service istio-ingressgateway --url -n istio-ingress
 
 http://127.0.0.1:<発行されたポート番号>
 ```
+
+## 機能を実践する
+
+## 掃除する

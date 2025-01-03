@@ -2,7 +2,7 @@
 
 5章では、Istioのトラフィック管理を学びます。
 
-## サービスメッシュ外にDBを作成する
+## セットアップ
 
 1. サービスメッシュ外のサービスとして、MySQLコンテナを作成します。
 
@@ -27,8 +27,6 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-## サービスメッシュ外からの通信を管理する
-
 3. Istio IngressGatewayをデプロイします。
 
 ```bash
@@ -41,8 +39,6 @@ helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
 helmfile -f 05/istio/istio-egress/helmfile.yaml apply
 ```
 
-## 各マイクロサービスをサービスメッシュの管理下にする
-
 5. 各マイクロサービスにIstioカスタムリソースをデプロイします。合わせて、ratingサービスを`v2`にアップグレードします。`v2`は、MySQLに接続処理をもちます。
 
 ```bash
@@ -54,3 +50,7 @@ helmfile -f 05/bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f 05/bookinfo-app/ratings/helmfile.yaml apply
 ```
+
+## 機能を実践する
+
+## 掃除する
