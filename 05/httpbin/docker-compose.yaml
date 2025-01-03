@@ -1,9 +1,12 @@
 services:
   httpbin:
+    container_name: httpbin
     hostname: httpbin.local
     image: kennethreitz/httpbin:latest
     ports:
       - "80:80"
+    networks:
+      - minikube
 
 networks:
   minikube:
