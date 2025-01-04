@@ -2,4 +2,6 @@ service:
   name: productpage
   host: productpage
   port: 9080
-
+keycloak:
+  realm: dev
+  host: keycloak-http

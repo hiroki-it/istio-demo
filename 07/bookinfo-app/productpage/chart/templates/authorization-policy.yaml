@@ -3,6 +3,9 @@ kind: AuthorizationPolicy
 metadata:
   name: {{ .Values.service.name }}
 spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
   action: ALLOW
   rules:
     - when:

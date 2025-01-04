@@ -3,6 +3,9 @@ kind: RequestAuthentication
 metadata:
   name: {{ .Values.service.name }}
 spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
   jwtRules:
     - issuer: https://{{ .Values.keycloak.host }}/realms/{{ .Values.keycloak.realm }}
       jwksUri: https://{{ .Values.keycloak.host }}/realms/{{ .Values.keycloak.realm }}/protocol/openid-connect/certs
