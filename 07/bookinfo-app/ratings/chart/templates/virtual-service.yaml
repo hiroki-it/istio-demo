@@ -35,7 +35,7 @@ metadata:
   name: {{ .Values.service.name }}-mysql
 spec:
   exportTo:
-    - "."
+    - "*"
   hosts:
     - {{ .Values.mysql.host }}
   gateways:
