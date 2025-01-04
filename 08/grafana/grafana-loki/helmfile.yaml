@@ -1,0 +1,16 @@
+repositories:
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+
+releases:
+  - name: grafana-loki
+    chart: grafana/loki
+    version: 6.24.0
+    namespace: grafana-loki
+    values:
+      - values.yaml
+  - name: grafana-loki-extra
+    chart: extra-chart
+    version: 1.0.0
+    namespace: grafana-loki
+    atomic: true

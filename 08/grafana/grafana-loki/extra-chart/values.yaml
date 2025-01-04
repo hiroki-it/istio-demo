@@ -1,0 +1,5 @@
+grafanaLoki:
+  name: grafana-loki
+  host: grafana-loki.dev
+  port: 9080
+
