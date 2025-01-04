@@ -27,7 +27,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.global.serviceName }}-database
+  name: {{ .Values.global.serviceName }}-mysql
 spec:
   exportTo:
     - "*"
@@ -35,7 +35,7 @@ spec:
     - mysql.local
   gateways:
     - mesh
-    - {{ .Values.global.serviceName }}-database-egress
+    - {{ .Values.global.serviceName }}-mysql-egress
   tcp:
     - match:
         - gateways:
@@ -48,7 +48,7 @@ spec:
               number: 3306
     - match:
         - gateways:
-            - {{ .Values.global.serviceName }}-database-egress
+            - {{ .Values.global.serviceName }}-mysql-egress
           port: 3306
       route:
         - destination:
