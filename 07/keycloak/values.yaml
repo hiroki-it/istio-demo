@@ -34,10 +34,5 @@ extraEnv: |
   - name: JAVA_OPTS_APPEND
     value: -Djgroups.dns.query=keycloak-keycloakx-headless.keycloak.svc.cluster.local
 
-database:
-  vendor: mysql
-  hostname: mysql.local
-  port: 3306
-  database: keycloak
-  username: keycloak
-  password: password
+image:
+  tag: 26.0.7
