@@ -18,7 +18,7 @@ fullnameOverride: keycloak
 
 extraEnv: |
   - name: KC_HOSTNAME
-    value: localhost
+    value: keycloak-http
   - name: KEYCLOAK_ADMIN
     value: admin
   - name: KEYCLOAK_ADMIN_PASSWORD
