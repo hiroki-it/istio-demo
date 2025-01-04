@@ -2,12 +2,12 @@
 
 6章では、Istioのセキュリティを学びます。
 
-1. サービスメッシュ外にMySQLコンテナを作成します。事前に、前述の章で作成したコンテナを削除します。
+1. サービスメッシュ外にMySQLコンテナを作成します。`3306`番ポートが重複するため、`ratings-mysql`コンテナを停止しておきます。
 
 ```bash
-docker container stop mysql && docker container rm mysql
+docker container stop ratings-mysql
 
-docker compose -f 07/mysql/docker-compose.yaml up -d
+docker compose -f 07/keycloak/docker-compose.yaml up -d
 ```
 
 2. Namespaceをデプロイします。

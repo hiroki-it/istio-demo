@@ -7,7 +7,7 @@
 1. サービスメッシュ外にMySQLコンテナを作成します。
 
 ```bash
-docker compose -f 05/ratings/docker-compose.yaml up -d
+docker compose -f 05/bookinfo-app/ratings/docker-compose.yaml up -d
 ```
 
 2. 次のようなテーブルを持つMySQLコンテナです。
