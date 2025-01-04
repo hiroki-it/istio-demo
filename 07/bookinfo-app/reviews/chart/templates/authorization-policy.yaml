@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          values:
+            - https://{{ .Values.keycloak.host }}/realms/{{ .Values.keycloak.realm }}

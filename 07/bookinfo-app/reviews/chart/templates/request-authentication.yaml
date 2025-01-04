@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  jwtRules:
+    - issuer: https://{{ .Values.keycloak.host }}/realms/{{ .Values.keycloak.realm }}
+      jwksUri: https://{{ .Values.keycloak.host }}/realms/{{ .Values.keycloak.realm }}/protocol/openid-connect/certs
+      forwardOriginalTolen: true
+      fromHeaders:
+        - name: Authorization
+          prefix: "Bearer "
