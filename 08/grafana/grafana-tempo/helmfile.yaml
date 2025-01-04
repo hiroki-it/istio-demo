@@ -1,0 +1,11 @@
+repositories:
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+
+releases:
+  - name: tempo
+    chart: grafana/tempo
+    version: 1.16.0
+    namespace: grafana-tempo
+    values:
+      - values.yaml
