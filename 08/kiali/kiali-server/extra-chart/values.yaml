@@ -1,0 +1,5 @@
+kiali:
+  name: kiali
+  host: kiali.dev
+  port: 20001
+
