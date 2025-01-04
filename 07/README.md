@@ -33,13 +33,19 @@ kubectl apply --server-side -f 07/shared/namespace.yaml
 kubectl apply --server-side -f 07/shared/peer-authentication.yaml
 ```
 
-5. Keycloakをデプロイします。
+5. Istio IngressGatewayをデプロイします。
+
+```bash
+helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
+```
+
+6. Keycloakをデプロイします。
 
 ```bash
 helmfile -f 07/keycloak/helmfile.yaml apply
 ```
 
-6. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+7. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f 07/bookinfo-app/details/helmfile.yaml apply
