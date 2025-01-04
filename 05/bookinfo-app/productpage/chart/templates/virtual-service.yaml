@@ -1,20 +1,20 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.global.serviceName }}
+  name: {{ .Values.serviceName }}
 spec:
   exportTo:
     - "*"
   hosts:
     - "*"
   gateways:
-    - {{ .Values.global.serviceName }}-ingress
+    - {{ .Values.serviceName }}-ingress
   http:
     - match:
         - port: 9080
       route:
         - destination:
-            host: {{ .Values.global.serviceName }}
+            host: {{ .Values.serviceName }}
             port:
               number: 9080
             subset: v1

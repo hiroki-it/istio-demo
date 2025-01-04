@@ -1,2 +1,1 @@
-global:
-  serviceName: ratings
+serviceName: ratings
