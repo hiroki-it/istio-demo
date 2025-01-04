@@ -2,8 +2,8 @@ services:
 
   mysql:
     command: --default-authentication-plugin=mysql_native_password
-    container_name: mysql
-    hostname: mysql.dev
+    container_name: ratings-mysql
+    hostname: ratings.mysql.dev
     environment:
       MYSQL_ROOT_PASSWORD: password
       TZ: 'Asia/Tokyo'
