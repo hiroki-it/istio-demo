@@ -2,8 +2,6 @@
 
 8章では、テレメトリーを監視します。
 
-## メトリクスを監視する
-
 1. カスタムリソース定義をデプロイする。
 
 ```bash
@@ -37,16 +35,28 @@ kubectl port-forward svc/kube-prometheus-stack-alertmanager -n prometheus 9093:9
 kubectl port-forward svc/kube-prometheus-stack-grafana -n prometheus 8000:80
 ```
 
-## メッシュトポロジーを監視する
-
 4. Kialiをデプロイします。
 
 ```bash
-helmfile -f 08/kiali/helmfile.yaml apply
+helmfile -f 08/kiali/kiali-server/helmfile.yaml apply
 ```
 
 5. メッシュトポロジーの監視ダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
+
+6. Grafana Lokiをデプロイします。
+
+
+```bash
+helmfile -f 08/grafana/grafana-loki/helmfile.yaml apply
+```
+
+7. Grafana Tempoをデプロイします。
+
+
+```bash
+helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
 ```
