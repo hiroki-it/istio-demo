@@ -1,2 +1,4 @@
 service:
   name: reviews
+  port: 9080
+

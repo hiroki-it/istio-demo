@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.Name }}-v2
+  name: {{ .Values.service.name }}-v2
   labels:
-    app: {{ .Values.service.Name }}
+    app: {{ .Values.service.name }}
     version: v2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.service.Name }}
+      app: {{ .Values.service.name }}
       version: v2
   template:
     metadata:
       labels:
-        app: {{ .Values.service.Name }}
+        app: {{ .Values.service.name }}
         version: v2
     spec:
       containers:
-        - name: {{ .Values.service.Name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.Name }}-v2:1.20.2
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2
           imagePullPolicy: IfNotPresent
           env:
             - name: DB_TYPE
@@ -33,4 +33,4 @@ spec:
             - name: MYSQL_DB_PASSWORD
               value: password
           ports:
-            - containerPort: 9080
+            - containerPort: {{ .Values.service.port }}

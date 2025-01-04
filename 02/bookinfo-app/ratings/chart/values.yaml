@@ -1,2 +1,4 @@
 service:
   name: ratings
+  port: 9080
+

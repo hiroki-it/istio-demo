@@ -1,13 +1,13 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: {{ .Values.service.Name }}-mysql-egress
+  name: {{ .Values.service.name }}-mysql-egress
 spec:
   selector:
     istio: egressgateway
   servers:
     - port:
-        name: tcp-{{ .Values.service.Name }}
+        name: tcp-{{ .Values.service.name }}
         protocol: TCP
         number: {{ .Values.mysql.port }}
       hosts:

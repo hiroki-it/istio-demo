@@ -1,31 +1,31 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.Name }}
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.service.Name }}
+    - {{ .Values.service.name }}
   http:
     - match:
-        - port: 9080
+        - port: {{ .Values.service.port }}
       route:
         - destination:
-            host: {{ .Values.service.Name }}
+            host: {{ .Values.service.name }}
             port:
-              number: 9080
+              number: {{ .Values.service.port }}
             subset: v1
           weight: 0
         - destination:
-            host: {{ .Values.service.Name }}
+            host: {{ .Values.service.name }}
             port:
-              number: 9080
+              number: {{ .Values.service.port }}
             subset: v2
           weight: 0
         - destination:
-            host: {{ .Values.service.Name }}
+            host: {{ .Values.service.name }}
             port:
-              number: 9080
+              number: {{ .Values.service.port }}
             subset: v3
           weight: 100

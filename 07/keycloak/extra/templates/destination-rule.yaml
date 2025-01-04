@@ -1,11 +1,11 @@
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.service.Name }}
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
-  host: {{ .Values.service.Name }}
+  host: {{ .Values.service.name }}
   trafficPolicy:
     outlierDetection:
       baseEjectionTime: 30s
@@ -17,7 +17,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.service.Name }}-mysql-egress
+  name: {{ .Values.service.name }}-mysql-egress
 spec:
   exportTo:
     - "*"

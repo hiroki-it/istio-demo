@@ -1,11 +1,11 @@
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.service.Name }}
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
-  host: {{ .Values.service.Name }}
+  host: {{ .Values.service.name }}
   subsets:
     - name: v3
       labels:

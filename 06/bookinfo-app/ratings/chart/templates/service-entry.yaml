@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: {{ .Values.service.Name }}-mysql
+  name: {{ .Values.service.name }}-mysql
 spec:
   exportTo:
     - "*"
@@ -10,6 +10,6 @@ spec:
   location: MESH_EXTERNAL
   ports:
     - number: {{ .Values.mysql.port }}
-      name: tcp-{{ .Values.service.Name }}
+      name: tcp-{{ .Values.service.name }}
       protocol: TCP
   resolution: DNS

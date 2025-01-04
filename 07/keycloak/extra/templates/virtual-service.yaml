@@ -1,18 +1,18 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.Name }}
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.service.Name }}
+    - {{ .Values.service.name }}
   http:
     - match:
         - port: 80
       route:
         - destination:
-            host: {{ .Values.service.Name }}
+            host: {{ .Values.service.name }}
             port:
               number: 80
       timeout: 10s
@@ -24,7 +24,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.Name }}-mysql
+  name: {{ .Values.service.name }}-mysql
 spec:
   exportTo:
     - "*"
@@ -32,7 +32,7 @@ spec:
     - {{ .Values.mysql.host }}
   gateways:
     - mesh
-    - {{ .Values.service.Name }}-mysql-egress
+    - {{ .Values.service.name }}-mysql-egress
   tcp:
     - match:
         - gateways:
@@ -45,7 +45,7 @@ spec:
               number: {{ .Values.mysql.port }}
     - match:
         - gateways:
-            - {{ .Values.service.Name }}-mysql-egress
+            - {{ .Values.service.name }}-mysql-egress
           port: {{ .Values.mysql.port }}
       route:
         - destination:

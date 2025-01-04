@@ -1,33 +1,33 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.Name }}
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.service.Name }}
+    - {{ .Values.service.name }}
   http:
     - match:
-        - port: 9080
+        - port: {{ .Values.service.port }}
       route:
         - destination:
-            host: {{ .Values.service.Name }}
+            host: {{ .Values.service.name }}
             port:
-              number: 9080
+              number: {{ .Values.service.port }}
             subset: v1
           weight: 0
         - destination:
-            host: {{ .Values.service.Name }}
+            host: {{ .Values.service.name }}
             port:
-              number: 9080
+              number: {{ .Values.service.port }}
             subset: v2
           weight: 100
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.Name }}-mysql
+  name: {{ .Values.service.name }}-mysql
 spec:
   exportTo:
     - "*"
@@ -35,7 +35,7 @@ spec:
     - {{ .Values.mysql.host }}
   gateways:
     - mesh
-    - {{ .Values.service.Name }}-mysql-egress
+    - {{ .Values.service.name }}-mysql-egress
   tcp:
     - match:
         - gateways:
@@ -48,7 +48,7 @@ spec:
               number: {{ .Values.mysql.port }}
     - match:
         - gateways:
-            - {{ .Values.service.Name }}-mysql-egress
+            - {{ .Values.service.name }}-mysql-egress
           port: {{ .Values.mysql.port }}
       route:
         - destination:

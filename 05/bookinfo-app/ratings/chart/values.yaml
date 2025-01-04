@@ -1,5 +1,6 @@
 service:
   name: ratings
+  port: 9080
 mysql:
   host: mysql.local
   port: 3306
