@@ -19,6 +19,8 @@ extraEnv: |
     value: password
   - name: PROXY_ADDRESS_FORWARDING
     value: "true"
+  - name: JAVA_OPTS_APPEND
+    value: -Djgroups.dns.query=keycloak-keycloakx-headless.keycloak.svc.cluster.local
 
 database:
   vendor: mysql
