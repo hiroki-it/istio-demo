@@ -1,11 +1,11 @@
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.serviceName }}
+  name: {{ .Values.service.Name }}
 spec:
   exportTo:
     - "*"
-  host: {{ .Values.serviceName }}
+  host: {{ .Values.service.Name }}
   subsets:
     - name: v1
       labels:
@@ -24,7 +24,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.serviceName }}-mysql-egress
+  name: {{ .Values.service.Name }}-mysql-egress
 spec:
   exportTo:
     - "*"

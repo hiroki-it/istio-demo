@@ -1,1 +1,2 @@
-serviceName: details
+service:
+  name: details

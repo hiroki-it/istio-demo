@@ -1,1 +1,2 @@
-serviceName: reviews
+service:
+  name: reviews

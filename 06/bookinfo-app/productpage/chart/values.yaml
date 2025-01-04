@@ -1,1 +1,2 @@
-serviceName: productpage
+service:
+  name: productpage
