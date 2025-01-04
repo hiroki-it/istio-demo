@@ -28,8 +28,6 @@ reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
 
-
-
 3. Namespaceをデプロイします。
 
 ```bash

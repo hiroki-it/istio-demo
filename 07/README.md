@@ -2,33 +2,44 @@
 
 6章では、Istioのセキュリティを学びます。
 
-1. サービスメッシュ外にMySQLコンテナを作成します。`3306`番ポートが重複するため、`ratings-mysql`コンテナを停止しておきます。
+1. Keycloakサービス用のMySQLコンテナと`3306`番ポートが重複するため、Ratingサービス用のMySQLコンテナを停止しておきます。
 
 ```bash
 docker container stop ratings-mysql
-
-docker compose -f 07/keycloak/docker-compose.yaml up -d
 ```
 
-2. Namespaceをデプロイします。
+2. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。これは、空の`keycloak`データベースを持ちます。
+
+```bash
+docker compose -f 07/keycloak/docker-compose.yaml up -d
+
+docker exec -it keycloak-mysql /bin/sh
+                                                                                                                                                                              (minikube/default)
+sh-4.4# mysql -h localhost -u root -ppassword
+
+mysql> SHOW TABLES FROM keycloak;
+Empty set
+```
+
+3. Namespaceをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 07/shared/namespace.yaml
 ```
 
-3. PeerAuthenticationをデプロイし、Namespaceの相互TLSを有効化します。
+4. PeerAuthenticationをデプロイし、Namespaceの相互TLSを有効化します。
 
 ```bash
 kubectl apply --server-side -f 07/shared/peer-authentication.yaml
 ```
 
-4. Keycloakをデプロイします。
+5. Keycloakをデプロイします。
 
 ```bash
 helmfile -f 07/keycloak/helmfile.yaml apply
 ```
 
-5. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+6. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f 07/bookinfo-app/details/helmfile.yaml apply

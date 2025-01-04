@@ -4,20 +4,24 @@
 
 ## セットアップ
 
-1. サービスメッシュ外にMySQLコンテナを作成します。
+1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。これは、`test`データベースに`rating`テーブルを持ちます。
 
 ```bash
 docker compose -f 05/bookinfo-app/ratings/docker-compose.yaml up -d
-```
 
-2. 次のようなテーブルを持つMySQLコンテナです。
-
-```bash
-docker exec -it mysql /bin/sh
+docker exec -it ratings-mysql /bin/sh
                                                                                                                                                                               (minikube/default)
 sh-4.4# mysql -h localhost -u root -ppassword
 
-mysql> USE test
+mysql> SHOW TABLES FROM test;
++----------------+
+| Tables_in_test |
++----------------+
+| ratings        |
++----------------+
+
+mysql> USE test;
+
 mysql> SELECT * from ratings;
 +----------+--------+
 | ReviewID | Rating |
@@ -27,19 +31,19 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-3. Istio IngressGatewayをデプロイします。
+2. Istio IngressGatewayをデプロイします。
 
 ```bash
 helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
 ```
 
-4. Istio EgressGatewayをデプロイします。
+3. Istio EgressGatewayをデプロイします。
 
 ```bash
 helmfile -f 05/istio/istio-egress/helmfile.yaml apply
 ```
 
-5. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f 05/bookinfo-app/details/helmfile.yaml apply
