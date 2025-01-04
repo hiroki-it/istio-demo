@@ -1,0 +1,59 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.global.serviceName }}
+  http:
+    - match:
+        - port: 80
+      route:
+        - destination:
+            host: {{ .Values.global.serviceName }}
+            port:
+              number: 80
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}-mysql
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - mysql.local
+  gateways:
+    - mesh
+    - {{ .Values.global.serviceName }}-mysql-egress
+  tcp:
+    - match:
+        - gateways:
+            - mesh
+          port: 3306
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: 3306
+    - match:
+        - gateways:
+            - {{ .Values.global.serviceName }}-mysql-egress
+          port: 3306
+      route:
+        - destination:
+            host: mysql.local
+            port:
+              number: 3306
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx

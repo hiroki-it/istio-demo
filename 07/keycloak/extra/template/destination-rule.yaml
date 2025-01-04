@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.global.serviceName }}
+spec:
+  exportTo:
+    - "*"
+  host: {{ .Values.global.serviceName }}
+  trafficPolicy:
+    outlierDetection:
+      baseEjectionTime: 30s
+      consecutiveGatewayErrors: 3
+      interval: 10s
+      maxEjectionPercent: 99
+      minHealthPercent: 90
+---
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.global.serviceName }}-mysql-egress
+spec:
+  exportTo:
+    - "*"
+  host: istio-egressgateway.istio-egress.svc.cluster.local
