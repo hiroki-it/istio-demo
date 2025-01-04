@@ -1,14 +1,10 @@
 # 6章
 
+## セットアップ
+
 6章では、Istioのセキュリティを学びます。
 
-1. Keycloakサービス用のMySQLコンテナと`3306`番ポートが重複するため、Ratingサービス用のMySQLコンテナを停止しておきます。
-
-```bash
-docker container stop ratings-mysql
-```
-
-2. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。これは、空の`keycloak`データベースを持ちます。
+1. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。これは、空の`keycloak`データベースを持ちます。
 
 ```bash
 docker compose -f 07/keycloak/docker-compose.yaml up -d
@@ -21,31 +17,31 @@ mysql> SHOW TABLES FROM keycloak;
 Empty set
 ```
 
-3. Namespaceをデプロイします。
+2. Namespaceをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 07/shared/namespace.yaml
 ```
 
-4. PeerAuthenticationをデプロイし、Namespaceの相互TLSを有効化します。
+3. PeerAuthenticationをデプロイし、Namespaceの相互TLSを有効化します。
 
 ```bash
 kubectl apply --server-side -f 07/shared/peer-authentication.yaml
 ```
 
-5. Istio IngressGatewayをデプロイします。
+4. Istio IngressGatewayをデプロイします。
 
 ```bash
 helmfile -f 07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-6. Keycloakをデプロイします。
+5. Keycloakをデプロイします。
 
 ```bash
 helmfile -f 07/keycloak/helmfile.yaml apply
 ```
 
-7. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+6. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f 07/bookinfo-app/details/helmfile.yaml apply
@@ -57,7 +53,7 @@ helmfile -f 07/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f 07/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ローカルホストでポート番号が発行されるため、2つ目を選びブラウザから接続してください。
+7. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ローカルホストでポート番号が発行されるため、2つ目を選びブラウザから接続してください。
 
 ```bash
 minikube service istio-ingressgateway --url -n istio-ingress
