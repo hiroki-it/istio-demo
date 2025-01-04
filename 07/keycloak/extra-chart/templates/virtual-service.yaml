@@ -4,9 +4,11 @@ metadata:
   name: {{ .Values.service.name }}
 spec:
   exportTo:
-    - "."
+    - "*"
   hosts:
-    - {{ .Values.service.host }}
+    - "*"
+  gateways:
+    - {{ .Values.service.name }}-ingress
   http:
     - match:
         - port: {{ .Values.service.port.http }}
@@ -29,7 +31,7 @@ metadata:
   name: {{ .Values.service.name }}-mysql
 spec:
   exportTo:
-    - "."
+    - "*"
   hosts:
     - {{ .Values.mysql.host }}
   gateways:

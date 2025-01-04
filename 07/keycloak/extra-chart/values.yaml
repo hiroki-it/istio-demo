@@ -1,6 +1,6 @@
 service:
   name: keycloak
-  host: keycloak
+  host: keycloak-keycloakx-http
   port:
     http: 8080
     https: 8443
