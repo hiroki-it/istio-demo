@@ -8,7 +8,11 @@ affinity: |
               values:
                 - app
 
-args: ["start", "--optimized"]
+command:
+  - /opt/keycloak/bin/kc.sh
+
+args:
+  - start-dev
 
 extraEnv: |
   - name: KC_HOSTNAME
