@@ -6,13 +6,6 @@ spec:
   exportTo:
     - "*"
   host: keycloak-keycloakx-http
-  trafficPolicy:
-    outlierDetection:
-      baseEjectionTime: 30s
-      consecutiveGatewayErrors: 3
-      interval: 10s
-      maxEjectionPercent: 99
-      minHealthPercent: 90
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule

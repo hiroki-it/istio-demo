@@ -9,17 +9,19 @@ spec:
     - {{ .Values.service.host }}
   http:
     - match:
-        - port: {{ .Values.service.port }}
+        - port: {{ .Values.service.port.http }}
       route:
         - destination:
             host: keycloak-keycloakx-http
             port:
-              number: {{ .Values.service.port }}
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: 5xx
+              number: {{ .Values.service.port.http }}
+    - match:
+        - port: {{ .Values.service.port.https }}
+      route:
+        - destination:
+            host: keycloak-keycloakx-http
+            port:
+              number: {{ .Values.service.port.https }}
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -52,8 +54,3 @@ spec:
             host: {{ .Values.mysql.host }}
             port:
               number: {{ .Values.mysql.port }}
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: 5xx
