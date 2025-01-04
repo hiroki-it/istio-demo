@@ -5,7 +5,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: keycloak-keycloakx-http
+  host: {{ .Values.service.host }}
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
