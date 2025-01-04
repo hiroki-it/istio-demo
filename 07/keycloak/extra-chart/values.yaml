@@ -3,5 +3,5 @@ service:
   host: keycloak
   port: 8443
 mysql:
-  host: mysql.dev
+  host: keycloak.mysql.dev
   port: 3306

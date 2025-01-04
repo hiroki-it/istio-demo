@@ -5,7 +5,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: {{ .Values.service.host }}
+  host: keycloak-keycloakx-http
   trafficPolicy:
     outlierDetection:
       baseEjectionTime: 30s

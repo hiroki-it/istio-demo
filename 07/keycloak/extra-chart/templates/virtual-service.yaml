@@ -12,7 +12,7 @@ spec:
         - port: {{ .Values.service.port }}
       route:
         - destination:
-            host: {{ .Values.service.host }}
+            host: keycloak-keycloakx-http
             port:
               number: {{ .Values.service.port }}
       timeout: 10s
