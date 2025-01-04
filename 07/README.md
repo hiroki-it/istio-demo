@@ -38,7 +38,7 @@ helmfile -f 07/istio/istio-ingress/helmfile.yaml apply
 5. Keycloakをデプロイします。
 
 ```bash
-helmfile -f 07/keycloak/helmfile.yaml apply
+helmfile -f 07/keycloak/keycloakx/helmfile.yaml apply
 ```
 
 6. 各マイクロサービスにIstioカスタムリソースをデプロイします。
