@@ -24,7 +24,7 @@ database:
 
 extraEnv: |
   - name: KC_HOSTNAME
-    value: keycloak
+    value: localhost
   - name: KEYCLOAK_ADMIN
     value: admin
   - name: KEYCLOAK_ADMIN_PASSWORD
