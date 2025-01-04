@@ -22,7 +22,7 @@ extraEnv: |
 
 database:
   vendor: mysql
-  hostname: {{ .Values.mysql.host }}
+  hostname: mysql.local
   port: 3306
   database: keycloak
   username: keycloak
