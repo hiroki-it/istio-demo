@@ -29,7 +29,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - mysql.local
+    - {{ .Values.mysql.host }}
   gateways:
     - mesh
     - {{ .Values.serviceName }}-mysql-egress
@@ -37,21 +37,21 @@ spec:
     - match:
         - gateways:
             - mesh
-          port: 3306
+          port: {{ .Values.mysql.port }}
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
-              number: 3306
+              number: {{ .Values.mysql.port }}
     - match:
         - gateways:
             - {{ .Values.serviceName }}-mysql-egress
-          port: 3306
+          port: {{ .Values.mysql.port }}
       route:
         - destination:
-            host: mysql.local
+            host: {{ .Values.mysql.host }}
             port:
-              number: 3306
+              number: {{ .Values.mysql.port }}
       timeout: 10s
       retries:
         attempts: 3

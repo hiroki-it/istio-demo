@@ -1,1 +1,4 @@
 serviceName: ratings
+mysql:
+  host: mysql.local
+  port: 3306

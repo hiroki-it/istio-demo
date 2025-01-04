@@ -25,9 +25,9 @@ spec:
             - name: DB_TYPE
               value: mysql
             - name: MYSQL_DB_HOST
-              value: mysql.local
+              value: {{ .Values.mysql.host }}
             - name: MYSQL_DB_PORT
-              value: "3306"
+              value: {{ .Values.mysql.port }}
             - name: MYSQL_DB_USER
               value: root
             - name: MYSQL_DB_PASSWORD

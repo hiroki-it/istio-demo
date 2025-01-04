@@ -6,10 +6,10 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - mysql.local
+    - {{ .Values.mysql.host }}
   location: MESH_EXTERNAL
   ports:
-    - number: 3306
+    - number: {{ .Values.mysql.port }}
       name: tcp-{{ .Values.serviceName }}
       protocol: TCP
   resolution: DNS
