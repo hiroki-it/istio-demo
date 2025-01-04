@@ -6,4 +6,4 @@ service:
     https: 8443
 mysql:
   host: keycloak.mysql.dev
-  port: 3306
+  port: 3307
