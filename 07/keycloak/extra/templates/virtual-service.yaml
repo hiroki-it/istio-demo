@@ -9,12 +9,12 @@ spec:
     - {{ .Values.service.host }}
   http:
     - match:
-        - port: 80
+        - port: {{ .Values.service.port }}
       route:
         - destination:
             host: {{ .Values.service.host }}
             port:
-              number: 80
+              number: {{ .Values.service.port }}
       timeout: 10s
       retries:
         attempts: 3
