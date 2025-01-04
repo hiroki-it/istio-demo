@@ -11,16 +11,7 @@ affinity: |
 command:
   - /opt/keycloak/bin/kc.sh
 
-args:
-  - start-dev
-
-database:
-  vendor: mysql
-  hostname: keycloak.mysql.dev
-  port: 3306
-  database: keycloak
-  username: keycloak
-  password: password
+fullnameOverride: keycloak
 
 extraEnv: |
   - name: KC_HOSTNAME
