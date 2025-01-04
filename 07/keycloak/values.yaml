@@ -8,6 +8,9 @@ affinity: |
               values:
                 - app
 
+args:
+  - start-dev
+
 command:
   - /opt/keycloak/bin/kc.sh
 
