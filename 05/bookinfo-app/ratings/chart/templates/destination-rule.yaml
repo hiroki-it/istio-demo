@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.service.name }}
 spec:
   exportTo:
-    - "*"
+    - "."
   host: {{ .Values.service.host }}
   subsets:
     - name: v1
@@ -20,5 +20,5 @@ metadata:
   name: {{ .Values.service.name }}-mysql-egress
 spec:
   exportTo:
-    - "*"
+    - "."
   host: istio-egressgateway.istio-egress.svc.cluster.local
