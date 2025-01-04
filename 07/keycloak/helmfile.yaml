@@ -11,7 +11,7 @@ releases:
     values:
       - values.yaml
   - name: keycloak-extra
-    chart: extra
+    chart: extra-chart
     version: 1.0.0
     namespace: keycloak
     atomic: true
