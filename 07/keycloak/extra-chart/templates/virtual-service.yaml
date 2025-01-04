@@ -17,13 +17,6 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port.http }}
-    - match:
-        - port: {{ .Values.service.port.https }}
-      route:
-        - destination:
-            host: keycloak-keycloakx-http
-            port:
-              number: {{ .Values.service.port.https }}
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService

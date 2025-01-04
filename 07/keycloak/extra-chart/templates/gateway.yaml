@@ -12,12 +12,6 @@ spec:
         number: {{ .Values.service.port.http }}
       hosts:
         - "*"
-    - port:
-        name: https-{{ .Values.service.name }}
-        protocol: HTTPS
-        number: {{ .Values.service.port.https }}
-      hosts:
-        - "*"
 ---
 apiVersion: networking.istio.io/v1
 kind: Gateway
