@@ -5,7 +5,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: {{ .Values.service.name }}
+  host: {{ .Values.service.host }}
   trafficPolicy:
     outlierDetection:
       baseEjectionTime: 30s

@@ -1,4 +1,5 @@
 service:
   name: productpage
+  host: productpage
   port: 9080
 

@@ -1,4 +1,5 @@
 service:
   name: reviews
+  host: reviews
   port: 9080
 

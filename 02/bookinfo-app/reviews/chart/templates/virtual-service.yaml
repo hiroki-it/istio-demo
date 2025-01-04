@@ -6,13 +6,13 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.service.name }}
+    - {{ .Values.service.host }}
   http:
     - match:
         - port: {{ .Values.service.port }}
       route:
         - destination:
-            host: {{ .Values.service.name }}
+            host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v3

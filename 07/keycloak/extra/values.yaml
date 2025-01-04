@@ -1,5 +1,6 @@
 service:
   name: keycloak
+  host: keycloak
   port: 80
 mysql:
   host: mysql.local
