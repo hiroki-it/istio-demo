@@ -36,7 +36,7 @@ kubectl apply --server-side -f 07/shared/peer-authentication.yaml
 5. Istio IngressGatewayをデプロイします。
 
 ```bash
-helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
+helmfile -f 07/istio/istio-ingress/helmfile.yaml apply
 ```
 
 6. Keycloakをデプロイします。
@@ -55,4 +55,13 @@ helmfile -f 07/bookinfo-app/productpage/helmfile.yaml apply
 helmfile -f 07/bookinfo-app/ratings/helmfile.yaml apply
 
 helmfile -f 07/bookinfo-app/reviews/helmfile.yaml apply
+```
+
+6. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ローカルホストでポート番号が発行されるため、2つ目を選びブラウザから接続してください。
+
+```bash
+minikube service istio-ingressgateway --url -n istio-ingress
+
+http://127.0.0.1:<発行されたポート番号> # Bookinfoアプリケーションのポート番号
+http://127.0.0.1:<発行されたポート番号> # Keycloakのポート番号
 ```
