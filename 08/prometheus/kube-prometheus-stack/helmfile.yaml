@@ -10,3 +10,8 @@ releases:
     atomic: true
     values:
       - values.yaml
+  - name: kube-prometheus-stack-extra
+    chart: extra-chart
+    version: 1.0.0
+    namespace: prometheus
+    atomic: true

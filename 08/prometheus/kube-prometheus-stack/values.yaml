@@ -1,9 +1,4 @@
 alertmanager:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      - bookinfo.alertmanager.com
   alertmanagerSpec:
     affinity:
       nodeAffinity:
@@ -15,18 +10,10 @@ alertmanager:
                   values:
                     - system
 grafana:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
     hosts:
       - bookinfo.grafana.com
 
 prometheus:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    hosts:
-      - bookinfo.prometheus.com
   prometheusSpec:
     affinity:
       nodeAffinity:
