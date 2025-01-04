@@ -34,7 +34,7 @@ extraEnv: |
   - name: PROXY_ADDRESS_FORWARDING
     value: "true"
   - name: JAVA_OPTS_APPEND
-    value: -Djgroups.dns.query=keycloak-keycloakx-headless.keycloak.svc.cluster.local
+    value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 
 image:
   tag: 26.0.7
