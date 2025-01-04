@@ -15,8 +15,6 @@ services:
       interval: 10s
       retries: 5
     image: mysql:8.3.0
-    ports:
-      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
     networks:

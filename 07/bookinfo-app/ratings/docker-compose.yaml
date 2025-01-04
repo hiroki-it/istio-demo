@@ -12,8 +12,6 @@ services:
       interval: 10s
       retries: 5
     image: docker.io/istio/examples-bookinfo-mysqldb:1.20.2
-    ports:
-      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
     networks:
