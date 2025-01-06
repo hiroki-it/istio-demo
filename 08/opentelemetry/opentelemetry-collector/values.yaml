@@ -11,7 +11,7 @@ affinity:
             - key: node.kubernetes.io/nodegroup
               operator: In
               values:
-                - app
+                - system
 
 config:
   receivers:
