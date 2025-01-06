@@ -26,11 +26,11 @@ helmfile -f 08/prometheus/kube-prometheus-stack/helmfile.yaml apply
 3. メトリクスの監視ダッシュボードに接続します。
 
 ```bash
-kubectl port-forward svc/kube-prometheus-stack-prometheus -n prometheus 9090:9090
+kubectl port-forward svc/kube-prometheus-stack-prometheus -n istio-system 9090:9090
 
 # ユーザ名: admin
 # パスワード: prom-operator
-kubectl port-forward svc/kube-prometheus-stack-grafana -n prometheus 8000:80
+kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
 ```
 
 4. Kialiをデプロイします。
