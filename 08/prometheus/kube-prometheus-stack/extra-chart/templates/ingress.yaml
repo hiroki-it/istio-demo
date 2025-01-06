@@ -31,20 +31,3 @@ spec:
                 name: {{ .Values.grafana.name }}
                 port:
                   number: {{ .Values.grafana.port }}
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{ .Values.grafana.name }}
-spec:
-  ingressClassName: nginx
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.grafana.name }}
-                port:
-                  number: {{ .Values.grafana.port }}
