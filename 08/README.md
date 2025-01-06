@@ -49,21 +49,26 @@ helmfile -f 08/kiali/kiali-server/helmfile.yaml apply
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-6. Grafana Lokiをデプロイします。
+6. Grafana Promtailをデプロイします。
+
+```bash
+helmfile -f 08/grafana/grafana-promtail/helmfile.yaml apply
+```
+
+7. Grafana Lokiをデプロイします。
 
 ```bash
 helmfile -f 08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-7. Grafana Tempoをデプロイします。
+8. Grafana Tempoをデプロイします。
 
 ```bash
 helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-8. OpenTelemetry Collectorをデプロイします。
+9. OpenTelemetry Collectorをデプロイします。
 
 ```bash
 helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
 ```
-
