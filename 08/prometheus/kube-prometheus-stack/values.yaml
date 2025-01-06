@@ -16,6 +16,10 @@ alertmanager:
 grafana:
   hosts:
     - bookinfo.grafana.com
+  grafana.ini:
+    auth.anonymous:
+      enabled: true
+      org_role: Admin
   service:
     type: NodePort
     nodePort: 32003
