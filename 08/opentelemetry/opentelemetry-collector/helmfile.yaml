@@ -1,0 +1,12 @@
+repositories:
+  - name: opentelemetry
+    url: https://open-telemetry.github.io/opentelemetry-helm-charts
+
+releases:
+  - name: opentelemetry-collector
+    chart: opentelemetry/opentelemetry-collector
+    version: 0.111.1
+    namespace: istio-system
+    atomic: true
+    values:
+      - values.yaml

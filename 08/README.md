@@ -60,3 +60,10 @@ helmfile -f 08/grafana/grafana-loki/helmfile.yaml apply
 ```bash
 helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
 ```
+
+8. OpenTelemetry Collectorをデプロイします。
+
+```bash
+helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
+```
+
