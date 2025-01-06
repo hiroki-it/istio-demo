@@ -9,6 +9,15 @@ loki:
   useTestSchema: true
 
 singleBinary:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
   replicas: 1
   persistence:
     storageClass: local-loki
