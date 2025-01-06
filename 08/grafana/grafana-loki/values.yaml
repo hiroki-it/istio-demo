@@ -1,17 +1,28 @@
-backend:
-  replicas: 1
+deploymentMode: SingleBinary
 
 loki:
   auth_enabled: false
   commonConfig:
     replication_factor: 1
+  storage:
+    type: filesystem
   useTestSchema: true
 
-minio:
-  enabled: true
+singleBinary:
+  replicas: 1
+  persistence:
+    storageClass: local-loki
+    enabled: true
+    size: 5Gi
 
 read:
-  replicas: 1
+  replicas: 0
+
+backend:
+  replicas: 0
 
 write:
-  replicas: 1
+  replicas: 0
+
+gateway:
+  enable: false
