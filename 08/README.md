@@ -29,9 +29,9 @@ helmfile -f 08/prometheus/kube-prometheus-stack/helmfile.yaml apply
 kubectl port-forward svc/kube-prometheus-stack-prometheus -n istio-system 9090:9090
 ```
 
-3. Kialiのダッシュボードに接続します。ブラウザから`9090`番ポートに接続してください。
+3. Grafanaのダッシュボードに接続します。ブラウザから`8000`番ポートに接続してください。
 
-```
+```bash
 # ユーザ名: admin
 # パスワード: prom-operator
 kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
