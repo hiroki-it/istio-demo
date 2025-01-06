@@ -36,4 +36,4 @@ external_services:
     url_service_version: http://istiod-1-24-2:15014/version
 
 server:
-  node_port: 31501
+  node_port: 32000
