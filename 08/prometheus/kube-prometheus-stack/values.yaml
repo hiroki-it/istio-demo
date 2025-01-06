@@ -28,7 +28,10 @@ grafana:
       type: loki
       url: http://grafana-loki.istio-system.svc.cluster.local:3100/
       basicAuth: false
-
+    - name: Tempo
+      type: tempo
+      url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+      basicAuth: false
 
 prometheus:
   prometheusSpec:
