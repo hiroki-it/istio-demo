@@ -15,7 +15,12 @@ command:
   - /opt/keycloak/bin/kc.sh
 
 database:
-  vendor: dev-file
+  vendor: mysql
+  port: 3306
+  hostname: keycloak.mysql.dev
+  database: keycloak
+  username: keycloak
+  password: password
 
 fullnameOverride: keycloak
 
