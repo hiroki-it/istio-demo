@@ -11,14 +11,14 @@ alertmanager:
                     - system
   service:
     type: NodePort
-    nodePort: 31503
+    nodePort: 31502
 
 grafana:
   hosts:
     - bookinfo.grafana.com
   service:
     type: NodePort
-    nodePort: 31504
+    nodePort: 31503
 
 prometheus:
   prometheusSpec:
@@ -57,4 +57,4 @@ prometheus:
             regex: .*-envoy-prom
   service:
     type: NodePort
-    nodePort: 31505
+    nodePort: 31504
