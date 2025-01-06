@@ -5,7 +5,7 @@ metadata:
 spec:
   exportTo:
     - "*"
-  host: {{ .Values.service.host }}
+  host: {{ .Values.service.host.http }}
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -13,8 +13,8 @@ metadata:
   name: {{ .Values.service.name }}-headless
 spec:
   exportTo:
-    - "."
-  host: keycloak-headless
+    - "*"
+  host: {{ .Values.service.host.headless }}
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
