@@ -48,12 +48,10 @@ kubectl label ns default istio.io/rev=stable
 kubectl rollout restart deployment
 ```
 
-7. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
+7. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから`9080`番ポートに接続してください。
 
 ```bash
-minikube service istio-ingressgateway --url -n istio-ingress
-
-http://127.0.0.1:<発行されたポート番号>
+kubectl port-forward svc/productpage 9080:9080
 ```
 
 ## 機能を実践する

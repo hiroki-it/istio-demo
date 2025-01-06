@@ -23,11 +23,15 @@ kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-oper
 helmfile -f 08/prometheus/kube-prometheus-stack/helmfile.yaml apply
 ```
 
-3. メトリクスの監視ダッシュボードに接続します。
+3. Prometheusのダッシュボードに接続します。ブラウザから`9090`番ポートに接続してください。
 
 ```bash
 kubectl port-forward svc/kube-prometheus-stack-prometheus -n istio-system 9090:9090
+```
 
+3. Kialiのダッシュボードに接続します。ブラウザから`9090`番ポートに接続してください。
+
+```
 # ユーザ名: admin
 # パスワード: prom-operator
 kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
@@ -39,7 +43,7 @@ kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
 helmfile -f 08/kiali/kiali-server/helmfile.yaml apply
 ```
 
-5. メッシュトポロジーの監視ダッシュボードに接続します。
+5. Kialiのダッシュボードに接続します。ブラウザから`20001`番ポートに接続してください。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
@@ -47,13 +51,11 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 
 6. Grafana Lokiをデプロイします。
 
-
 ```bash
 helmfile -f 08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
 7. Grafana Tempoをデプロイします。
-
 
 ```bash
 helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
