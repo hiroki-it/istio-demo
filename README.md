@@ -89,6 +89,7 @@ minikube-m02   Ready    worker          13d   v1.32.0   app
 minikube-m03   Ready    worker          13d   v1.32.0   ingress
 minikube-m04   Ready    worker          13d   v1.32.0   egress
 minikube-m05   Ready    worker          13d   v1.32.0   system
+minikube-m06   Ready    worker          13d   v1.32.0   system
 ```
 
 ### 掃除
