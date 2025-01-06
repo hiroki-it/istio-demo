@@ -60,21 +60,15 @@ minikube start \
 # minikube-m02
 kubectl label node minikube-m02 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node minikube-m02 node-role.kubernetes.io/worker=worker --overwrite
-```
 
-```bash
 # minikube-m03
 kubectl label node minikube-m03 node.kubernetes.io/nodegroup=ingress --overwrite \
   && kubectl label node minikube-m03 node-role.kubernetes.io/worker=worker --overwrite
-```
 
-```bash
 # minikube-m04
 kubectl label node minikube-m04 node.kubernetes.io/nodegroup=egress --overwrite \
   && kubectl label node minikube-m04 node-role.kubernetes.io/worker=worker --overwrite
-```
 
-```bash
 # minikube-m02
 kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system --overwrite \
   && kubectl label node minikube-m05 node-role.kubernetes.io/worker=worker --overwrite
