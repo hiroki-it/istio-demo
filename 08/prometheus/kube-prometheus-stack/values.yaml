@@ -23,6 +23,12 @@ grafana:
   service:
     type: NodePort
     nodePort: 32003
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://grafana-loki.istio-system.svc.cluster.local:3100/
+      basicAuth: false
+
 
 prometheus:
   prometheusSpec:
