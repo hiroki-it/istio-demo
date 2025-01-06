@@ -3,7 +3,7 @@ repositories:
     url: https://grafana.github.io/helm-charts
 
 releases:
-  - name: tempo
+  - name: grafana-tempo
     chart: grafana/tempo
     version: 1.16.0
     namespace: istio-system
