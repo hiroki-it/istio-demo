@@ -26,7 +26,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - "*"
+    - {{ .Values.service.host.headless }}
   http:
     - match:
         - port: {{ .Values.service.port.http }}
