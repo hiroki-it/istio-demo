@@ -37,7 +37,7 @@ $ helm plugin install https://github.com/databus23/helm-diff
 KUBERNETES_VERSION=1.32.0
 
 # Node数
-NODE_COUNT=5
+NODE_COUNT=6
 
 # ハードウェアリソース
 CPU=6
