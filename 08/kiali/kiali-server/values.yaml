@@ -1,5 +1,9 @@
 auth:
   strategy: anonymous
+
+deployment:
+  service_type: NodePort
+
 external_services:
   grafana:
     enabled: true
@@ -31,3 +35,5 @@ external_services:
     root_namespace: istio-system
     url_service_version: http://istiod-1-24-2:15014/version
 
+server:
+  node_port: 31502

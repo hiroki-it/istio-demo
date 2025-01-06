@@ -10,8 +10,3 @@ releases:
     atomic: true
     values:
       - values.yaml
-  - name: kiali-extra
-    chart: extra-chart
-    version: 1.0.0
-    namespace: istio-system
-    atomic: true

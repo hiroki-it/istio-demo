@@ -28,8 +28,6 @@ helmfile -f 08/prometheus/kube-prometheus-stack/helmfile.yaml apply
 ```bash
 kubectl port-forward svc/kube-prometheus-stack-prometheus -n prometheus 9090:9090
 
-kubectl port-forward svc/kube-prometheus-stack-alertmanager -n prometheus 9093:9093
-
 # ユーザ名: admin
 # パスワード: prom-operator
 kubectl port-forward svc/kube-prometheus-stack-grafana -n prometheus 8000:80

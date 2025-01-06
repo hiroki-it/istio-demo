@@ -9,9 +9,16 @@ alertmanager:
                   operator: In
                   values:
                     - system
+  service:
+    type: NodePort
+    nodePort: 31503
+
 grafana:
-    hosts:
-      - bookinfo.grafana.com
+  hosts:
+    - bookinfo.grafana.com
+  service:
+    type: NodePort
+    nodePort: 31504
 
 prometheus:
   prometheusSpec:
@@ -48,3 +55,6 @@ prometheus:
               - __meta_kubernetes_pod_container_port_name
             action: keep
             regex: .*-envoy-prom
+  service:
+    type: NodePort
+    nodePort: 31505
