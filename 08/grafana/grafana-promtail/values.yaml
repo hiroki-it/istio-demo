@@ -1,0 +1,13 @@
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - system
+
+config:
+  clients:
+    - url: grafana-loki.istio-system.svc.cluster.local:3100/loki/api/v1/push
