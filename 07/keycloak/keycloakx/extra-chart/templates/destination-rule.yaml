@@ -14,7 +14,7 @@ metadata:
 spec:
   exportTo:
     - "."
-  host: keycloak-keycloakx-headless
+  host: keycloak-headless
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
