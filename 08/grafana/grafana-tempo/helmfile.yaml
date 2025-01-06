@@ -6,6 +6,6 @@ releases:
   - name: tempo
     chart: grafana/tempo
     version: 1.16.0
-    namespace: grafana-tempo
+    namespace: istio-system
     values:
       - values.yaml

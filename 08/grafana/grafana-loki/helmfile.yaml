@@ -6,11 +6,11 @@ releases:
   - name: grafana-loki
     chart: grafana/loki
     version: 6.24.0
-    namespace: grafana-loki
+    namespace: istio-system
     values:
       - values.yaml
   - name: grafana-loki-extra
     chart: extra-chart
     version: 1.0.0
-    namespace: grafana-loki
+    namespace: istio-system
     atomic: true

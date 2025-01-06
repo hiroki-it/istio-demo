@@ -6,12 +6,12 @@ releases:
   - name: kube-prometheus-stack
     chart: prometheus-community/kube-prometheus-stack
     version: 67.5.0
-    namespace: prometheus
+    namespace: istio-system
     atomic: true
     values:
       - values.yaml
   - name: kube-prometheus-stack-extra
     chart: extra-chart
     version: 1.0.0
-    namespace: prometheus
+    namespace: istio-system
     atomic: true
