@@ -46,7 +46,7 @@ helmfile -f 01/bookinfo-app/productpage/helmfile.yaml apply
 helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply
 ```
 
-6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ローカルホストでポート番号が発行されるため、ブラウザから接続してください。
+6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから`9080`番ポートに接続してください。
 
 ```bash
 kubectl port-forward svc/productpage 9080:9080

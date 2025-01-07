@@ -53,8 +53,8 @@ helmfile -f 07/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f 07/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-7. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ブラウザから`8080`番ポートに接続してください。
+7. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ブラウザから`9080`番ポートに接続してください。
 
 ```bash
-kubectl port-forward svc/productpage 8080:8080
+kubectl port-forward svc/productpage 9080:9080
 ```
