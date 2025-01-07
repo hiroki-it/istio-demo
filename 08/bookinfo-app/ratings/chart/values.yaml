@@ -1,0 +1,8 @@
+service:
+  name: ratings
+  host: ratings
+  port: 9080
+
+mysql:
+  host: ratings.mysql.dev
+  port: 3306

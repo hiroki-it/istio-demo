@@ -1,0 +1,6 @@
+releases:
+  - name: reviews
+    chart: chart
+    version: 1.0.0
+    namespace: default
+    atomic: true
