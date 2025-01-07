@@ -6,13 +6,13 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: istio-ingress
+  name: istio-egress
   labels:
     istio.io/rev: stable
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: istio-egress
+  name: istio-ingress
   labels:
     istio.io/rev: stable
