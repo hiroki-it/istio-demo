@@ -14,7 +14,7 @@ helmfile -f 08/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f 08/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-2. カスタムリソース定義をデプロイする。
+2. Prometheusのカスタムリソース定義をデプロイする。
 
 ```bash
 kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.79.0/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
@@ -89,4 +89,10 @@ helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
 
 ```bash
 kubectl apply --server-side -f 08/shared/telemetry.yaml
+```
+
+13. Istiodコントロールプレーンをデプロイします。
+
+```bash
+helmfile -f 02/istio/istio-istiod/helmfile.yaml apply
 ```
