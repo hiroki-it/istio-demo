@@ -34,4 +34,4 @@ write:
   replicas: 0
 
 gateway:
-  enable: false
+  enabled: false
