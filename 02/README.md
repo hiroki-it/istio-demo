@@ -4,7 +4,7 @@
 
 ## セットアップする
 
-1. Namespaceをデプロイします。
+1. Namespaceリソースをデプロイします。
 
 ```bash
 kubectl apply -f 02/shared/namespace.yaml

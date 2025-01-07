@@ -72,7 +72,7 @@ kubectl label node minikube-m04 node.kubernetes.io/nodegroup=egress --overwrite 
 # minikube-m05 (system Node 1)
 kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system --overwrite \
   && kubectl label node minikube-m05 node-role.kubernetes.io/worker=worker --overwrite
- 
+
 # minikube-m06 (system Node 2)
 kubectl label node minikube-m06 node.kubernetes.io/nodegroup=system --overwrite \
   && kubectl label node minikube-m06 node-role.kubernetes.io/worker=worker --overwrite

@@ -72,3 +72,9 @@ helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
 ```bash
 helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
 ```
+
+10. Telemetryリソースをデプロイします。
+
+```bash
+kubectl apply --server-side -f 08/shared/telemetry.yaml
+```

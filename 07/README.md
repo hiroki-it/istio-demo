@@ -17,13 +17,13 @@ mysql> SHOW TABLES FROM keycloak;
 Empty set
 ```
 
-2. Namespaceをデプロイします。
+2. Namespaceリソースをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 07/shared/namespace.yaml
 ```
 
-3. PeerAuthenticationをデプロイし、Namespaceの相互TLSを有効化します。
+3. PeerAuthenticationリソースをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 07/shared/peer-authentication.yaml
