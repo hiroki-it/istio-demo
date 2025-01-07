@@ -21,6 +21,8 @@ config:
   exporters:
     debug:
       verbosity: detailed
+    otlp:
+      endpoint: grafana-tempo.istio-system.svc.cluster.local.:4317
   service:
     telemetry:
       logs:
@@ -33,6 +35,7 @@ config:
         receivers:
           - otlp
         exporters:
+          - otlp
           - debug
 
 image:
