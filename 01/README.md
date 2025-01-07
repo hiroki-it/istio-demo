@@ -46,10 +46,10 @@ helmfile -f 01/bookinfo-app/productpage/helmfile.yaml apply
 helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply
 ```
 
-6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから`9080`番ポートに接続してください。
+6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
 
 ```bash
-kubectl port-forward svc/productpage 9080:9080
+minikube service ingress-nginx-controller -n ingress-nginx --url
 ```
 
 ## 機能を実践する

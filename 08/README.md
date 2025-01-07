@@ -2,7 +2,19 @@
 
 8章では、テレメトリーを監視します。
 
-1. カスタムリソース定義をデプロイする。
+1. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+
+```bash
+helmfile -f 08/bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/reviews/helmfile.yaml apply
+```
+
+2. カスタムリソース定義をデプロイする。
 
 ```bash
 kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.79.0/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
@@ -17,19 +29,19 @@ kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-oper
 kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.79.0/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
 ```
 
-2. PrometheusとGrafanaをデプロイする。
+3. PrometheusとGrafanaをデプロイする。
 
 ```bash
 helmfile -f 08/prometheus/kube-prometheus-stack/helmfile.yaml apply
 ```
 
-3. Prometheusのダッシュボードに接続します。ブラウザから`9090`番ポートに接続してください。
+4. Prometheusのダッシュボードに接続します。ブラウザからPodの`9090`番ポートに接続してください。
 
 ```bash
 kubectl port-forward svc/kube-prometheus-stack-prometheus -n istio-system 9090:9090
 ```
 
-3. Grafanaのダッシュボードに接続します。ブラウザから`8000`番ポートに接続してください。
+5. Grafanaのダッシュボードに接続します。ブラウザからPodの`8000`番ポートに接続してください。
 
 ```bash
 # ユーザ名: admin
@@ -37,43 +49,43 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n istio-system 9090:9
 kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
 ```
 
-4. Kialiをデプロイします。
+6. Kialiをデプロイします。
 
 ```bash
 helmfile -f 08/kiali/kiali-server/helmfile.yaml apply
 ```
 
-5. Kialiのダッシュボードに接続します。ブラウザから`20001`番ポートに接続してください。
+7. Kialiのダッシュボードに接続します。ブラウザからPodの`20001`番ポートに接続してください。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-6. Grafana Promtailをデプロイします。
+8. Grafana Promtailをデプロイします。
 
 ```bash
 helmfile -f 08/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-7. Grafana Lokiをデプロイします。
+9. Grafana Lokiをデプロイします。
 
 ```bash
 helmfile -f 08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-8. Grafana Tempoをデプロイします。
+10. Grafana Tempoをデプロイします。
 
 ```bash
 helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-9. OpenTelemetry Collectorをデプロイします。
+11. OpenTelemetry Collectorをデプロイします。
 
 ```bash
 helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
 ```
 
-10. Telemetryリソースをデプロイします。
+12. Telemetryリソースをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 08/shared/telemetry.yaml
