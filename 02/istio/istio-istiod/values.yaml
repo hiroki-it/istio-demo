@@ -13,15 +13,16 @@ global:
   imagePullPolicy: IfNotPresent
 
 meshConfig:
-  # istio-proxyのアクセスログを構造化ログにする
-  accessLogEncoding: JSON
   defaultConfig:
     holdApplicationUntilProxyStarts: true
+  extensionProviders:
+    - name: opentelemetry-provider
+      opentelemetry:
+        service: opentelemetry-collector.istio-system.svc.cluster.local
+        port: 4317
   rootNamespace: null
-  # IstiodコントロールプレーンがwatchするNamespaceを限定する
   discoverySelectors:
     - matchLabels:
-        # サイドカーをインジェクションしているNamespaceのみをwatchすることにより、Istiodの負荷を下げる
         istio.io/rev: stable
   outboundTrafficPolicy:
     mode: REGISTRY_ONLY
