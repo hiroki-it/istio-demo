@@ -53,3 +53,7 @@ ports:
     enabled: false
   zipkin:
     enabled: false
+
+presets:
+  kubernetesAttributes:
+    enabled: true
