@@ -75,7 +75,7 @@ kubectl label node minikube-m05 node.kubernetes.io/nodegroup=system --overwrite 
  
 # minikube-m06 (system Node 2)
 kubectl label node minikube-m06 node.kubernetes.io/nodegroup=system --overwrite \
-  && kubectl label node minikube-m05 node-role.kubernetes.io/worker=worker --overwrite
+  && kubectl label node minikube-m06 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
 3. Nodeを確認します。
