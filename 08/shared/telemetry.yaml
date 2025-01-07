@@ -1,0 +1,42 @@
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: default
+spec:
+  tracing:
+    - providers:
+        - name: opentelemetry-provider
+      randomSamplingPercentage: 100
+---
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: istio-egress
+  namespace: istio-egress
+spec:
+  tracing:
+    - providers:
+        - name: opentelemetry-provider
+      randomSamplingPercentage: 100
+---
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: istio-ingress
+  namespace: istio-ingress
+spec:
+  tracing:
+    - providers:
+        - name: opentelemetry-provider
+      randomSamplingPercentage: 100
+---
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  tracing:
+    - providers:
+        - name: opentelemetry-provider
+      randomSamplingPercentage: 100
