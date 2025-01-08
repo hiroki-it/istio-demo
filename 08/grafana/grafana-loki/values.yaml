@@ -10,6 +10,9 @@ loki:
     s3:
       accessKeyId: root
       secretAccessKey: password
+      endpoint: minio.istio-system.svc.cluster.local:9000
+      insecure: true
+      s3ForcePathStyle: true
     bucketNames:
       chunks: grafana-loki-chunks
       ruler: grafana-loki-ruler
