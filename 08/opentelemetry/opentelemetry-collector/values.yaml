@@ -23,6 +23,8 @@ config:
       verbosity: detailed
     otlp:
       endpoint: grafana-tempo.istio-system.svc.cluster.local.:4317
+      tls:
+        insecure: true
   service:
     telemetry:
       logs:
