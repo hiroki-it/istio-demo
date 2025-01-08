@@ -6,7 +6,6 @@ releases:
   - name: opentelemetry-collector
     chart: opentelemetry/opentelemetry-collector
     version: 0.111.1
-    namespace: istio-system
     atomic: true
     values:
       - values.yaml
