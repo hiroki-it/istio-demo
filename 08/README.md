@@ -100,5 +100,5 @@ kubectl apply --server-side -f 08/shared/telemetry.yaml
 14. Istiodコントロールプレーンをデプロイします。
 
 ```bash
-helmfile -f 02/istio/istio-istiod/helmfile.yaml apply
+helmfile -f 08/istio/istio-istiod/helmfile.yaml apply
 ```
