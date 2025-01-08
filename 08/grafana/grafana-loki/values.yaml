@@ -4,9 +4,16 @@ loki:
   auth_enabled: false
   commonConfig:
     replication_factor: 1
-  storage:
-    type: filesystem
   useTestSchema: true
+  storage:
+    type: s3
+    s3:
+      accessKeyId: root
+      secretAccessKey: password
+    bucketNames:
+      chunks: grafana-loki-chunks
+      ruler: grafana-loki-ruler
+      admin: grafana-loki-admin
 
 singleBinary:
   affinity:
@@ -19,10 +26,6 @@ singleBinary:
                 values:
                   - system
   replicas: 1
-  persistence:
-    storageClass: local-loki
-    enabled: true
-    size: 5Gi
 
 read:
   replicas: 0
@@ -35,3 +38,4 @@ write:
 
 gateway:
   enabled: false
+
