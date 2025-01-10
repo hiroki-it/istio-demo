@@ -18,7 +18,9 @@ buckets:
     purge: false
 
 persistence:
-  size: 5Gi
+  size: 3Gi
+
+mountPath: /data/minio/
 
 resources:
   requests:

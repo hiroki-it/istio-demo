@@ -10,3 +10,9 @@ releases:
     atomic: true
     values:
       - values.yaml
+  - name: minio-extra
+    chart: extra
+    version: 1.0.0
+    namespace: istio-system
+    atomic: true
+

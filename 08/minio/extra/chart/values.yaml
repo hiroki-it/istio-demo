@@ -1,0 +1,5 @@
+service:
+  name: minio
+
+persistentVolume:
+  replicas: 2
