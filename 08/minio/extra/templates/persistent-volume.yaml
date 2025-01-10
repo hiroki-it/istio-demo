@@ -1,4 +1,4 @@
-{{- range $key, $value := until .Values.persistentVolume.replicas }}
+{{- range $key, $value := until (.Values.persistentVolume.replicas | int) }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
