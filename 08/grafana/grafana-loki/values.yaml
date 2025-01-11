@@ -17,6 +17,8 @@ loki:
       chunks: grafana-loki-chunks
       ruler: grafana-loki-ruler
       admin: grafana-loki-admin
+  query_range:
+    parallelise_shardable_queries: false
 
 singleBinary:
   affinity:
