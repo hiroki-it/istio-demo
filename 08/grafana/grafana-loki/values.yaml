@@ -29,6 +29,9 @@ singleBinary:
                 values:
                   - system
   replicas: 1
+  persistence:
+    enabled: false
+
 
 read:
   replicas: 0
