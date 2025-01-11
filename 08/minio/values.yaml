@@ -1,7 +1,12 @@
-mode: standalone
-
-rootUser: root
-rootPassword: password
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - system
 
 buckets:
   - name: grafana-tempo
@@ -17,12 +22,21 @@ buckets:
     policy: none
     purge: false
 
-persistence:
-  size: 3Gi
+mode: standalone
 
-mountPath: /data/minio/
+persistence:
+  size: 5Gi
+  # MinikubeがStorageClassを自動的に作成するため、それを指定する
+  storageClass: standard
 
 resources:
   requests:
     cpu: 100m
     memory: 128Mi
+
+rootUser: root
+
+rootPassword: password
+  
+securityContext:
+  enabled: false

@@ -3,11 +3,6 @@ repositories:
     url: https://charts.min.io/
 
 releases:
-  - name: minio-extra
-    chart: extra
-    version: 1.0.0
-    namespace: istio-system
-    atomic: true
   - name: minio
     chart: minio/minio
     version: 5.4.0
