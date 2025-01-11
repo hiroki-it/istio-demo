@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: grafana-promtail
     chart: grafana/promtail
-    version: 3.2.0
+    version: 6.16.6
     namespace: default
     values:
       - values.yaml
