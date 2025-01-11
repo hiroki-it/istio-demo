@@ -5,7 +5,7 @@ metadata:
 spec:
   tracing:
     - providers:
-        - name: opentelemetry-provider
+        - name: opentelemetry-grpc
       randomSamplingPercentage: 100
 ---
 apiVersion: telemetry.istio.io/v1
@@ -16,7 +16,7 @@ metadata:
 spec:
   tracing:
     - providers:
-        - name: opentelemetry-provider
+        - name: opentelemetry-grpc
       randomSamplingPercentage: 100
 ---
 apiVersion: telemetry.istio.io/v1
@@ -27,7 +27,7 @@ metadata:
 spec:
   tracing:
     - providers:
-        - name: opentelemetry-provider
+        - name: opentelemetry-grpc
       randomSamplingPercentage: 100
 ---
 apiVersion: telemetry.istio.io/v1
@@ -38,5 +38,5 @@ metadata:
 spec:
   tracing:
     - providers:
-        - name: opentelemetry-provider
+        - name: opentelemetry-grpc
       randomSamplingPercentage: 100

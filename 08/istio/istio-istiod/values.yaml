@@ -16,7 +16,7 @@ meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
   extensionProviders:
-    - name: opentelemetry-provider
+    - name: opentelemetry-grpc
       opentelemetry:
         service: opentelemetry-collector.istio-system.svc.cluster.local
         port: 4317
