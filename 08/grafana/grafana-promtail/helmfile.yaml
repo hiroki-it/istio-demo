@@ -6,6 +6,6 @@ releases:
   - name: grafana-promtail
     chart: grafana/promtail
     version: 6.16.6
-    namespace: default
+    namespace: istio-system
     values:
       - values.yaml
