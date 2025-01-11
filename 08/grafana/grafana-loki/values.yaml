@@ -49,3 +49,9 @@ backend:
 write:
   replicas: 0
 
+
+lokiCanary:
+  enabled: false
+
+test:
+  enabled: false
