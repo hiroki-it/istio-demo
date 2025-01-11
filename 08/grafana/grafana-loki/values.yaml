@@ -40,6 +40,9 @@ singleBinary:
     - name: data
       mountPath: /var/loki
 
+gateway:
+  enable: false
+
 read:
   replicas: 0
 
@@ -48,7 +51,6 @@ backend:
 
 write:
   replicas: 0
-
 
 lokiCanary:
   enabled: false
