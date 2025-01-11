@@ -47,6 +47,3 @@ backend:
 write:
   replicas: 0
 
-gateway:
-  enabled: false
-
