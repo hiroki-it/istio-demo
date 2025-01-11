@@ -18,7 +18,7 @@ meshConfig:
   extensionProviders:
     - name: opentelemetry-provider
       opentelemetry:
-        service: opentelemetry-collector.default.svc.cluster.local
+        service: opentelemetry-collector.istio-system.svc.cluster.local
         port: 4317
   rootNamespace: null
   discoverySelectors:
