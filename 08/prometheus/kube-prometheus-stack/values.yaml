@@ -14,8 +14,6 @@ alertmanager:
     nodePort: 32001
 
 grafana:
-  hosts:
-    - bookinfo.grafana.com
   grafana.ini:
     auth.anonymous:
       enabled: true
