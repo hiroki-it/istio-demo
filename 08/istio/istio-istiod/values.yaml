@@ -15,6 +15,12 @@ global:
 meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
+  enableTracing: true
+  defaultProviders:
+    metrics:
+      - prometheus
+    tracing:
+      - opentelemetry-grpc
   extensionProviders:
     - name: opentelemetry-grpc
       opentelemetry:
