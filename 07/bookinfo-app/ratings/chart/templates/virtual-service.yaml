@@ -60,8 +60,3 @@ spec:
             host: {{ .Values.mysql.host }}
             port:
               number: {{ .Values.mysql.port }}
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: 5xx
