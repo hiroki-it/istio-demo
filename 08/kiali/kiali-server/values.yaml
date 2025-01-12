@@ -19,7 +19,9 @@ external_services:
     prometheus:
       url: http://kube-prometheus-stack-prometheus.istio-system.svc.cluster.local:9090
   tracing:
-    enabled: false
+    enabled: true
+    internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+    use_grpc: false
   istio:
     component_status:
       components:
