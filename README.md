@@ -115,7 +115,7 @@ helmfile -f 00/bookinfo-app/reviews/helmfile.yaml apply
 3. アプリケーションが正常に稼働していることを確認します。
 
 ```bash
-kubectl get pod
+kubectl get pod -n app
 
 NAME                             READY   STATUS    RESTARTS   AGE
 details-v1-54ffdd5947-cfxwj      1/1     Running   0          8m21s
