@@ -7,8 +7,8 @@ spec:
     istio: egressgateway
   servers:
     - port:
-        name: tcp-{{ .Values.service.name }}
-        protocol: TCP
+        name: grpc-{{ .Values.service.name }}
+        protocol: GRPC
         number: {{ .Values.grafanaTempo.port }}
       hosts:
         - "*"
