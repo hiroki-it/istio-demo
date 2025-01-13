@@ -44,6 +44,8 @@ helmfile -f 07/keycloak/keycloakx/helmfile.yaml apply
 6. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
+helmfile -f 07/bookinfo-app/database/helmfile.yaml apply
+
 helmfile -f 07/bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f 07/bookinfo-app/productpage/helmfile.yaml apply
