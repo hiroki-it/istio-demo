@@ -15,12 +15,3 @@ spec:
   exportTo:
     - "*"
   host: {{ .Values.service.host.headless }}
----
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
-  name: {{ .Values.service.name }}-mysql-egress
-spec:
-  exportTo:
-    - "."
-  host: istio-egressgateway.istio-egress.svc.cluster.local

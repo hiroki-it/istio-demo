@@ -17,6 +17,11 @@ spec:
             host: {{ .Values.service.host.http }}
             port:
               number: {{ .Values.service.port.http }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -44,7 +49,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.mysql.host }}
+    - {{ .Values.mysql.host.original }}
   gateways:
     - mesh
     - {{ .Values.service.name }}-mysql-egress
@@ -64,6 +69,6 @@ spec:
           port: {{ .Values.mysql.port }}
       route:
         - destination:
-            host: {{ .Values.mysql.host }}
+            host: {{ .Values.mysql.host.destination }}
             port:
               number: {{ .Values.mysql.port }}
