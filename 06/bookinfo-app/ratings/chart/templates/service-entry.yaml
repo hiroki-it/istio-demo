@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: {{ .Values.service.name }}
+  name: {{ .Values.service.name }}-mysql
 spec:
   exportTo:
     - "*"
