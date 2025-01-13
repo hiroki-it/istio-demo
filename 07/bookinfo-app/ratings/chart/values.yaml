@@ -5,7 +5,5 @@ service:
 
 mysql:
   egressGatewayName: mysql-egress
-  host:
-    original: mysql.dev
-    destination: ratings.mysql.dev
+  host: ratings.mysql.dev
   port: 3306
