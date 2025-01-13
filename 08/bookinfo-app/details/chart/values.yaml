@@ -1,4 +1,0 @@
-service:
-  name: details
-  host: details
-  port: 9080

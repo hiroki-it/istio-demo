@@ -1,8 +1,0 @@
-service:
-  name: reviews
-  host: reviews
-  port: 9080
-
-keycloak:
-  realm: dev
-  host: keycloak-http
