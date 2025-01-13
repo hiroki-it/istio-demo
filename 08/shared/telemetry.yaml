@@ -4,6 +4,9 @@ metadata:
   name: app
   namespace: app
 spec:
+  accessLogging:
+    - providers:
+        - name: envoy-grpc
   tracing:
     - providers:
         - name: opentelemetry-grpc
@@ -15,6 +18,9 @@ metadata:
   name: istio-egress
   namespace: istio-egress
 spec:
+  accessLogging:
+    - providers:
+        - name: envoy-grpc
   tracing:
     - providers:
         - name: opentelemetry-grpc
@@ -26,8 +32,10 @@ metadata:
   name: istio-ingress
   namespace: istio-ingress
 spec:
+  accessLogging:
+    - providers:
+        - name: envoy-grpc
   tracing:
     - providers:
         - name: opentelemetry-grpc
       randomSamplingPercentage: 100
-
