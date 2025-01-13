@@ -13,5 +13,5 @@ releases:
   - name: opentelemetry-collector-istio
     chart: istio
     version: 1.0.0
-    namespace: istio-system
+    namespace: app
     atomic: true
