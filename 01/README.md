@@ -30,9 +30,13 @@ helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply
 minikube service ingress-nginx-controller -n ingress-nginx --url
 ```
 
-5. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、Bookinfoアプリケーションに接続できることを確認します。
+5. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
 
 ![bookinfo](../images/bookinfo.png)
+
+6. Productpageに接続します。
+
+![bookinfo_productpage](../images/bookinfo_productpage.png)
 
 ## 掃除する
 
