@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.service.name }}-grafana-tempo-egress
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: tcp-{{ .Values.service.name }}
+        protocol: TCP
+        number: {{ .Values.grafanaTempo.port }}
+      hosts:
+        - "*"
+

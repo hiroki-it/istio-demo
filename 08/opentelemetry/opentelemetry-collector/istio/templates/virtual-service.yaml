@@ -1,0 +1,54 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  hosts:
+    - {{ .Values.service.host }}
+  http:
+    - match:
+        - port: {{ .Values.service.port }}
+      route:
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.service.name }}-grafana-tempo
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.grafanaTempo.host }}
+  gateways:
+    - mesh
+    - {{ .Values.service.name }}-grafana-tempo-egress
+  tcp:
+    - match:
+        - gateways:
+            - mesh
+          port: {{ .Values.grafanaTempo.port }}
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: {{ .Values.grafanaTempo.port }}
+    - match:
+        - gateways:
+            - {{ .Values.service.name }}-grafana-tempo-egress
+          port: {{ .Values.grafanaTempo.port }}
+      route:
+        - destination:
+            host: {{ .Values.grafanaTempo.host }}
+            port:
+              number: {{ .Values.grafanaTempo.port }}
