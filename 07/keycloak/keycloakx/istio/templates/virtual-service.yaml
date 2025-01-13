@@ -44,7 +44,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.name }}-mysql
+  name: {{ .Values.service.name }}-egress
 spec:
   exportTo:
     - "*"
