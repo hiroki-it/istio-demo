@@ -3,7 +3,7 @@ revision: 1-24-2
 service:
   type: NodePort
   ports:
-    - name: productpage
+    - name: http-productpage
       nodePort: 30000
       port: 9080
       targetPort: 9080
