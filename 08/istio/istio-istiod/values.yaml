@@ -30,7 +30,8 @@ meshConfig:
       envoyFileAccessLog:
         logFormat:
           labels:
-            trace_id: "%REQ(x-b3-traceid)%"
+            # 出力するトレースIDとして、OpenTelemetryのトレースコンテキスト仕様 (transparent) を設定する
+            trace_id: "%REQ(TRACEPARENT)%"
             x_request_id: "%REQ(X-REQUEST-ID)%"
             start_time: "%START_TIME%"
             request_line: "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%"
