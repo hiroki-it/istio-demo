@@ -9,3 +9,8 @@ releases:
     namespace: istio-system
     values:
       - values.yaml
+  - name: grafana-tempo-istio
+    chart: istio
+    version: 1.0.0
+    namespace: agent
+    atomic: true

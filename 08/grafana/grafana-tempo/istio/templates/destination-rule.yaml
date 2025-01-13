@@ -1,17 +1,17 @@
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.service.name }}
-spec:
-  exportTo:
-    - "."
-  host: {{ .Values.service.host }}
----
-apiVersion: networking.istio.io/v1
-kind: DestinationRule
-metadata:
   name: {{ .Values.service.name }}-egress
 spec:
   exportTo:
     - "."
   host: istio-egressgateway.istio-egress.svc.cluster.local
+---
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  host: {{ .Values.service.host }}
