@@ -10,3 +10,8 @@ releases:
     atomic: true
     values:
       - values.yaml
+  - name: opentelemetry-collector-istio
+    chart: istio
+    version: 1.0.0
+    namespace: app
+    atomic: true
