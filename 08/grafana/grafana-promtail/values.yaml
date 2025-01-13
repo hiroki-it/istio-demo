@@ -4,3 +4,6 @@ config:
 
 configmap:
   enabled: true
+
+podLabels:
+  sidecar.istio.io/inject: "false"
