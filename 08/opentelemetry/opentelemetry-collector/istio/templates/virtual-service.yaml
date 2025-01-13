@@ -24,31 +24,31 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.name }}-grafana-tempo
+  name: {{ .Values.service.name }}-egress
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.grafanaTempo.host }}
+    - {{ .Values.service.host }}
   gateways:
     - mesh
-    - {{ .Values.service.name }}-grafana-tempo-egress
+    - {{ .Values.service.name }}-egress
   http:
     - match:
         - gateways:
             - mesh
-          port: {{ .Values.grafanaTempo.port }}
+          port: {{ .Values.service.port }}
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
-              number: {{ .Values.grafanaTempo.port }}
+              number: {{ .Values.service.port }}
     - match:
         - gateways:
-            - {{ .Values.service.name }}-grafana-tempo-egress
-          port: {{ .Values.grafanaTempo.port }}
+            - {{ .Values.service.name }}-egress
+          port: {{ .Values.service.port }}
       route:
         - destination:
-            host: {{ .Values.grafanaTempo.host }}
+            host: {{ .Values.service.host }}
             port:
-              number: {{ .Values.grafanaTempo.port }}
+              number: {{ .Values.service.port }}

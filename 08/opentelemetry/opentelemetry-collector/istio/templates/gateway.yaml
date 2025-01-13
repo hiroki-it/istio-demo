@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: {{ .Values.service.name }}-grafana-tempo-egress
+  name: {{ .Values.service.name }}-egress
 spec:
   selector:
     istio: egressgateway
@@ -9,7 +9,7 @@ spec:
     - port:
         name: grpc-{{ .Values.service.name }}
         protocol: GRPC
-        number: {{ .Values.grafanaTempo.port }}
+        number: {{ .Values.service.port }}
       hosts:
         - "*"
 

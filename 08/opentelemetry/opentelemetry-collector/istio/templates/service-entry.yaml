@@ -1,15 +1,15 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: {{ .Values.service.name }}-grafana-tempo
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.grafanaTempo.host }}
+    - {{ .Values.service.host }}
   location: MESH_EXTERNAL
   ports:
-    - number: {{ .Values.grafanaTempo.port }}
+    - number: {{ .Values.service.port }}
       name: grpc-{{ .Values.service.name }}
       protocol: GRPC
   resolution: DNS

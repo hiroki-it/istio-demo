@@ -10,7 +10,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: {{ .Values.service.name }}-grafana-tempo-egress
+  name: {{ .Values.service.name }}-egress
 spec:
   exportTo:
     - "."
