@@ -1,5 +1,5 @@
 releases:
-  - name: ratings
+  - name: ratings-k8s
     chart: chart
     version: 1.0.0
     namespace: app
