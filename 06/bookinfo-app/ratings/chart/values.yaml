@@ -4,7 +4,7 @@ service:
   port: 9080
 
 mysql:
-  gatewayName: mysql-egress
+  egressGatewayName: mysql-egress
   host:
     original: mysql.dev
     destination: ratings.mysql.dev

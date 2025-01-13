@@ -8,7 +8,7 @@ service:
     https: 8443
 
 mysql:
-  gatewayName: mysql-egress
+  egressGatewayName: mysql-egress
   host:
     original: mysql.dev
     destination: keycloak.mysql.dev
