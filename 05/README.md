@@ -55,4 +55,12 @@ helmfile -f 05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f 05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
+5. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
+
+![bookinfo](./images/bookinfo.png)
+
+6. Productpageに接続します。
+
+![bookinfo_productpage](./images/bookinfo_productpage.png)
+
 ## 機能を実践する

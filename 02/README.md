@@ -36,10 +36,10 @@ helmfile -f 02/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f 02/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-6. Kubernetes Podをロールアウトし、`istio-proxy`をインジェクションします。
+6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
 
 ```bash
-kubectl rollout restart deployment
+kubectl rollout restart deployment -n app
 ```
 
 7. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
@@ -47,5 +47,13 @@ kubectl rollout restart deployment
 ```bash
 minikube service istio-ingressgateway -n istio-ingress --url
 ```
+
+8. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
+
+![bookinfo](./images/bookinfo.png)
+
+9. Productpageに接続します。
+
+![bookinfo_productpage](./images/bookinfo_productpage.png)
 
 ## 機能を実践する
