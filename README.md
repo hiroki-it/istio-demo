@@ -81,7 +81,7 @@ kubectl label node minikube-m06 node.kubernetes.io/nodegroup=system --overwrite 
 3. Nodeを確認します。
 
 ```bash
-kubectl get nodes -L nodegroup
+kubectl get nodes -L node.kubernetes.io/nodegroup
                                                                                                                                                          (minikube/default)
 NAME           STATUS   ROLES           AGE   VERSION   NODEGROUP
 minikube       Ready    control-plane   13d   v1.32.0
