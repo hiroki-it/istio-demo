@@ -10,6 +10,6 @@ spec:
   location: MESH_EXTERNAL
   ports:
     - number: {{ .Values.grafanaTempo.port }}
-      name: tcp-{{ .Values.service.name }}
-      protocol: TCP
+      name: http-{{ .Values.service.name }}
+      protocol: HTTP
   resolution: DNS

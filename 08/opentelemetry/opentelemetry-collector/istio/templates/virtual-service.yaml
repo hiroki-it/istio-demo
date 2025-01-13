@@ -33,7 +33,7 @@ spec:
   gateways:
     - mesh
     - {{ .Values.service.name }}-grafana-tempo-egress
-  tcp:
+  http:
     - match:
         - gateways:
             - mesh
