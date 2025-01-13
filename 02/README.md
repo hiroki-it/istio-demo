@@ -36,12 +36,6 @@ helmfile -f 02/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f 02/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-5. Kubernetes Namespaceのラベルに `istio.io/rev` を設定します。
-
-```bash
-kubectl label ns default istio.io/rev=stable
-```
-
 6. Kubernetes Podをロールアウトし、`istio-proxy`をインジェクションします。
 
 ```bash

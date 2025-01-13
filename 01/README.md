@@ -6,59 +6,35 @@
 
 ## セットアップ
 
-1. Bookinfoアプリケーションをデプロイします。
-
-```bash
-ISTIO_VERSION=1.24.2
-
-kubectl apply --server-side -f https://raw.githubusercontent.com/istio/istio/refs/tags/${ISTIO_VERSION}/samples/bookinfo/platform/kube/bookinfo.yaml
-```
-
-2. アプリケーションが正常に稼働していることを確認します。
-
-```bash
-kubectl get pod
-
-NAME                             READY   STATUS    RESTARTS   AGE
-details-v1-54ffdd5947-cfxwj      1/1     Running   0          8m21s
-productpage-v1-d49bb79b4-rt2jh   1/1     Running   0          8m21s
-ratings-v1-856f65bcff-jtkkf      1/1     Running   0          8m21s
-reviews-v1-848b8749df-7svtl      1/1     Running   0          8m21s
-reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
-reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
-```
-
-3. Namespaceをデプロイします。
+1. Namespaceをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 01/shared/namespace.yaml
 ```
 
-4. Bookinfoアプリケーション用のIngressをデプロイします。
+2. Ingressをデプロイします。
 
 ```bash
 helmfile -f 01/bookinfo-app/productpage/helmfile.yaml apply
 ```
 
-5. Nginx Ingress Controllerをデプロイします。
+3. Nginx Ingress Controllerをデプロイします。
 
 ```bash
 helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply
 ```
 
-6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
+4. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
 
 ```bash
 minikube service ingress-nginx-controller -n ingress-nginx --url
 ```
 
-## 機能を実践する
-
-7. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、The Comedy of Errorsページを閲覧できることを確認します。
+5. [Normal user](http://127.0.0.1:59594/productpage?u=normal) をクリックし、The Comedy of Errorsページを閲覧できることを確認します。
 
 ## 掃除する
 
-8. 接続を確認できたら、以降の章で不要なリソースを削除します。
+1. 接続を確認できたら、以降の章で不要なリソースを削除します。
 
 ```bash
 helmfile -f 01/bookinfo-app/productpage/helmfile.yaml destroy
