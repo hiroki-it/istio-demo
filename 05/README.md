@@ -56,5 +56,3 @@ helmfile -f 05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 ## 機能を実践する
-
-## 掃除する

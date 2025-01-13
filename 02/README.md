@@ -49,5 +49,3 @@ minikube service istio-ingressgateway -n istio-ingress --url
 ```
 
 ## 機能を実践する
-
-## 掃除する
