@@ -23,35 +23,3 @@ spec:
               number: {{ .Values.service.port }}
             subset: v2
           weight: 100
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.service.name }}-mysql
-spec:
-  exportTo:
-    - "."
-  hosts:
-    - {{ .Values.mysql.host }}
-  gateways:
-    - mesh
-    - {{ .Values.service.name }}-mysql-egress
-  tcp:
-    - match:
-        - gateways:
-            - mesh
-          port: {{ .Values.mysql.port }}
-      route:
-        - destination:
-            host: istio-egressgateway.istio-egress.svc.cluster.local
-            port:
-              number: {{ .Values.mysql.port }}
-    - match:
-        - gateways:
-            - {{ .Values.service.name }}-mysql-egress
-          port: {{ .Values.mysql.port }}
-      route:
-        - destination:
-            host: {{ .Values.mysql.host }}
-            port:
-              number: {{ .Values.mysql.port }}

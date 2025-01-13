@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: {{ .Values.service.name }}-mysql-egress
+  name: {{ .Values.service.name }}-egress
 spec:
   selector:
     istio: egressgateway

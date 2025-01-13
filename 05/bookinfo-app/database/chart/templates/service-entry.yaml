@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: {{ .Values.service.name }}-mysql
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.mysql.host }}
+    - {{ .Values.mysql.host.destination }}
   location: MESH_EXTERNAL
   ports:
     - number: {{ .Values.mysql.port }}
