@@ -6,12 +6,12 @@ releases:
   - name: keycloak
     chart: codecentric/keycloakx
     version: 6.0.0
-    namespace: keycloak
+    namespace: app
     atomic: true
     values:
       - values.yaml
   - name: keycloak-extra
     chart: extra-chart
     version: 1.0.0
-    namespace: keycloak
+    namespace: app
     atomic: true
