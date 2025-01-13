@@ -1,7 +1,8 @@
 apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
-  name: default
+  name: app
+  namespace: app
 spec:
   tracing:
     - providers:
