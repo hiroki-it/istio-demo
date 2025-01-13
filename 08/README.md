@@ -55,11 +55,9 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 
 ### Minio
 
-7. Minioをデプロイします。StorageClassを使用するため、CSIドライバーを有効化します。
+7. Minioをデプロイします。
 
 ```bash
-minikube addons enable csi-hostpath-driver
-
 helmfile -f 08/minio/helmfile.yaml apply
 ```
 
@@ -97,31 +95,19 @@ helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
 
 ### Istio
 
-12. 各マイクロサービスにIstioカスタムリソースをデプロイします。
-
-```bash
-helmfile -f 08/bookinfo-app/details/helmfile.yaml apply
-
-helmfile -f 08/bookinfo-app/productpage/helmfile.yaml apply
-
-helmfile -f 08/bookinfo-app/ratings/helmfile.yaml apply
-
-helmfile -f 08/bookinfo-app/reviews/helmfile.yaml apply
-```
-
-13. Telemetryリソースをデプロイします。
+12. Telemetryリソースをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 08/shared/telemetry.yaml
 ```
 
-14. Istiod EgressGatewayをデプロイします。
+13. Istiod EgressGatewayをデプロイします。
 
 ```bash
 helmfile -f 08/istio/istio-egress/helmfile.yaml apply
 ```
 
-15. Istioコントロールプレーンをデプロイします。
+14. Istioコントロールプレーンをデプロイします。
 
 ```bash
 helmfile -f 08/istio/istio-istiod/helmfile.yaml apply
