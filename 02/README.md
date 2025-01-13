@@ -50,10 +50,10 @@ minikube service istio-ingressgateway -n istio-ingress --url
 
 8. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
 
-![bookinfo](./images/bookinfo.png)
+![bookinfo](../images/bookinfo.png)
 
 9. Productpageに接続します。
 
-![bookinfo_productpage](./images/bookinfo_productpage.png)
+![bookinfo_productpage](../images/bookinfo_productpage.png)
 
 ## 機能を実践する
