@@ -53,7 +53,7 @@ spec:
             - name: DB_TYPE
               value: mysql
             - name: MYSQL_DB_HOST
-              value: {{ .Values.mysql.host }}
+              value: {{ .Values.mysql.host.original }}
             - name: MYSQL_DB_PORT
               value: {{ .Values.mysql.port | quote }}
             - name: MYSQL_DB_USER
