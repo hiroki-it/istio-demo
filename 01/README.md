@@ -36,7 +36,7 @@ minikube service ingress-nginx-controller -n ingress-nginx --url
 
 ## 掃除する
 
-1. 接続を確認できたら、以降の章で不要なリソースを削除します。
+1. 接続を確認できたら、以降の章で不要なリソースを削除します。Namespaceの削除に時間がかかるため、待機してください。
 
 ```bash
 helmfile -f 01/bookinfo-app/productpage/helmfile.yaml destroy
