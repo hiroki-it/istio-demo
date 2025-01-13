@@ -1,0 +1,11 @@
+service:
+  name: ratings
+  host: ratings
+  port: 9080
+
+mysql:
+  egressGatewayName: mysql-egress
+  host:
+    original: mysql.dev
+    destination: ratings.mysql.dev
+  port: 3306
