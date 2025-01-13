@@ -46,6 +46,8 @@ helmfile -f 05/istio/istio-egress/helmfile.yaml apply
 4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
+helmfile -f 05/bookinfo-app/database/helmfile.yaml apply
+
 helmfile -f 05/bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f 05/bookinfo-app/productpage/helmfile.yaml apply
