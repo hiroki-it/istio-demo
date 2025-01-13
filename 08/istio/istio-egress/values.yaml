@@ -1,0 +1,23 @@
+revision: 1-24-2
+
+service:
+  type: ClusterIP
+  ports:
+    - name: tcp-mysql
+      appProtocol: tcp
+      port: 3306
+      targetPort: 3306
+    - name: grpc-otlp
+      appProtocol: grpc
+      port: 4317
+      targetPort: 4317
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - egress
