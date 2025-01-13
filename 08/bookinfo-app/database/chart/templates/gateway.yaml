@@ -12,4 +12,3 @@ spec:
         number: {{ .Values.mysql.port }}
       hosts:
         - "*"
-
