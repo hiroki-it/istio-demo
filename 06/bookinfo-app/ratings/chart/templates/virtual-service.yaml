@@ -40,7 +40,7 @@ spec:
     - {{ .Values.mysql.host.original }}
   gateways:
     - mesh
-    - {{ .Values.service.name }}-egress
+    - {{ .Values.mysql.gatewayName }}
   tcp:
     - match:
         - gateways:
@@ -53,7 +53,7 @@ spec:
               number: {{ .Values.mysql.port }}
     - match:
         - gateways:
-            - {{ .Values.service.name }}-egress
+            - {{ .Values.mysql.gatewayName }}
           port: {{ .Values.mysql.port }}
       route:
         - destination:
