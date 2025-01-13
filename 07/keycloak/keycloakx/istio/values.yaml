@@ -9,5 +9,7 @@ service:
 
 mysql:
   egressGatewayName: mysql-egress
-  host: keycloak.mysql.dev
+  host:
+    origination: keycloak.mysql.dev
+    destination: keycloak.mysql.dev
   port: 3306

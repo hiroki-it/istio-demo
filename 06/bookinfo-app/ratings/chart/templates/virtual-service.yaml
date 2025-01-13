@@ -37,7 +37,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.mysql.host }}
+    - {{ .Values.mysql.host.origination }}
   gateways:
     - mesh
     - {{ .Values.mysql.egressGatewayName }}
@@ -57,6 +57,6 @@ spec:
           port: {{ .Values.mysql.port }}
       route:
         - destination:
-            host: {{ .Values.mysql.host }}
+            host: {{ .Values.mysql.host.destination }}
             port:
               number: {{ .Values.mysql.port }}
