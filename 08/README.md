@@ -98,13 +98,13 @@ helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
 ```bash
 kubectl logs <OpenTelemetry CollectorのPod> -n istio-system -f
 
-Resource SchemaURL: 
+Resource SchemaURL:
 Resource attributes:
      -> service.name: Str(reviews.app)
      -> k8s.pod.ip: Str(127.0.0.6)
 ScopeSpans #0
-ScopeSpans SchemaURL: 
-InstrumentationScope  
+ScopeSpans SchemaURL:
+InstrumentationScope
 Span #0
     Trace ID       : e628c2e56566a155a4e60782861c39cf
     Parent ID      : b3b5bf6e9caa41f0
@@ -114,26 +114,40 @@ Span #0
     Start time     : 2025-01-13 11:54:43.953816 +0000 UTC
     End time       : 2025-01-13 11:54:43.967079 +0000 UTC
     Status code    : Unset
-    Status message : 
+    Status message :
 Attributes:
     ...
 ```
 
 ### Istio
 
-12. Telemetryリソースをデプロイします。
+12. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+
+```bash
+helmfile -f 08/bookinfo-app/database/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f 08/bookinfo-app/reviews/helmfile.yaml apply
+```
+
+13. Telemetryリソースをデプロイします。
 
 ```bash
 kubectl apply --server-side -f 08/shared/telemetry.yaml
 ```
 
-13. Istiod EgressGatewayをデプロイします。
+14. Istiod EgressGatewayをデプロイします。
 
 ```bash
 helmfile -f 08/istio/istio-egress/helmfile.yaml apply
 ```
 
-14. Istioコントロールプレーンをデプロイします。
+15. Istioコントロールプレーンをデプロイします。
 
 ```bash
 helmfile -f 08/istio/istio-istiod/helmfile.yaml apply
