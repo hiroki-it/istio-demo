@@ -41,7 +41,7 @@ singleBinary:
       mountPath: /var/loki
 
 gateway:
-  enable: false
+  enabled: false
 
 read:
   replicas: 0
