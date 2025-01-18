@@ -31,7 +31,7 @@ grafana:
           - name: trace_id
             matcherRegex: '"trace_id":"([^"]*)"'
             url: $${__value.raw}
-            urlDisplayLabel: View Trace
+            urlDisplayLabel: View Grafana Tempo
             datasourceUid: Tempo
     - name: Tempo
       type: tempo
