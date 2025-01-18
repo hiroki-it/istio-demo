@@ -7,16 +7,16 @@ deployment:
 external_services:
   grafana:
     enabled: true
-    in_cluster_url: http://kube-prometheus-stack-grafana.istio-system.svc.cluster.local
+    in_cluster_url: http://grafana.istio-system.svc.cluster.local:80
     auth:
       type: basic
       username: admin
       password: prom-operator
   prometheus:
-    url: http://kube-prometheus-stack-prometheus.istio-system.svc.cluster.local:9090
+    url: http://prometheus-server.istio-system.svc.cluster.local:9090
   custom_dashboards:
     prometheus:
-      url: http://kube-prometheus-stack-prometheus.istio-system.svc.cluster.local:9090
+      url: http://prometheus-server.istio-system.svc.cluster.local:9090
   tracing:
     enabled: true
     provider: tempo

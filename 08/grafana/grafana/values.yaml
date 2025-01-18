@@ -1,0 +1,28 @@
+grafana.ini:
+  auth.anonymous:
+    enabled: true
+    org_role: Admin
+
+service:
+  type: NodePort
+  nodePort: 32003
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Loki
+        type: loki
+        url: http://grafana-loki.istio-system.svc.cluster.local:3100/
+        basicAuth: false
+        jsonData:
+          derivedFields:
+            - name: trace_id
+              matcherRegex: '"trace_id":"([^"]*)"'
+              url: $${__value.raw}
+              urlDisplayLabel: View Grafana Tempo
+              datasourceUid: Tempo
+      - name: Tempo
+        type: tempo
+        url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
+        basicAuth: false
