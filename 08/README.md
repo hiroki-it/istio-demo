@@ -56,7 +56,7 @@ kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
 7. Kialiをデプロイします。
 
 ```bash
-helmfile -f 08/kiali/kiali-server/helmfile.yaml apply
+helmfile -f 08/kiali/helmfile.yaml apply
 ```
 
 8. Kialiのダッシュボードに接続します。ブラウザからPodの`20001`番ポートに接続してください。
@@ -102,7 +102,7 @@ helmfile -f 08/grafana/grafana-tempo/helmfile.yaml apply
 13. OpenTelemetry Collectorをデプロイします。
 
 ```bash
-helmfile -f 08/opentelemetry/opentelemetry-collector/helmfile.yaml apply
+helmfile -f 08/opentelemetry-collector/helmfile.yaml apply
 ```
 
 14. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
