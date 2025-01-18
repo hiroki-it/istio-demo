@@ -46,8 +46,6 @@ extraScrapeConfigs: |
         action: keep
         regex: .*-envoy-prom
 
-
-
 server:
   persistentVolume:
     enabled: false
