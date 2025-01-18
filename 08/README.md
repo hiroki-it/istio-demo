@@ -36,19 +36,19 @@ helmfile -f 08/prometheus/helmfile.yaml apply
 4. Prometheusのダッシュボードに接続します。ブラウザからPodの`9090`番ポートに接続してください。
 
 ```bash
-kubectl port-forward svc/kube-prometheus-stack-prometheus -n istio-system 9090:9090
+kubectl port-forward svc/prometheus-server -n istio-system 9090:9090
 ```
 
 5. Grafanaをデプロイする。
 
 ```bash
-helmfile -f 08/grafana/helmfile.yaml apply
+helmfile -f 08/grafana/grafana/helmfile.yaml apply
 ```
 
 6. Grafanaのダッシュボードに接続します。ブラウザからPodの`8000`番ポートに接続してください。
 
 ```bash
-kubectl port-forward svc/kube-prometheus-stack-grafana -n istio-system 8000:80
+kubectl port-forward svc/grafana -n istio-system 8000:80
 ```
 
 ### Kiali
