@@ -33,7 +33,6 @@ grafana:
             url: $${__value.raw}
             urlDisplayLabel: View Trace
             datasourceUid: Tempo
-
     - name: Tempo
       type: tempo
       url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
