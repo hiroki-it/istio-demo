@@ -10,7 +10,7 @@
 docker compose -f 05/bookinfo-app/ratings/docker-compose.yaml up -d
 
 docker exec -it ratings-mysql /bin/sh
-                                                                                                                                                                              (minikube/default)
+
 sh-4.4# mysql -h localhost -u root -ppassword
 
 mysql> SHOW TABLES FROM test;

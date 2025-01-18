@@ -82,7 +82,7 @@ kubectl label node minikube-m06 node.kubernetes.io/nodegroup=system --overwrite 
 
 ```bash
 kubectl get nodes -L node.kubernetes.io/nodegroup
-                                                                                                                                                         (minikube/default)
+
 NAME           STATUS   ROLES           AGE   VERSION   NODEGROUP
 minikube       Ready    control-plane   13d   v1.32.0
 minikube-m02   Ready    worker          13d   v1.32.0   app
