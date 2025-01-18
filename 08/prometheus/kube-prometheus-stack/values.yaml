@@ -26,6 +26,14 @@ grafana:
       type: loki
       url: http://grafana-loki.istio-system.svc.cluster.local:3100/
       basicAuth: false
+      jsonData:
+        derivedFields:
+          - name: trace_id
+            matcherRegex: '"trace_id":"([^"]*)"'
+            url: $${__value.raw}
+            urlDisplayLabel: View Trace
+            datasourceUid: Tempo
+
     - name: Tempo
       type: tempo
       url: http://grafana-tempo.istio-system.svc.cluster.local:3100/
