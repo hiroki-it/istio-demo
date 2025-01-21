@@ -44,6 +44,7 @@ CPU=6
 MEMORY=6144
 
 minikube start \
+  --profile istio-demo \
   --nodes ${NODE_COUNT} \
   --container-runtime containerd \
   --driver docker \
@@ -131,5 +132,5 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 1. Minikubeを削除します。
 
 ```bash
-minikube delete --all --purge
+minikube delete --profile istio-demo
 ```
