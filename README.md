@@ -15,12 +15,13 @@ Bookinfoアプリを使用して、Istioをデモンストレーションしま�
 - [mise](https://mise.jdx.dev/getting-started.html) 
 - [Docker Desktop](https://docs.docker.com/desktop/)
 
-### そのほかインストール
+### miseによるインストール
 
 1. miseを使用して、そのほかに必要なツールをインストールします
 
 ```bash
 $ mise trust
+
 $ mise install
 ```
 
