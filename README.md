@@ -12,7 +12,7 @@ Bookinfoアプリを使用して、Istioをデモンストレーションしま�
 
 以下をインストールする。
 
-- [mise](https://mise.jdx.dev/getting-started.html) 
+- [mise](https://mise.jdx.dev/getting-started.html)
 - [Docker Desktop](https://docs.docker.com/desktop/)
 
 ### miseによるインストール

@@ -38,34 +38,38 @@ reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
 
+3. Ingressをデプロイします。
+
+```bash
+helmfile -f chapter-01/ingress/productpage/helmfile.yaml apply
+```
+
 4. Nginx Ingress Controllerをデプロイします。
 
 ```bash
 helmfile -f chapter-01/nginx/helmfile.yaml apply
 ```
 
-5. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
+6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
 
 ```bash
 minikube service ingress-nginx-controller -n ingress-nginx --url
 ```
 
-6. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
+7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
 
 ![bookinfo](../images/bookinfo.png)
 
-7. Productpageに接続します。
+8. Productpageに接続します。
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
 ## 掃除する
 
-1. 接続を確認できたら、以降の章で不要なリソースを削除します。Namespaceの削除に時間がかかるため、待機してください。
+1. 以降の章ではIngressとNginx Ingress Controllerは不要であるため、削除します。
 
 ```bash
-helmfile -f chapter-01/bookinfo-app/productpage/helmfile.yaml destroy
+helmfile -f chapter-01/ingress/productpage/helmfile.yaml destroy
 
 helmfile -f chapter-01/nginx/helmfile.yaml destroy
-
-kubectl delete -f chapter-01/shared/namespace.yaml
 ```
