@@ -1,6 +1,0 @@
-releases:
-  - name: ratings
-    chart: chart
-    version: 1.0.0
-    namespace: app
-    atomic: true

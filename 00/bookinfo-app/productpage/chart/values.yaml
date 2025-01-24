@@ -1,3 +1,0 @@
-service:
-  name: productpage
-  port: 9080
