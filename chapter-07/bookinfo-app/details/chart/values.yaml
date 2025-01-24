@@ -2,3 +2,7 @@ service:
   name: details
   host: details
   port: 9080
+
+keycloak:
+  realm: dev
+  host: keycloak-http.app.svc.cluster.local

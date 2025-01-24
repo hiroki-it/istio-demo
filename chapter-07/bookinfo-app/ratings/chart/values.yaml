@@ -3,6 +3,10 @@ service:
   host: ratings
   port: 9080
 
+keycloak:
+  realm: dev
+  host: keycloak-http.app.svc.cluster.local
+
 mysql:
   egressGatewayName: mysql-egress
   host:
