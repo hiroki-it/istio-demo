@@ -1,5 +1,5 @@
 releases:
-  - name: productpage-nginx
+  - name: details
     chart: chart
     version: 1.0.0
     namespace: app

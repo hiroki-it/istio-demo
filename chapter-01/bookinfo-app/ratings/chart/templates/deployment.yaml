@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v1
+  labels:
+    app: {{ .Values.service.name }}
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v1
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v1:1.20.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.service.port }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v2
+  labels:
+    app: {{ .Values.service.name }}
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v2
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DB_TYPE
+              value: mysql
+            - name: MYSQL_DB_HOST
+              value: {{ .Values.mysql.host }}
+            - name: MYSQL_DB_PORT
+              value: {{ .Values.mysql.port | quote }}
+            - name: MYSQL_DB_USER
+              value: root
+            - name: MYSQL_DB_PASSWORD
+              value: password
+          ports:
+            - containerPort: {{ .Values.service.port }}
