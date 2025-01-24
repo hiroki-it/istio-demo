@@ -7,33 +7,33 @@
 1. Namespaceリソースをデプロイします。
 
 ```bash
-kubectl apply -f 02/shared/namespace.yaml
+kubectl apply -f chapter-02/shared/namespace.yaml
 ```
 
 2. Istiodコントロールプレーンをデプロイします。
 
 ```bash
-helmfile -f 02/istio/istio-base/helmfile.yaml apply
+helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
 
-helmfile -f 02/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
 ```
 
 3. Istio IngressGatewayをデプロイします。
 
 ```bash
-helmfile -f 02/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-02/istio/istio-ingress/helmfile.yaml apply
 ```
 
 4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
-helmfile -f 02/bookinfo-app/details/helmfile.yaml apply
+helmfile -f chapter-02/bookinfo-app/details/helmfile.yaml apply
 
-helmfile -f 02/bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f chapter-02/bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f 02/bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f chapter-02/bookinfo-app/ratings/helmfile.yaml apply
 
-helmfile -f 02/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f chapter-02/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。

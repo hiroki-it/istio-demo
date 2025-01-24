@@ -7,7 +7,7 @@
 1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。これは、`test`データベースに`rating`テーブルを持ちます。
 
 ```bash
-docker compose -f 05/bookinfo-app/ratings/docker-compose.yaml up -d
+docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
 
 docker exec -it ratings-mysql /bin/sh
 
@@ -34,27 +34,27 @@ mysql> SELECT * from ratings;
 2. Istio IngressGatewayをデプロイします。
 
 ```bash
-helmfile -f 05/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-05/istio/istio-ingress/helmfile.yaml apply
 ```
 
 3. Istio EgressGatewayをデプロイします。
 
 ```bash
-helmfile -f 05/istio/istio-egress/helmfile.yaml apply
+helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 ```
 
 4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
-helmfile -f 05/bookinfo-app/database/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/database/helmfile.yaml apply
 
-helmfile -f 05/bookinfo-app/details/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/details/helmfile.yaml apply
 
-helmfile -f 05/bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f 05/bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 
-helmfile -f 05/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 5. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。

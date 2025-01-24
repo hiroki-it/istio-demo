@@ -9,19 +9,19 @@
 1. Namespaceをデプロイします。
 
 ```bash
-kubectl apply --server-side -f 01/shared/namespace.yaml
+kubectl apply --server-side -f chapter-01/shared/namespace.yaml
 ```
 
 2. Bookinfoアプリケーションをデプロイします。
 
 ```bash
-helmfile -f 01/bookinfo-app/details/helmfile.yaml apply
+helmfile -f chapter-01/bookinfo-app/details/helmfile.yaml apply
 
-helmfile -f 01/bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f chapter-01/bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f 01/bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f chapter-01/bookinfo-app/ratings/helmfile.yaml apply
 
-helmfile -f 01/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f chapter-01/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 3. アプリケーションが正常に稼働していることを確認します。
@@ -41,7 +41,7 @@ reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 4. Nginx Ingress Controllerをデプロイします。
 
 ```bash
-helmfile -f 01/nginx/ingress-nginx/helmfile.yaml apply
+helmfile -f chapter-01/nginx/helmfile.yaml apply
 ```
 
 5. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
@@ -63,9 +63,9 @@ minikube service ingress-nginx-controller -n ingress-nginx --url
 1. 接続を確認できたら、以降の章で不要なリソースを削除します。Namespaceの削除に時間がかかるため、待機してください。
 
 ```bash
-helmfile -f 01/bookinfo-app/productpage/helmfile.yaml destroy
+helmfile -f chapter-01/bookinfo-app/productpage/helmfile.yaml destroy
 
-helmfile -f 01/nginx/ingress-nginx/helmfile.yaml destroy
+helmfile -f chapter-01/nginx/helmfile.yaml destroy
 
-kubectl delete -f 01/shared/namespace.yaml
+kubectl delete -f chapter-01/shared/namespace.yaml
 ```
