@@ -4,10 +4,10 @@ services:
     container_name: keycloak-mysql
     hostname: keycloak.mysql.dev
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: keycloak
       TZ: 'Asia/Tokyo'
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
