@@ -1,6 +1,6 @@
 service:
   name: ratings
-  host: ratings
+  host: ratings.app.svc.cluster.local
   port: 9080
 
 mysql:

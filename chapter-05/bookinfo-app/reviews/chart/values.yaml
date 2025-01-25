@@ -1,5 +1,5 @@
 service:
   name: reviews
-  host: reviews
+  host: reviews.app.svc.cluster.local
   port: 9080
 
