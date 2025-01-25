@@ -14,7 +14,7 @@ tempo:
       backend: s3
       s3:
         access_key: root
-        secret_key: root
+        secret_key: password
         bucket: grafana-tempo
         endpoint: http://minio.istio-system.svc.cluster.local:9000
         insecure: true
