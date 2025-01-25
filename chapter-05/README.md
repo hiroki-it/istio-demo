@@ -31,19 +31,25 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-2. Istio IngressGatewayをデプロイします。
+2. Namespaceをデプロイします。
+
+```bash
+kubectl apply --server-side -f chapter-01/shared/namespace.yaml
+```
+
+3. Istio IngressGatewayをデプロイします。
 
 ```bash
 helmfile -f chapter-05/istio/istio-ingress/helmfile.yaml apply
 ```
 
-3. Istio EgressGatewayをデプロイします。
+4. Istio EgressGatewayをデプロイします。
 
 ```bash
 helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 ```
 
-4. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+5. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f chapter-05/bookinfo-app/database/helmfile.yaml apply
@@ -57,11 +63,11 @@ helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-5. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
+6. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
 
 ![bookinfo](../images/bookinfo.png)
 
-6. Productpageに接続します。
+7. Productpageに接続します。
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 

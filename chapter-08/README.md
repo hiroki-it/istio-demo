@@ -133,18 +133,10 @@ Attributes:
 
 ### Istio
 
-15. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+15. Istioコントロールプレーンをデプロイします。
 
 ```bash
-helmfile -f chapter-08/bookinfo-app/database/helmfile.yaml apply
-
-helmfile -f chapter-08/bookinfo-app/details/helmfile.yaml apply
-
-helmfile -f chapter-08/bookinfo-app/productpage/helmfile.yaml apply
-
-helmfile -f chapter-08/bookinfo-app/ratings/helmfile.yaml apply
-
-helmfile -f chapter-08/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 ```
 
 16. Telemetryリソースをデプロイします。
@@ -159,8 +151,16 @@ kubectl apply --server-side -f chapter-08/shared/telemetry.yaml
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 ```
 
-18. Istioコントロールプレーンをデプロイします。
+18. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
-helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-08/bookinfo-app/database/helmfile.yaml apply
+
+helmfile -f chapter-08/bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f chapter-08/bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f chapter-08/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f chapter-08/bookinfo-app/reviews/helmfile.yaml apply
 ```
