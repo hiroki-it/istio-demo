@@ -22,8 +22,6 @@ database:
   username: keycloak
   password: password
 
-fullnameOverride: keycloak
-
 extraEnv: |
   - name: KC_HOSTNAME
     value: localhost
@@ -33,6 +31,8 @@ extraEnv: |
     value: password
   - name: JAVA_OPTS_APPEND
     value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
+
+fullnameOverride: keycloak
 
 image:
   tag: 26.1.0
