@@ -37,7 +37,7 @@ $ helm plugin install https://github.com/databus23/helm-diff
 
 ```bash
 # バージョン
-KUBERNETES_VERSION=1.32.0
+KUBERNETES_VERSION=1.31.0
 
 # Node数
 NODE_COUNT=6
