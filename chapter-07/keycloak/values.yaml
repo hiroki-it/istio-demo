@@ -36,8 +36,6 @@ extraEnv: |
     value: admin
   - name: KEYCLOAK_ADMIN_PASSWORD
     value: password
-  - name: PROXY_ADDRESS_FORWARDING
-    value: "true"
   - name: JAVA_OPTS_APPEND
     value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 
