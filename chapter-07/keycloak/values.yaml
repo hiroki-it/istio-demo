@@ -15,17 +15,12 @@ command:
   - /opt/keycloak/bin/kc.sh
 
 database:
-   vendor: dev-file
-
-# Keycloak + MySQL + Istio でKeycloakのPodの起動が失敗する
-# @see https://github.com/keycloak/keycloak/issues/36183
-#database:
-#  vendor: mysql
-#  port: 3306
-#  hostname: keycloak.mysql.dev
-#  database: keycloak
-#  username: keycloak
-#  password: password
+  vendor: mysql
+  port: 3306
+  hostname: keycloak.mysql.dev
+  database: keycloak
+  username: keycloak
+  password: password
 
 fullnameOverride: keycloak
 
