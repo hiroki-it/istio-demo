@@ -59,6 +59,6 @@ spec:
             - name: MYSQL_DB_USER
               value: root
             - name: MYSQL_DB_PASSWORD
-              value: password
+              value: root
           ports:
             - containerPort: {{ .Values.service.port }}

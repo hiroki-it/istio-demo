@@ -5,7 +5,7 @@ services:
     container_name: ratings-mysql
     hostname: ratings.mysql.dev
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
       TZ: 'Asia/Tokyo'
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
