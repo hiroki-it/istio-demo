@@ -40,7 +40,7 @@ extraEnv: |
     value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 
 image:
-  tag: 25.0.0
+  tag: 26.1.0
 
 service:
   httpPort: 8080
