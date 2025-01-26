@@ -161,13 +161,19 @@ helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 kubectl apply --server-side -f chapter-08/shared/telemetry.yaml
 ```
 
-18. Istiod EgressGatewayをデプロイします。
+18. Istio IngressGatewayをデプロイします。
+
+```bash
+helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
+```
+
+19. Istiod EgressGatewayをデプロイします。
 
 ```bash
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 ```
 
-19. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+20. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f chapter-08/bookinfo-app/database/helmfile.yaml apply
