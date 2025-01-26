@@ -10,7 +10,7 @@
 docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 ```
 
-2. 空の`keycloak`データベースを持つことを確認します。
+2.`keycloak`データベースはさまざまなテーブルを持つことを確認します。
 
 ```bash
 docker exec -it keycloak-mysql /bin/sh
@@ -18,7 +18,13 @@ docker exec -it keycloak-mysql /bin/sh
 sh-4.4# mysql -h localhost -u keycloak -pkeycloak
 
 mysql> SHOW TABLES FROM keycloak;
-Empty set
++-------------------------------+
+| Tables_in_keycloak            |
++-------------------------------+
+| ADMIN_EVENT_ENTITY            |
+...
+| WEB_ORIGINS                   |
++-------------------------------+
 ```
 
 3. Namespaceリソースをデプロイします。

@@ -10,7 +10,7 @@
 docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
 ```
 
-2. `test`データベースに`rating`テーブルを持つことを確認します。
+2. `test`データベースは`rating`テーブルを持つことを確認します。
 
 ```bash
 docker exec -it ratings-mysql /bin/sh
