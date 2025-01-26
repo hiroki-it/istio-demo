@@ -86,6 +86,9 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 ログインのリクエストを仮定して、アクセストークンを取得します。
 
 ```bash
-curl <minikube serviceコマンドで発行されたKeycloakのURL>/auth/realms/dev/protocol/openid-connect/token \
-  -d "grant_type=client_credentials&username=izzy&password=izzy&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&redirect_uri=http://keycloak-http.keycloak.svc.cluster.local:9080/authentication/callback"     
+HOST=http://localhost:64928
+
+curl -X POST ${HOST}/auth/realms/dev/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&scope"
 ```
