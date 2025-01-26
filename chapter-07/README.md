@@ -86,8 +86,8 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 ```bash
 HOST=http://localhost:64928
 
-curl http://${HOST}/auth/realms/dev/protocol/openid-connect/auth?response_type=code&client_id=service&redirect_uri=http://keycloak-http.keycloak.svc.cluster.local:8080/authentication/callback&scope=openid
+curl http://${HOST}/auth/realms/dev/protocol/openid-connect/auth?response_type=code&client_id=service&redirect_uri=http://keycloak-http.app.svc.cluster.local:8080/authentication/callback&scope=openid
 
 curl ${HOST}/auth/realms/dev/protocol/openid-connect/token \
-  -d "grant_type=authorization_code&code=4dd3788b-e8a4-4ad6-8f03-28fb68f266f7.052bddf1-8bbc-4d61-a61c-2497fe5b8210.033f1115-baf8-4ca6-87b4-5d2938bcc665&redirect_uri=http://keycloak-http.keycloak.svc.cluster.local:8080/authentication/callback&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY"
+  -d "grant_type=authorization_code&code=4dd3788b-e8a4-4ad6-8f03-28fb68f266f7.052bddf1-8bbc-4d61-a61c-2497fe5b8210.033f1115-baf8-4ca6-87b4-5d2938bcc665&redirect_uri=http://keycloak-http.app.svc.cluster.local:8080/authentication/callback&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY"
 ```
