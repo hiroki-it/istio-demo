@@ -1,8 +1,8 @@
-# 6章
+# 7章
 
 ## セットアップ
 
-6章では、Istioのセキュリティを学びます。
+7章では、Istioのセキュリティを学びます。
 
 1. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
@@ -15,7 +15,7 @@ docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 ```bash
 docker exec -it keycloak-mysql /bin/sh
 
-sh-4.4# mysql -h localhost -u keycloak -pkeycloak
+sh-4.4# mysql -h keycloak.mysql.dev -u keycloak -pkeycloak
 
 mysql> SHOW TABLES FROM keycloak;
 +-------------------------------+
