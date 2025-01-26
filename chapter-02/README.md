@@ -42,7 +42,7 @@ helmfile -f chapter-02/bookinfo-app/reviews/helmfile.yaml apply
 kubectl rollout restart deployment -n app
 ```
 
-7. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
+7. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから、発行されたURLに接続してください。
 
 ```bash
 minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url

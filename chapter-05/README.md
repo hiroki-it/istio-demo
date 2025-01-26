@@ -67,7 +67,7 @@ helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
+6. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから、発行されたURLに接続してください。
 
 ```bash
 minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url

@@ -71,7 +71,7 @@ helmfile -f chapter-07/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-07/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-9. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ブラウザから発行されたURLに接続してください。
+9. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ブラウザから、2つ目に発行されたURLに接続してください。なお、1つ目はproductpageのURLです。
 
 ```bash
 minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url
