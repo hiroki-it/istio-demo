@@ -45,13 +45,19 @@ kubectl apply --server-side -f chapter-07/shared/peer-authentication.yaml
 helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-6. Keycloakをデプロイします。
+6. Istio EgressGatewayをデプロイします。
+
+```bash
+helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
+```
+
+7. Keycloakをデプロイします。
 
 ```bash
 helmfile -f chapter-07/keycloak/helmfile.yaml apply
 ```
 
-7. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+8. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f chapter-07/bookinfo-app/database/helmfile.yaml apply
@@ -65,7 +71,7 @@ helmfile -f chapter-07/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-07/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-8. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ブラウザから発行されたURLに接続してください。
+9. Istio IngressGatewayのNodePort Serviceを介して、Keycloakに接続します。ブラウザから発行されたURLに接続してください。
 
 ```bash
 minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url
