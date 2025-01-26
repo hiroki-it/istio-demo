@@ -53,7 +53,7 @@ helmfile -f chapter-01/nginx/helmfile.yaml apply
 6. Nginx Ingress ControllerのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
 
 ```bash
-minikube service ingress-nginx-controller -n ingress-nginx --url
+minikube service ingress-nginx-controller -n ingress-nginx --profile istio-demo --url
 ```
 
 7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。

@@ -45,7 +45,7 @@ kubectl rollout restart deployment -n app
 7. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
 
 ```bash
-minikube service istio-ingressgateway -n istio-ingress --url
+minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url
 ```
 
 8. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
