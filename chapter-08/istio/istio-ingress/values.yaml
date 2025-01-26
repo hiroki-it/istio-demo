@@ -1,0 +1,23 @@
+revision: 1-24-2
+
+service:
+  type: NodePort
+  ports:
+    - name: http-productpage
+      nodePort: 30000
+      port: 9080
+      targetPort: 9080
+    - name: http-keycloak
+      nodePort: 30001
+      port: 8080
+      targetPort: 8080
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - ingress
