@@ -12,7 +12,7 @@ kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 
 ### PrometheusとGrafana
 
-2. Prometheusのカスタムリソース定義をデプロイする。
+2. Prometheusのカスタムリソース定義をデプロイします。
 
 ```bash
 PROMETHEUS_VERSION=0.79.0
@@ -29,7 +29,7 @@ kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-oper
 kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
 ```
 
-3. Prometheusをデプロイする。
+3. Prometheusをデプロイします。
 
 ```bash
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
@@ -41,7 +41,7 @@ helmfile -f chapter-08/prometheus/helmfile.yaml apply
 kubectl port-forward svc/prometheus-server -n istio-system 9090:9090
 ```
 
-5. Grafanaをデプロイする。
+5. Grafanaをデプロイします。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply

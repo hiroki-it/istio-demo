@@ -10,7 +10,7 @@ Bookinfoアプリを使用して、Istioをデモンストレーションしま�
 
 ### 前提
 
-以下をインストールする。
+以下をインストールします。
 
 - [mise](https://mise.jdx.dev/getting-started.html)
 - [Docker Desktop](https://docs.docker.com/desktop/)
