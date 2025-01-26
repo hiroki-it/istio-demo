@@ -16,12 +16,10 @@ command:
   - /opt/keycloak/bin/kc.sh
 
 database:
-  vendor: mysql
-  port: 3306
-  hostname: keycloak.mysql.dev
-  database: keycloak
-  username: keycloak
-  password: keycloak
+  # MySQLがベンダーの場合、マイグレーションが長時間のためにProbeが失敗する
+  # 解消されるまで dev-file にする
+  # @see https://github.com/keycloak/keycloak/issues/35261
+  vendor: dev-file
 
 extraEnv: |
   - name: KC_HOSTNAME
