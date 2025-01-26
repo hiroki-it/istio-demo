@@ -11,7 +11,7 @@ docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
 
 docker exec -it ratings-mysql /bin/sh
 
-sh-4.4# mysql -h localhost -u root -ppassword
+sh-4.4# mysql -h localhost -u root -proot
 
 mysql> SHOW TABLES FROM test;
 +----------------+

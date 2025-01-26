@@ -11,7 +11,7 @@ docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 
 docker exec -it keycloak-mysql /bin/sh
 
-sh-4.4# mysql -h localhost -u root -ppassword
+sh-4.4# mysql -h localhost -u keycloak -pkeycloak
 
 mysql> SHOW TABLES FROM keycloak;
 Empty set
