@@ -90,5 +90,5 @@ HOST=http://localhost:64928
 
 curl -X POST ${HOST}/auth/realms/dev/protocol/openid-connect/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=client_credentials&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&scope"
+  -d "grant_type=client_credentials&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&scope=openid"
 ```
