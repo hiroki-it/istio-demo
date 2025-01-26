@@ -4,15 +4,13 @@
 
 7章では、Istioのセキュリティを学びます。
 
-
-
 1. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 ```
 
-2.`keycloak`データベースに`rating`テーブルを持つことを確認します。
+2.`test`データベースに`rating`テーブルを持つことを確認します。
 
 ```bash
 docker exec -it keycloak-mysql /bin/sh
@@ -88,7 +86,8 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 ```bash
 HOST=http://localhost:64928
 
-curl -X POST ${HOST}/auth/realms/dev/protocol/openid-connect/token \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=client_credentials&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&scope=openid"
+curl http://${HOST}/auth/realms/dev/protocol/openid-connect/auth?response_type=code&client_id=service&redirect_uri=http://keycloak-http.keycloak.svc.cluster.local:8080/authentication/callback&scope=openid
+
+curl ${HOST}/auth/realms/dev/protocol/openid-connect/token \
+  -d "grant_type=authorization_code&code=4dd3788b-e8a4-4ad6-8f03-28fb68f266f7.052bddf1-8bbc-4d61-a61c-2497fe5b8210.033f1115-baf8-4ca6-87b4-5d2938bcc665&redirect_uri=http://keycloak-http.keycloak.svc.cluster.local:8080/authentication/callback&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY"
 ```

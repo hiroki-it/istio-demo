@@ -56,13 +56,11 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-
 10. Prometheusをデプロイします。
 
 ```bash
 helmfile -f chapter-02/prometheus/helmfile.yaml apply
 ```
-
 
 11. Kialiをデプロイします。
 
