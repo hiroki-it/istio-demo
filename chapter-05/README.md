@@ -34,7 +34,7 @@ mysql> SELECT * from ratings;
 2. Namespaceをデプロイします。
 
 ```bash
-kubectl apply --server-side -f chapter-01/shared/namespace.yaml
+kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 ```
 
 3. Istio IngressGatewayをデプロイします。
@@ -63,11 +63,17 @@ helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-6. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
+6. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから発行されたURLに接続してください。
+
+```bash
+minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url
+```
+
+7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
 
 ![bookinfo](../images/bookinfo.png)
 
-7. Productpageに接続します。
+8. Productpageに接続します。
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
