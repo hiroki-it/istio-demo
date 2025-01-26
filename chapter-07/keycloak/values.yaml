@@ -31,7 +31,7 @@ extraEnv: |
   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
     value: admin
   - name: JAVA_OPTS_APPEND
-    value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
+    value: -Djgroups.dns.query=keycloak-headless.app.svc.cluster.local
 
 extraVolumes: |
   - name: keycloak-realms
