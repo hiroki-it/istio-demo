@@ -56,4 +56,43 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
+### Prometheus
+
+10. Prometheusのカスタムリソース定義をデプロイします。
+
+```bash
+PROMETHEUS_VERSION=0.79.0
+
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_prometheusagents.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_prometheuses.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_prometheusrules.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_scrapeconfigs.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
+kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
+```
+
+11. Prometheusをデプロイします。
+
+```bash
+helmfile -f chapter-02/prometheus/helmfile.yaml apply
+```
+
+### Kiali
+
+12. Kialiをデプロイします。
+
+```bash
+helmfile -f chapter-02/kiali/helmfile.yaml apply
+```
+
+13. Kialiのダッシュボードに接続します。ブラウザからPodの`20001`番ポートに接続してください。
+
+```bash
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
+
 ## 機能を実践する

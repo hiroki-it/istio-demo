@@ -37,7 +37,7 @@ mysql> SELECT * from ratings;
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 ```
 
-### PrometheusとGrafana
+### Prometheus
 
 3. Prometheusのカスタムリソース定義をデプロイします。
 
