@@ -41,7 +41,6 @@ mysql> SELECT * from ratings;
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 ```
 
-### Prometheus
 
 4. Prometheusをデプロイします。
 
@@ -67,7 +66,6 @@ helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 kubectl port-forward svc/grafana -n istio-system 8000:80
 ```
 
-### Kiali
 
 8. Kialiをデプロイします。
 
@@ -81,7 +79,6 @@ helmfile -f chapter-08/kiali/helmfile.yaml apply
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-### Minio
 
 10. Minioをデプロイします。
 
@@ -89,7 +86,6 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 helmfile -f chapter-08/minio/helmfile.yaml apply
 ```
 
-### Grafana Loki
 
 11. Grafana Lokiをデプロイします。
 
@@ -97,7 +93,6 @@ helmfile -f chapter-08/minio/helmfile.yaml apply
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-### Grafana Promtail
 
 12. Grafana Promtailをデプロイします。
 
@@ -105,7 +100,6 @@ helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 helmfile -f chapter-08/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-### Grafana Tempo
 
 13. Grafana Tempoをデプロイします。
 
@@ -113,7 +107,6 @@ helmfile -f chapter-08/grafana/grafana-promtail/helmfile.yaml apply
 helmfile -f chapter-08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-### OpenTelemetry Collector
 
 14. OpenTelemetry Collectorをデプロイします。
 
@@ -147,7 +140,6 @@ Attributes:
     ...
 ```
 
-### Istio
 
 16. Istioコントロールプレーンをデプロイします。
 

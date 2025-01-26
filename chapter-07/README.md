@@ -4,13 +4,15 @@
 
 7章では、Istioのセキュリティを学びます。
 
+
+
 1. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 ```
 
-2.`keycloak`データベースはさまざまなテーブルを持つことを確認します。
+2.`keycloak`データベースに`rating`テーブルを持つことを確認します。
 
 ```bash
 docker exec -it keycloak-mysql /bin/sh
@@ -75,4 +77,15 @@ helmfile -f chapter-07/bookinfo-app/reviews/helmfile.yaml apply
 
 ```bash
 minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url
+```
+
+## 機能を実践する
+
+### アクセストークンの取得
+
+ログインのリクエストを仮定して、アクセストークンを取得します。
+
+```bash
+curl <minikube serviceコマンドで発行されたKeycloakのURL>/auth/realms/dev/protocol/openid-connect/token \
+  -d "grant_type=client_credentials&username=izzy&password=izzy&client_id=service&client_secret=ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY&redirect_uri=http://keycloak-http.keycloak.svc.cluster.local:9080/authentication/callback"     
 ```

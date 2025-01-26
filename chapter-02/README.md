@@ -56,7 +56,6 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-### Prometheus
 
 10. Prometheusをデプロイします。
 
@@ -64,7 +63,6 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 helmfile -f chapter-02/prometheus/helmfile.yaml apply
 ```
 
-### Kiali
 
 11. Kialiをデプロイします。
 
