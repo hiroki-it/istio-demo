@@ -4,11 +4,15 @@
 
 ## セットアップ
 
-1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。これは、`test`データベースに`rating`テーブルを持ちます。
+1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
+```
 
+2. `test`データベースに`rating`テーブルを持つことを確認します。
+
+```bash
 docker exec -it ratings-mysql /bin/sh
 
 sh-4.4# mysql -h localhost -u root -proot

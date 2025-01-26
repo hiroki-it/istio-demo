@@ -4,11 +4,15 @@
 
 ## セットアップ
 
-1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。これは、`test`データベースに`rating`テーブルを持ちます。
+1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
+```
 
+2. `test`データベースに`rating`テーブルを持つことを確認します。
+
+```bash
 docker exec -it ratings-mysql /bin/sh
 
 sh-4.4# mysql -h localhost -u root -proot
@@ -31,30 +35,13 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-2. Namespaceをデプロイします。
+3. Namespaceをデプロイします。
 
 ```bash
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 ```
 
 ### Prometheus
-
-3. Prometheusのカスタムリソース定義をデプロイします。
-
-```bash
-PROMETHEUS_VERSION=0.79.0
-
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_prometheusagents.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_prometheuses.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_prometheusrules.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_scrapeconfigs.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
-kubectl apply --server-side -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v${PROMETHEUS_VERSION}/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
-```
 
 4. Prometheusをデプロイします。
 
