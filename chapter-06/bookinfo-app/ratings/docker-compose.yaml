@@ -15,11 +15,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - minikube
+      - istio-demo
 
 volumes:
   db_data:
 
 networks:
-  minikube:
+  istio-demo:
     external: true
