@@ -42,6 +42,9 @@ extraVolumeMounts: |
 
 fullnameOverride: keycloak
 
+http:
+  relativePath: /
+
 image:
   tag: 26.1.0
 
