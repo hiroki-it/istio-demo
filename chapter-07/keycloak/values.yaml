@@ -22,8 +22,6 @@ database:
   vendor: dev-file
 
 extraEnv: |
-  - name: KC_HOSTNAME
-    value: keycloak-http.app.svc.cluster.local
   - name: KC_BOOTSTRAP_ADMIN_USERNAME
     value: admin
   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
