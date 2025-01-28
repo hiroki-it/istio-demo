@@ -2,7 +2,3 @@ service:
   name: productpage
   host: productpage.app.svc.cluster.local
   port: 9080
-
-keycloak:
-  realm: dev
-  host: keycloak-http.app.svc.cluster.local
