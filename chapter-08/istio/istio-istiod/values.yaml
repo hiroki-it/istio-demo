@@ -54,8 +54,6 @@ meshConfig:
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
-  outboundTrafficPolicy:
-    mode: REGISTRY_ONLY
 
 revision: 1-24-2
 
