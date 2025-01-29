@@ -51,34 +51,24 @@ kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
-5. Prometheusのダッシュボードに接続します。ブラウザからPodの`9090`番ポートに接続してください。
-
-```bash
-kubectl port-forward svc/prometheus-server -n istio-system 9090:9090
-```
-
-6. Grafanaをデプロイします。
+5. Grafanaをデプロイします。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 ```
 
-7. Grafanaのダッシュボードに接続します。ブラウザからPodの`8000`番ポートに接続してください。
-
-```bash
-kubectl port-forward svc/grafana -n istio-system 8000:80
-```
-
-8. Kialiをデプロイします。
+6. Kialiをデプロイします。
 
 ```bash
 helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
-9. Kialiのダッシュボードに接続します。ブラウザからPodの`20001`番ポートに接続してください。
+7. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザからPrometheus (`20001`番ポート) 、Grafana (`8000`番ポート) 、Kiali のPodに接続してください。
 
 ```bash
-kubectl port-forward svc/kiali 20001:20001 -n istio-system
+kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
+  kubectl port-forward svc/grafana -n istio-system 8000:80 & \
+  kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
 10. Minioをデプロイします。

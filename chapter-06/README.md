@@ -4,7 +4,6 @@
 
 Istioカスタムリソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を使用して、Istioがマイクロサービスの回復性を管理する様子を確認します。
 
-
 ## セットアップ
 
 1. 各マイクロサービスにIstioカスタムリソースをデプロイします。

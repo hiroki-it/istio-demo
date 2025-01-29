@@ -6,7 +6,6 @@ Istioカスタムリソース (AuthorizationPolicy、PeerAuthentication、Reques
 
 ## セットアップ
 
-
 1. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
@@ -81,4 +80,3 @@ minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --ur
 ```
 
 ## 機能を実践する
-
