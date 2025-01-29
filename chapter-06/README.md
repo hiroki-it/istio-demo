@@ -1,8 +1,13 @@
 # 6章
 
-6章では、Istioの回復性管理を学びます。
+6章では、Istioによる回復性管理を学びます。
 
-5. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+Istioカスタムリソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を使用して、Istioがマイクロサービスの回復性を管理する様子を確認します。
+
+
+## セットアップ
+
+1. 各マイクロサービスにIstioカスタムリソースをデプロイします。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/database/helmfile.yaml apply

@@ -1,8 +1,11 @@
 # 7章
 
+7章では、Istioによるセキュリティを学びます。
+
+Istioカスタムリソース (AuthorizationPolicy、PeerAuthentication、RequestAuthentication) を使用して、Istioが証明書や認証認可を管理する様子を確認します。
+
 ## セットアップ
 
-7章では、Istioのセキュリティを学びます。
 
 1. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 

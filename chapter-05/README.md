@@ -1,6 +1,8 @@
 # 5章
 
-5章では、Istioのトラフィック管理を学びます。
+5章では、Istioによるトラフィック管理を学びます。
+
+Istioカスタムリソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を使用して、IstioがL4やL7のトラフィックを管理する様子を確認します。
 
 ## セットアップ
 
