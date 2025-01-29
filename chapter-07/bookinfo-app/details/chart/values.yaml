@@ -6,3 +6,4 @@ service:
 keycloak:
   realm: dev
   host: keycloak-http.app.svc.cluster.local
+  port: 8080
