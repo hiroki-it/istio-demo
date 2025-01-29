@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.name }}-http
+  name: {{ .Values.service.name }}-http-ingress
 spec:
   exportTo:
     - "*"
