@@ -79,11 +79,11 @@ helmfile -f chapter-07/bookinfo-app/reviews/helmfile.yaml apply
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-10. 接続時点では未認証のため、詳細情報とレビュー情報は `403` で閲覧できません。
+10. 接続時点では未認証です。detailsサービスとreviewsサービスはproductpageサービスに `403` を返信するため、productpageサービスは詳細情報とレビュー情報を取得できず、ユーザーはこれらを閲覧できません。
 
 12. Sign inボタンをクリックすると、productpageサービスはKeycloakに認可リクエストを送信します。 Keycloakは認証画面をレスポンスするため、ユーザー名を`izzy`、パスワードを`izzy`とします。Keycloakの認証に成功すれば、Keycloakに登録された`izzy`ユーザーでBookinfoにSSOできます。
 
-13. 認証後のため、詳細情報とレビュー情報を閲覧できるようになります。
+13. 認証後、productpageサービスから後続のマイクロサービスにアクセストークンが伝播します。これにより、detailsサービスとreviewsサービスはproductpageサービスに `200` を返信します。productpageサービスは詳細情報とレビュー情報を取得できるようになり、ユーザーはこれらを閲覧できます。
 
 
 ## 機能を実践する
