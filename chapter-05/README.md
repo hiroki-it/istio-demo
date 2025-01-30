@@ -2,7 +2,9 @@
 
 5章では、Istioによるトラフィック管理を学びます。
 
-Istioカスタムリソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を使用して、IstioがL4やL7のトラフィックを管理する様子を確認します。
+トラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を使用して、IstioがL4やL7のトラフィックを管理する様子を確認します。
+
+これらのリソースはサービスメッシュに必須であり、以降の全ての章で登場します。
 
 ## セットアップ
 
@@ -37,25 +39,25 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-2. Namespaceをデプロイします。
+2. Namespaceを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 ```
 
-3. Istio IngressGatewayをデプロイします。
+3. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-ingress/helmfile.yaml apply
 ```
 
-4. Istio EgressGatewayをデプロイします。
+4. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 ```
 
-5. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+5. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-05/bookinfo-app/database/helmfile.yaml apply

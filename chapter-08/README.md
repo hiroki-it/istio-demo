@@ -2,7 +2,7 @@
 
 8章では、Istioによるテレメトリー (ログ、メトリクス、分散トレース) 作成を学びます。
 
-Istioカスタムリソース (Telemetry) を使用して、Istioがテレメトリーを作成する様子を確認します。
+テレメトリー作成系リソース (Telemetry) を使用して、Istioがテレメトリーを作成する様子を確認します。
 
 また、テレメトリー間をトレースIDで紐付け、マイクロサービスアプリケーションのオブザーバビリティーを向上させます。
 
@@ -39,25 +39,25 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-3. Namespaceをデプロイします。
+3. Namespaceを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 ```
 
-4. Prometheusをデプロイします。
+4. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
-5. Grafanaをデプロイします。
+5. Grafanaを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 ```
 
-6. Kialiをデプロイします。
+6. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-08/kiali/helmfile.yaml apply
@@ -71,31 +71,31 @@ kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-10. Minioをデプロイします。
+10. Minioを作成します。
 
 ```bash
 helmfile -f chapter-08/minio/helmfile.yaml apply
 ```
 
-11. Grafana Lokiをデプロイします。
+11. Grafana Lokiを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-12. Grafana Promtailをデプロイします。
+12. Grafana Promtailを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-13. Grafana Tempoをデプロイします。
+13. Grafana Tempoを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-14. OpenTelemetry Collectorをデプロイします。
+14. OpenTelemetry Collectorを作成します。
 
 ```bash
 helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
@@ -127,31 +127,31 @@ Attributes:
     ...
 ```
 
-16. Istioコントロールプレーンをデプロイします。
+16. Istioコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 ```
 
-17. Telemetryリソースをデプロイします。
+17. Telemetryリソースを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-08/shared/telemetry.yaml
 ```
 
-18. Istio IngressGatewayをデプロイします。
+18. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-19. Istiod EgressGatewayをデプロイします。
+19. Istiod EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 ```
 
-20. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+20. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-08/bookinfo-app/database/helmfile.yaml apply

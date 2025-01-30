@@ -2,7 +2,7 @@
 
 7章では、Istioによるセキュリティを学びます。
 
-Istioカスタムリソース (AuthorizationPolicy、PeerAuthentication、RequestAuthentication) を使用して、Istioが証明書や認証認可を管理する様子を確認します。
+証明書管理系リソース (PeerAuthentication) と認証認可 (AuthorizationPolicy、RequestAuthentication) を使用して、Istioが証明書や認証認可を管理する様子を確認します。
 
 ## セットアップ
 
@@ -29,37 +29,37 @@ mysql> SHOW TABLES FROM keycloak;
 +-------------------------------+
 ```
 
-3. Namespaceリソースをデプロイします。
+3. Namespaceリソースを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-07/shared/namespace.yaml
 ```
 
-4. PeerAuthenticationリソースをデプロイします。
+4. PeerAuthenticationリソースを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-07/shared/peer-authentication.yaml
 ```
 
-5. Istio IngressGatewayをデプロイします。
+5. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-6. Istio EgressGatewayをデプロイします。
+6. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
 ```
 
-7. Keycloakをデプロイします。
+7. Keycloakを作成します。
 
 ```bash
 helmfile -f chapter-07/keycloak/helmfile.yaml apply
 ```
 
-8. 各マイクロサービスにIstioカスタムリソースをデプロイします。
+8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-07/bookinfo-app/database/helmfile.yaml apply

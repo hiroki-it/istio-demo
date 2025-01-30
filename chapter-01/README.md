@@ -8,13 +8,13 @@ BookinfoはIstioのリポジトリで提供されているサンプルであり�
 
 ## セットアップ
 
-1. Namespaceをデプロイします。
+1. Namespaceを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-01/shared/namespace.yaml
 ```
 
-2. Bookinfoアプリケーションをデプロイします。
+2. Bookinfoアプリケーションを作成します。
 
 ```bash
 helmfile -f chapter-01/bookinfo-app/details/helmfile.yaml apply
@@ -40,13 +40,13 @@ reviews-v2-5fdf9886c7-k9cks      1/1     Running   0          8m21s
 reviews-v3-bb6b8ddc7-7jzc8       1/1     Running   0          8m21s
 ```
 
-3. Ingressをデプロイします。
+3. Ingressを作成します。
 
 ```bash
 helmfile -f chapter-01/ingress/productpage/helmfile.yaml apply
 ```
 
-4. Nginx Ingress Controllerをデプロイします。
+4. Nginx Ingress Controllerを作成します。
 
 ```bash
 helmfile -f chapter-01/nginx/helmfile.yaml apply
@@ -55,7 +55,7 @@ helmfile -f chapter-01/nginx/helmfile.yaml apply
 6. `http://localhost:9080`から、Bookinfoアプリケーションに接続します。
 
 ```bash
-kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080      
+kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
 ```
 
 7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
