@@ -1,3 +1,3 @@
 apiVersion: v2
-name: productpage-ingresss
+name: productpage-ingress
 version: 1.0.0
