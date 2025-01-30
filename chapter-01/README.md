@@ -52,7 +52,7 @@ helmfile -f chapter-01/ingress/productpage/helmfile.yaml apply
 helmfile -f chapter-01/nginx/helmfile.yaml apply
 ```
 
-6. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+5. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
