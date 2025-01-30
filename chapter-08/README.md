@@ -39,7 +39,7 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-3. Namespaceを作成します。
+3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
@@ -133,7 +133,7 @@ Attributes:
 helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 ```
 
-17. Telemetryリソースを作成します。
+17. Telemetryを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-08/shared/telemetry.yaml

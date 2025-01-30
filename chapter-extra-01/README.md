@@ -8,7 +8,7 @@ Istioのトラフィック管理系リソースの一部は、Gateway APIに置�
 
 ## セットアップ
 
-1. Namespaceリソースを作成します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply -f chapter-extra-01/shared/namespace.yaml

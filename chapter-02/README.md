@@ -8,7 +8,7 @@ Kialiのメッシュトポロジーを確認し、Istioがマイクロサービ�
 
 ## セットアップ
 
-1. Namespaceリソースを作成します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply -f chapter-02/shared/namespace.yaml

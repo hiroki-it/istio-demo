@@ -29,13 +29,13 @@ mysql> SHOW TABLES FROM keycloak;
 +-------------------------------+
 ```
 
-3. Namespaceリソースを作成します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply --server-side -f chapter-07/shared/namespace.yaml
 ```
 
-4. PeerAuthenticationリソースを作成します。
+4. PeerAuthenticationを作成します。
 
 ```bash
 kubectl apply --server-side -f chapter-07/shared/peer-authentication.yaml

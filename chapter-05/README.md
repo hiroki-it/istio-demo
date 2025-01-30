@@ -39,7 +39,7 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-2. Namespaceを作成します。
+2. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply --server-side -f chapter-05/shared/namespace.yaml
