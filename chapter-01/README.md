@@ -58,12 +58,6 @@ helmfile -f chapter-01/nginx/helmfile.yaml apply
 kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
 ```
 
-7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
-
-![bookinfo](../images/bookinfo.png)
-
-8. Productpageに接続します。
-
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
 ## 掃除する
