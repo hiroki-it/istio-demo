@@ -46,7 +46,7 @@ helmfile -f chapter-02/bookinfo-app/reviews/helmfile.yaml apply
 kubectl rollout restart deployment -n app
 ```
 
-7. `http://localhost:9080`から、Bookinfoアプリケーションに接続します。
+7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
