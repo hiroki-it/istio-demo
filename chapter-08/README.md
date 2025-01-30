@@ -63,7 +63,7 @@ helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
-7. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザからPrometheus (`20001`番ポート) 、Grafana (`8000`番ポート) 、Kiali のPodに接続してください。
+7. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
@@ -164,3 +164,11 @@ helmfile -f chapter-08/bookinfo-app/ratings/helmfile.yaml apply
 
 helmfile -f chapter-08/bookinfo-app/reviews/helmfile.yaml apply
 ```
+
+21. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
+
+```bash
+kubectl port-forward svc/grafana -n istio-system 8000:80
+```
+
+22. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
