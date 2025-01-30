@@ -79,3 +79,50 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
 ## 機能を実践する
+
+
+## Gateway API
+
+1. Istio IngressGatewayを削除します。
+
+```bash
+helmfile -f chapter-02/istio/istio-ingress/helmfile.yaml destroy
+```
+
+2. Istioカスタムリソースを削除します。
+
+```bash
+helmfile -f chapter-02/bookinfo-app/details/helmfile.yaml destroy
+
+helmfile -f chapter-02/bookinfo-app/productpage/helmfile.yaml destroy
+
+helmfile -f chapter-02/bookinfo-app/ratings/helmfile.yaml destroy
+
+helmfile -f chapter-02/bookinfo-app/reviews/helmfile.yaml destroy
+```
+
+3. Gateway APIをデプロイします。
+
+```bash
+CRD_VERSION=1.2.0
+
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
+
+helmfile -f chapter-02/extra/gateway/istio/helmfile.yaml apply
+
+helmfile -f chapter-02/extra/bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f chapter-02/extra/bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f chapter-02/extra/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f chapter-02/extra/bookinfo-app/reviews/helmfile.yaml apply
+```
+
+4. `http://localhost:9080`から、Bookinfoアプリケーションに接続します。
+
+```bash
+kubectl port-forward svc/ingress-istio -n istio-ingress 9080:9080      
+```
+
+<br>
