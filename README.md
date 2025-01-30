@@ -2,7 +2,7 @@
 
 ## プロジェクトについて
 
-Bookinfoアプリを使用して、Istioをデモンストレーションします。
+Bookinfoアプリケーションを使用して、Istioをデモンストレーションします。
 
 ![mesh-topology](./images/mesh-topology.png)
 

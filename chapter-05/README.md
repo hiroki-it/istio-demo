@@ -69,10 +69,10 @@ helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayのNodePort Serviceを介して、Bookinfoアプリケーションに接続します。ブラウザから、発行されたURLに接続してください。
+6. `http://localhost:9080`から、Bookinfoアプリケーションに接続します。
 
 ```bash
-minikube service istio-ingressgateway -n istio-ingress --profile istio-demo --url
+kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
 7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
