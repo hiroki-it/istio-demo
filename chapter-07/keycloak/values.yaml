@@ -29,7 +29,7 @@ extraEnv: |
   - name: KC_PROXY
     values: edge
   - name: JAVA_OPTS_APPEND
-    value: -Djgroups.dns.query=keycloak-headless.app.svc.cluster.local
+    value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 
 extraVolumes: |
   - name: keycloak-realms

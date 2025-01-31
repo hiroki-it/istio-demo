@@ -6,12 +6,12 @@ releases:
   - name: keycloak
     chart: codecentric/keycloakx
     version: 6.0.0
-    namespace: app
+    namespace: keycloak
     atomic: true
     values:
       - values.yaml
   - name: keycloak-istio
     chart: istio
     version: 1.0.0
-    namespace: app
+    namespace: keycloak
     atomic: true

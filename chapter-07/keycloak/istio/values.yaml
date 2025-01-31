@@ -1,8 +1,8 @@
 service:
   name: keycloak
   host:
-    http: keycloak-http.app.svc.cluster.local
-    headless: keycloak-headless.app.svc.cluster.local
+    http: keycloak-http.keycloak.svc.cluster.local
+    headless: keycloak-headless.keycloak.svc.cluster.local
   port:
     http: 8080
     https: 8443
