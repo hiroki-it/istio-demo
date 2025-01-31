@@ -33,7 +33,7 @@ $ helm plugin install https://github.com/databus23/helm-diff
 
 ### Minikubeのセットアップ
 
-1. Minikubeを起動します
+1. Minikubeクラスターを起動します
 
 ```bash
 # バージョン
