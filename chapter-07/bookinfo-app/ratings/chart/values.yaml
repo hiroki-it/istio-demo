@@ -7,7 +7,7 @@ keycloak:
   realm: dev
   host:
     web: localhost
-    api: keycloak-http.app.svc.cluster.local
+    api: keycloak-http.keycloak.svc.cluster.local
   port: 8080
 
 mysql:
