@@ -6,4 +6,8 @@
 
 これらを異なるクラスターにデプロイし、障害の影響を分離します。
 
-## セットアップ
+9章に取り組む前に、既存のMinikubeクラスターを削除します。
+
+```bash
+minikube delete --profile istio-demo
+```
