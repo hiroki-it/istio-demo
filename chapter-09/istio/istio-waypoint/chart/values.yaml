@@ -1,6 +1,5 @@
 service:
-  name: ingress
-  port: 9080
+  name: istio-waypoint
 
 gateway:
   className: istio-waypoint
