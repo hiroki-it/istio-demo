@@ -1,0 +1,5 @@
+cni:
+  ambient:
+    enabled: true
+
+tag: 1.24.2

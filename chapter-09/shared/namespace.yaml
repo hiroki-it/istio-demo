@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app
+  labels:
+    istio.io/dataplane-mode: ambient
+    istio.io/use-waypoint: waypoint
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-ingress
+  labels:
+    istio.io/dataplane-mode: ambient
+    istio.io/use-waypoint: waypoint
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-system
