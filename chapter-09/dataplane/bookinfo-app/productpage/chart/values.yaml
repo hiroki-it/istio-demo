@@ -1,4 +1,0 @@
-service:
-  name: productpage
-  host: productpage.app.svc.cluster.local
-  port: 9080
