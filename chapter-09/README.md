@@ -1,19 +1,89 @@
 # 9章
 
-9章では、Istioのデプロイパターンを学びます。
+9章では、Istioの新しいアーキテクチャを検証します。
 
-今までの章では、Istioコントロールプレーンとマイクロサービスアプリケーションを同じKubernetesクラスターにデプロイしていました。
+## セットアップ
 
-これらを異なるクラスターにデプロイし、障害の影響を分離します。
-
-1. 9章に取り組む前に、既存のMinikubeクラスターを削除します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-minikube delete --profile istio-demo
+kubectl apply -f chapter-09/shared/namespace.yaml
 ```
 
-2. Minikubeクラスター間を接続するネットワークを作成します。
+2. Istiodコントロールプレーンを作成します。
 
 ```bash
-docker network create multi-cluster --subnet=172.18.0.0/16 --gateway=172.18.0.1
+helmfile -f chapter-09/istio/istio-base/helmfile.yaml apply
+
+helmfile -f chapter-09/istio/istio-istiod/helmfile.yaml apply
 ```
+
+3. Istio Ztunnelを作成します。L4をトラフィック管理できるようになります。
+
+```bash
+helmfile -f chapter-09/istio/istio-ztunnel/helmfile.yaml apply
+
+helmfile -f chapter-09/istio/istio-cni/helmfile.yaml apply
+```
+
+4. Gateway APIのカスタムリソース定義とWaypointを作成します。L7をトラフィック管理できるようになります。
+
+```bash
+CRD_VERSION=1.2.0
+
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
+
+helmfile -f chapter-09/istio/gateway/helmfile.yaml apply
+```
+
+5. Istio IngressGatewayを作成します。
+
+```bash
+helmfile -f chapter-09/istio/istio-ingress/helmfile.yaml apply
+```
+
+6. Istioのトラフィック管理系リソースを作成します。
+
+```bash
+helmfile -f chapter-09/bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f chapter-09/bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f chapter-09/bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f chapter-09/bookinfo-app/reviews/helmfile.yaml apply
+```
+
+7. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
+
+```bash
+kubectl rollout restart deployment -n app
+```
+
+8. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+
+```bash
+kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
+```
+
+![bookinfo_productpage](../images/bookinfo_productpage.png)
+
+9. Prometheusを作成します。
+
+```bash
+helmfile -f chapter-09/prometheus/helmfile.yaml apply
+```
+
+10. Kialiを作成します。
+
+```bash
+helmfile -f chapter-09/kiali/helmfile.yaml apply
+```
+
+11. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+
+```bash
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
+
+## 機能を実践する
