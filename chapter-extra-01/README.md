@@ -1,6 +1,6 @@
 # 付録1
 
-付録1では、IstioとGateway API連携を学びます。
+付録1では、IstioとGateway APIの統合を学びます。
 
 Istioのトラフィック管理系リソースの一部は、Gateway APIリソースに置き換えられます。
 
