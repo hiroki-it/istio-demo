@@ -77,12 +77,6 @@ helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
-7. Bookinfoアプリケーションに接続し、**Normal user**をクリックします。
-
-![bookinfo](../images/bookinfo.png)
-
-8. Productpageに接続します。
-
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
 ## 機能を実践する
