@@ -1,21 +1,19 @@
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: node.kubernetes.io/nodegroup
-              operator: In
-              values:
-                - system
-
 global:
   tag: 1.24.2
   imagePullPolicy: IfNotPresent
+  meshID: multiple-cluster-mesh
+  externalIstiod: true
+  caAddress: localhost:15012
+  istioNamespace: istio-system
+  multiCluster:
+    clusterName: istio-dataplane
+  network: istio-controlplane
 
 meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
   rootNamespace: null
+  discoveryAddress: localhost:15012
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
