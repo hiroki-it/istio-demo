@@ -13,7 +13,7 @@ NODE_COUNT=3
 
 # ハードウェアリソース
 CPU=2
-MEMORY=1024
+MEMORY=1800
 
 minikube start \
   --profile istio-dataplane \
@@ -24,8 +24,15 @@ minikube start \
   --mount-string "$(dirname $(pwd))/istio-dataplane:/data" \
   --kubernetes-version v${KUBERNETES_VERSION} \
   --cpus ${CPU} \
-  --memory ${MEMORY} \
-  --network multi-cluster
+  --memory ${MEMORY}
+```
+
+```bash
+kubectl label node istio-dataplane-m02 node.kubernetes.io/nodegroup=ingress --overwrite \
+  && kubectl label node istio-dataplane-m02 node-role.kubernetes.io/worker=worker --overwrite
+
+kubectl label node istio-dataplane-m03 node.kubernetes.io/nodegroup=app --overwrite \
+  && kubectl label node istio-dataplane-m02 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
 2. 現在のコンテキストが`istio-dataplane`になっていることを確認します。
@@ -37,6 +44,8 @@ kubectl config current-context
 3. Istio IngressGatewayを作成します。
 
 ```bash
+helmfile -f chapter-09/dataplane/istio/istio-base/helmfile.yaml apply
+
 helmfile -f chapter-09/dataplane/istio/istio-ingress/helmfile.yaml apply
 ```
 

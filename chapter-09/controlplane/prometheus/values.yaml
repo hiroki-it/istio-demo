@@ -1,23 +1,4 @@
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: node.kubernetes.io/nodegroup
-              operator: In
-              values:
-                - system
-
 alertmanager:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: node.kubernetes.io/nodegroup
-                operator: In
-                values:
-                  - system
   service:
     type: NodePort
     nodePort: 32001
