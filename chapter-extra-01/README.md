@@ -24,10 +24,12 @@ helmfile -f chapter-extra-01/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-extra-01/istio/istio-istiod/helmfile.yaml apply
 ```
 
-3. Istio IngressGatewayがデプロイされたままであれば、これを削除します。
+3. Istio IngressGatewayがあれば、これを削除します。
 
 ```bash
-helmfile -f chapter-extra-01/istio/istio-ingress/helmfile.yaml destroy
+kubectl delete deployment istio-ingressgateway -n istio-ingress
+
+kubectl delete service istio-ingressgateway -n istio-ingress
 ```
 
 4. Gateway APIのカスタムリソース定義を作成します。
@@ -41,7 +43,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 5. Istioのトラフィック管理系リソースをGateway APIリソースに置き換えます。
 
 ```bash
-helmfile -f chapter-extra-01/gateway/istio/helmfile.yaml apply
+helmfile -f chapter-extra-01/ingress/istio/helmfile.yaml apply
 
 helmfile -f chapter-extra-01/bookinfo-app/details/helmfile.yaml apply
 
