@@ -1,5 +1,5 @@
 releases:
-  - name: ingress
+  - name: istio-ingress
     chart: chart
     version: 1.0.0
     namespace: istio-ingress
