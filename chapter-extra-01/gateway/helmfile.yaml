@@ -1,5 +1,5 @@
 releases:
-  - name: istio
+  - name: gateway
     chart: chart
     version: 1.0.0
     namespace: istio-ingress
