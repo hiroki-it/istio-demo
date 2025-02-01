@@ -18,7 +18,7 @@ helmfile -f chapter-09/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-09/istio/istio-istiod/helmfile.yaml apply
 ```
 
-3. Istio Ztunnelを作成します。L4をトラフィック管理できるようになります。
+3. Istio Ztunnelを作成します。これにより、Podに対するL4をトラフィックを管理できるようになります。
 
 ```bash
 helmfile -f chapter-09/istio/istio-ztunnel/helmfile.yaml apply
@@ -26,7 +26,7 @@ helmfile -f chapter-09/istio/istio-ztunnel/helmfile.yaml apply
 helmfile -f chapter-09/istio/istio-cni/helmfile.yaml apply
 ```
 
-4. Gateway APIのカスタムリソース定義とWaypointを作成します。L7をトラフィック管理できるようになります。
+4. Gateway APIのカスタムリソース定義とIstio Waypointを作成します。これにより、Podに対するL7のトラフィックを管理できるようになります。
 
 ```bash
 CRD_VERSION=1.2.0
