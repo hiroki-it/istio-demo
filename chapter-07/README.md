@@ -2,7 +2,7 @@
 
 7章では、Istioによるセキュリティを学びます。
 
-証明書管理系リソース (PeerAuthentication) と認証認可 (AuthorizationPolicy、RequestAuthentication) を使用して、Istioが証明書や認証認可を管理する様子を確認します。
+証明書管理系リソース (PeerAuthentication) と認証認可 (AuthorizationPolicy、RequestAuthentication) を使用して、Istioが証明書を管理し、また認証認可を実施する様子を確認します。
 
 ## セットアップ
 
