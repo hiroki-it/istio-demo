@@ -18,7 +18,8 @@ meshConfig:
   rootNamespace: null
   discoverySelectors:
     - matchLabels:
-        istio.io/rev: stable
+        istio.io/dataplane-mode: ambient
+        istio.io/use-waypoint: istio-waypoint
 
 pilot:
   env:
