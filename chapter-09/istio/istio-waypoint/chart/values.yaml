@@ -1,13 +1,3 @@
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: node.kubernetes.io/nodegroup
-              operator: In
-              values:
-                - app
-
 service:
   name: istio-waypoint
 
