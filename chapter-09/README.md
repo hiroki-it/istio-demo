@@ -33,7 +33,7 @@ CRD_VERSION=1.2.0
 
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 
-helmfile -f chapter-09/istio/gateway/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-waypoint/helmfile.yaml apply
 ```
 
 5. Istio IngressGatewayを作成します。
