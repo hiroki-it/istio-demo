@@ -10,3 +10,6 @@ spec:
     - name: tcp-ztunnel
       port: 15008
       protocol: HBONE
+      allowedRoutes:
+        namespaces:
+          from: All
