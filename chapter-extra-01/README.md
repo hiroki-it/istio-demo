@@ -45,7 +45,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 5. Istioのトラフィック管理系リソースをGateway APIリソースに置き換えます。
 
 ```bash
-helmfile -f chapter-extra-01/ingress/istio/helmfile.yaml apply
+helmfile -f chapter-extra-01/istio/istio-ingress/helmfile.yaml apply
 
 helmfile -f chapter-extra-01/bookinfo-app/details/helmfile.yaml apply
 
