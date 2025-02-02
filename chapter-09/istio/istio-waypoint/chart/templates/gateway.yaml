@@ -3,7 +3,7 @@ kind: Gateway
 metadata:
   labels:
     istio.io/waypoint-for: service
-  name: {{ .Values.service.name }}
+  name: {{ .Values.service.name }}-ingress
 spec:
   gatewayClassName: {{ .Values.gateway.className }}
   listeners:
