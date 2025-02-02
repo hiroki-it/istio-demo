@@ -4,7 +4,7 @@ metadata:
   name: app
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: istio-waypoint-mesh
+    istio.io/use-waypoint: istio-waypoint
 ---
 apiVersion: v1
 kind: Namespace
@@ -12,7 +12,7 @@ metadata:
   name: istio-egress
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: istio-waypoint-egress
+    istio.io/use-waypoint: istio-waypoint
 ---
 apiVersion: v1
 kind: Namespace
@@ -20,7 +20,7 @@ metadata:
   name: istio-ingress
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: istio-waypoint-ingress
+    istio.io/use-waypoint: istio-waypoint
 ---
 apiVersion: v1
 kind: Namespace
