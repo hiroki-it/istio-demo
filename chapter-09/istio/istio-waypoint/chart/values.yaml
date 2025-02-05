@@ -1,6 +1,0 @@
-service:
-  name: istio-waypoint
-
-gateway:
-  className: istio-waypoint
-

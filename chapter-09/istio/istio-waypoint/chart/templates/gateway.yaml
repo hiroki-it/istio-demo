@@ -3,9 +3,9 @@ kind: Gateway
 metadata:
   labels:
     istio.io/waypoint-for: service
-  name: {{ .Values.service.name }}
+  name: {{ .Release.Namespace }}
 spec:
-  gatewayClassName: {{ .Values.gateway.className }}
+  gatewayClassName: istio-waypoint
   listeners:
     - name: tcp-ztunnel
       port: 15008
