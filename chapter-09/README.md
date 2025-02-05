@@ -2,7 +2,8 @@
 
 以下を実践することにより、Istioアンビエントモードによるマイクロサービスの横断的管理を学びます。
 
-- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- Istioコントロールプレーン、Istio IngressGateway、Istio waypoint-proxy、およびIstio CNI、Istio Ztunnelを導入する
+- Istioのトラフィック管理系リソース (DestinationRule、Gateway、VirtualService) を作成する
 
 ## セットアップ
 
@@ -35,7 +36,7 @@ CRD_VERSION=1.2.0
 
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 
-helmfile -f chapter-09/istio/istio-waypoint/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-waypoint-proxy/helmfile.yaml apply
 ```
 
 5. Istio IngressGatewayを作成します。
