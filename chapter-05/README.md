@@ -18,13 +18,13 @@ kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 2. Bookinfoアプリケーションを作成します。
 
 ```bash
-helmfile -f bookinfo-app-istio/details/helmfile.yaml apply
+helmfile -f bookinfo-app/details/helmfile.yaml apply
 
-helmfile -f bookinfo-app-istio/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app-istio/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 
-helmfile -f bookinfo-app-istio/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
