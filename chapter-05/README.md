@@ -39,25 +39,33 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-2. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 ```
 
-3. Istio IngressGatewayを作成します。
+4. Istiodコントロールプレーンを作成します。
+
+```bash
+helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
+
+helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
+```
+
+5. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-ingress/helmfile.yaml apply
 ```
 
-4. Istio EgressGatewayを作成します。
+6. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 ```
 
-5. Istioのトラフィック管理系リソースを作成します。
+7. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-05/bookinfo-app/database/helmfile.yaml apply
@@ -71,7 +79,7 @@ helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-6. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+8. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
