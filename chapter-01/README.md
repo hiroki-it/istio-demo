@@ -17,13 +17,13 @@ kubectl apply --server-side -f chapter-01/shared/namespace.yaml
 2. Bookinfoアプリケーションを作成します。
 
 ```bash
-helmfile -f chapter-01/bookinfo-app/details/helmfile.yaml apply
+helmfile -f bookinfo-app/details/helmfile.yaml apply
 
-helmfile -f chapter-01/bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f chapter-01/bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 
-helmfile -f chapter-01/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 3. アプリケーションが正常に稼働していることを確認します。

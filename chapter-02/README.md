@@ -13,7 +13,19 @@
 kubectl apply -f chapter-02/shared/namespace.yaml
 ```
 
-2. Istiodコントロールプレーンを作成します。
+2. Bookinfoアプリケーションを作成します。
+
+```bash
+helmfile -f bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+```
+
+3. Istiodコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
@@ -21,13 +33,13 @@ helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
 ```
 
-3. Istio IngressGatewayを作成します。
+4. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-02/istio/istio-ingress/helmfile.yaml apply
 ```
 
-4. Istioのトラフィック管理系リソースを作成します。
+5. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-02/bookinfo-app/details/helmfile.yaml apply
@@ -39,13 +51,13 @@ helmfile -f chapter-02/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-02/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-5. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
+6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
 
 ```bash
 kubectl rollout restart deployment -n app
 ```
 
-6. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
@@ -53,19 +65,19 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-7. Prometheusを作成します。
+8. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-02/prometheus/helmfile.yaml apply
 ```
 
-8. Kialiを作成します。
+9. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-02/kiali/helmfile.yaml apply
 ```
 
-9. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+10. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system

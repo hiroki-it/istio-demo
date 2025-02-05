@@ -9,13 +9,31 @@
 
 ## セットアップ
 
-1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+
+```bash
+kubectl apply --server-side -f chapter-08/shared/namespace.yaml
+```
+
+2. Bookinfoアプリケーションを作成します。
+
+```bash
+helmfile -f bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+```
+
+3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
 ```
 
-2. `test`データベースは`rating`テーブルを持つことを確認します。
+4. `test`データベースは`rating`テーブルを持つことを確認します。
 
 ```bash
 docker exec -it ratings-mysql /bin/sh
@@ -40,31 +58,25 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
-
-```bash
-kubectl apply --server-side -f chapter-08/shared/namespace.yaml
-```
-
-9. Istioコントロールプレーンを作成します。
+5. Istioコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 ```
 
-10. Istio IngressGatewayを作成します。
+6. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-11. Istiod EgressGatewayを作成します。
+7. Istiod EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 ```
 
-12. Istioのトラフィック管理系リソースを作成します。
+8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-08/bookinfo-app/database/helmfile.yaml apply
@@ -78,31 +90,31 @@ helmfile -f chapter-08/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-13. Telemetryを作成します。
+9. Telemetryを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-telemetry/helmfile.yaml apply
 ```
 
-14. Prometheusを作成します。
+10. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
-15. Grafanaを作成します。
+11. Grafanaを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 ```
 
-16. Kialiを作成します。
+12. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
-17. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+13. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
@@ -110,37 +122,37 @@ kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-18. Minioを作成します。
+14. Minioを作成します。
 
 ```bash
 helmfile -f chapter-08/minio/helmfile.yaml apply
 ```
 
-19. Grafana Lokiを作成します。
+15. Grafana Lokiを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-20. Grafana Promtailを作成します。
+16. Grafana Promtailを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-21. Grafana Tempoを作成します。
+17. Grafana Tempoを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-22. OpenTelemetry Collectorを作成します。
+18. OpenTelemetry Collectorを作成します。
 
 ```bash
 helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
 ```
 
-23. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
+19. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
 
 ```bash
 kubectl logs <OpenTelemetry CollectorのPod> -n istio-system -f
@@ -166,13 +178,13 @@ Attributes:
     ...
 ```
 
-24. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
+20. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/grafana -n istio-system 8000:80
 ```
 
-25. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
+21. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
 
 ## 機能を実践する
 

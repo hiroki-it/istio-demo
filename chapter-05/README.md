@@ -9,13 +9,31 @@
 
 ## セットアップ
 
-1. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+
+```bash
+kubectl apply --server-side -f chapter-05/shared/namespace.yaml
+```
+
+2. Bookinfoアプリケーションを作成します。
+
+```bash
+helmfile -f bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+```
+
+3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
 ```
 
-2. `test`データベースは`rating`テーブルを持つことを確認します。
+4. `test`データベースは`rating`テーブルを持つことを確認します。
 
 ```bash
 docker exec -it ratings-mysql /bin/sh
@@ -40,13 +58,7 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
-
-```bash
-kubectl apply --server-side -f chapter-05/shared/namespace.yaml
-```
-
-4. Istiodコントロールプレーンを作成します。
+5. Istiodコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
@@ -54,19 +66,19 @@ helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
 ```
 
-5. Istio IngressGatewayを作成します。
+6. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-ingress/helmfile.yaml apply
 ```
 
-6. Istio EgressGatewayを作成します。
+7. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 ```
 
-7. Istioのトラフィック管理系リソースを作成します。
+8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-05/bookinfo-app/database/helmfile.yaml apply
@@ -80,7 +92,7 @@ helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-8. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+9. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
@@ -88,19 +100,19 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-9. Prometheusを作成します。
+10. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-02/prometheus/helmfile.yaml apply
 ```
 
-10. Kialiを作成します。
+11. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-02/kiali/helmfile.yaml apply
 ```
 
-11. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
