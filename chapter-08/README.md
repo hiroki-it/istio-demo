@@ -136,7 +136,7 @@ helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 17. Telemetryを作成します。
 
 ```bash
-kubectl apply --server-side -f chapter-08/shared/telemetry.yaml
+helmfile -f chapter-07/istio/istio-telemetry/helmfile.yaml apply
 ```
 
 18. Istio IngressGatewayを作成します。
