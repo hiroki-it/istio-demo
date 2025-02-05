@@ -6,7 +6,25 @@
 
 ## セットアップ
 
-1. Istioのトラフィック管理系リソースを作成します。
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+
+```bash
+kubectl apply --server-side -f chapter-07/shared/namespace.yaml
+```
+
+2. Bookinfoアプリケーションを作成します。
+
+```bash
+helmfile -f bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+```
+
+3. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/database/helmfile.yaml apply
