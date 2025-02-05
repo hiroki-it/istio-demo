@@ -39,13 +39,13 @@ helmfile -f chapter-extra-02/istio/istio-ingress/helmfile.yaml apply
 5. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-extra-02/bookinfo-app-istio/details/helmfile.yaml apply
+helmfile -f chapter-extra-02/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app-istio/productpage/helmfile.yaml apply
+helmfile -f chapter-extra-02/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app-istio/ratings/helmfile.yaml apply
+helmfile -f chapter-extra-02/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app-istio/reviews/helmfile.yaml apply
+helmfile -f chapter-extra-02/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。

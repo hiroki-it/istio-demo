@@ -59,13 +59,13 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 ```bash
 helmfile -f chapter-extra-01/istio/istio-ingress/helmfile.yaml apply
 
-helmfile -f chapter-extra-01/bookinfo-app-istio/details/helmfile.yaml apply
+helmfile -f chapter-extra-01/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-01/bookinfo-app-istio/productpage/helmfile.yaml apply
+helmfile -f chapter-extra-01/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-01/bookinfo-app-istio/ratings/helmfile.yaml apply
+helmfile -f chapter-extra-01/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-01/bookinfo-app-istio/reviews/helmfile.yaml apply
+helmfile -f chapter-extra-01/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
