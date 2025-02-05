@@ -38,7 +38,7 @@ kubectl apply --server-side -f chapter-07/shared/namespace.yaml
 4. PeerAuthenticationを作成します。
 
 ```bash
-kubectl apply --server-side -f chapter-07/shared/peer-authentication.yaml
+helmfile -f chapter-07/istio/istio-peer-authentication/helmfile.yaml apply
 ```
 
 5. Istio IngressGatewayを作成します。
