@@ -1,8 +1,9 @@
 # 5章
 
-5章では、Istioによるトラフィック管理を学びます。
+以下を実践することにより、Istioサイドカーモードによるトラフィック管理を学びます。
 
-トラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を使用して、IstioがL4やL7のトラフィックを管理する様子を確認します。
+- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- Istioのトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を作成する
 
 これらのリソースはサービスメッシュに必須であり、以降の全ての章で登場します。
 
@@ -86,5 +87,23 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
+
+9. Prometheusを作成します。
+
+```bash
+helmfile -f chapter-02/prometheus/helmfile.yaml apply
+```
+
+10. Kialiを作成します。
+
+```bash
+helmfile -f chapter-02/kiali/helmfile.yaml apply
+```
+
+11. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+
+```bash
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
 
 ## 機能を実践する

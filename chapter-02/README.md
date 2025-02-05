@@ -1,10 +1,9 @@
 # 2章
 
-2章では、マイクロサービスアプリケーションにIstioを導入します。
+以下を実践することにより、Istioサイドカーモードによるマイクロサービスの横断的管理を学びます。
 
-また同時に、KialiとPrometheusを導入します。
-
-Kialiのメッシュトポロジーを確認し、Istioによるサービスメッシュがマイクロサービスを横断的に管理する様子を確認します。
+- IstioコントロールプレーンとIstio IngressGatewayを導入する
+- Istioのトラフィック管理系リソース (DestinationRule、Gateway、VirtualService) を作成する
 
 ## セットアップ
 
