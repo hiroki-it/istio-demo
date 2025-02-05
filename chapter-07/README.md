@@ -25,13 +25,44 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-3. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
+3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
+
+```bash
+docker compose -f chapter-05/bookinfo-app/ratings-istio/docker-compose.yaml up -d
+```
+
+4. `test`データベースは`rating`テーブルを持つことを確認します。
+
+```bash
+docker exec -it ratings-mysql /bin/sh
+
+sh-4.4# mysql -h ratings.mysql.dev -u root -proot
+
+mysql> SHOW TABLES FROM test;
++----------------+
+| Tables_in_test |
++----------------+
+| ratings        |
++----------------+
+
+mysql> USE test;
+
+mysql> SELECT * from ratings;
++----------+--------+
+| ReviewID | Rating |
++----------+--------+
+|        1 |      5 |
+|        2 |      4 |
++----------+--------+
+```
+
+5. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
 docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 ```
 
-4. `test`データベースに`rating`テーブルを持つことを確認します。
+6. `keycloak`データベースにさまざまなテーブルを持つことを確認します。
 
 ```bash
 docker exec -it keycloak-mysql /bin/sh
@@ -48,7 +79,7 @@ mysql> SHOW TABLES FROM keycloak;
 +-------------------------------+
 ```
 
-5. Istiodコントロールプレーンを作成します。
+7. Istiodコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
@@ -56,19 +87,19 @@ helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayを作成します。
+8. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istio EgressGatewayを作成します。
+9. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
 ```
 
-8. Istioのトラフィック管理系リソースを作成します。
+10. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
@@ -82,29 +113,29 @@ helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-07/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-9. PeerAuthenticationを作成します。
+11. PeerAuthenticationを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-peer-authentication/helmfile.yaml apply
 ```
 
-10. Keycloakを作成します。
+12. Keycloakを作成します。
 
 ```bash
 helmfile -f chapter-07/keycloak/helmfile.yaml apply
 ```
 
-11. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-12. 接続時点では未認証のため、detailsサービスとreviewsサービスはproductpageサービスに `403` を返信します。productpageサービスは詳細情報とレビュー情報を取得できないため、ユーザーはこれらを閲覧できません。
+14. 接続時点では未認証のため、detailsサービスとreviewsサービスはproductpageサービスに `403` を返信します。productpageサービスは詳細情報とレビュー情報を取得できないため、ユーザーはこれらを閲覧できません。
 
-13. Sign inボタンをクリックすると、認可コードフローのOIDCが始まります。認可リクエストなどを経て、Keycloakが認証画面をレスポンスするため、ユーザー名を`izzy`とし、パスワードを`izzy`とします。Keycloakの認証に成功すれば、Keycloakに登録された`izzy`ユーザーを使用してBookinfoにSSOできます。
+15. Sign inボタンをクリックすると、認可コードフローのOIDCが始まります。認可リクエストなどを経て、Keycloakが認証画面をレスポンスするため、ユーザー名を`izzy`とし、パスワードを`izzy`とします。Keycloakの認証に成功すれば、Keycloakに登録された`izzy`ユーザーを使用してBookinfoにSSOできます。
 
-14. OIDCの成功後、productpageサービスはKeycloakから受信したアクセストークンを後続のマイクロサービスに伝播します。detailsサービスとreviewsサービスはKeycloakとの間でアクセストークンを検証し、これが成功すればproductpageサービスに `200` を返信します。productpageサービスは詳細情報とレビュー情報を取得できるようになり、ユーザーはこれらを閲覧できます。
+16. OIDCの成功後、productpageサービスはKeycloakから受信したアクセストークンを後続のマイクロサービスに伝播します。detailsサービスとreviewsサービスはKeycloakとの間でアクセストークンを検証し、これが成功すればproductpageサービスに `200` を返信します。productpageサービスは詳細情報とレビュー情報を取得できるようになり、ユーザーはこれらを閲覧できます。
 
 ## 機能を実践する
 
