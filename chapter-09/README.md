@@ -16,13 +16,13 @@ kubectl apply -f chapter-09/shared/namespace.yaml
 2. Bookinfoアプリケーションを作成します。
 
 ```bash
-helmfile -f bookinfo-app/details/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/details/helmfile.yaml apply
 
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/ratings/helmfile.yaml apply
 
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/reviews/helmfile.yaml apply
 ```
 
 3. Istiodコントロールプレーンを作成します。
@@ -60,13 +60,13 @@ helmfile -f chapter-09/istio/istio-ingress/helmfile.yaml apply
 7. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-09/bookinfo-app/details/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app-istio/details/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app-istio/productpage/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app-istio/ratings/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app-istio/reviews/helmfile.yaml apply
 ```
 
 8. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
