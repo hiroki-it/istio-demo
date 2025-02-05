@@ -1,8 +1,9 @@
 # 7章
 
-7章では、Istioによるセキュリティを学びます。
+以下を実践することにより、Istioサイドカーモードによる証明書管理と認証認可を学びます。
 
-証明書管理系リソース (PeerAuthentication) と認証認可 (AuthorizationPolicy、RequestAuthentication) を使用して、Istioが証明書を管理し、また認証認可を実施する様子を確認します。
+- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- Istioの証明書管理系リソース (PeerAuthentication) と認証認可系リソース (AuthorizationPolicy、RequestAuthentication) を作成します
 
 ## セットアップ
 

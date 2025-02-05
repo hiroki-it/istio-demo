@@ -4,8 +4,6 @@
 
 回復性管理は、すでに登場したトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) で設定します。
 
-これらのリソースを使用して、Istioがマイクロサービスの回復性を管理する様子を確認します。
-
 ## セットアップ
 
 1. Istioのトラフィック管理系リソースを作成します。

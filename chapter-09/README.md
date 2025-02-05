@@ -1,6 +1,8 @@
 # 9章
 
-9章では、Ambient Meshを検証します。
+以下を実践することにより、Istioアンビエントモードによるマイクロサービスの横断的管理を学びます。
+
+- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
 
 ## セットアップ
 
