@@ -30,7 +30,7 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-05/bookinfo-app-istio/ratings/docker-compose.yaml up -d
+docker compose -f chapter-05/bookinfo-app/ratings-istio//docker-compose.yaml up -d
 ```
 
 4. `test`データベースは`rating`テーブルを持つことを確認します。
@@ -79,15 +79,15 @@ helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-08/bookinfo-app-istio/database/helmfile.yaml apply
+helmfile -f chapter-08/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app-istio/details/helmfile.yaml apply
+helmfile -f chapter-08/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app-istio/productpage/helmfile.yaml apply
+helmfile -f chapter-08/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app-istio/ratings/helmfile.yaml apply
+helmfile -f chapter-08/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app-istio/reviews/helmfile.yaml apply
+helmfile -f chapter-08/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 9. Telemetryを作成します。

@@ -71,15 +71,15 @@ helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
 8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app-istio/database/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app-istio/details/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app-istio/productpage/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app-istio/ratings/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app-istio/reviews/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 9. PeerAuthenticationを作成します。
