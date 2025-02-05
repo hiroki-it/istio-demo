@@ -72,3 +72,13 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
 ## 機能を実践する
+
+## 掃除
+
+Minikubeを削除します。
+
+他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+
+```bash
+minikube delete --profile istio-demo
+```

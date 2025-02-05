@@ -95,3 +95,13 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 13. OIDCの成功後、productpageサービスはKeycloakから受信したアクセストークンを後続のマイクロサービスに伝播します。detailsサービスとreviewsサービスはKeycloakとの間でアクセストークンを検証し、これが成功すればproductpageサービスに `200` を返信します。productpageサービスは詳細情報とレビュー情報を取得できるようになり、ユーザーはこれらを閲覧できます。
 
 ## 機能を実践する
+
+## 掃除
+
+Minikubeを削除します。
+
+他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+
+```bash
+minikube delete --profile istio-demo
+```

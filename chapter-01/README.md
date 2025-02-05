@@ -60,12 +60,14 @@ kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-## 掃除する
+## 機能を実践する
 
-1. 以降の章ではIngressとNginx Ingress Controllerは不要であるため、削除します。
+## 掃除
+
+Minikubeを削除します。
+
+他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
 
 ```bash
-helmfile -f chapter-01/ingress/productpage/helmfile.yaml destroy
-
-helmfile -f chapter-01/nginx/helmfile.yaml destroy
+minikube delete --profile istio-demo
 ```

@@ -173,3 +173,15 @@ kubectl port-forward svc/grafana -n istio-system 8000:80
 ```
 
 25. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
+
+## 機能を実践する
+
+## 掃除
+
+Minikubeを削除します。
+
+他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+
+```bash
+minikube delete --profile istio-demo
+```
