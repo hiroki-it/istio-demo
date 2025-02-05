@@ -58,63 +58,112 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-5. Istioコントロールプレーンを作成します。
+5. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
-helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
+docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
 ```
 
-6. Istio IngressGatewayを作成します。
+6. `keycloak`データベースにさまざまなテーブルを持つことを確認します。
+
+```bash
+docker exec -it keycloak-mysql /bin/sh
+
+sh-4.4# mysql -h keycloak.mysql.dev -u keycloak -pkeycloak
+
+mysql> SHOW TABLES FROM keycloak;
++-------------------------------+
+| Tables_in_keycloak            |
++-------------------------------+
+| ADMIN_EVENT_ENTITY            |
+...
+| WEB_ORIGINS                   |
++-------------------------------+
+```
+
+7. Istiodコントロールプレーンを作成します。
+
+```bash
+helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
+
+helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
+```
+
+8. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istiod EgressGatewayを作成します。
+9. Istio EgressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
+helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
 ```
 
-8. Istioのトラフィック管理系リソースを作成します。
+10. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-08/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-07/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-9. Telemetryを作成します。
+11. PeerAuthenticationを作成します。
+
+```bash
+helmfile -f chapter-07/istio/istio-peer-authentication/helmfile.yaml apply
+```
+
+12. Keycloakを作成します。
+
+```bash
+helmfile -f chapter-07/keycloak/helmfile.yaml apply
+```
+
+13. PeerAuthenticationを作成します。
+
+```bash
+helmfile -f chapter-07/istio/istio-peer-authentication/helmfile.yaml apply
+```
+
+14. Keycloakを作成します。
+
+```bash
+helmfile -f chapter-07/keycloak/helmfile.yaml apply
+```
+
+15. Telemetryを作成します。
 
 ```bash
 helmfile -f chapter-07/istio/istio-telemetry/helmfile.yaml apply
 ```
 
-10. Prometheusを作成します。
+16. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
-11. Grafanaを作成します。
+17. Grafanaを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 ```
 
-12. Kialiを作成します。
+18. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
-13. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+19. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
@@ -122,37 +171,37 @@ kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-14. Minioを作成します。
+20. Minioを作成します。
 
 ```bash
 helmfile -f chapter-08/minio/helmfile.yaml apply
 ```
 
-15. Grafana Lokiを作成します。
+21. Grafana Lokiを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-16. Grafana Promtailを作成します。
+22. Grafana Promtailを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-17. Grafana Tempoを作成します。
+23. Grafana Tempoを作成します。
 
 ```bash
 helmfile -f chapter-08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-18. OpenTelemetry Collectorを作成します。
+24. OpenTelemetry Collectorを作成します。
 
 ```bash
 helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
 ```
 
-19. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
+25. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
 
 ```bash
 kubectl logs <OpenTelemetry CollectorのPod> -n istio-system -f
@@ -178,13 +227,13 @@ Attributes:
     ...
 ```
 
-20. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
+26. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/grafana -n istio-system 8000:80
 ```
 
-21. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
+27. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
 
 ## 機能を実践する
 
