@@ -1,15 +1,15 @@
 releases:
-  - name: istio-waypoint
+  - name: istio-waypoint-proxy
     chart: chart
     version: 1.0.0
     namespace: app
     atomic: true
-  - name: istio-waypoint
+  - name: istio-waypoint-proxy
     chart: chart
     version: 1.0.0
     namespace: istio-ingress
     atomic: true
-  - name: istio-waypoint
+  - name: istio-waypoint-proxy
     chart: chart
     version: 1.0.0
     namespace: istio-egress
