@@ -31,9 +31,9 @@ $ mise install
 $ helm plugin install https://github.com/databus23/helm-diff
 ```
 
-### Minikubeのセットアップ
+### Kubernetesクラスターのセットアップ
 
-1. Minikubeクラスターを起動します
+1. Minikubeを使用して、Kubernetesクラスターを作成します
 
 ```bash
 # バージョン
@@ -94,12 +94,4 @@ istio-demo-m03   Ready    worker          13d   v1.32.0   ingress
 istio-demo-m04   Ready    worker          13d   v1.32.0   egress
 istio-demo-m05   Ready    worker          13d   v1.32.0   system
 istio-demo-m06   Ready    worker          13d   v1.32.0   system
-```
-
-### 掃除
-
-1. Minikubeを削除します。
-
-```bash
-minikube delete --profile istio-demo
 ```
