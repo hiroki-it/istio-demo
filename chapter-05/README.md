@@ -18,19 +18,19 @@ kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 2. Bookinfoアプリケーションを作成します。
 
 ```bash
-helmfile -f bookinfo-app/details/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/details/helmfile.yaml apply
 
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/ratings/helmfile.yaml apply
 
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app-istio/reviews/helmfile.yaml apply
 ```
 
 3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-05/bookinfo-app/ratings/docker-compose.yaml up -d
+docker compose -f chapter-05/bookinfo-app-istio/ratings/docker-compose.yaml up -d
 ```
 
 4. `test`データベースは`rating`テーブルを持つことを確認します。
@@ -81,15 +81,15 @@ helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-05/bookinfo-app/database/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app-istio/database/helmfile.yaml apply
 
-helmfile -f chapter-05/bookinfo-app/details/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app-istio/details/helmfile.yaml apply
 
-helmfile -f chapter-05/bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app-istio/productpage/helmfile.yaml apply
 
-helmfile -f chapter-05/bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app-istio/ratings/helmfile.yaml apply
 
-helmfile -f chapter-05/bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app-istio/reviews/helmfile.yaml apply
 ```
 
 9. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
