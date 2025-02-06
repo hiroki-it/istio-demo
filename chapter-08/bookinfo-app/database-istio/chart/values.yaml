@@ -3,5 +3,5 @@ service:
 
 mysql:
   host:
-    original: mysql.dev
+    destination: mysql.dev
   port: 3306

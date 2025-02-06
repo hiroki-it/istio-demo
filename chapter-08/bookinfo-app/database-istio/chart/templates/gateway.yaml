@@ -11,5 +11,5 @@ spec:
         protocol: TCP
         number: {{ .Values.mysql.port }}
       hosts:
-        - "*"
+        - {{ .Values.mysql.host.destination }}
 
