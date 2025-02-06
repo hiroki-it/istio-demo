@@ -2,4 +2,3 @@ service:
   name: details
   host: details.app.svc.cluster.local
   port: 9080
-
