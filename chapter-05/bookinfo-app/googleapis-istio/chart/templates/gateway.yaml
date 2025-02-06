@@ -9,7 +9,7 @@ spec:
     - port:
         name: https-{{ .Values.service.name }}
         protocol: HTTPS
-        number: {{ .Values.https.port }}
+        number: {{ .Values.service.port }}
       hosts:
         - {{ .Values.service.host }}
 
