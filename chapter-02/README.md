@@ -85,6 +85,8 @@ helmfile -f chapter-02/bookinfo-app/database-istio/helmfile.yaml apply
 
 helmfile -f chapter-02/bookinfo-app/details-istio/helmfile.yaml apply
 
+helmfile -f chapter-02/bookinfo-app/googleapis-istio/helmfile.yaml apply
+
 helmfile -f chapter-02/bookinfo-app/productpage-istio/helmfile.yaml apply
 
 helmfile -f chapter-02/bookinfo-app/ratings-istio/helmfile.yaml apply
