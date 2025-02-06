@@ -1,4 +1,0 @@
-service:
-  name: mysql
-  host: mysql.dev
-  port: 3306
