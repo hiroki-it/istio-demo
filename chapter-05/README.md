@@ -90,6 +90,8 @@ helmfile -f chapter-05/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/ratings-istio/helmfile.yaml apply
 
 helmfile -f chapter-05/bookinfo-app/reviews-istio/helmfile.yaml apply
+
+helmfile -f chapter-05/bookinfo-app/googleapis-istio/helmfile.yaml apply
 ```
 
 9. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
