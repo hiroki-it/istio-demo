@@ -2,15 +2,17 @@
 
 以下を実践することにより、Istioサイドカーモードによるマイクロサービスの横断的管理を学びます。
 
-- IstioコントロールプレーンとIstio IngressGatewayを導入する
-- Istioのトラフィック管理系リソース (DestinationRule、Gateway、VirtualService) を作成する
+- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- Istioのトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を作成する
+
+これらのリソースはサービスメッシュに必須であり、以降の全ての章で登場します。
 
 ## セットアップ
 
 1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-kubectl apply -f chapter-02/shared/namespace.yaml
+kubectl apply --server-side -f chapter-02/shared/namespace.yaml
 ```
 
 2. Bookinfoアプリケーションを作成します。
@@ -25,7 +27,38 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-3. Istiodコントロールプレーンを作成します。
+3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
+
+```bash
+docker compose -f chapter-02/bookinfo-app/ratings-istio/docker-compose.yaml up -d
+```
+
+4. `test`データベースは`rating`テーブルを持つことを確認します。
+
+```bash
+docker exec -it ratings-mysql /bin/sh
+
+sh-4.4# mysql -h ratings.mysql.dev -u root -proot
+
+mysql> SHOW TABLES FROM test;
++----------------+
+| Tables_in_test |
++----------------+
+| ratings        |
++----------------+
+
+mysql> USE test;
+
+mysql> SELECT * from ratings;
++----------+--------+
+| ReviewID | Rating |
++----------+--------+
+|        1 |      5 |
+|        2 |      4 |
++----------+--------+
+```
+
+5. Istiodコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
@@ -33,15 +66,23 @@ helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
 ```
 
-4. Istio IngressGatewayを作成します。
+6. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-02/istio/istio-ingress/helmfile.yaml apply
 ```
 
-5. Istioのトラフィック管理系リソースを作成します。
+7. Istio EgressGatewayを作成します。
 
 ```bash
+helmfile -f chapter-02/istio/istio-egress/helmfile.yaml apply
+```
+
+8. Istioのトラフィック管理系リソースを作成します。
+
+```bash
+helmfile -f chapter-02/bookinfo-app/database-istio/helmfile.yaml apply
+
 helmfile -f chapter-02/bookinfo-app/details-istio/helmfile.yaml apply
 
 helmfile -f chapter-02/bookinfo-app/productpage-istio/helmfile.yaml apply
@@ -51,13 +92,7 @@ helmfile -f chapter-02/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-02/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
-
-```bash
-kubectl rollout restart deployment -n app
-```
-
-7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+9. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
@@ -65,19 +100,19 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-8. Prometheusを作成します。
+10. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-02/prometheus/helmfile.yaml apply
 ```
 
-9. Kialiを作成します。
+11. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-02/kiali/helmfile.yaml apply
 ```
 
-10. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
