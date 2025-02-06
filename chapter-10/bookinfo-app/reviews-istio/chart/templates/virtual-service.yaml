@@ -1,14 +1,12 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ .Values.service.name }}-ingress
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
-    - "*"
+    - "."
   hosts:
-    - "*"
-  gateways:
-    - {{ .Values.service.name }}-ingress
+    - {{ .Values.service.host }}
   http:
     - match:
         - port: {{ .Values.service.port }}
@@ -17,9 +15,4 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v2
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: 5xx
+            subset: v3
