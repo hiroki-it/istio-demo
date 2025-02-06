@@ -24,3 +24,33 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v1
+  labels:
+    app: {{ .Values.service.name }}
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v2
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: DO_NOT_ENCRYPT
+              value: "true"
