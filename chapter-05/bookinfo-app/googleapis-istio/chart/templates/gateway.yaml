@@ -11,5 +11,5 @@ spec:
         protocol: HTTPS
         number: {{ .Values.https.port }}
       hosts:
-        - "*"
+        - {{ .Values.service.host }}
 
