@@ -11,5 +11,4 @@ spec:
         protocol: GRPC
         number: {{ .Values.service.port }}
       hosts:
-        - "*"
-
+        - {{ .Values.service.host }}
