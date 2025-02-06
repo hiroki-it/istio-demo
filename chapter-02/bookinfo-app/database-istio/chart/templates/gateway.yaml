@@ -12,4 +12,3 @@ spec:
         number: {{ .Values.service.port }}
       hosts:
         - {{ .Values.service.host }}
-
