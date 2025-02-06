@@ -1,0 +1,11 @@
+service:
+  name: ratings
+  host: ratings.app.svc.cluster.local
+  port: 9080
+
+mysql:
+  egressGatewayName: mysql-egress
+  host:
+    origination: ratings.mysql.dev
+    destination: ratings.mysql.dev
+  port: 3306
