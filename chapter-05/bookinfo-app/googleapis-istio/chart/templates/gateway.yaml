@@ -7,8 +7,8 @@ spec:
     istio: egressgateway
   servers:
     - port:
-        name: https-{{ .Values.service.name }}
-        protocol: HTTPS
+        name: http-{{ .Values.service.name }}
+        protocol: HTTP
         number: {{ .Values.service.port }}
       hosts:
         - {{ .Values.service.host }}
