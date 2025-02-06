@@ -2,7 +2,7 @@
 
 6章では、Istioによる回復性管理を学びます。
 
-回復性管理は、すでに登場したトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) で設定します。
+回復性管理は、すでに登場したトラフィック管理系リソースのDestinationRuleで設定します。
 
 ## セットアップ
 
