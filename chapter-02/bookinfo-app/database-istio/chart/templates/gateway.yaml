@@ -9,7 +9,7 @@ spec:
     - port:
         name: tcp-{{ .Values.service.name }}
         protocol: TCP
-        number: {{ .Values.mysql.port }}
+        number: {{ .Values.service.port }}
       hosts:
         - {{ .Values.service.host }}
 
