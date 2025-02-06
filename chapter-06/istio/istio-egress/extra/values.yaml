@@ -6,7 +6,7 @@ mysql:
   host: mysql.dev
   port: 3306
 
-http:
+https:
   name: googleapis
   host: www.googleapis.com
   port: 80
