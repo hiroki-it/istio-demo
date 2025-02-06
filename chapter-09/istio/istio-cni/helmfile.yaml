@@ -3,7 +3,7 @@ repositories:
     url: https://istio-release.storage.googleapis.com/charts
 
 releases:
-  - name: cni
+  - name: istio-cni
     chart: istio/cni
     version: 1.24.2
     namespace: kube-system

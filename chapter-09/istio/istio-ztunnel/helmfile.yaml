@@ -3,7 +3,7 @@ repositories:
     url: https://istio-release.storage.googleapis.com/charts
 
 releases:
-  - name: ztunnel
+  - name: istio-ztunnel
     chart: istio/ztunnel
     version: 1.24.2
     namespace: app
