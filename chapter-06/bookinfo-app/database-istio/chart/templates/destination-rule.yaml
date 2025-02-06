@@ -6,3 +6,12 @@ spec:
   exportTo:
     - "."
   host: istio-egressgateway.istio-egress.svc.cluster.local
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 1
+    outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 1s
+      baseEjectionTime: 3m
+      maxEjectionPercent: 100
