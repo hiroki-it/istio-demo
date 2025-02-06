@@ -28,7 +28,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v1
+  name: {{ .Values.service.name }}-v2
   labels:
     app: {{ .Values.service.name }}
     version: v2
