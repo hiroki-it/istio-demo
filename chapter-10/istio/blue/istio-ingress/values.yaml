@@ -1,0 +1,19 @@
+revision: 1-22-8
+
+service:
+  type: NodePort
+  ports:
+    - name: http-productpage
+      nodePort: 30000
+      port: 9080
+      targetPort: 9080
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - ingress
