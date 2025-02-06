@@ -1,0 +1,12 @@
+repositories:
+  - name: istio
+    url: https://istio-release.storage.googleapis.com/charts
+
+releases:
+  - name: istio-istiod
+    chart: istio/istiod
+    version: 1.24.2
+    namespace: istio-system
+    atomic: true
+    values:
+      - values.yaml
