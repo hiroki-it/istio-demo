@@ -7,7 +7,7 @@ spec:
     - "."
   hosts:
     - {{ .Values.service.host }}
-  http:
+  https:
     - match:
         - port: {{ .Values.service.port }}
       route:
@@ -28,3 +28,35 @@ spec:
         attempts: 3
         perTryTimeout: 10s
         retryOn: 5xx
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.service.name }}-egress
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.https.host.origination }}
+  gateways:
+    - mesh
+    - {{ .Values.https.egressGatewayName }}
+  tcp:
+    - match:
+        - gateways:
+            - mesh
+          port: {{ .Values.https.port }}
+      route:
+        - destination:
+            host: istio-egressgateway.istio-egress.svc.cluster.local
+            port:
+              number: {{ .Values.https.port }}
+    - match:
+        - gateways:
+            - {{ .Values.https.egressGatewayName }}
+          port: {{ .Values.https.port }}
+      route:
+        - destination:
+            host: {{ .Values.https.host.destination }}
+            port:
+              number: {{ .Values.https.port }}
