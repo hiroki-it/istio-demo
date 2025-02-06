@@ -1,15 +1,13 @@
-# 10章
+# 付録3
 
-Istioのアップグレードを学びます。
+付録3では、Istioサイドカーモードとネイティブサイドカーの統合を学びます。
 
 ## セットアップ
-
-### 事前準備
 
 1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-kubectl apply -f chapter-10/shared/namespace.yaml
+kubectl apply -f chapter-extra-03/shared/namespace.yaml
 ```
 
 2. Bookinfoアプリケーションを作成します。
@@ -24,30 +22,30 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-3. Istiodコントロールプレーンを作成します。既存のIstiodコントロールプレーンは`blue`と表現することにします。
+3. Istiodコントロールプレーンを作成します。
 
 ```bash
-helmfile -f chapter-10/istio/blue/istio-base/helmfile.yaml apply
+helmfile -f chapter-extra-03/istio/istio-base/helmfile.yaml apply
 
-helmfile -f chapter-10/istio/blue/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-extra-03/istio/istio-istiod/helmfile.yaml apply
 ```
 
 4. Istio IngressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-10/istio/blue/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-extra-03/istio/istio-ingress/helmfile.yaml apply
 ```
 
 5. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-10/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-extra-03/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-10/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-extra-03/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-extra-03/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-10/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-extra-03/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
@@ -67,13 +65,13 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 8. Prometheusを作成します。
 
 ```bash
-helmfile -f chapter-10/prometheus/helmfile.yaml apply
+helmfile -f chapter-extra-03/prometheus/helmfile.yaml apply
 ```
 
 9. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-10/kiali/helmfile.yaml apply
+helmfile -f chapter-extra-03/kiali/helmfile.yaml apply
 ```
 
 10. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
@@ -81,11 +79,6 @@ helmfile -f chapter-10/kiali/helmfile.yaml apply
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
-
-### アップグレードする
-
-
-
 
 ## 機能を実践する
 

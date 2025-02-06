@@ -1,12 +1,6 @@
-repositories:
-  - name: istio
-    url: https://istio-release.storage.googleapis.com/charts
-
 releases:
-  - name: istio-ingressgateway
-    chart: istio/gateway
-    version: 1.24.2
+  - name: istio-ingress
+    chart: chart
+    version: 1.0.0
     namespace: istio-ingress
     atomic: true
-    values:
-      - values.yaml
