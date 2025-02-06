@@ -30,7 +30,7 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-05/bookinfo-app/ratings-istio/docker-compose.yaml up -d
+docker compose -f chapter-09/bookinfo-app/ratings-istio/docker-compose.yaml up -d
 ```
 
 4. `test`データベースは`rating`テーブルを持つことを確認します。
@@ -61,7 +61,7 @@ mysql> SELECT * from ratings;
 5. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-07/keycloak/docker-compose.yaml up -d
+docker compose -f chapter-09/keycloak/docker-compose.yaml up -d
 ```
 
 6. `keycloak`データベースにさまざまなテーブルを持つことを確認します。
@@ -92,57 +92,57 @@ helmfile -f chapter-09/istio/istio-istiod/helmfile.yaml apply
 8. Istio IngressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-ingress/helmfile.yaml apply
 ```
 
 9. Istio EgressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-egress/helmfile.yaml apply
 ```
 
 10. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 11. PeerAuthenticationを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-peer-authentication/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
 ```
 
 12. Keycloakを作成します。
 
 ```bash
-helmfile -f chapter-07/keycloak/helmfile.yaml apply
+helmfile -f chapter-09/keycloak/helmfile.yaml apply
 ```
 
 13. PeerAuthenticationを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-peer-authentication/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
 ```
 
 14. Keycloakを作成します。
 
 ```bash
-helmfile -f chapter-07/keycloak/helmfile.yaml apply
+helmfile -f chapter-09/keycloak/helmfile.yaml apply
 ```
 
 15. Telemetryを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-telemetry/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-telemetry/helmfile.yaml apply
 ```
 
 16. Prometheusを作成します。

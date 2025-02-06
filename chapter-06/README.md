@@ -9,7 +9,7 @@
 1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-kubectl apply --server-side -f chapter-07/shared/namespace.yaml
+kubectl apply --server-side -f chapter-06/shared/namespace.yaml
 ```
 
 2. Bookinfoアプリケーションを作成します。
