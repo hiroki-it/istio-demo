@@ -20,10 +20,6 @@ meshConfig:
     - matchLabels:
         istio.io/rev: stable
 
-pilot:
-  env:
-    ENABLE_NATIVE_SIDECARS: true
-
 revision: 1-24-2
 
 revisionTags:
