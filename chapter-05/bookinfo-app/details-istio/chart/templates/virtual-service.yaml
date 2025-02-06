@@ -32,26 +32,26 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.https.host.origination }}
+    - {{ .Values.http.host.origination }}
   gateways:
     - mesh
-    - {{ .Values.https.egressGatewayName }}
+    - {{ .Values.http.egressGatewayName }}
   tcp:
     - match:
         - gateways:
             - mesh
-          port: {{ .Values.https.port }}
+          port: {{ .Values.http.port }}
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
-              number: {{ .Values.https.port }}
+              number: {{ .Values.http.port }}
     - match:
         - gateways:
-            - {{ .Values.https.egressGatewayName }}
-          port: {{ .Values.https.port }}
+            - {{ .Values.http.egressGatewayName }}
+          port: {{ .Values.http.port }}
       route:
         - destination:
-            host: {{ .Values.https.host.destination }}
+            host: {{ .Values.http.host.destination }}
             port:
-              number: {{ .Values.https.port }}
+              number: {{ .Values.http.port }}
