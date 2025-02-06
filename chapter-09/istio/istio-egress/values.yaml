@@ -7,6 +7,10 @@ service:
       appProtocol: tcp
       port: 3306
       targetPort: 3306
+    - name: grpc-otlp
+      appProtocol: grpc
+      port: 4317
+      targetPort: 4317
 
 affinity:
   nodeAffinity:
