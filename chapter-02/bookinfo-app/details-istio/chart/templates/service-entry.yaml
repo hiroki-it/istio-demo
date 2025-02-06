@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: {{ .Values.service.name }}-http
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.http.host.destination }}
+  location: MESH_EXTERNAL
+  ports:
+    - number: {{ .Values.http.port }}
+      name: http-{{ .Values.service.name }}
+      protocol: HTTP
+  resolution: DNS
