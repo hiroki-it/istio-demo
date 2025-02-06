@@ -22,9 +22,9 @@ spec:
     istio: egressgateway
   servers:
     - port:
-        name: http-{{ .Values.http.name }}
+        name: http-{{ .Values.https.name }}
         protocol: HTTP
-        number: {{ .Values.http.port }}
+        number: {{ .Values.https.port }}
       hosts:
-        - {{ .Values.http.host }}
+        - {{ .Values.https.host }}
 
