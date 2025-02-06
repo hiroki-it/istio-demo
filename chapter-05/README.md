@@ -61,9 +61,9 @@ mysql> SELECT * from ratings;
 5. Istiodコントロールプレーンを作成します。
 
 ```bash
-helmfile -f chapter-02/istio/istio-base/helmfile.yaml apply
+helmfile -f chapter-05/istio/istio-base/helmfile.yaml apply
 
-helmfile -f chapter-02/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-05/istio/istio-istiod/helmfile.yaml apply
 ```
 
 6. Istio IngressGatewayを作成します。
@@ -105,13 +105,13 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 10. Prometheusを作成します。
 
 ```bash
-helmfile -f chapter-02/prometheus/helmfile.yaml apply
+helmfile -f chapter-05/prometheus/helmfile.yaml apply
 ```
 
 11. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-02/kiali/helmfile.yaml apply
+helmfile -f chapter-05/kiali/helmfile.yaml apply
 ```
 
 12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。

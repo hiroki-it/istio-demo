@@ -28,7 +28,7 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-05/bookinfo-app/ratings-istio/docker-compose.yaml up -d
+docker compose -f chapter-08/bookinfo-app/ratings-istio/docker-compose.yaml up -d
 ```
 
 4. `test`データベースは`rating`テーブルを持つことを確認します。
