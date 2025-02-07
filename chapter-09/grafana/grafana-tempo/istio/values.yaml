@@ -1,4 +1,5 @@
 service:
   name: grafana-tempo
-  host: grafana-tempo.istio-system.svc.cluster.local
+  host:
+    destination: grafana-tempo.istio-system.svc.cluster.local
   port: 4317
