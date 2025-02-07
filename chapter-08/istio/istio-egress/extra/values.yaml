@@ -1,12 +1,2 @@
 service:
   name: istio-egress
-
-mysql:
-  name: mysql
-  host: mysql.dev
-  port: 3306
-
-http:
-  name: googleapis
-  host: www.googleapis.com
-  port: 80

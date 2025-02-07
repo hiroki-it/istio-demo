@@ -1,0 +1,5 @@
+service:
+  name: mysql
+  host:
+    destination: mysql.dev
+  port: 3306

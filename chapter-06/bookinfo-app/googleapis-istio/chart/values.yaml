@@ -1,0 +1,5 @@
+service:
+  name: googleapis
+  host:
+    destination: www.googleapis.com
+  port: 443
