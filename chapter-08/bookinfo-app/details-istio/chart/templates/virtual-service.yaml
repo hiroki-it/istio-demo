@@ -41,7 +41,7 @@ spec:
   gateways:
     - mesh
     - {{ .Values.googleapis.egressGatewayName }}
-  tcp:
+  http:
     - match:
         - gateways:
             - mesh
@@ -51,6 +51,11 @@ spec:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
               number: {{ .Values.googleapis.port }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx
     - match:
         - gateways:
             - {{ .Values.googleapis.egressGatewayName }}
@@ -60,3 +65,8 @@ spec:
             host: {{ .Values.googleapis.host }}
             port:
               number: {{ .Values.googleapis.port }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx
