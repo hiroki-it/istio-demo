@@ -19,3 +19,12 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 1
+        maxRequestsPerConnection: 1
+    outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 1s
+      baseEjectionTime: 3m
+      maxEjectionPercent: 100
