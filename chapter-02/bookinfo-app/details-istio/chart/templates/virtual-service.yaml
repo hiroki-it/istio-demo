@@ -16,42 +16,10 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v1
-          weight: 0
+          weight: 100
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v2
-          weight: 100
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.service.name }}-egress
-spec:
-  exportTo:
-    - "*"
-  hosts:
-    - {{ .Values.http.host }}
-  gateways:
-    - mesh
-    - {{ .Values.http.egressGatewayName }}
-  tcp:
-    - match:
-        - gateways:
-            - mesh
-          port: {{ .Values.http.port }}
-      route:
-        - destination:
-            host: istio-egressgateway.istio-egress.svc.cluster.local
-            port:
-              number: {{ .Values.http.port }}
-    - match:
-        - gateways:
-            - {{ .Values.http.egressGatewayName }}
-          port: {{ .Values.http.port }}
-      route:
-        - destination:
-            host: {{ .Values.http.host }}
-            port:
-              number: {{ .Values.http.port }}
+          weight: 0
