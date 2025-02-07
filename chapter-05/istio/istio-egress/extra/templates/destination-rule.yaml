@@ -6,6 +6,3 @@ spec:
   exportTo:
     - "*"
   host: istio-egressgateway.istio-egress.svc.cluster.local
-  trafficPolicy:
-    loadBalancer:
-      simple: ROUND_ROBIN
