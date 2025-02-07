@@ -6,7 +6,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.mysql.host.destination }}
+    - {{ .Values.mysql.host }}
   location: MESH_EXTERNAL
   ports:
     - number: {{ .Values.mysql.port }}
