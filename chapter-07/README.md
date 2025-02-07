@@ -27,7 +27,11 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 3. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
+helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
+
 helmfile -f chapter-07/bookinfo-app/details-istio/helmfile.yaml apply
+
+helmfile -f chapter-07/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
 helmfile -f chapter-07/bookinfo-app/productpage-istio/helmfile.yaml apply
 
