@@ -51,6 +51,3 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
-          env:
-            - name: DO_NOT_ENCRYPT
-              value: "true"
