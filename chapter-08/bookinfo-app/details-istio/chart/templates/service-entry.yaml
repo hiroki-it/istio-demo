@@ -6,10 +6,10 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.http.host }}
+    - {{ .Values.https.host }}
   location: MESH_EXTERNAL
   ports:
-    - number: {{ .Values.http.port }}
-      name: http-{{ .Values.service.name }}
-      protocol: HTTP
+    - number: {{ .Values.https.port }}
+      name: https-{{ .Values.service.name }}
+      protocol: HTTPS
   resolution: DNS
