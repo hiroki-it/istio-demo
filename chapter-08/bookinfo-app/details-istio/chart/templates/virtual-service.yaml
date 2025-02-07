@@ -37,26 +37,26 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.https.host }}
+    - {{ .Values.googleapis.host }}
   gateways:
     - mesh
-    - {{ .Values.https.egressGatewayName }}
+    - {{ .Values.googleapis.egressGatewayName }}
   tcp:
     - match:
         - gateways:
             - mesh
-          port: {{ .Values.https.port }}
+          port: {{ .Values.googleapis.port }}
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
-              number: {{ .Values.https.port }}
+              number: {{ .Values.googleapis.port }}
     - match:
         - gateways:
-            - {{ .Values.https.egressGatewayName }}
-          port: {{ .Values.https.port }}
+            - {{ .Values.googleapis.egressGatewayName }}
+          port: {{ .Values.googleapis.port }}
       route:
         - destination:
-            host: {{ .Values.https.host }}
+            host: {{ .Values.googleapis.host }}
             port:
-              number: {{ .Values.https.port }}
+              number: {{ .Values.googleapis.port }}

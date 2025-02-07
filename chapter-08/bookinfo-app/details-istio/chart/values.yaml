@@ -3,7 +3,7 @@ service:
   host: details.app.svc.cluster.local
   port: 9080
 
-https:
+googleapis:
   egressGatewayName: googleapis-egress
   host: www.googleapis.com
   port: 443
