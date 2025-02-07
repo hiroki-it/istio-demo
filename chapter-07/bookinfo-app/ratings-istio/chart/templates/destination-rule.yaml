@@ -14,6 +14,8 @@ spec:
       labels:
         version: v2
   trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
     connectionPool:
       http:
         http1MaxPendingRequests: 1
