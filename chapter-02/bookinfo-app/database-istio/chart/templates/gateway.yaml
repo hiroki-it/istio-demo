@@ -11,4 +11,4 @@ spec:
         protocol: TCP
         number: {{ .Values.service.port }}
       hosts:
-        - {{ .Values.service.host }}
+        - {{ .Values.service.host.destination }}
