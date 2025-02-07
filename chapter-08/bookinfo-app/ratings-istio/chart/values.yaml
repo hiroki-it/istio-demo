@@ -12,7 +12,5 @@ keycloak:
 
 mysql:
   egressGatewayName: mysql-egress
-  host:
-    origination: mysql.dev
-    destination: ratings.mysql.dev
+  host: ratings.mysql.dev
   port: 3306

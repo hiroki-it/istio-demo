@@ -32,7 +32,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.http.host.origination }}
+    - {{ .Values.http.host }}
   gateways:
     - mesh
     - {{ .Values.http.egressGatewayName }}
@@ -52,6 +52,6 @@ spec:
           port: {{ .Values.http.port }}
       route:
         - destination:
-            host: {{ .Values.http.host.destination }}
+            host: {{ .Values.http.host }}
             port:
               number: {{ .Values.http.port }}

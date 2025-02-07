@@ -11,6 +11,6 @@ spec:
         protocol: HTTPS
         number: {{ .Values.service.port }}
       hosts:
-        - {{ .Values.service.host.destination }}
+        - {{ .Values.service.host }}
       tls:
         mode: SIMPLE

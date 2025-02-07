@@ -5,7 +5,5 @@ service:
 
 https:
   egressGatewayName: googleapis-egress
-  host:
-    origination: www.googleapis.com
-    destination: www.googleapis.com
+  host: www.googleapis.com
   port: 443
