@@ -14,13 +14,5 @@ spec:
       labels:
         version: v2
   trafficPolicy:
-    connectionPool:
-      http:
-        http1MaxPendingRequests: 1
-        maxRequestsPerConnection: 1
-    outlierDetection:
-      baseEjectionTime: 30s
-      consecutiveGatewayErrors: 3
-      interval: 10s
-      maxEjectionPercent: 99
-      minHealthPercent: 90
+    loadBalancer:
+      simple: ROUND_ROBIN
