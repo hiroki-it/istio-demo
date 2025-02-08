@@ -8,5 +8,6 @@ spec:
       namespace: istio-ingress
   rules:
     - backendRefs:
-        - name: {{ .Values.service.name }}
+        - kind: Service
+          name: {{ .Values.service.name }}
           port: {{ .Values.service.port }}
