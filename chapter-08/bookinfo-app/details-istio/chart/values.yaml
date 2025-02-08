@@ -3,11 +3,6 @@ service:
   host: details.bookinfo.svc.cluster.local
   port: 9080
 
-googleapis:
-  egressGatewayName: googleapis-egress
-  host: googleapis.com
-  port: 443
-
 keycloak:
   realm: dev
   host:
