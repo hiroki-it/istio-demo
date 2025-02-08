@@ -34,7 +34,7 @@ spec:
         attempts: 3
         perTryTimeout: 10s
         retryOn: 5xx
-    - fault:
+      fault:
         delay:
           fixedDelay: 7s
           percentage:
