@@ -1,0 +1,31 @@
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - system
+
+global:
+  tag: 1.24.2
+  imagePullPolicy: IfNotPresent
+
+meshConfig:
+  defaultConfig:
+    holdApplicationUntilProxyStarts: true
+  rootNamespace: null
+  discoverySelectors:
+    - matchLabels:
+        istio.io/rev: stable
+
+revision: 1-24-2
+
+revisionTags:
+  - stable
+
+
+
+
+
