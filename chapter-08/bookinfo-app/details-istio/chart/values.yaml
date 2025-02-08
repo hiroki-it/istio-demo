@@ -1,11 +1,11 @@
 service:
   name: details
-  host: details.app.svc.cluster.local
+  host: details.bookinfo.svc.cluster.local
   port: 9080
 
 googleapis:
   egressGatewayName: googleapis-egress
-  host: www.googleapis.com
+  host: googleapis.com
   port: 443
 
 keycloak:

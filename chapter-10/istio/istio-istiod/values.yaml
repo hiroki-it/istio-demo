@@ -30,4 +30,4 @@ revision: 1-24-2
 revisionTags:
   - stable
 
-trustedZtunnelNamespace: app
+trustedZtunnelNamespace: bookinfo

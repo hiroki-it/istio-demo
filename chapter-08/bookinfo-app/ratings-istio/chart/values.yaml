@@ -1,6 +1,6 @@
 service:
   name: ratings
-  host: ratings.app.svc.cluster.local
+  host: ratings.bookinfo.svc.cluster.local
   port: 9080
 
 keycloak:
