@@ -53,7 +53,7 @@ helmfile -f chapter-extra-01/bookinfo-app/reviews-istio/helmfile.yaml apply
 6. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
 
 ```bash
-kubectl rollout restart deployment -n app
+kubectl rollout restart deployment -n bookinfo
 ```
 
 7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
