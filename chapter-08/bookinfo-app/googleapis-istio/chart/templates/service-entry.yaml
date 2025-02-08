@@ -6,10 +6,10 @@ spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.googleapis.host }}
+    - {{ .Values.service.host }}
   location: MESH_EXTERNAL
   ports:
-    - number: {{ .Values.googleapis.port }}
+    - number: {{ .Values.service.port }}
       name: https-{{ .Values.service.name }}
       protocol: HTTPS
   resolution: DNS
