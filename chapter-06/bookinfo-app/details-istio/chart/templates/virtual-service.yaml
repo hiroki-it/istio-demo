@@ -7,7 +7,7 @@ spec:
     - "."
   hosts:
     - {{ .Values.service.host }}
-  https:
+  http:
     - match:
         - port: {{ .Values.service.port }}
       route:
