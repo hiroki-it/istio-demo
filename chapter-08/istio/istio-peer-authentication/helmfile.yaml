@@ -2,7 +2,7 @@ releases:
   - name: istio-peer-authentication
     chart: chart
     version: 1.0.0
-    namespace: app
+    namespace: bookinfo
     atomic: true
   - name: istio-peer-authentication
     chart: chart

@@ -8,7 +8,7 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: app
+  name: bookinfo
   labels:
     istio.io/rev: stable
 ---

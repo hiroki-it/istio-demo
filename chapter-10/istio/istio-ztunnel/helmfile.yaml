@@ -6,7 +6,7 @@ releases:
   - name: istio-ztunnel
     chart: istio/ztunnel
     version: 1.24.2
-    namespace: app
+    namespace: bookinfo
     atomic: true
     values:
       - values.yaml

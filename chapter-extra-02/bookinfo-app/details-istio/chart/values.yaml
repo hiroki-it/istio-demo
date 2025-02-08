@@ -1,5 +1,5 @@
 service:
   name: details
-  host: details.app.svc.cluster.local
+  host: details.bookinfo.svc.cluster.local
   port: 9080
 
