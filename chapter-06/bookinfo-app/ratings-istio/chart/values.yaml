@@ -2,8 +2,3 @@ service:
   name: ratings
   host: ratings.bookinfo.svc.cluster.local
   port: 9080
-
-mysql:
-  egressGatewayName: mysql-egress
-  host: ratings.mysql.dev
-  port: 3306
