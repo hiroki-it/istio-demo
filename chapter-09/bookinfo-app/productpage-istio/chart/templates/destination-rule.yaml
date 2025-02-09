@@ -18,8 +18,8 @@ spec:
       simple: ROUND_ROBIN
     connectionPool:
       http:
-        http1MaxPendingRequests: 1
-        maxRequestsPerConnection: 1
+        http1MaxPendingRequests: 10
+        maxRequestsPerConnection: 10
     outlierDetection:
       consecutive5xxErrors: 10
       interval: 10s
