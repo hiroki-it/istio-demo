@@ -10,11 +10,13 @@ spec:
   gateways:
     - mesh
     - {{ .Values.service.name }}-egress
-  http:
+  tls:
     - match:
         - gateways:
             - mesh
           port: {{ .Values.service.port }}
+          sniHosts:
+            - {{ .Values.service.host }}
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
@@ -29,6 +31,8 @@ spec:
         - gateways:
             - {{ .Values.service.name }}-egress
           port: {{ .Values.service.port }}
+          sniHosts:
+            - {{ .Values.service.host }}
       route:
         - destination:
             host: {{ .Values.service.host }}
