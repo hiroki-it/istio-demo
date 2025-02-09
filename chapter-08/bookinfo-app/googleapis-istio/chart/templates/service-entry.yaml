@@ -10,6 +10,6 @@ spec:
   location: MESH_EXTERNAL
   ports:
     - number: {{ .Values.service.port }}
-      name: https-{{ .Values.service.name }}
-      protocol: HTTPS
+      name: tls-{{ .Values.service.name }}
+      protocol: TLS
   resolution: DNS
