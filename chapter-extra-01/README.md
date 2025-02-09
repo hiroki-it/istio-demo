@@ -56,7 +56,25 @@ helmfile -f chapter-extra-01/bookinfo-app/reviews-istio/helmfile.yaml apply
 kubectl rollout restart deployment -n bookinfo
 ```
 
-7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+7. Prometheusを作成します。
+
+```bash
+helmfile -f chapter-extra-01/prometheus/helmfile.yaml apply
+```
+
+8. Kialiを作成します。
+
+```bash
+helmfile -f chapter-extra-01/kiali/helmfile.yaml apply
+```
+
+9. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+
+```bash
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
+```
+
+10. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
@@ -64,28 +82,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-8. Prometheusを作成します。
-
-```bash
-helmfile -f chapter-extra-01/prometheus/helmfile.yaml apply
-```
-
-9. Kialiを作成します。
-
-```bash
-helmfile -f chapter-extra-01/kiali/helmfile.yaml apply
-```
-
-10. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
-
-```bash
-kubectl port-forward svc/kiali 20001:20001 -n istio-system
-```
-
 ### アップグレードする
-
-
-
 
 ## 機能を実践する
 
