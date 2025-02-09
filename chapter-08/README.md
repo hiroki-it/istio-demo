@@ -130,13 +130,13 @@ helmfile -f chapter-08/keycloak/helmfile.yaml apply
 13. Prometheusを作成します。
 
 ```bash
-helmfile -f chapter-05/prometheus/helmfile.yaml apply
+helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
 14. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-05/kiali/helmfile.yaml apply
+helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
 12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
