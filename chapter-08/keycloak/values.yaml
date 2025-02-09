@@ -46,7 +46,7 @@ http:
   relativePath: /
 
 image:
-  tag: 26.1.0
+  tag: 26.1.1
 
 service:
   httpPort: 8080
