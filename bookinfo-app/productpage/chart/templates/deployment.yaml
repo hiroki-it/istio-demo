@@ -53,7 +53,7 @@ spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2-authentication
+          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.3
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
