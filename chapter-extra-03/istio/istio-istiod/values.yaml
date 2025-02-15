@@ -36,6 +36,15 @@ pilot:
   env:
     ENABLE_NATIVE_SIDECARS: true
 
+proxy:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
 revision: 1-24-2
 
 revisionTags:
