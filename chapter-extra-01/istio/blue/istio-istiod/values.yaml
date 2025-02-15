@@ -8,6 +8,8 @@ affinity:
               values:
                 - system
 
+autoscaleMin: 2
+
 global:
   tag: 1.22.8
   imagePullPolicy: IfNotPresent
