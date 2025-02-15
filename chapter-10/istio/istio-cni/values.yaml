@@ -12,5 +12,11 @@ cni:
   ambient:
     enabled: true
 
-global:
-  variant: distroless
+resources:
+  requests:
+    cpu: 300m
+    memory: 384Mi
+  limits:
+    cpu: 300m
+    memory: 384Mi
+
