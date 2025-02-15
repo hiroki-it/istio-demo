@@ -13,6 +13,8 @@ autoscaleMin: 2
 global:
   tag: 1.24.2
   imagePullPolicy: IfNotPresent
+  defaultPodDisruptionBudget:
+    minAvailable: 1
 
 meshConfig:
   defaultConfig:
