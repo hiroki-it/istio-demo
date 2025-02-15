@@ -22,7 +22,8 @@ global:
     limits:
       cpu: 100m
       memory: 128Mi
-  proxy:
+  variant: distroless
+  waypoint:
     resources:
       requests:
         cpu: 100m
@@ -30,7 +31,6 @@ global:
       limits:
         cpu: 100m
         memory: 128Mi
-  variant: distroless
 
 meshConfig:
   defaultConfig:
@@ -42,8 +42,8 @@ meshConfig:
 
 pilot:
   env:
-   PILOT_ENABLE_AMBIENT: true
-   PILOT_ENABLE_AMBIENT_WAYPOINTS: true
+    PILOT_ENABLE_AMBIENT: true
+    PILOT_ENABLE_AMBIENT_WAYPOINTS: true
 
 revision: 1-24-2
 
