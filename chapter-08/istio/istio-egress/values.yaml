@@ -3,6 +3,9 @@ revision: 1-24-2
 autoscaling:
   minReplicas: 2
 
+podDisruptionBudget:
+  minAvailable: 1
+
 service:
   type: ClusterIP
   ports:
