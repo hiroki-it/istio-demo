@@ -13,6 +13,24 @@ autoscaleMin: 2
 global:
   tag: 1.24.2
   imagePullPolicy: IfNotPresent
+  defaultPodDisruptionBudget:
+    minAvailable: 1
+  defaultResources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+  proxy:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+  variant: distroless
 
 meshConfig:
   defaultConfig:
@@ -21,15 +39,6 @@ meshConfig:
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
-
-proxy:
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 100m
-      memory: 128Mi
 
 revision: 1-24-2
 
