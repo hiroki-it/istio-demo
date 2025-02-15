@@ -22,6 +22,15 @@ meshConfig:
     - matchLabels:
         istio.io/rev: stable
 
+proxy:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
 revision: 1-24-2
 
 revisionTags:

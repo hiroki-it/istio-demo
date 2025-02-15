@@ -37,6 +37,16 @@ pilot:
    PILOT_ENABLE_AMBIENT: true
    PILOT_ENABLE_AMBIENT_WAYPOINTS: true
 
+
+proxy:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
 revision: 1-24-2
 
 revisionTags:
