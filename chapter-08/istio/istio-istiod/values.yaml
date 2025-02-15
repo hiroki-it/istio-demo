@@ -22,16 +22,15 @@ global:
     limits:
       cpu: 100m
       memory: 128Mi
+  proxy:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 130Mi
+      limits:
+        cpu: 100m
+        memory: 130Mi
   variant: distroless
-
-proxy:
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 100m
-      memory: 128Mi
 
 meshConfig:
   defaultConfig:
