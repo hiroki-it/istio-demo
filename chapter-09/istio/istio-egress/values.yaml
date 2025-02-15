@@ -1,5 +1,8 @@
 revision: 1-24-2
 
+autoscaling:
+  minReplicas: 2
+
 service:
   type: ClusterIP
   ports:
