@@ -22,6 +22,14 @@ global:
     limits:
       cpu: 100m
       memory: 128Mi
+  proxy:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 130Mi
+      limits:
+        cpu: 100m
+        memory: 130Mi
   variant: distroless
 
 meshConfig:
@@ -31,16 +39,6 @@ meshConfig:
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
-
-
-proxy:
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 100m
-      memory: 128Mi
 
 revision: 1-22-8
 
