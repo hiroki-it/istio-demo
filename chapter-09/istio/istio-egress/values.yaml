@@ -15,6 +15,14 @@ service:
       port: 4317
       targetPort: 4317
 
+resources:
+  requests:
+    cpu: 2000m
+    memory: 1024Mi
+  limits:
+    cpu: 2000m
+    memory: 1024Mi
+
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:

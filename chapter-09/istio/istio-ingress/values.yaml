@@ -19,6 +19,14 @@ service:
       port: 8443
       targetPort: 8443
 
+resources:
+  requests:
+    cpu: 2000m
+    memory: 1024Mi
+  limits:
+    cpu: 2000m
+    memory: 1024Mi
+
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:

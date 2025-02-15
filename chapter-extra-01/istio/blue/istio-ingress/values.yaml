@@ -11,6 +11,14 @@ service:
       port: 9080
       targetPort: 9080
 
+resources:
+  requests:
+    cpu: 2000m
+    memory: 1024Mi
+  limits:
+    cpu: 2000m
+    memory: 1024Mi
+
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
