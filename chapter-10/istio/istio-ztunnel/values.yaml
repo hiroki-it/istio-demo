@@ -13,3 +13,5 @@ imagePullPolicy: IfNotPresent
 revision: 1-24-2
 
 tag: 1.24.2
+
+variant: distroless
