@@ -31,6 +31,15 @@ global:
       limits:
         cpu: 100m
         memory: 128Mi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - app
 
 meshConfig:
   defaultConfig:
