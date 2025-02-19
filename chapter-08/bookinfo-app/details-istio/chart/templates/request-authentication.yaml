@@ -10,6 +10,5 @@ spec:
     - issuer: http://{{ .Values.keycloak.host.web }}:{{ .Values.keycloak.port }}/realms/{{ .Values.keycloak.realm }}
       jwksUri: http://{{ .Values.keycloak.host.api }}:{{ .Values.keycloak.port }}/realms/{{ .Values.keycloak.realm }}/protocol/openid-connect/certs
       forwardOriginalToken: false
-      fromHeaders:
-        - name: Authorization
-          prefix: "Bearer "
+      fromCookies:
+        - access_token
