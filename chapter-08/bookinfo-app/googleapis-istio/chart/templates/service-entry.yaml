@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: {{ .Values.service.name }}-tls
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.service.host }}
+  location: MESH_EXTERNAL
+  ports:
+    - number: {{ .Values.service.port }}
+      name: tls-{{ .Values.service.name }}
+      protocol: TLS
+  resolution: DNS

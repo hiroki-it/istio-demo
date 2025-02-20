@@ -1,16 +1,16 @@
 # 8章
 
-以下を実践することにより、Istioサイドカーモードによる証明書管理と認証認可を学びます。
+以下を実践することにより、Istioサイドカーモードによる証明書管理を学びます。
 
 - Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
-- Istioの証明書管理系リソース (PeerAuthentication) と認証認可系リソース (AuthorizationPolicy、RequestAuthentication) を作成します
+- 証明書管理系リソース (PeerAuthentication) を作成します
 
 ## セットアップ
 
 1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-kubectl apply --server-side -f chapter-08/shared/namespace.yaml
+kubectl apply --server-side -f chapter-09/shared/namespace.yaml
 ```
 
 2. Bookinfoアプリケーションを作成します。
@@ -28,7 +28,7 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-08/bookinfo-app/ratings-istio/docker-compose.yaml up -d
+docker compose -f chapter-09/bookinfo-app/ratings-istio/docker-compose.yaml up -d
 ```
 
 4. `test`データベースは`rating`テーブルを持つことを確認します。
@@ -59,7 +59,7 @@ mysql> SELECT * from ratings;
 5. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-08/keycloak/docker-compose.yaml up -d
+docker compose -f chapter-09/keycloak/docker-compose.yaml up -d
 ```
 
 6. `keycloak`データベースにさまざまなテーブルを持つことを確認します。
@@ -82,80 +82,70 @@ mysql> SHOW TABLES FROM keycloak;
 7. Istiodコントロールプレーンを作成します。
 
 ```bash
-helmfile -f chapter-08/istio/istio-base/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-base/helmfile.yaml apply
 
-helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-istiod/helmfile.yaml apply
 ```
 
 8. Istio IngressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-08/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-ingress/helmfile.yaml apply
 ```
 
 9. Istio EgressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-egress/helmfile.yaml apply
 ```
 
 10. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-08/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/googleapis-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-08/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 11. PeerAuthenticationを作成します。
 
 ```bash
-helmfile -f chapter-08/istio/istio-peer-authentication/helmfile.yaml apply
+helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
 ```
 
-12. Keycloakを作成します。
+12. Prometheusを作成します。
 
 ```bash
-helmfile -f chapter-08/keycloak/helmfile.yaml apply
+helmfile -f chapter-09/prometheus/helmfile.yaml apply
 ```
 
-13. Prometheusを作成します。
+13. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-08/prometheus/helmfile.yaml apply
+helmfile -f chapter-09/kiali/helmfile.yaml apply
 ```
 
-14. Kialiを作成します。
-
-```bash
-helmfile -f chapter-08/kiali/helmfile.yaml apply
-```
-
-12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+14. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-14. 接続時点では未認証のため、detailsサービスとreviewsサービスはproductpageサービスに `403` を返信します。productpageサービスは詳細情報とレビュー情報を取得できないため、ユーザーはこれらを閲覧できません。
 
-15. Sign inボタンをクリックすると、認可コードフローのOIDCが始まります。認可リクエストなどを経て、Keycloakが認証画面をレスポンスするため、ユーザー名を`izzy`とし、パスワードを`izzy`とします。Keycloakの認証に成功すれば、Keycloakに登録された`izzy`ユーザーを使用してBookinfoにSSOできます。
-
-16. OIDCの成功後、productpageサービスはKeycloakから受信したアクセストークンを後続のマイクロサービスに伝播します。detailsサービスとreviewsサービスはKeycloakとの間でアクセストークンを検証し、これが成功すればproductpageサービスに `200` を返信します。productpageサービスは詳細情報とレビュー情報を取得できるようになり、ユーザーはこれらを閲覧できます。
 
 ## 機能を実践する
 
