@@ -56,30 +56,7 @@ mysql> SELECT * from ratings;
 +----------+--------+
 ```
 
-5. サービスメッシュ外に、Keycloakサービス用のMySQLコンテナを作成します。
-
-```bash
-docker compose -f chapter-09/keycloak/docker-compose.yaml up -d
-```
-
-6. `keycloak`データベースにさまざまなテーブルを持つことを確認します。
-
-```bash
-docker exec -it keycloak-mysql /bin/sh
-
-sh-4.4# mysql -h keycloak.mysql.dev -u keycloak -pkeycloak
-
-mysql> SHOW TABLES FROM keycloak;
-+-------------------------------+
-| Tables_in_keycloak            |
-+-------------------------------+
-| ADMIN_EVENT_ENTITY            |
-...
-| WEB_ORIGINS                   |
-+-------------------------------+
-```
-
-7. Istiodコントロールプレーンを作成します。
+5. Istiodコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-09/istio/istio-base/helmfile.yaml apply
@@ -87,19 +64,19 @@ helmfile -f chapter-09/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-09/istio/istio-istiod/helmfile.yaml apply
 ```
 
-8. Istio IngressGatewayを作成します。
+6. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-09/istio/istio-ingress/helmfile.yaml apply
 ```
 
-9. Istio EgressGatewayを作成します。
+7. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-09/istio/istio-egress/helmfile.yaml apply
 ```
 
-10. Istioのトラフィック管理系リソースを作成します。
+8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
@@ -115,37 +92,35 @@ helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-11. PeerAuthenticationを作成します。
+9. PeerAuthenticationを作成します。
 
 ```bash
 helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
 ```
 
-12. Prometheusを作成します。
+10. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-09/prometheus/helmfile.yaml apply
 ```
 
-13. Kialiを作成します。
+11. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-09/kiali/helmfile.yaml apply
 ```
 
-14. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
-
-
 
 ## 機能を実践する
 
