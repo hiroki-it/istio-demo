@@ -23,8 +23,3 @@ spec:
               number: {{ .Values.service.port }}
             subset: v2
           weight: 100
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: 5xx

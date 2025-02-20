@@ -9,10 +9,6 @@ podDisruptionBudget:
 service:
   type: ClusterIP
   ports:
-    - name: grpc-otlp
-      appProtocol: grpc
-      port: 4317
-      targetPort: 4317
     - name: http
       appProtocol: http
       port: 80

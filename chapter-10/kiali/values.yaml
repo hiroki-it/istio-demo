@@ -6,14 +6,22 @@ deployment:
 
 external_services:
   grafana:
-    enabled: false
+    enabled: true
+    in_cluster_url: http://grafana.istio-system.svc.cluster.local:80
+    auth:
+      type: basic
+      username: admin
+      password: prom-operator
   prometheus:
     url: http://prometheus-server.istio-system.svc.cluster.local:9090
   custom_dashboards:
     prometheus:
       url: http://prometheus-server.istio-system.svc.cluster.local:9090
   tracing:
-    enabled: false
+    enabled: true
+    provider: tempo
+    internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+    use_grpc: false
   istio:
     component_status:
       components:

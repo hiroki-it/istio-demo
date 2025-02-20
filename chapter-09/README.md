@@ -1,11 +1,9 @@
 # 9章
 
-以下を実践することにより、Istioサイドカーモードによるテレメトリー (ログ、メトリクス、分散トレース) 作成を学びます。
+以下を実践することにより、Istioサイドカーモードによる認証認可を学びます。
 
 - Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
-- Istioのテレメトリー作成系リソース (Telemetry) を作成する
-
-そして、テレメトリー間をトレースIDで紐付け、マイクロサービスアプリケーションのオブザーバビリティーを向上させます
+- 認証認可系リソース (AuthorizationPolicy、RequestAuthentication) を作成します
 
 ## セットアップ
 
@@ -104,7 +102,11 @@ helmfile -f chapter-09/istio/istio-egress/helmfile.yaml apply
 10. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
+helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
+
 helmfile -f chapter-09/bookinfo-app/details-istio/helmfile.yaml apply
+
+helmfile -f chapter-09/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
 helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply
 
@@ -125,121 +127,35 @@ helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
 helmfile -f chapter-09/keycloak/helmfile.yaml apply
 ```
 
-13. PeerAuthenticationを作成します。
-
-```bash
-helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
-```
-
-14. Keycloakを作成します。
-
-```bash
-helmfile -f chapter-09/keycloak/helmfile.yaml apply
-```
-
-15. Telemetryを作成します。
-
-```bash
-helmfile -f chapter-09/istio/istio-telemetry/helmfile.yaml apply
-```
-
-16. Prometheusを作成します。
+13. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-09/prometheus/helmfile.yaml apply
 ```
 
-17. Grafanaを作成します。
-
-```bash
-helmfile -f chapter-09/grafana/grafana/helmfile.yaml apply
-```
-
-18. Kialiを作成します。
+14. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-09/kiali/helmfile.yaml apply
 ```
 
-19. Minioを作成します。
+12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
-helmfile -f chapter-09/minio/helmfile.yaml apply
+kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-20. Grafana Lokiを作成します。
+13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
-helmfile -f chapter-09/grafana/grafana-loki/helmfile.yaml apply
+kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-21. Grafana Promtailを作成します。
+14. 接続時点では未認証のため、detailsサービスとreviewsサービスはproductpageサービスに `403` を返信します。productpageサービスは詳細情報とレビュー情報を取得できないため、ユーザーはこれらを閲覧できません。
 
-```bash
-helmfile -f chapter-09/grafana/grafana-promtail/helmfile.yaml apply
-```
+15. Sign inボタンをクリックすると、認可コードフローのOIDCが始まります。認可リクエストなどを経て、Keycloakが認証画面をレスポンスするため、ユーザー名を`izzy`とし、パスワードを`izzy`とします。Keycloakの認証に成功すれば、Keycloakに登録された`izzy`ユーザーを使用してBookinfoにSSOできます。
 
-22. Grafana Tempoを作成します。
-
-```bash
-helmfile -f chapter-09/grafana/grafana-tempo/helmfile.yaml apply
-```
-
-23. OpenTelemetry Collectorを作成します。
-
-```bash
-helmfile -f chapter-09/opentelemetry-collector/helmfile.yaml apply
-```
-
-24. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
-
-```bash
-kubectl logs <OpenTelemetry CollectorのPod> -n istio-system -f
-
-Resource SchemaURL:
-Resource attributes:
-     -> service.name: Str(reviews.app)
-     -> k8s.pod.ip: Str(127.0.0.6)
-ScopeSpans #0
-ScopeSpans SchemaURL:
-InstrumentationScope
-Span #0
-    Trace ID       : e628c2e56566a155a4e60782861c39cf
-    Parent ID      : b3b5bf6e9caa41f0
-    ID             : 5adf8431816989f3
-    Name           : ratings:9080/*
-    Kind           : Client
-    Start time     : 2025-01-13 11:54:43.953816 +0000 UTC
-    End time       : 2025-01-13 11:54:43.967079 +0000 UTC
-    Status code    : Unset
-    Status message :
-Attributes:
-    ...
-```
-
-25. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
-
-```bash
-kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
-  kubectl port-forward svc/grafana -n istio-system 8000:80 & \
-  kubectl port-forward svc/kiali 20001:20001 -n istio-system
-```
-
-26. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
-
-```bash
-kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
-```
-
-![bookinfo_productpage](../images/bookinfo_productpage.png)
-
-27. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
-
-```bash
-kubectl port-forward svc/grafana -n istio-system 8000:80
-```
-
-28. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
+16. OIDCの成功後、productpageサービスはKeycloakから受信したアクセストークンを後続のマイクロサービスに伝播します。detailsサービスとreviewsサービスはKeycloakとの間でアクセストークンを検証し、これが成功すればproductpageサービスに `200` を返信します。productpageサービスは詳細情報とレビュー情報を取得できるようになり、ユーザーはこれらを閲覧できます。
 
 ## 機能を実践する
 

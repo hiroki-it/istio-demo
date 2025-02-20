@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: agent
+  name: bookinfo
   labels:
     istio.io/rev: stable
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: bookinfo
+  name: keycloak
   labels:
     istio.io/rev: stable
 ---
