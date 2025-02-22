@@ -8,5 +8,6 @@
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "reviewers": ["@hiroki-it"],
+  "separateMultipleMinor": true,
   "timezone": "Asia/Tokyo"
 }
