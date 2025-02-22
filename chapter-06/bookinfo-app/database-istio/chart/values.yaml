@@ -1,4 +1,4 @@
 service:
-  name: mysql
+  name: database
   host: ratings.mysql.dev
   port: 3306
