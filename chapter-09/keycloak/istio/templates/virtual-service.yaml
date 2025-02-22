@@ -65,6 +65,11 @@ spec:
             host: {{ .Values.service.host.headless }}
             port:
               number: {{ .Values.service.port.http }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
