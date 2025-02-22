@@ -6,8 +6,3 @@ service:
   port:
     http: 8080
     https: 8443
-
-mysql:
-  egressGatewayName: mysql-egress
-  host: keycloak.mysql.dev
-  port: 3306
