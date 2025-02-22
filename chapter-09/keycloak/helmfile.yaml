@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: keycloak
     chart: codecentric/keycloakx
-    version: 6.0.0
+    version: 7.0.1
     namespace: keycloak
     atomic: true
     values:
