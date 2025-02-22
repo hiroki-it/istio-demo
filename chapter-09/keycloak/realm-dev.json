@@ -2128,7 +2128,7 @@
     "realmReusableOtpCode": "false",
     "darkMode": "false"
   },
-  "keycloakVersion": "26.1.1",
+  "keycloakVersion": "26.1.2",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
   "verifiableCredentialsEnabled": false,
