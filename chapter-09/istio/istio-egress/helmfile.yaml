@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: istio-egressgateway
     chart: istio/gateway
-    version: 1.24.2
+    version: 1.24.3
     namespace: istio-egress
     atomic: true
     values:
