@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: grafana-tempo
     chart: grafana/tempo
-    version: 1.16.0
+    version: 1.18.2
     namespace: istio-system
     values:
       - values.yaml
