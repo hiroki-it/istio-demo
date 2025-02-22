@@ -1,0 +1,27 @@
+services:
+
+  mysql:
+    container_name: keycloak-mysql
+    hostname: keycloak.mysql.dev
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: keycloak
+      TZ: 'Asia/Tokyo'
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
+      interval: 10s
+      retries: 5
+    image: mysql:8.0.30
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - istio-demo
+
+volumes:
+  db_data:
+
+networks:
+  istio-demo:
+    external: true
