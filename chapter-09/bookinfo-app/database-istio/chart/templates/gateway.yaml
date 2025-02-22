@@ -1,14 +1,17 @@
+{{- range .Values.database }}
+---
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: {{ .Values.service.name }}-egress
+  name: {{ $.Values.service.name }}-{{ .name }}-egress
 spec:
   selector:
     istio: egressgateway
   servers:
     - port:
-        name: tcp-{{ .Values.service.name }}
+        name: tcp-{{ .name }}
         protocol: TCP
-        number: {{ .Values.service.port }}
+        number: {{ $.Values.service.port }}
       hosts:
-        - {{ .Values.service.host }}
+        - {{ .host }}
+{{- end }}

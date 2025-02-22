@@ -70,35 +70,3 @@ spec:
         attempts: 3
         perTryTimeout: 10s
         retryOn: 5xx
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.service.name }}-egress
-spec:
-  exportTo:
-    - "*"
-  hosts:
-    - {{ .Values.mysql.host }}
-  gateways:
-    - mesh
-    - {{ .Values.mysql.egressGatewayName }}
-  tcp:
-    - match:
-        - gateways:
-            - mesh
-          port: {{ .Values.mysql.port }}
-      route:
-        - destination:
-            host: istio-egressgateway.istio-egress.svc.cluster.local
-            port:
-              number: {{ .Values.mysql.port }}
-    - match:
-        - gateways:
-            - {{ .Values.mysql.egressGatewayName }}
-          port: {{ .Values.mysql.port }}
-      route:
-        - destination:
-            host: {{ .Values.mysql.host }}
-            port:
-              number: {{ .Values.mysql.port }}
