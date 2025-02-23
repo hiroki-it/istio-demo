@@ -43,8 +43,8 @@ KUBERNETES_VERSION=1.32.0
 NODE_COUNT=6
 
 # ハードウェアリソース
-CPU=6
-MEMORY=6144
+CPU=4
+MEMORY=4096
 
 minikube start \
   --profile istio-demo \
