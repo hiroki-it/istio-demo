@@ -26,7 +26,6 @@ mode: standalone
 
 persistence:
   size: 5Gi
-  # MinikubeがStorageClassを自動的に作成するため、それを指定する
   storageClass: standard
 
 resources:
