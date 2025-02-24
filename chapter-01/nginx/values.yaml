@@ -4,9 +4,7 @@ controller:
     nodePorts:
       http: 30000
     ports:
-      # Serviceの宛先となるNginx Ingress Controller Podのポート番号
       http: 80
-  # Nginx Ingress Controller Podが公開するポート番号
   containerPort:
     http: 80
   affinity:
@@ -18,3 +16,10 @@ controller:
                 operator: In
                 values:
                   - ingress
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
