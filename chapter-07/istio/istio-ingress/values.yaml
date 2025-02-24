@@ -16,11 +16,11 @@ service:
 
 resources:
   requests:
-    cpu: 500m
-    memory: 640Mi
+    cpu: 300m
+    memory: 384Mi
   limits:
-    cpu: 500m
-    memory: 640Mi
+    cpu: 300m
+    memory: 384Mi
 
 affinity:
   nodeAffinity:
