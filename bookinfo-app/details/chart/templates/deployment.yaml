@@ -24,6 +24,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+      terminationGracePeriodSeconds: 45
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,3 +56,8 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+      terminationGracePeriodSeconds: 45
