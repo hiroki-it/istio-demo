@@ -35,6 +35,8 @@ global:
 meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
+    proxyMetadata:
+      EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
   enableTracing: true
   defaultProviders:
     metrics:
