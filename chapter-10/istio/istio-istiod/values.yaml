@@ -49,7 +49,6 @@ meshConfig:
     - name: envoy-grpc
       envoyFileAccessLog:
         logFormat:
-          # @see https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
           labels:
             access_log_type: '%ACCESS_LOG_TYPE%'
             bytes_received: '%BYTES_RECEIVED%'
