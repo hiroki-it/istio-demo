@@ -21,6 +21,13 @@ alertmanager:
   service:
     type: NodePort
     nodePort: 32001
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
 
 extraScrapeConfigs: |
   - job_name: istiod
@@ -45,14 +52,6 @@ extraScrapeConfigs: |
         action: keep
         regex: .*-envoy-prom
 
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
-  limits:
-    cpu: 100m
-    memory: 128Mi
-
 server:
   persistentVolume:
     enabled: false
@@ -60,3 +59,10 @@ server:
     type: NodePort
     nodePort: 32004
     servicePort: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
