@@ -9,6 +9,13 @@ affinity:
                 - system
 
 tempo:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
   storage:
     trace:
       backend: s3
