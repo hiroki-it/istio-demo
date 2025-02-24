@@ -28,6 +28,13 @@ spec:
             httpGet:
               port: {{ .Values.service.port }}
               path: /health
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
       terminationGracePeriodSeconds: 45
 ---
 apiVersion: apps/v1
@@ -60,5 +67,12 @@ spec:
             httpGet:
               port: {{ .Values.service.port }}
               path: /health
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
       terminationGracePeriodSeconds: 45
 
