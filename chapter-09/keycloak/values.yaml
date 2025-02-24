@@ -50,6 +50,14 @@ http:
 image:
   tag: 26.1.2
 
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+
 service:
   httpPort: 8080
   httpsPort: 8443

@@ -3,6 +3,13 @@ auth:
 
 deployment:
   service_type: NodePort
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
 
 external_services:
   grafana:

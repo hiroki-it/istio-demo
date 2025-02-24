@@ -30,3 +30,11 @@ datasources:
         type: tempo
         url: http://grafana-tempo.istio-system.svc.cluster.local:3100
         basicAuth: false
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi

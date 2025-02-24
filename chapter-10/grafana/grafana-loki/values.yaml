@@ -39,6 +39,14 @@ singleBinary:
   extraVolumeMounts:
     - name: data
       mountPath: /var/loki
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+
 
 gateway:
   enabled: false

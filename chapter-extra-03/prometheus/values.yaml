@@ -22,7 +22,6 @@ alertmanager:
     type: NodePort
     nodePort: 32001
 
-# Istiodとistio-proxyの監視
 extraScrapeConfigs: |
   - job_name: istiod
     kubernetes_sd_configs:
@@ -45,6 +44,14 @@ extraScrapeConfigs: |
           - __meta_kubernetes_pod_container_port_name
         action: keep
         regex: .*-envoy-prom
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
 
 server:
   persistentVolume:

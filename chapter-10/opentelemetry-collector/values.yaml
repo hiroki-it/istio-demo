@@ -45,6 +45,14 @@ image:
 command:
   name: otelcol-contrib
 
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+
 ports:
   jaeger-compact:
     enabled: false
