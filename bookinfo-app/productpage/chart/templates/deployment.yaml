@@ -24,12 +24,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
-      volumes:
-        - name: tmp
-          emptyDir: {}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+      terminationGracePeriodSeconds: 45
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -57,9 +56,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
-          volumeMounts:
-            - name: tmp
-              mountPath: /tmp
-      volumes:
-        - name: tmp
-          emptyDir: {}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+      terminationGracePeriodSeconds: 45
+
