@@ -27,4 +27,4 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: 5xx
+        retryOn: reset-before-request,connect-failure,refused-stream

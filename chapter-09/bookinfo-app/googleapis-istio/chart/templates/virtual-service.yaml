@@ -26,7 +26,7 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: 5xx
+        retryOn: reset-before-request,connect-failure,refused-stream
     - match:
         - gateways:
             - {{ .Values.service.name }}-egress
@@ -42,4 +42,4 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: 5xx
+        retryOn: reset-before-request,connect-failure,refused-stream
