@@ -2,6 +2,15 @@ auth:
   strategy: anonymous
 
 deployment:
+  affinity:
+    node:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
   service_type: NodePort
   resources:
     requests:
