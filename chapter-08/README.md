@@ -104,19 +104,25 @@ helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
 helmfile -f chapter-09/prometheus/helmfile.yaml apply
 ```
 
-11. Kialiを作成します。
+11. metrics-serverを作成します。
+
+```bash
+helmfile -f chapter-09/metrics-server/helmfile.yaml apply
+```
+
+12. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-09/kiali/helmfile.yaml apply
 ```
 
-12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+13. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
