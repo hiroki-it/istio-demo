@@ -12,6 +12,9 @@ args:
   - start-dev
   - --import-realm
 
+autoscaling:
+  enabled: true
+
 command:
   - /opt/keycloak/bin/kc.sh
 
