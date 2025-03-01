@@ -10,7 +10,7 @@ loki:
     s3:
       accessKeyId: root
       secretAccessKey: password
-      endpoint: minio.istio-system.svc.cluster.local:9000
+      endpoint: minio.minio.svc.cluster.local:9000
       insecure: true
       s3ForcePathStyle: true
     bucketNames:

@@ -14,7 +14,7 @@ deployment:
 external_services:
   grafana:
     enabled: true
-    in_cluster_url: http://grafana.istio-system.svc.cluster.local:80
+    in_cluster_url: http://grafana.grafana.svc.cluster.local:80
     auth:
       type: basic
       username: admin
@@ -27,7 +27,7 @@ external_services:
   tracing:
     enabled: true
     provider: tempo
-    internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+    internal_url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3100
     use_grpc: false
   istio:
     component_status:
