@@ -6,7 +6,7 @@ releases:
   - name: opentelemetry-collector
     chart: opentelemetry/opentelemetry-collector
     version: 0.117.1
-    namespace: agent
+    namespace: opentelemetry-collector
     atomic: true
     values:
       - values.yaml

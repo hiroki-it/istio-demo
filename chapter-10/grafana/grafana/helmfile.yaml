@@ -6,6 +6,6 @@ releases:
   - name: grafana
     chart: grafana/grafana
     version: 8.10.1
-    namespace: istio-system
+    namespace: grafana
     values:
       - values.yaml
