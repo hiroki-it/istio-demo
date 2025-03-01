@@ -2,6 +2,15 @@ auth:
   strategy: anonymous
 
 deployment:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
   service_type: NodePort
   resources:
     requests:
@@ -35,5 +44,3 @@ external_services:
     root_namespace: istio-system
     url_service_version: http://istiod-1-24-2:15014/version
 
-server:
-  node_port: 32000
