@@ -55,11 +55,11 @@ image:
 
 resources:
   requests:
-    cpu: 200m
-    memory: 256Mi
+    cpu: 300m
+    memory: 1024Mi
   limits:
-    cpu: 200m
-    memory: 256Mi
+    cpu: 300m
+    memory: 1024Mi
 
 service:
   httpPort: 8080
