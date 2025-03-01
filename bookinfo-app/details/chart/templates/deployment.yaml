@@ -32,9 +32,9 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 512Mi
+              memory: 256Mi
             limits:
-              memory: 512Mi
+              memory: 256Mi
       terminationGracePeriodSeconds: 45
 ---
 apiVersion: apps/v1
@@ -71,7 +71,7 @@ spec:
           resources:
             requests:
               cpu: 200m
-              memory: 1024Mi
+              memory: 512Mi
             limits:
-              memory: 1024Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
