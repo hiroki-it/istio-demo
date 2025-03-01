@@ -26,7 +26,6 @@ alertmanager:
       cpu: 100m
       memory: 128Mi
     limits:
-      cpu: 100m
       memory: 128Mi
 
 extraScrapeConfigs: |
@@ -64,5 +63,4 @@ server:
       cpu: 100m
       memory: 128Mi
     limits:
-      cpu: 100m
       memory: 128Mi

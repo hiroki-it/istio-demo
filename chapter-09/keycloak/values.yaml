@@ -58,7 +58,6 @@ resources:
     cpu: 300m
     memory: 1024Mi
   limits:
-    cpu: 300m
     memory: 1024Mi
 
 service:
