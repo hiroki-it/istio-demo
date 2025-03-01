@@ -15,10 +15,10 @@ external_services:
   grafana:
     enabled: false
   prometheus:
-    url: http://prometheus-server.istio-system.svc.cluster.local:9090
+    url: http://prometheus-server.prometheus.svc.cluster.local:9090
   custom_dashboards:
     prometheus:
-      url: http://prometheus-server.istio-system.svc.cluster.local:9090
+      url: http://prometheus-server.prometheus.svc.cluster.local:9090
   tracing:
     enabled: false
   istio:
