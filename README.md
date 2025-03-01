@@ -17,7 +17,7 @@ Bookinfoアプリケーションを使用して、Istioをデモンストレー�
 
 ### miseによるインストール
 
-1. miseを使用して、そのほかに必要なツールをインストールします
+1. miseを使用して、そのほかに必要なツールをインストールします。
 
 ```bash
 $ mise trust
@@ -25,7 +25,7 @@ $ mise trust
 $ mise install
 ```
 
-2. Helmプラグインをインストールします
+2. Helmプラグインをインストールします。
 
 ```bash
 $ helm plugin install https://github.com/databus23/helm-diff
@@ -33,7 +33,9 @@ $ helm plugin install https://github.com/databus23/helm-diff
 
 ### Kubernetesクラスターのセットアップ
 
-1. Minikubeを使用して、Kubernetesクラスターを作成します
+1. Docker Desktopの [リソース設定](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) から、ハードウェアリソースの上限を変更してください。CPUを`6`、メモリを`8`以上にしてください。
+
+2. Minikubeを使用して、Kubernetesクラスターを作成します。
 
 ```bash
 # バージョン
@@ -43,8 +45,8 @@ KUBERNETES_VERSION=1.32.0
 NODE_COUNT=6
 
 # ハードウェアリソース
-CPU=4
-MEMORY=4096
+CPU=5
+MEMORY=6400
 
 minikube start \
   --profile istio-demo \
@@ -58,7 +60,7 @@ minikube start \
   --memory ${MEMORY}
 ```
 
-2. ワーカーNodeにラベルを設定します。
+3. ワーカーNodeにラベルを設定します。
 
 ```bash
 # istio-demo-m02 (app Node)
@@ -82,7 +84,7 @@ kubectl label node istio-demo-m06 node.kubernetes.io/nodegroup=system --overwrit
   && kubectl label node istio-demo-m06 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
-3. Nodeを確認します。
+4. Nodeを確認します。
 
 ```bash
 kubectl get nodes -L node.kubernetes.io/nodegroup
