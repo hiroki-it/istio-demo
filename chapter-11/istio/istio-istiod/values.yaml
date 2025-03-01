@@ -20,7 +20,6 @@ global:
       cpu: 100m
       memory: 128Mi
     limits:
-      cpu: 100m
       memory: 128Mi
   variant: distroless
   waypoint:
@@ -29,7 +28,6 @@ global:
         cpu: 100m
         memory: 128Mi
       limits:
-        cpu: 100m
         memory: 128Mi
   affinity:
     nodeAffinity:
