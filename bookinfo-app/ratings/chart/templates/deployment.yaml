@@ -31,10 +31,10 @@ spec:
             initialDelaySeconds: 15
           resources:
             requests:
-              cpu: 300m
-              memory: 768Mi
+              cpu: 100m
+              memory: 512Mi
             limits:
-              memory: 768Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
 ---
 apiVersion: apps/v1
@@ -81,8 +81,8 @@ spec:
             initialDelaySeconds: 15
           resources:
             requests:
-              cpu: 300m
-              memory: 768Mi
+              cpu: 200m
+              memory: 1024Mi
             limits:
-              memory: 768Mi
+              memory: 1024Mi
       terminationGracePeriodSeconds: 45
