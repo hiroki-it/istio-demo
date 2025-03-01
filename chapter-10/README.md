@@ -149,49 +149,55 @@ helmfile -f chapter-10/istio/istio-telemetry/helmfile.yaml apply
 helmfile -f chapter-10/prometheus/helmfile.yaml apply
 ```
 
-17. Grafanaを作成します。
+17. metrics-serverを作成します。
+
+```bash
+helmfile -f chapter-09/metrics-server/helmfile.yaml apply
+```
+
+18. Grafanaを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana/helmfile.yaml apply
 ```
 
-18. Kialiを作成します。
+19. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-10/kiali/helmfile.yaml apply
 ```
 
-19. Minioを作成します。
+20. Minioを作成します。
 
 ```bash
 helmfile -f chapter-10/minio/helmfile.yaml apply
 ```
 
-20. Grafana Lokiを作成します。
+21. Grafana Lokiを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-21. Grafana Promtailを作成します。
+22. Grafana Promtailを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-22. Grafana Tempoを作成します。
+23. Grafana Tempoを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-23. OpenTelemetry Collectorを作成します。
+24. OpenTelemetry Collectorを作成します。
 
 ```bash
 helmfile -f chapter-10/opentelemetry-collector/helmfile.yaml apply
 ```
 
-24. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
+25. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
 
 ```bash
 kubectl logs <OpenTelemetry CollectorのPod> -n istio-system -f
@@ -217,7 +223,7 @@ Attributes:
     ...
 ```
 
-25. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+26. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
@@ -225,7 +231,7 @@ kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-26. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+27. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
@@ -233,13 +239,13 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
 
-27. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
+28. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/grafana -n istio-system 8000:80
 ```
 
-28. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
+29. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
 
 ## 機能を実践する
 
