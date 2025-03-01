@@ -6,11 +6,11 @@ releases:
   - name: grafana-tempo
     chart: grafana/tempo
     version: 1.18.2
-    namespace: istio-system
+    namespace: grafana-tempo
     values:
       - values.yaml
   - name: grafana-tempo-istio
     chart: istio
     version: 1.0.0
-    namespace: agent
+    namespace: grafana-tempo
     atomic: true
