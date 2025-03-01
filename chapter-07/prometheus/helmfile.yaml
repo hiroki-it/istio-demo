@@ -6,7 +6,7 @@ releases:
   - name: prometheus
     chart: prometheus-community/prometheus
     version: 27.5.0
-    namespace: istio-system
+    namespace: prometheus
     atomic: true
     values:
       - values.yaml
