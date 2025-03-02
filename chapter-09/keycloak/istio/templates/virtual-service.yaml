@@ -36,7 +36,7 @@ spec:
     - match:
         - port: {{ .Values.service.port.http }}
           uri:
-            prefix: /realms/{{ .Values.keycloak.realm }}/protocol/openid-connect/certs
+            prefix: /realms
       route:
         - destination:
             host: {{ .Values.service.host.http }}
