@@ -51,6 +51,12 @@ extraScrapeConfigs: |
         action: keep
         regex: .*-envoy-prom
 
+prometheus-node-exporter:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
+
 server:
   persistentVolume:
     enabled: false
