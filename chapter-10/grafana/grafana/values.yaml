@@ -2,6 +2,10 @@ grafana.ini:
   auth.anonymous:
     enabled: true
     org_role: Admin
+  date_formats:
+    default_timezone: Asia/Tokyo
+  users:
+    default_theme: light
 
 service:
   type: NodePort
