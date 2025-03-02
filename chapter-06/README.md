@@ -40,6 +40,12 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-06/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
+4. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
+
+```bash
+kubectl rollout restart deployment -n bookinfo
+```
+
 ## 機能を実践する
 
 ## 掃除
