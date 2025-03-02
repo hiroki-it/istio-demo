@@ -200,7 +200,7 @@ helmfile -f chapter-10/opentelemetry-collector/helmfile.yaml apply
 25. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
 
 ```bash
-kubectl logs <OpenTelemetry CollectorのPod> -n istio-system -f
+kubectl logs <OpenTelemetry CollectorのPod> -n opentelemetry-collector -f
 
 Resource SchemaURL:
 Resource attributes:
@@ -226,8 +226,8 @@ Attributes:
 26. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
-kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
-  kubectl port-forward svc/grafana -n istio-system 8000:80 & \
+kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
+  kubectl port-forward svc/grafana -n grafana 8000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
@@ -242,7 +242,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 28. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
 
 ```bash
-kubectl port-forward svc/grafana -n istio-system 8000:80
+kubectl port-forward svc/grafana -n grafana 8000:80
 ```
 
 29. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
