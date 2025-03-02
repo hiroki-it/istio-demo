@@ -29,14 +29,14 @@ metadata:
   name: {{ .Values.service.name }}-http-token-verification
 spec:
   exportTo:
-    - "."
+    - "*"
   hosts:
     - {{ .Values.service.host.http }}
   http:
     - match:
         - port: {{ .Values.service.port.http }}
           uri:
-            prefix: /realms
+            prefix: /realms/{{ .Values.keycloak.realm }}/protocol/openid-connect/certs
       route:
         - destination:
             host: {{ .Values.service.host.http }}
@@ -54,7 +54,7 @@ metadata:
   name: {{ .Values.service.name }}-headless
 spec:
   exportTo:
-    - "*"
+    - "."
   hosts:
     - {{ .Values.service.host.headless }}
   http:
