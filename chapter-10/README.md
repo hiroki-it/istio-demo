@@ -152,7 +152,7 @@ helmfile -f chapter-10/prometheus/helmfile.yaml apply
 17. metrics-serverを作成します。
 
 ```bash
-helmfile -f chapter-09/metrics-server/helmfile.yaml apply
+helmfile -f chapter-10/metrics-server/helmfile.yaml apply
 ```
 
 18. Grafanaを作成します。

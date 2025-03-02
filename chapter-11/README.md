@@ -84,10 +84,22 @@ helmfile -f chapter-11/prometheus/helmfile.yaml apply
 10. metrics-serverを作成します。
 
 ```bash
-helmfile -f chapter-09/metrics-server/helmfile.yaml apply
+helmfile -f chapter-11/metrics-server/helmfile.yaml apply
 ```
 
-11. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+11. Grafanaを作成します。
+
+```bash
+helmfile -f chapter-11/grafana/helmfile.yaml apply
+```
+
+12. Kialiを作成します。
+
+```bash
+helmfile -f chapter-11/kiali/helmfile.yaml apply
+```
+
+13. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -95,13 +107,13 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+14. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
 
 ```bash
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
