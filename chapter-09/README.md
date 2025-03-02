@@ -148,7 +148,7 @@ helmfile -f chapter-09/metrics-server/helmfile.yaml apply
 15. Grafanaを作成します。
 
 ```bash
-helmfile -f chapter-10/grafana/grafana/helmfile.yaml apply
+helmfile -f chapter-09/grafana/grafana/helmfile.yaml apply
 ```
 
 16. Kialiを作成します。
