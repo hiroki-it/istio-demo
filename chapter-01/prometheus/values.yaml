@@ -28,6 +28,12 @@ alertmanager:
     limits:
       memory: 256Mi
 
+prometheus-node-exporter:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
+
 server:
   persistentVolume:
     enabled: false
