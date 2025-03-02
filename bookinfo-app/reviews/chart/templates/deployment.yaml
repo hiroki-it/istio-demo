@@ -6,7 +6,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v1
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -45,7 +45,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
