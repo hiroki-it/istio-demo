@@ -1,0 +1,11 @@
+repositories:
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+
+releases:
+  - name: grafana
+    chart: grafana/grafana
+    version: 8.10.1
+    namespace: grafana
+    values:
+      - values.yaml

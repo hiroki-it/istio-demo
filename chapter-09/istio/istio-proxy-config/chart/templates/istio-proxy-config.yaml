@@ -1,0 +1,8 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ProxyConfig
+metadata:
+  name: {{ .Release.Namespace }}
+spec:
+  drainDuration: 15s
+  proxyMetadata:
+    MINIMUM_DRAIN_DURATION: 15s
