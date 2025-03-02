@@ -15,13 +15,6 @@ global:
   imagePullPolicy: IfNotPresent
   defaultPodDisruptionBudget:
     minAvailable: 1
-  defaultResources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 100m
-      memory: 128Mi
   proxy:
     resources:
       requests:
