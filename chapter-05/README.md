@@ -112,10 +112,12 @@ helmfile -f chapter-09/metrics-server/helmfile.yaml apply
 helmfile -f chapter-05/kiali/helmfile.yaml apply
 ```
 
-12. `http://localhost:20001`から、Kialiのダッシュボードに接続します。
+12. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
-kubectl port-forward svc/kiali 20001:20001 -n istio-system
+kubectl port-forward svc/prometheus-server -n istio-system 9090:9090 & \
+  kubectl port-forward svc/grafana -n istio-system 8000:80 & \
+  kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
 13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
