@@ -28,7 +28,7 @@ meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
     proxyMetadata:
-      EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
+      EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
   rootNamespace: null
   discoverySelectors:
     - matchLabels:

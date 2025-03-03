@@ -27,8 +27,10 @@ global:
 meshConfig:
   defaultConfig:
     holdApplicationUntilProxyStarts: true
+    drainDuration: 10s
     proxyMetadata:
-      EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true
+      EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+      MINIMUM_DRAIN_DURATION: 10s
   enableTracing: true
   defaultProviders:
     metrics:
