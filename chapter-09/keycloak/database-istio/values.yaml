@@ -1,4 +1,4 @@
 service:
   name: database
-  host: dev.ratings.mysql
+  host: dev.keycloak.mysql
   port: 3306
