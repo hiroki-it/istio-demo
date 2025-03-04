@@ -9,7 +9,7 @@ releases:
     namespace: keycloak
     atomic: true
   - name: keycloak-istio
-    chart: istio
+    chart: keycloak-istio
     version: 1.0.0
     namespace: keycloak
     atomic: true
