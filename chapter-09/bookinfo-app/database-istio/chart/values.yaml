@@ -1,9 +1,4 @@
 service:
   name: database
+  host: ""
   port: 3306
-
-database:
-  - name: ratings
-    host: ratings.mysql.dev
-  - name: keycloak
-    host: keycloak.mysql.dev

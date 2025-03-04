@@ -4,3 +4,12 @@ releases:
     version: 1.0.0
     namespace: bookinfo
     atomic: true
+    values:
+      - values.bookinfo.yaml
+  - name: database-istio
+    chart: chart
+    version: 1.0.0
+    namespace: keycloak
+    atomic: true
+    values:
+      - values.keycloak.yaml
