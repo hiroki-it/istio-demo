@@ -4,4 +4,4 @@ metadata:
   name: {{ .Release.Namespace }}
 spec:
   proxyMetadata:
-    ISTIO_META_DNS_CAPTURE: "true"
+    ISTIO_META_DNS_CAPTURE: true
