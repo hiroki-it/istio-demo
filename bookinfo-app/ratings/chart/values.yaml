@@ -3,5 +3,5 @@ service:
   port: 9080
 
 database:
-  host: ratings.dev.mysql
+  host: dev.ratings.mysql
   port: 3306

@@ -36,7 +36,7 @@ docker compose -f chapter-08/bookinfo-app/ratings-istio/docker-compose.yaml up -
 ```bash
 docker exec -it ratings-mysql /bin/sh
 
-sh-4.4# mysql -h ratings.dev.mysql -u root -proot
+sh-4.4# mysql -h dev.ratings.mysql -u root -proot
 
 mysql> SHOW TABLES FROM test;
 +----------------+

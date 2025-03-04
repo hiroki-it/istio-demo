@@ -38,7 +38,7 @@ docker compose -f chapter-10/bookinfo-app/ratings-istio/docker-compose.yaml up -
 ```bash
 docker exec -it ratings-mysql /bin/sh
 
-sh-4.4# mysql -h ratings.dev.mysql -u root -proot
+sh-4.4# mysql -h dev.ratings.mysql -u root -proot
 
 mysql> SHOW TABLES FROM test;
 +----------------+
@@ -69,7 +69,7 @@ docker compose -f chapter-10/keycloak/docker-compose.yaml up -d
 ```bash
 docker exec -it keycloak-mysql /bin/sh
 
-sh-4.4# mysql -h keycloak.dev.mysql -u keycloak -pkeycloak
+sh-4.4# mysql -h dev.keycloak.mysql -u keycloak -pkeycloak
 
 mysql> SHOW TABLES FROM keycloak;
 +-------------------------------+
