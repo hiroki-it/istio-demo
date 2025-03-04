@@ -7,7 +7,7 @@ spec:
     istio: egressgateway
   servers:
     - port:
-        name: tcp
+        name: tcp-mysql
         protocol: TCP
         number: {{ .Values.service.port }}
       hosts:
