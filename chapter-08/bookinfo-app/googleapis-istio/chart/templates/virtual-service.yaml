@@ -9,7 +9,7 @@ spec:
     - {{ .Values.service.host }}
   gateways:
     - mesh
-    - {{ .Values.service.name }}-egress
+    - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
   tls:
     - match:
         - gateways:
@@ -29,7 +29,7 @@ spec:
         retryOn: reset-before-request,connect-failure,refused-stream
     - match:
         - gateways:
-            - {{ .Values.service.name }}-egress
+            - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
           port: {{ .Values.service.port }}
           sniHosts:
             - {{ .Values.service.host }}
