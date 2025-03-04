@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: istio-base
     chart: istio/base
-    version: 1.24.3
+    version: 1.25.0
     namespace: istio-system
     atomic: true
     values:
