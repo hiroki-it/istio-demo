@@ -3,6 +3,5 @@ kind: ProxyConfig
 metadata:
   name: {{ .Release.Namespace }}
 spec:
-  drainDuration: 15s
   proxyMetadata:
-    MINIMUM_DRAIN_DURATION: 15s
+    ISTIO_META_DNS_CAPTURE: "true"

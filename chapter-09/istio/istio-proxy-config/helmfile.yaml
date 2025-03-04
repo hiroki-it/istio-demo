@@ -1,6 +1,0 @@
-releases:
-  - name: istio-proxy-config
-    chart: chart
-    version: 1.0.0
-    namespace: bookinfo
-    atomic: true
