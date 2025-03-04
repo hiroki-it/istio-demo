@@ -4,7 +4,7 @@ repositories:
 
 releases:
   - name: grafana-tempo-istio
-    chart: istio
+    chart: grafana-tempo-istio
     version: 1.0.0
     namespace: grafana-tempo
     atomic: true
