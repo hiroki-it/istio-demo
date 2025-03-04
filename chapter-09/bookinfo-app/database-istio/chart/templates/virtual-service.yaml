@@ -1,34 +1,31 @@
-{{- range .Values.database }}
----
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: {{ $.Values.service.name }}-{{ .name }}-egress
+  name: {{ .Values.service.name }}-egress
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .host }}
+    - {{ .Values.service.host }}
   gateways:
     - mesh
-    - {{ $.Values.service.name }}-{{ .name }}-egress
+    - {{ .Values.service.name }}-egress
   tcp:
     - match:
         - gateways:
             - mesh
-          port: {{ $.Values.service.port }}
+          port: {{ .Values.service.port }}
       route:
         - destination:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
-              number: {{ $.Values.service.port }}
+              number: {{ .Values.service.port }}
     - match:
         - gateways:
-            - {{ $.Values.service.name }}-{{ .name }}-egress
-          port: {{ $.Values.service.port }}
+            - {{ .Values.service.name }}-egress
+          port: {{ .Values.service.port }}
       route:
         - destination:
-            host: {{ .host }}
+            host: {{ .Values.service.host }}
             port:
-              number: {{ $.Values.service.port }}
-{{- end }}
+              number: {{ .Values.service.port }}
