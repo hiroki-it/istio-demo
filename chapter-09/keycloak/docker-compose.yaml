@@ -2,7 +2,7 @@ services:
 
   mysql:
     container_name: keycloak-mysql
-    hostname: keycloak.dev.mysql
+    hostname: dev.keycloak.mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: keycloak

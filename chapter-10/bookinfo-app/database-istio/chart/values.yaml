@@ -4,6 +4,6 @@ service:
 
 database:
   - name: ratings
-    host: ratings.dev.mysql
+    host: dev.ratings.mysql
   - name: keycloak
-    host: keycloak.dev.mysql
+    host: dev.keycloak.mysql

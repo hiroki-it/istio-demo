@@ -17,7 +17,7 @@ command:
 
 database:
   vendor: mysql
-  hostname: keycloak.dev.mysql
+  hostname: dev.keycloak.mysql
   port: 3306
   database: keycloak
   username: keycloak
