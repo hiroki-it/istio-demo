@@ -15,3 +15,8 @@ releases:
     version: 1.0.0
     namespace: keycloak
     atomic: true
+  - name: keycloak-database-istio
+    chart: database-istio
+    version: 1.0.0
+    namespace: keycloak
+    atomic: true
