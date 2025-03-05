@@ -9,7 +9,7 @@ spec:
     - {{ .Values.service.host }}
   gateways:
     - mesh
-    - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
+    - {{ .Values.istioEgressGateway.namespace }}/{{ .Values.service.name }}-egress
   http:
     - match:
         - gateways:
@@ -22,7 +22,7 @@ spec:
               number: {{ .Values.service.port }}
     - match:
         - gateways:
-            - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
+            - {{ .Values.istioEgressGateway.namespace }}/{{ .Values.service.name }}-egress
           port: {{ .Values.service.port }}
       route:
         - destination:
