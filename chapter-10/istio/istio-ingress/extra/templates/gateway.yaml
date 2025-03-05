@@ -1,19 +1,28 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: {{ .Values.service.name }}-public
+  name: {{ .Values.service.name }}-productpage
 spec:
   selector:
     istio: ingressgateway
   servers:
     - port:
-        name: http-productpage
+        name: http
         protocol: HTTP
         number: 9080
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.service.name }}-keycloak
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
     - port:
-        name: http-keycloak
+        name: http
         protocol: HTTP
         number: 8080
       hosts:

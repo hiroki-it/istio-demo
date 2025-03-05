@@ -1,14 +1,14 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: {{ .Values.service.name }}-public
+  name: {{ .Values.service.name }}-productpage
 spec:
   selector:
     istio: ingressgateway
   servers:
     - port:
-        name: http-{{ .Values.service.name }}
+        name: http
         protocol: HTTP
-        number: {{ .Values.service.port }}
+        number: 9080
       hosts:
         - "*"
