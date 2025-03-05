@@ -12,3 +12,20 @@ spec:
         number: 3306
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.service.name }}-googleapis
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: tls
+        protocol: TLS
+        number: 443
+      hosts:
+        - www.googleapis.com
+      tls:
+        mode: PASSTHROUGH
