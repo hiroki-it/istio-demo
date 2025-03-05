@@ -12,3 +12,18 @@ spec:
         number: 3306
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.service.name }}-grafana-tempo
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: grpc
+        protocol: GRPC
+        number: 4317
+      hosts:
+        - grafana-tempo.grafana-tempo.svc.cluster.local

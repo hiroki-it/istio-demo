@@ -1,2 +1,7 @@
 service:
   name: istio-egress
+
+service:
+  name: googleapis
+  host:
+  port: 443
