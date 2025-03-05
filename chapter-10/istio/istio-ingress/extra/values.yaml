@@ -1,2 +1,3 @@
 service:
-  name: istio-egress
+  name: istio-ingress
+  port: 9080
