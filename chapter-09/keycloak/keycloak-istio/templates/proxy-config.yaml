@@ -1,7 +1,0 @@
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: {{ .Release.Namespace }}
-spec:
-  proxyMetadata:
-    ISTIO_META_DNS_CAPTURE: true
