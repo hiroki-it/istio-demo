@@ -1,9 +1,7 @@
 service:
   name: database
+  host: dev.ratings.mysql
   port: 3306
 
-database:
-  - name: ratings
-    host: dev.ratings.mysql
-  - name: keycloak
-    host: dev.keycloak.mysql
+istioEgressGateway:
+  namespace: istio-egress

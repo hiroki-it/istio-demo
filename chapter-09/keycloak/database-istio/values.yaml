@@ -2,3 +2,6 @@ service:
   name: database
   host: dev.keycloak.mysql
   port: 3306
+
+istioEgressGateway:
+  namespace: istio-egress
