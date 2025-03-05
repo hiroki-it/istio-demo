@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: {{ .Values.service.name }}-{{ .Release.Namespace }}
+  name: {{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
