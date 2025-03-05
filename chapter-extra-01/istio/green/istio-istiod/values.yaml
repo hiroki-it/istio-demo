@@ -11,7 +11,7 @@ affinity:
 autoscaleMin: 2
 
 global:
-  tag: 1.24.2
+  tag: 1.25.0
   imagePullPolicy: IfNotPresent
   defaultPodDisruptionBudget:
     minAvailable: 1
@@ -36,7 +36,7 @@ meshConfig:
     - matchLabels:
         istio.io/rev: stable
 
-revision: 1-24-2
+revision: 1-25-0
 
 revisionTags:
   - stable
