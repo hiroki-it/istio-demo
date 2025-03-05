@@ -144,10 +144,16 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ## 掃除
 
-Minikubeを削除します。
-
-他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+1. Minikubeを削除します。
 
 ```bash
 minikube delete --profile istio-demo
 ```
+
+2. dockerコンテナを削除します。
+
+```bash
+docker compose -f chapter-05/bookinfo-app/ratings-istio/docker-compose.yaml down --rmi all --volumes --remove-orphans
+```
+
+3. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
