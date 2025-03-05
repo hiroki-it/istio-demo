@@ -3,7 +3,7 @@ repositories:
     url: https://istio-release.storage.googleapis.com/charts
 
 releases:
-  - name: istio-istiod-1-24-2
+  - name: istio-istiod-1-25-0
     chart: istio/istiod
     version: 1.25.0
     namespace: istio-system
