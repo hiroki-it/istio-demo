@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Values.service.name }}-database
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: tcp-mysql
+        protocol: TCP
+        number: 3306
+      hosts:
+        - "*"
