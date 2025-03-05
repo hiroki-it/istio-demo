@@ -1,2 +1,2 @@
 service:
-  name: istio-egress
+  name: egress

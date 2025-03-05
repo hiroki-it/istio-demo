@@ -1,2 +1,2 @@
 service:
-  name: istio-ingress
+  name: ingress
