@@ -1,3 +1,0 @@
-apiVersion: v2
-name: istio-peer-authentication
-version: 1.0.0
