@@ -1,3 +1,2 @@
 service:
   name: istio-ingress
-  port: 9080
