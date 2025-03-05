@@ -24,7 +24,7 @@ spec:
     - port:
         name: tls
         protocol: TLS
-        number: 3306
+        number: 443
       hosts:
         - www.googleapis.com
       tls:
