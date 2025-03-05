@@ -10,6 +10,6 @@ spec:
   location: MESH_EXTERNAL
   ports:
     - number: {{ .Values.service.port }}
-      name: grpc-{{ .Values.service.name }}
+      name: grpc
       protocol: GRPC
   resolution: DNS
