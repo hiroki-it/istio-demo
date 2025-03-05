@@ -87,25 +87,19 @@ helmfile -f chapter-09/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-09/istio/istio-istiod/helmfile.yaml apply
 ```
 
-8. PeerAuthenticationを作成します。
-
-```bash
-helmfile -f chapter-09/istio/istio-peer-authentication/helmfile.yaml apply
-```
-
-9. Istio IngressGatewayを作成します。
+8. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-09/istio/istio-ingress/helmfile.yaml apply
 ```
 
-10. Istio EgressGatewayを作成します。
+9. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-09/istio/istio-egress/helmfile.yaml apply
 ```
 
-11. Istioのトラフィック管理系リソースを作成します。
+10. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
@@ -119,9 +113,11 @@ helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.yaml apply
 
 helmfile -f chapter-09/bookinfo-app/reviews-istio/helmfile.yaml apply
+
+helmfile -f chapter-09/bookinfo-app/share-istio/helmfile.yaml apply
 ```
 
-12. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
+11. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
 
 ```bash
 kubectl rollout restart deployment -n bookinfo
