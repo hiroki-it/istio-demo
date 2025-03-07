@@ -1,13 +1,10 @@
 services:
 
   mysql:
-    container_name: keycloak-mysql
-    hostname: dev.keycloak.mysql
+    container_name: istio-demo-mysql
+    hostname: dev.istio-demo-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: keycloak
-      MYSQL_PASSWORD: keycloak
       TZ: 'Asia/Tokyo'
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
@@ -15,6 +12,7 @@ services:
       retries: 5
     image: mysql:8.0.30
     volumes:
+      - ./initdb.d:/docker-entrypoint-initdb.d
       - db_data:/var/lib/mysql
     networks:
       - istio-demo
