@@ -148,7 +148,7 @@ minikube delete --profile istio-demo
 2. dockerコンテナを削除します。
 
 ```bash
-docker compose -f chapter-02/bookinfo-app/ratings-istio/docker-compose.yaml down --rmi all --volumes --remove-orphans
+docker compose -f databases/docker-compose.yaml down --rmi all --volumes --remove-orphans
 ```
 
 3. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
