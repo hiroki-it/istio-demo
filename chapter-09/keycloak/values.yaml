@@ -23,8 +23,8 @@ database:
   hostname: dev.keycloak.mysql
   port: 3306
   database: keycloak
-  username: keycloak
-  password: keycloak
+  username: root
+  password: root
 
 extraEnv: |
   - name: KC_BOOTSTRAP_ADMIN_USERNAME
