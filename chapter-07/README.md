@@ -24,7 +24,33 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-3. Istioのトラフィック管理系リソースを作成します。
+3. サービスメッシュ外に、MySQLコンテナを作成します。
+
+```bash
+docker compose -f databases/docker-compose.yaml up -d
+```
+
+4. `keycloak`と`test`というデータベースがあることを確認します。
+
+```bash
+docker exec -it istio-demo-mysql /bin/sh
+
+sh-4.4# mysql -h dev.istio-demo-mysql -u root -proot
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| keycloak           |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+```
+
+5. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
