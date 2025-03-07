@@ -3,5 +3,5 @@ service:
   port: 9080
 
 database:
-  host: dev.ratings.mysql
+  host: dev.istio-demo-mysql
   port: 3306
