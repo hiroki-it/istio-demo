@@ -20,7 +20,7 @@ command:
 
 database:
   vendor: mysql
-  hostname: dev.keycloak.mysql
+  hostname: dev.istio-demo-mysql
   port: 3306
   database: keycloak
   username: root
