@@ -7,8 +7,8 @@ spec:
     istio: egressgateway
   servers:
     - port:
-        name: tcp-mysql
-        protocol: TCP
+        name: mysql
+        protocol: MYSQL
         number: 3306
       hosts:
         - "*"
