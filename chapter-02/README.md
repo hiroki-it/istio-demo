@@ -27,35 +27,30 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-3. サービスメッシュ外に、Ratingサービス用のMySQLコンテナを作成します。
+3. サービスメッシュ外に、MySQLコンテナを作成します。
 
 ```bash
-docker compose -f chapter-02/bookinfo-app/ratings-istio/docker-compose.yaml up -d
+docker compose -f databases/docker-compose.yaml up -d
 ```
 
-4. `test`データベースは`rating`テーブルを持つことを確認します。
+4. `test`というデータベースがあることを確認します。
 
 ```bash
-docker exec -it ratings-mysql /bin/sh
+docker exec -it istio-demo-mysql /bin/sh
 
-sh-4.4# mysql -h dev.ratings.mysql -u root -proot
+sh-4.4# mysql -h dev.istio-demo-mysql -u root -proot
 
-mysql> SHOW TABLES FROM test;
-+----------------+
-| Tables_in_test |
-+----------------+
-| ratings        |
-+----------------+
-
-mysql> USE test;
-
-mysql> SELECT * from ratings;
-+----------+--------+
-| ReviewID | Rating |
-+----------+--------+
-|        1 |      5 |
-|        2 |      4 |
-+----------+--------+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| keycloak           |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
 ```
 
 5. Istiodコントロールプレーンを作成します。
