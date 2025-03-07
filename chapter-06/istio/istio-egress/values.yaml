@@ -9,8 +9,8 @@ podDisruptionBudget:
 service:
   type: ClusterIP
   ports:
-    - name: tcp-mysql
-      appProtocol: tcp
+    - name: mysql
+      appProtocol: mysql
       port: 3306
       targetPort: 3306
 
