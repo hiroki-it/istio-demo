@@ -9,31 +9,13 @@
 
 ## セットアップ
 
-1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
-
-```bash
-kubectl apply --server-side -f chapter-10/shared/namespace.yaml
-```
-
-2. Bookinfoアプリケーションを作成します。
-
-```bash
-helmfile -f bookinfo-app/details/helmfile.yaml apply
-
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
-
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
-
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
-```
-
-3. サービスメッシュ外に、MySQLコンテナを作成します。
+1. サービスメッシュ外に、MySQLコンテナを作成します。
 
 ```bash
 docker compose -f databases/docker-compose.yaml up -d
 ```
 
-4. `keycloak`と`test`というデータベースがあることを確認します。
+2. `keycloak`と`test`というデータベースがあることを確認します。
 
 ```bash
 docker exec -it istio-demo-mysql /bin/sh
@@ -51,6 +33,24 @@ mysql> SHOW DATABASES;
 | sys                |
 | test               |
 +--------------------+
+```
+
+3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+
+```bash
+kubectl apply --server-side -f chapter-10/shared/namespace.yaml
+```
+
+4. Bookinfoアプリケーションを作成します。
+
+```bash
+helmfile -f bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 5. Istiodコントロールプレーンを作成します。

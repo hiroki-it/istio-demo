@@ -9,24 +9,6 @@
 
 ## セットアップ
 
-1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
-
-```bash
-kubectl apply --server-side -f chapter-05/shared/namespace.yaml
-```
-
-2. Bookinfoアプリケーションを作成します。
-
-```bash
-helmfile -f bookinfo-app/details/helmfile.yaml apply
-
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
-
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
-
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
-```
-
 3. サービスメッシュ外に、MySQLコンテナを作成します。
 
 ```bash
@@ -51,6 +33,24 @@ mysql> SHOW DATABASES;
 | sys                |
 | test               |
 +--------------------+
+```
+
+1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+
+```bash
+kubectl apply --server-side -f chapter-05/shared/namespace.yaml
+```
+
+2. Bookinfoアプリケーションを作成します。
+
+```bash
+helmfile -f bookinfo-app/details/helmfile.yaml apply
+
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
 5. Istiodコントロールプレーンを作成します。
@@ -150,6 +150,5 @@ minikube delete --profile istio-demo
 ```bash
 docker compose -f databases/docker-compose.yaml down --rmi all --volumes --remove-orphans
 ```
-
 
 3. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
