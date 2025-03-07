@@ -36,6 +36,15 @@ spec:
             limits:
               memory: 256Mi
       terminationGracePeriodSeconds: 45
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -75,4 +84,12 @@ spec:
             limits:
               memory: 512Mi
       terminationGracePeriodSeconds: 45
-
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
