@@ -55,10 +55,10 @@ image:
 
 resources:
   requests:
-    cpu: 300m
+    cpu: 600m
     memory: 1024Mi
   limits:
-    cpu: 300m
+    cpu: 600m
     memory: 1024Mi
 
 service:
