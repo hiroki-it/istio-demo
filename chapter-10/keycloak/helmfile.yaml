@@ -3,6 +3,16 @@ repositories:
     url: https://codecentric.github.io/helm-charts
 
 releases:
+  - name: keycloak-database-istio
+    chart: database-istio
+    version: 1.0.0
+    namespace: keycloak
+    atomic: true
+  - name: keycloak-istio
+    chart: keycloak-istio
+    version: 1.0.0
+    namespace: keycloak
+    atomic: true
   - name: keycloak
     chart: codecentric/keycloakx
     version: 7.0.1
@@ -10,8 +20,3 @@ releases:
     atomic: true
     values:
       - values.yaml
-  - name: keycloak-istio
-    chart: istio
-    version: 1.0.0
-    namespace: keycloak
-    atomic: true
