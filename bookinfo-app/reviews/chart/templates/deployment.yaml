@@ -31,11 +31,11 @@ spec:
             initialDelaySeconds: 15
           resources:
             requests:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 512Mi
             limits:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -80,11 +80,11 @@ spec:
             initialDelaySeconds: 15
           resources:
             requests:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 512Mi
             limits:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
