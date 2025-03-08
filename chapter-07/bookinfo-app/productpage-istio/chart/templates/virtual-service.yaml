@@ -8,7 +8,7 @@ spec:
   hosts:
     - "*"
   gateways:
-    - {{ .Values.service.name }}-ingress
+    - {{ .Values.istioIngressGateway.namespace }}/{{ .Values.service.name }}-ingress
   http:
     - match:
         - port: {{ .Values.service.port }}
