@@ -37,7 +37,7 @@ KUBERNETES_VERSION=1.32.0
 NODE_COUNT=6
 
 # ハードウェアリソース
-CPU=5
+CPU=4
 MEMORY=10240
 
 minikube start \
