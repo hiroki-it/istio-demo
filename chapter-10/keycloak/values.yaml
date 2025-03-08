@@ -12,8 +12,7 @@ args:
   - start-dev
   - --import-realm
 
-autoscaling:
-  enabled: true
+replicas: 2
 
 command:
   - /opt/keycloak/bin/kc.sh
