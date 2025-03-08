@@ -51,7 +51,7 @@ spec:
             - {{ .Values.destination.googleapis.host }}
       route:
         - destination:
-            host: istio-egressgateway.istio-egress.svc.cluster.local
+            host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: {{ .Values.destination.googleapis.port }}
       timeout: 10s
