@@ -2,3 +2,6 @@ service:
   name: productpage
   host: productpage.bookinfo.svc.cluster.local
   port: 9080
+
+istioIngressGateway:
+  namespace: istio-ingress
