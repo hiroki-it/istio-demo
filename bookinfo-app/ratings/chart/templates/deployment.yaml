@@ -29,6 +29,7 @@ spec:
               port: {{ .Values.service.port }}
               path: /health
             initialDelaySeconds: 15
+            timeoutSeconds: 5
           resources:
             requests:
               cpu: 100m
@@ -89,6 +90,7 @@ spec:
               port: {{ .Values.service.port }}
               path: /health
             initialDelaySeconds: 15
+            timeoutSeconds: 5
           resources:
             requests:
               cpu: 100m
