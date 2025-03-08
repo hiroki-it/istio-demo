@@ -80,11 +80,11 @@ spec:
             initialDelaySeconds: 15
           resources:
             requests:
-              cpu: 200m
-              memory: 512Mi
+              cpu: 100m
+              memory: 256Mi
             limits:
-              cpu: 200m
-              memory: 512Mi
+              cpu: 100m
+              memory: 256Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
