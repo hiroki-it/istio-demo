@@ -9,7 +9,7 @@ spec:
     - {{ .Values.destination.database.host }}
   gateways:
     - mesh
-    - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
+    - {{ .Release.Namespace }}/database-{{ .Values.service.name }}
   tcp:
     - match:
         - gateways:
