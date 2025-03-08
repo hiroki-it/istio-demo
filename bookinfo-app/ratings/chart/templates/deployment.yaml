@@ -93,11 +93,11 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 518Mi
             limits:
-              cpu: 100m
-              memory: 256Mi
+              cpu: 200m
+              memory: 518Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
