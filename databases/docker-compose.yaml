@@ -3,6 +3,7 @@ services:
   mysql:
     container_name: istio-demo-mysql
     hostname: dev.istio-demo-mysql
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
       TZ: 'Asia/Tokyo'
