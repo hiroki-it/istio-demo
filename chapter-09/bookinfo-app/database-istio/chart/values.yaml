@@ -3,5 +3,3 @@ service:
   host: dev.istio-demo-mysql
   port: 3306
 
-istioEgressGateway:
-  namespace: istio-egress
