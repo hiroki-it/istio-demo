@@ -10,10 +10,12 @@ service:
   type: NodePort
   ports:
     - name: http-productpage
+      appProtocol: http
       nodePort: 30000
       port: 9080
       targetPort: 9080
     - name: http-keycloak
+      appProtocol: http
       nodePort: 30001
       port: 8080
       targetPort: 8080
