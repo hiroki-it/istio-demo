@@ -3,7 +3,7 @@ repositories:
     url: https://codecentric.github.io/helm-charts
 
 releases:
-  - name: keycloak-database-istio
+  - name: database-istio
     chart: database-istio
     version: 1.0.0
     namespace: keycloak
