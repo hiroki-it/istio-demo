@@ -6,8 +6,8 @@ spec:
   gatewayClassName: istio
   listeners:
     - name: http-productpage
+      appProtocol: http
       port: 9080
-      protocol: HTTP
       allowedRoutes:
         namespaces:
           from: All
