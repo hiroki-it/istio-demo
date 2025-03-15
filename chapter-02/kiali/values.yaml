@@ -22,12 +22,7 @@ deployment:
 
 external_services:
   grafana:
-    enabled: true
-    in_cluster_url: http://grafana.grafana.svc.cluster.local:80
-    auth:
-      type: basic
-      username: admin
-      password: prom-operator
+    enabled: false
   prometheus:
     url: http://prometheus-server.prometheus.svc.cluster.local:9090
   custom_dashboards:
