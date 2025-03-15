@@ -12,4 +12,3 @@ spec:
         number: 9080
       hosts:
         - "*"
-
