@@ -114,7 +114,7 @@ helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 13. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-05/kiali/helmfile.yaml apply
+helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
 14. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
