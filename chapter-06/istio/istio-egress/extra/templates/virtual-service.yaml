@@ -1,0 +1,77 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: database-{{ .Values.service.name }}
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.destination.database.host }}
+  gateways:
+    - mesh
+    - {{ .Release.Namespace }}/database-{{ .Values.service.name }}
+  tcp:
+    - match:
+        - gateways:
+            - mesh
+          port: {{ .Values.destination.database.port }}
+      route:
+        - destination:
+            host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.destination.database.port }}
+    - match:
+        - gateways:
+            - {{ .Release.Namespace }}/database-{{ .Values.service.name }}
+          port: {{ .Values.destination.database.port }}
+      route:
+        - destination:
+            host: {{ .Values.destination.database.host }}
+            port:
+              number: {{ .Values.destination.database.port }}
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: googleapis-{{ .Values.service.name }}
+spec:
+  exportTo:
+    - "*"
+  hosts:
+    - {{ .Values.destination.googleapis.host }}
+  gateways:
+    - mesh
+    - {{ .Release.Namespace }}/googleapis-{{ .Values.service.name }}
+  tls:
+    - match:
+        - gateways:
+            - mesh
+          port: {{ .Values.destination.googleapis.port }}
+          sniHosts:
+            - {{ .Values.destination.googleapis.host }}
+      route:
+        - destination:
+            host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.destination.googleapis.port }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: reset-before-request,connect-failure,refused-stream
+    - match:
+        - gateways:
+            - {{ .Release.Namespace }}/googleapis-{{ .Values.service.name }}
+          port: {{ .Values.destination.googleapis.port }}
+          sniHosts:
+            - {{ .Values.destination.googleapis.host }}
+      route:
+        - destination:
+            host: {{ .Values.destination.googleapis.host }}
+            port:
+              number: {{ .Values.destination.googleapis.port }}
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: reset-before-request,connect-failure,refused-stream
