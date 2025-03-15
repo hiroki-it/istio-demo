@@ -3,7 +3,7 @@
 以下を実践することにより、Istioサイドカーモードによるマイクロサービスの横断的管理を学びます。
 
 - Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
-- Istioのトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を作成する
+- Istioの基本的なリソースを作成し、Bookinfoアプリケーションに接続できるようにします
 
 これらのリソースはサービスメッシュに必須であり、以降の全ての章で登場します。
 
