@@ -9,13 +9,13 @@
 
 ## セットアップ
 
-3. サービスメッシュ外に、MySQLコンテナを作成します。
+1. サービスメッシュ外に、MySQLコンテナを作成します。
 
 ```bash
 docker compose -f databases/docker-compose.yaml up -d
 ```
 
-4. `test`というデータベースがあることを確認します。
+2. `keycloak`と`test`というデータベースがあることを確認します。
 
 ```bash
 docker exec -it istio-demo-mysql /bin/sh
@@ -35,13 +35,13 @@ mysql> SHOW DATABASES;
 +--------------------+
 ```
 
-1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
+2. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
 kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 ```
 
-2. Bookinfoアプリケーションを作成します。
+3. Bookinfoアプリケーションを作成します。
 
 ```bash
 helmfile -f bookinfo-app/details/helmfile.yaml apply
@@ -53,7 +53,7 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-5. Istiodコントロールプレーンを作成します。
+4. Istiodコントロールプレーンを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-base/helmfile.yaml apply
@@ -61,19 +61,19 @@ helmfile -f chapter-05/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-05/istio/istio-istiod/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayを作成します。
+5. Istio IngressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istio EgressGatewayを作成します。
+6. Istio EgressGatewayを作成します。
 
 ```bash
 helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 ```
 
-8. Istioのトラフィック管理系リソースを作成します。
+7. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
 helmfile -f chapter-05/bookinfo-app/database-istio/helmfile.yaml apply
@@ -89,37 +89,37 @@ helmfile -f chapter-05/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
+8. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
 
 ```bash
 kubectl rollout restart deployment -n bookinfo
 ```
 
-10. Prometheusを作成します。
+9. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-05/prometheus/helmfile.yaml apply
 ```
 
-11. metrics-serverを作成します。
+10. metrics-serverを作成します。
 
 ```bash
 helmfile -f chapter-05/metrics-server/helmfile.yaml apply
 ```
 
-12. Grafanaを作成します。
+11. Grafanaを作成します。
 
 ```bash
 helmfile -f chapter-05/grafana/grafana/helmfile.yaml apply
 ```
 
-13. Kialiを作成します。
+12. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-05/kiali/helmfile.yaml apply
 ```
 
-14. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+13. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -127,7 +127,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080

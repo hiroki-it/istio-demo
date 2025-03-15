@@ -15,7 +15,7 @@
 docker compose -f databases/docker-compose.yaml up -d
 ```
 
-2. `test`というデータベースがあることを確認します。
+2. `keycloak`と`test`というデータベースがあることを確認します。
 
 ```bash
 docker exec -it istio-demo-mysql /bin/sh
