@@ -16,10 +16,10 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v1
-          weight: 100
+          weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v2
-          weight: 0
+          weight: 100
