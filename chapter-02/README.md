@@ -107,11 +107,10 @@ helmfile -f chapter-02/prometheus/helmfile.yaml apply
 helmfile -f chapter-02/kiali/helmfile.yaml apply
 ```
 
-14. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+14. Prometheus、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
-  kubectl port-forward svc/grafana -n grafana 8000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
