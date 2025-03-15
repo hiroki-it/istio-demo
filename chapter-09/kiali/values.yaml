@@ -45,3 +45,5 @@ external_services:
     root_namespace: istio-system
     url_service_version: http://istiod-1-25-0:15014/version
 
+server:
+  node_port: 32001
