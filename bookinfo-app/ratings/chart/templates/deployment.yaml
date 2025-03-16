@@ -112,7 +112,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v2
+  name: {{ .Values.service.name }}-v-delayed
   labels:
     app: {{ .Values.service.name }}
     version: v-delayed
@@ -162,7 +162,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v2
+  name: {{ .Values.service.name }}-v-failty
   labels:
     app: {{ .Values.service.name }}
     version: v-failty
@@ -212,7 +212,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v2
+  name: {{ .Values.service.name }}-v-unavailable
   labels:
     app: {{ .Values.service.name }}
     version: v-unavailable
@@ -262,7 +262,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v2
+  name: {{ .Values.service.name }}-v-unhealthy
   labels:
     app: {{ .Values.service.name }}
     version: v-unhealthy
