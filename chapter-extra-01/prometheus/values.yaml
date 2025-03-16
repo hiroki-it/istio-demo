@@ -53,5 +53,5 @@ server:
       cpu: 200m
       memory: 512Mi
     limits:
-      cpu: 200m
-      memory: 512Mi
+      cpu: 600m
+      memory: 1024Mi
