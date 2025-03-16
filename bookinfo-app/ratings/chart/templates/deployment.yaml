@@ -33,10 +33,10 @@ spec:
           resources:
             requests:
               cpu: 300m
-              memory: 518Mi
+              memory: 512Mi
             limits:
               cpu: 300m
-              memory: 518Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -94,10 +94,210 @@ spec:
           resources:
             requests:
               cpu: 300m
-              memory: 518Mi
+              memory: 512Mi
             limits:
               cpu: 300m
-              memory: 518Mi
+              memory: 512Mi
+      terminationGracePeriodSeconds: 45
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v2
+  labels:
+    app: {{ .Values.service.name }}
+    version: v-delayed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v-delayed
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v-delayed
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-delayed:1.20.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
+      terminationGracePeriodSeconds: 45
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v2
+  labels:
+    app: {{ .Values.service.name }}
+    version: v-failty
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v-failty
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v-failty
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-faulty:1.20.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
+      terminationGracePeriodSeconds: 45
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v2
+  labels:
+    app: {{ .Values.service.name }}
+    version: v-unavailable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v-unavailable
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v-unavailable
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unavailable:1.20.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
+      terminationGracePeriodSeconds: 45
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v2
+  labels:
+    app: {{ .Values.service.name }}
+    version: v-unhealthy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v-unhealthy
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v-unhealthy
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unhealthy:1.20.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
