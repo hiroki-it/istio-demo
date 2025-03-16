@@ -162,21 +162,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-failty
+  name: {{ .Values.service.name }}-v-faulty
   labels:
     app: {{ .Values.service.name }}
-    version: v-failty
+    version: v-faulty
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-failty
+      version: v-faulty
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-failty
+        version: v-faulty
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:

@@ -25,15 +25,3 @@ spec:
     - name: v-unavailable
       labels:
         version: v-unavailable
-  trafficPolicy:
-    loadBalancer:
-      simple: ROUND_ROBIN
-    connectionPool:
-      http:
-        http1MaxPendingRequests: 100
-        maxRequestsPerConnection: 100
-    outlierDetection:
-      consecutive5xxErrors: 10
-      interval: 10s
-      baseEjectionTime: 3m
-      maxEjectionPercent: 100
