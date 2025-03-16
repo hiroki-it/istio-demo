@@ -36,7 +36,6 @@ meshConfig:
       inclusionRegexps:
         - ".*outlier_detection.*"
         - ".*upstream_rq_retry.*"
-        - ".*upstream_rq_timeout.*"
         - ".*upstream_cx_.*"
       inclusionSuffixes:
         - "upstream_rq_timeout"
