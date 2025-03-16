@@ -32,6 +32,14 @@ meshConfig:
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
+    proxyStatsMatcher:
+      inclusionRegexps:
+        - ".*outlier_detection.*"
+        - ".*upstream_rq_retry.*"
+        - ".*upstream_rq_timeout.*"
+        - ".*upstream_cx_.*"
+      inclusionSuffixes:
+        - "upstream_rq_timeout"
   rootNamespace: null
   discoverySelectors:
     - matchLabels:
@@ -41,8 +49,3 @@ revision: 1-25-0
 
 revisionTags:
   - stable
-
-
-
-
-
