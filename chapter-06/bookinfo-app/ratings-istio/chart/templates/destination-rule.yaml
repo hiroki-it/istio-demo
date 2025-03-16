@@ -13,6 +13,18 @@ spec:
     - name: v2
       labels:
         version: v2
+    - name: v-delayed
+      labels:
+        version: v-delayed
+    - name: v-faulty
+      labels:
+        version: v-faulty
+    - name: v-unhealthy
+      labels:
+        version: v-unhealthy
+    - name: v-unavailable
+      labels:
+        version: v-unavailable
   trafficPolicy:
     loadBalancer:
       simple: ROUND_ROBIN
