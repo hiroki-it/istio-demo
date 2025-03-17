@@ -19,9 +19,6 @@ spec:
     - name: v-faulty
       labels:
         version: v-faulty
-    - name: v-unhealthy
-      labels:
-        version: v-unhealthy
     - name: v-unavailable
       labels:
         version: v-unavailable
@@ -36,3 +33,6 @@ spec:
           consecutive5xxErrors: 5
           interval: 30s
           baseEjectionTime: 30s
+    - name: v-unhealthy
+      labels:
+        version: v-unhealthy
