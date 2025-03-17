@@ -140,10 +140,16 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 minikube delete --profile istio-demo
 ```
 
-2. dockerコンテナを削除します。
+2. `kubectl port-forward`コマンドのプロセスを明示的に終了します。
+
+```
+pkill kubectl -9
+```
+
+3. dockerコンテナを削除します。
 
 ```bash
 docker compose -f databases/docker-compose.yaml down --volumes --remove-orphans
 ```
 
-3. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+4. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
