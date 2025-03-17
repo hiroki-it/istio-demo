@@ -34,11 +34,11 @@ meshConfig:
       MINIMUM_DRAIN_DURATION: 10s
     proxyStatsMatcher:
       inclusionRegexps:
+        - ".*membership.*"
         - ".*outlier_detection.*"
-        - ".*upstream_rq_retry.*"
+        - ".*ssl.*"
+        - ".*upstream_rq_.*"
         - ".*upstream_cx_.*"
-      inclusionSuffixes:
-        - "upstream_rq_timeout"
   rootNamespace: null
   discoverySelectors:
     - matchLabels:
