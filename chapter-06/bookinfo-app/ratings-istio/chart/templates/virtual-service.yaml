@@ -28,13 +28,23 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-delayed
-          weight: 100
+          weight: 25
+          timeout: 2s
+          retries:
+            attempts: 3
+            perTryTimeout: 2s
+            retryOn: reset-before-request,connect-failure,refused-stream
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-faulty
-          weight: 0
+          weight: 25
+          timeout: 2s
+          retries:
+            attempts: 3
+            perTryTimeout: 2s
+            retryOn: reset-before-request,connect-failure,refused-stream,gateway-error
         - destination:
             host: {{ .Values.service.host }}
             port:
@@ -46,9 +56,9 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-unavailable
-          weight: 0
-      timeout: 2s
-      retries:
-        attempts: 3
-        perTryTimeout: 2s
-        retryOn: reset-before-request,connect-failure,refused-stream
+          weight: 25
+          timeout: 2s
+          retries:
+            attempts: 3
+            perTryTimeout: 2s
+            retryOn: reset-before-request,connect-failure,refused-stream,gateway-error
