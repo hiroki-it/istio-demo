@@ -68,7 +68,7 @@ kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
 9. Bookinfoアプリケーションに定期的にリクエストを送信します。
 
 ```bash
-$ watch -n 3 curl http://localhost:9080/productpage > /dev/null
+watch -n 3 curl http://localhost:9080/productpage > /dev/null
 ```
 
 ## 機能を実践する
