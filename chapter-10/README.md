@@ -76,19 +76,19 @@ helmfile -f chapter-10/istio/istio-egress/helmfile.yaml apply
 8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/googleapis-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/reviews-istio/helmfile.yaml apply
 
-helmfile -f chapter-09/bookinfo-app/share-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/share-istio/helmfile.yaml apply
 ```
 
 9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
@@ -97,67 +97,61 @@ helmfile -f chapter-09/bookinfo-app/share-istio/helmfile.yaml apply
 kubectl rollout restart deployment -n bookinfo
 ```
 
-10. Keycloakを作成します。
-
-```bash
-helmfile -f chapter-10/keycloak/helmfile.yaml apply
-```
-
-11. Prometheusを作成します。
+10. Prometheusを作成します。
 
 ```bash
 helmfile -f chapter-10/prometheus/helmfile.yaml apply
 ```
 
-12. metrics-serverを作成します。
+11. metrics-serverを作成します。
 
 ```bash
 helmfile -f chapter-10/metrics-server/helmfile.yaml apply
 ```
 
-13. Grafanaを作成します。
+12. Grafanaを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana/helmfile.yaml apply
 ```
 
-14. Kialiを作成します。
+13. Kialiを作成します。
 
 ```bash
 helmfile -f chapter-10/kiali/helmfile.yaml apply
 ```
 
-15. Minioを作成します。
+14. Minioを作成します。
 
 ```bash
 helmfile -f chapter-10/minio/helmfile.yaml apply
 ```
 
-16. Grafana Lokiを作成します。
+15. Grafana Lokiを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-17. Grafana Promtailを作成します。
+16. Grafana Promtailを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana-promtail/helmfile.yaml apply
 ```
 
-18. Grafana Tempoを作成します。
+17. Grafana Tempoを作成します。
 
 ```bash
 helmfile -f chapter-10/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-19. OpenTelemetry Collectorを作成します。
+18. OpenTelemetry Collectorを作成します。
 
 ```bash
 helmfile -f chapter-10/opentelemetry-collector/helmfile.yaml apply
 ```
 
-20. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
+19. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
 
 ```bash
 kubectl logs <OpenTelemetry CollectorのPod> -n opentelemetry-collector -f
