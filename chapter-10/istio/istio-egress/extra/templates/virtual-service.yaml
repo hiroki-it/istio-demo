@@ -105,4 +105,4 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure,refused-stream
+        retryOn: deadline-exceeded,refused-stream,resource-exhausted,unavailable
