@@ -51,7 +51,7 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unavailable
           weight: 25
-          timeout: 10s
+          timeout: 5s
           retries:
             attempts: 3
             perTryTimeout: 5s
@@ -62,7 +62,7 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unhealthy
           weight: 25
-          timeout: 10s
+          timeout: 5s
           retries:
             attempts: 3
             perTryTimeout: 5s
