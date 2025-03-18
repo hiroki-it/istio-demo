@@ -43,6 +43,9 @@ meshConfig:
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
+  defaultProviders:
+    metrics:
+      - prometheus
 
 revision: 1-25-0
 
