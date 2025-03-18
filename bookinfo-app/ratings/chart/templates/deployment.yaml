@@ -131,7 +131,7 @@ spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-delayed-7s-delay:1.20.2
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-delayed:1.20.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
@@ -181,7 +181,7 @@ spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-faulty-50percent-503:1.20.2
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-faulty:1.20.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
@@ -231,7 +231,7 @@ spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unavailable-503-in60s:1.20.2
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unavailable:1.20.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
