@@ -29,4 +29,4 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure
+        retryOn: connect-failure,reset-before-request

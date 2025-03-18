@@ -21,7 +21,7 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure
+        retryOn: connect-failure,reset-before-request
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -46,7 +46,7 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure
+        retryOn: connect-failure,reset-before-request
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -69,4 +69,4 @@ spec:
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure
+        retryOn: connect-failure,reset-before-request
