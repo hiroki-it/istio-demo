@@ -16,3 +16,7 @@ spec:
           time: 60s
           interval: 30s
         idleTimeout: 60h
+      http:
+        http1MaxPendingRequests: 100
+        maxRequestsPerConnection: 100
+        idleTimeout: 30m
