@@ -8,13 +8,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: grafana-tempo
-  labels:
-    istio.io/rev: stable
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: opentelemetry-collector
   labels:
     istio.io/rev: stable
