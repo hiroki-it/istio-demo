@@ -7,6 +7,8 @@ grafana.ini:
   users:
     default_theme: light
 
+replicas: 2
+
 service:
   type: NodePort
   nodePort: 32003
