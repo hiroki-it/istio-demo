@@ -33,10 +33,10 @@ spec:
           resources:
             requests:
               cpu: 200m
-              memory: 518Mi
+              memory: 512Mi
             limits:
               cpu: 200m
-              memory: 518Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -83,10 +83,10 @@ spec:
           resources:
             requests:
               cpu: 200m
-              memory: 518Mi
+              memory: 512Mi
             limits:
               cpu: 200m
-              memory: 518Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:

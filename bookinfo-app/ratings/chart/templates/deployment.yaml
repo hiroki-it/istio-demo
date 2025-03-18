@@ -32,8 +32,8 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 300m
-              memory: 512Mi
+              cpu: 200m
+              memory: 256Mi
             limits:
               cpu: 300m
               memory: 512Mi
@@ -93,8 +93,8 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 300m
-              memory: 512Mi
+              cpu: 200m
+              memory: 256Mi
             limits:
               cpu: 300m
               memory: 512Mi
