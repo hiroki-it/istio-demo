@@ -1,2 +1,13 @@
 service:
   name: egress
+
+destination:
+  database:
+    host: dev.istio-demo-mysql
+    port: 3306
+  googleapis:
+    host: www.googleapis.com
+    port: 443
+  grafanaTempo:
+    host: grafana-tempo.grafana-tempo.svc.cluster.local
+    port: 4317
