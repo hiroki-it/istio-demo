@@ -18,4 +18,6 @@ spec:
         version: v3
   trafficPolicy:
     loadBalancer:
-      simple: ROUND_ROBIN
+      warmup:
+        duration: 30s
+        aggression: 1
