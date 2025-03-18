@@ -32,11 +32,11 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 200m
+              cpu: 300m
               memory: 512Mi
             limits:
-              cpu: 600m
-              memory: 1024Mi
+              cpu: 1500m
+              memory: 2048Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -85,8 +85,8 @@ spec:
               cpu: 300m
               memory: 512Mi
             limits:
-              cpu: 600m
-              memory: 1024Mi
+              cpu: 1500m
+              memory: 2048Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -132,8 +132,8 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 600m
-              memory: 1024Mi
+              cpu: 300m
+              memory: 512Mi
             limits:
               cpu: 1500m
               memory: 2048Mi
