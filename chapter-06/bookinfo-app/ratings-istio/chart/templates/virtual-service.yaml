@@ -33,17 +33,17 @@ spec:
           retries:
             attempts: 3
             perTryTimeout: 10s
-            retryOn: reset-before-request,connect-failure,refused-stream
+            retryOn: reset-before-request,connect-failure,refused-stream,reset
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-faulty
           weight: 25
-          timeout: 5s
+          timeout: 10s
           retries:
             attempts: 3
-            perTryTimeout: 5s
+            perTryTimeout: 10s
             retryOn: reset-before-request,connect-failure,refused-stream,5xx
         - destination:
             host: {{ .Values.service.host }}
@@ -51,10 +51,10 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unavailable
           weight: 25
-          timeout: 5s
+          timeout: 10s
           retries:
             attempts: 3
-            perTryTimeout: 5s
+            perTryTimeout: 10s
             retryOn: reset-before-request,connect-failure,refused-stream,gateway-error
         - destination:
             host: {{ .Values.service.host }}
@@ -62,8 +62,8 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unhealthy
           weight: 25
-          timeout: 5s
+          timeout: 10s
           retries:
             attempts: 3
-            perTryTimeout: 5s
+            perTryTimeout: 10s
             retryOn: reset-before-request,connect-failure,refused-stream,500
