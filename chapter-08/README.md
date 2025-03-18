@@ -134,7 +134,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 16. Bookinfoアプリケーションに定期的にリクエストを送信します。
 
 ```bash
-$ watch -n 3 curl http://localhost:9080/productpage > /dev/null
+watch -n 3 curl http://localhost:9080/productpage > /dev/null
 ```
 
 ## 機能を実践する
