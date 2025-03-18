@@ -50,7 +50,7 @@ http:
   relativePath: /
 
 image:
-  tag: 26.1.2
+  tag: 26.1.4
 
 resources:
   requests:
