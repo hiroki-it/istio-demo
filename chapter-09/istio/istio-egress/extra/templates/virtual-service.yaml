@@ -53,12 +53,6 @@ spec:
         - destination:
             host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
             port:
-              number: {{ .Values.destination.googleapis.port }}
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure,refused-stream
     - match:
         - gateways:
             - {{ .Release.Namespace }}/googleapis-{{ .Values.service.name }}
@@ -70,8 +64,3 @@ spec:
             host: {{ .Values.destination.googleapis.host }}
             port:
               number: {{ .Values.destination.googleapis.port }}
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: reset-before-request,connect-failure,refused-stream
