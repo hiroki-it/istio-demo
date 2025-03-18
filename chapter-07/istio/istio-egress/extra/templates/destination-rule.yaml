@@ -12,6 +12,7 @@ spec:
         maxConnections: 100
         connectTimeout: 10s
         tcpKeepalive:
+          probes: 5
           time: 60s
           interval: 30s
         idleTimeout: 60h
