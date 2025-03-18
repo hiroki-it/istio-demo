@@ -32,10 +32,20 @@ meshConfig:
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
+    proxyStatsMatcher:
+      inclusionRegexps:
+        - ".*membership.*"
+        - ".*outlier_detection.*"
+        - ".*ssl.*"
+        - ".*upstream_rq_.*"
+        - ".*upstream_cx_.*"
   rootNamespace: null
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
+  defaultProviders:
+    metrics:
+      - prometheus
 
 revision: 1-25-0
 

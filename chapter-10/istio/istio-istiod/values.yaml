@@ -32,12 +32,23 @@ meshConfig:
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
-  enableTracing: true
+    proxyStatsMatcher:
+      inclusionRegexps:
+        - ".*membership.*"
+        - ".*outlier_detection.*"
+        - ".*ssl.*"
+        - ".*upstream_rq_.*"
+        - ".*upstream_cx_.*"
+  rootNamespace: null
+  discoverySelectors:
+    - matchLabels:
+        istio.io/rev: stable
   defaultProviders:
     metrics:
       - prometheus
     tracing:
       - opentelemetry-grpc
+  enableTracing: true
   extensionProviders:
     - name: opentelemetry-grpc
       opentelemetry:
@@ -66,10 +77,7 @@ meshConfig:
             upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
             user_agent: '%REQ(USER-AGENT)%'
             x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
-  rootNamespace: null
-  discoverySelectors:
-    - matchLabels:
-        istio.io/rev: stable
+
 
 revision: 1-25-0
 
