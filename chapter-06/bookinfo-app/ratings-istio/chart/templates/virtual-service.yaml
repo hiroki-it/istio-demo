@@ -27,43 +27,28 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-delayed
+            subset: v-delayed-7s-delay
           weight: 25
-          timeout: 10s
-          retries:
-            attempts: 3
-            perTryTimeout: 10s
-            retryOn: reset-before-request,connect-failure,refused-stream,reset
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-faulty
+            subset: v-faulty-50percent-503
           weight: 25
-          timeout: 10s
-          retries:
-            attempts: 3
-            perTryTimeout: 10s
-            retryOn: reset-before-request,connect-failure,refused-stream,5xx
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-unavailable
+            subset: v-unavailable-503-in60s
           weight: 25
-          timeout: 10s
-          retries:
-            attempts: 3
-            perTryTimeout: 10s
-            retryOn: reset-before-request,connect-failure,refused-stream,gateway-error
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-unhealthy
+            subset: v-unavailable-500-in15m
           weight: 25
-          timeout: 10s
-          retries:
-            attempts: 3
-            perTryTimeout: 10s
-            retryOn: reset-before-request,connect-failure,refused-stream,500
+      timeout: 10s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: reset-before-request,connect-failure,refused-stream,reset,5xx
