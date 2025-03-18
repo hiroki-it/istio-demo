@@ -17,6 +17,8 @@ spec:
       labels:
         version: v3
   trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
     connectionPool:
       http:
         http1MaxPendingRequests: 100

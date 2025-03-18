@@ -23,6 +23,8 @@ spec:
       labels:
         version: v-unavailable-503-in60s
       trafficPolicy:
+        loadBalancer:
+          simple: LEAST_REQUEST
         connectionPool:
           http:
             http1MaxPendingRequests: 100

@@ -16,3 +16,7 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 100
+        maxRequestsPerConnection: 100

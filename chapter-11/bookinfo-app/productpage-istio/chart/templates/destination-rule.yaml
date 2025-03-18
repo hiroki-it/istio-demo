@@ -15,7 +15,7 @@ spec:
         version: v2
   trafficPolicy:
     loadBalancer:
-      simple: ROUND_ROBIN
+      simple: LEAST_REQUEST
     connectionPool:
       http:
         http1MaxPendingRequests: 100
