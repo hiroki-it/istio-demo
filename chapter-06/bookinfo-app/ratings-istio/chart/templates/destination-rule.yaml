@@ -13,15 +13,15 @@ spec:
     - name: v2
       labels:
         version: v2
-    - name: v-delayed
+    - name: v-delayed-7s-delay
       labels:
-        version: v-delayed
-    - name: v-faulty
+        version: v-delayed-7s-delay
+    - name: v-faulty-50percent-503
       labels:
-        version: v-faulty
-    - name: v-unavailable
+        version: v-faulty-50percent-503
+    - name: v-unavailable-503-in60s
       labels:
-        version: v-unavailable
+        version: v-unavailable-503-in60s
       trafficPolicy:
         connectionPool:
           http:
@@ -31,6 +31,6 @@ spec:
           consecutive5xxErrors: 5
           interval: 30s
           baseEjectionTime: 30s
-    - name: v-unhealthy
+    - name: v-unhealthy-500-in15m
       labels:
-        version: v-unhealthy
+        version: v-unhealthy-500-in15m

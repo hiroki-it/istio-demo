@@ -112,26 +112,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-delayed
+  name: {{ .Values.service.name }}-v-delayed-7s-delay
   labels:
     app: {{ .Values.service.name }}
-    version: v-delayed
+    version: v-delayed-7s-delay
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-delayed
+      version: v-delayed-7s-delay
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-delayed
+        version: v-delayed-7s-delay
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-delayed:1.20.2
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-delayed-7s-delay:1.20.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
@@ -162,26 +162,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-faulty
+  name: {{ .Values.service.name }}-v-faulty-50percent-503
   labels:
     app: {{ .Values.service.name }}
-    version: v-faulty
+    version: v-faulty-50percent-503
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-faulty
+      version: v-faulty-50percent-503
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-faulty
+        version: v-faulty-50percent-503
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-faulty:1.20.2
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-faulty-50percent-503:1.20.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
@@ -212,26 +212,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-unavailable
+  name: {{ .Values.service.name }}-v-unavailable-503-in60s
   labels:
     app: {{ .Values.service.name }}
-    version: v-unavailable
+    version: v-unavailable-503-in60s
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-unavailable
+      version: v-unavailable-503-in60s
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-unavailable
+        version: v-unavailable-503-in60s
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unavailable:1.20.2
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unavailable-503-in60s:1.20.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
@@ -262,21 +262,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-unhealthy
+  name: {{ .Values.service.name }}-v-unhealthy-500-in60s
   labels:
     app: {{ .Values.service.name }}
-    version: v-unhealthy
+    version: v-unhealthy-500-in60s
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-unhealthy
+      version: v-unhealthy-500-in60s
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-unhealthy
+        version: v-unhealthy-500-in60s
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
