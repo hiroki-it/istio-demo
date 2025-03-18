@@ -43,6 +43,7 @@ prometheus-pushgateway:
 server:
   persistentVolume:
     enabled: false
+  replicaCount: 2
   service:
     type: NodePort
     nodePort: 32004

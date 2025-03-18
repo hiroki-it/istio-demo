@@ -18,6 +18,7 @@ prometheus-pushgateway:
   enabled: false
 
 server:
+  replicaCount: 2
   persistentVolume:
     enabled: false
   service:
