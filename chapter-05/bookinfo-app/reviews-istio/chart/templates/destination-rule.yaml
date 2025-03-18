@@ -20,4 +20,5 @@ spec:
     loadBalancer:
       warmup:
         duration: 30s
+        minimumPercent: 10
         aggression: 1
