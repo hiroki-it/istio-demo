@@ -28,9 +28,3 @@ spec:
         attempts: 3
         perTryTimeout: 10s
         retryOn: connect-failure,reset-before-request
-      fault:
-        delay:
-          fixedDelay: 7s
-          percentage:
-            value: 100
-
