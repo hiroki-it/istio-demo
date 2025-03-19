@@ -34,7 +34,7 @@ spec:
           consecutive5xxErrors: 1
           interval: 30s
           baseEjectionTime: 30s
-          maxEjectionPercent: 100
+          maxEjectionPercent: 50
     - name: v-unhealthy-500-in15m
       labels:
         version: v-unhealthy-500-in15m
