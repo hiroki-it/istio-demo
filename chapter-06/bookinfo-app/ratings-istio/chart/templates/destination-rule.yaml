@@ -22,19 +22,20 @@ spec:
     - name: v-unavailable-503-in60s
       labels:
         version: v-unavailable-503-in60s
-      trafficPolicy:
-        loadBalancer:
-          simple: LEAST_REQUEST
-        connectionPool:
-          http:
-            http1MaxPendingRequests: 100
-            maxRequestsPerConnection: 100
-            idleTimeout: 30m
-        outlierDetection:
-          consecutive5xxErrors: 1
-          interval: 30s
-          baseEjectionTime: 30s
-          maxEjectionPercent: 50
     - name: v-unhealthy-500-in15m
       labels:
         version: v-unhealthy-500-in15m
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 100
+        maxRequestsPerConnection: 100
+        idleTimeout: 30m
+      outlierDetection:
+      consecutive5xxErrors: 1
+      interval: 60s
+      baseEjectionTime: 60s
+      maxEjectionPercent: 50
+      
