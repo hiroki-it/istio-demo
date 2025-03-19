@@ -28,25 +28,25 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-delayed-50percent-delayof7s
-          weight: 25
+          weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-faulty-50percent-503
-          weight: 25
+          weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
-          weight: 25
+          weight: 100
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-unhealthy-500-in15m
-          weight: 25
+          weight: 0
       timeout: 10s
       retries:
         attempts: 3
