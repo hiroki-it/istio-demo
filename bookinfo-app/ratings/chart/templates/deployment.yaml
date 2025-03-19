@@ -112,21 +112,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-delayed-7s-delay
+  name: {{ .Values.service.name }}-v-delayed-50percent-delayof7s
   labels:
     app: {{ .Values.service.name }}
-    version: v-delayed-7s-delay
+    version: v-delayed-50percent-delayof7s
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-delayed-7s-delay
+      version: v-delayed-50percent-delayof7s
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-delayed-7s-delay
+        version: v-delayed-50percent-delayof7s
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:

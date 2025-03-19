@@ -27,7 +27,7 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-delayed-7s-delay
+            subset: v-delayed-50percent-delayof7s
           weight: 25
         - destination:
             host: {{ .Values.service.host }}
