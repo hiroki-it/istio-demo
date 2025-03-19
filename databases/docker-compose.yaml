@@ -9,7 +9,7 @@ services:
       TZ: 'Asia/Tokyo'
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
-      interval: 10s
+      interval: 60s
       retries: 5
     image: mysql:8.0.30
     volumes:

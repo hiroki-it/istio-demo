@@ -23,6 +23,6 @@ spec:
         idleTimeout: 30m
     outlierDetection:
       consecutive5xxErrors: 10
-      interval: 10s
-      baseEjectionTime: 3m
+      interval: 60s
+      baseEjectionTime: 60s
       maxEjectionPercent: 50
