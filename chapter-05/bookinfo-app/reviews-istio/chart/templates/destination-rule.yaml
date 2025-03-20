@@ -22,8 +22,3 @@ spec:
         duration: 30s
         minimumPercent: 10
         aggression: 1
-    connectionPool:
-      http:
-        http1MaxPendingRequests: 100
-        maxRequestsPerConnection: 100
-        idleTimeout: 30m
