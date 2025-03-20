@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: opentelemetry-collector
     chart: opentelemetry/opentelemetry-collector
-    version: 0.118.0
+    version: 0.119.0
     namespace: opentelemetry-collector
     atomic: true
     values:
