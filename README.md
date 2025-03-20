@@ -52,7 +52,39 @@ minikube start \
   --memory ${MEMORY}
 ```
 
-3. ワーカーNodeにラベルを設定します。
+3. ワーカーNodeにNodeグループを表すラベルを設定します。
+
+```bash
+# istio-demo-m02 (app Node 1)
+kubectl label node istio-demo-m02 node.kubernetes.io/nodegroup=app --overwrite \
+  && kubectl label node istio-demo-m02 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m03 (app Node 2)
+kubectl label node istio-demo-m03 node.kubernetes.io/nodegroup=app --overwrite \
+  && kubectl label node istio-demo-m03 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m04 (app Node 3)
+kubectl label node istio-demo-m04 node.kubernetes.io/nodegroup=app --overwrite \
+  && kubectl label node istio-demo-m04 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m05 (ingress Node)
+kubectl label node istio-demo-m05 node.kubernetes.io/nodegroup=ingress --overwrite \
+  && kubectl label node istio-demo-m05 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m06 (egress Node)
+kubectl label node istio-demo-m06 node.kubernetes.io/nodegroup=egress --overwrite \
+  && kubectl label node istio-demo-m06 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m07 (system Node 1)
+kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=system --overwrite \
+  && kubectl label node istio-demo-m07 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m08 (system Node 2)
+kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrite \
+  && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
+```
+
+4. ワーカーNodeにラベルを設定します。
 
 ```bash
 # istio-demo-m02 (app Node 1)
