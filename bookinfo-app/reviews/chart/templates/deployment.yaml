@@ -147,3 +147,54 @@ spec:
                     operator: In
                     values:
                       - app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}-v4
+  labels:
+    app: {{ .Values.service.name }}
+    version: v4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+      version: v4
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.name }}
+        version: v4
+    spec:
+      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      containers:
+        - name: {{ .Values.service.name }}
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v4:1.20.2-istio-demo
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.service.port }}
+              path: /health
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 300m
+              memory: 512Mi
+            limits:
+              cpu: 1500m
+              memory: 2048Mi
+      terminationGracePeriodSeconds: 45
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.kubernetes.io/nodegroup
+                    operator: In
+                    values:
+                      - app
+
