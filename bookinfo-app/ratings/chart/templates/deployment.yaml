@@ -217,7 +217,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-unavailable-503-in60s
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
