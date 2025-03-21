@@ -25,7 +25,7 @@ $ mise install
 
 ### Kubernetesクラスターのセットアップ
 
-1. Docker Desktopの [リソース設定](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) から、ハードウェアリソースの上限を変更してください。CPUを`5`コア、メモリを`6`GB以上にしてください。
+1. Docker Desktopの [リソース設定](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) から、ハードウェアリソースの上限を変更してください。CPUを`5`コア、メモリを`7`GB以上にしてください。
 
 2. Minikubeを使用して、Kubernetesクラスターを作成します。
 
@@ -38,7 +38,7 @@ NODE_COUNT=8
 
 # ハードウェアリソース
 CPU=5
-MEMORY=6144
+MEMORY=7168
 
 minikube start \
   --profile istio-demo \
