@@ -170,7 +170,7 @@ spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v4:1.20.2-istio-demo
+          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v4:1.20.2-istio-demo
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
