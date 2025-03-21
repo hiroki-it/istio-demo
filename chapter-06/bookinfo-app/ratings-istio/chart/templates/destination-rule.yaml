@@ -33,7 +33,7 @@ spec:
         http1MaxPendingRequests: 100
         maxRequestsPerConnection: 100
         idleTimeout: 30m
-      outlierDetection:
+    outlierDetection:
       consecutive5xxErrors: 1
       interval: 60s
       baseEjectionTime: 60s
