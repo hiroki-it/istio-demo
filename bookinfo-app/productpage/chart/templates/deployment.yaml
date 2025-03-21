@@ -32,11 +32,11 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 300m
-              memory: 512Mi
+              cpu: 200m
+              memory: 384Mi
             limits:
-              cpu: 600m
-              memory: 1024Mi
+              cpu: 1000m
+              memory: 1152Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -56,7 +56,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v2
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -82,11 +82,11 @@ spec:
             timeoutSeconds: 5
           resources:
             requests:
-              cpu: 300m
-              memory: 512Mi
+              cpu: 200m
+              memory: 384Mi
             limits:
-              cpu: 600m
-              memory: 1024Mi
+              cpu: 1000m
+              memory: 1152Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
