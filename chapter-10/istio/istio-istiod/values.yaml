@@ -46,6 +46,8 @@ meshConfig:
   defaultProviders:
     metrics:
       - prometheus
+    accessLogging:
+      - envoy-grpc
     tracing:
       - opentelemetry-grpc
   enableTracing: true
@@ -77,7 +79,6 @@ meshConfig:
             upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
             user_agent: '%REQ(USER-AGENT)%'
             x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
-
 
 revision: 1-25-0
 
