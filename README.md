@@ -25,7 +25,7 @@ $ mise install
 
 ### Kubernetesクラスターのセットアップ
 
-1. Docker Desktopの [リソース設定](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) から、ハードウェアリソースの上限を変更してください。CPUを`5`コア、メモリを`7`GB以上にしてください。
+1. Docker Desktopの [リソース設定](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) から、ハードウェアリソースの上限を変更してください。CPUを`4`コア、メモリを`8`GB以上にしてください。
 
 2. Minikubeを使用して、Kubernetesクラスターを作成します。
 
@@ -33,11 +33,11 @@ $ mise install
 # バージョン
 KUBERNETES_VERSION=1.32.3
 
-# Node数
-NODE_COUNT=8
+# コントロールプレーンを含むNode数
+NODE_COUNT=11
 
 # ハードウェアリソース
-CPU=5
+CPU=4
 MEMORY=7168
 
 minikube start \
@@ -56,33 +56,37 @@ minikube start \
 3. ワーカーNodeにNodeグループを表すラベルを設定します。
 
 ```bash
-# istio-demo-m02 (app Node 1)
-kubectl label node istio-demo-m02 node.kubernetes.io/nodegroup=app --overwrite \
-  && kubectl label node istio-demo-m02 node-role.kubernetes.io/worker=worker --overwrite
-
-# istio-demo-m03 (app Node 2)
-kubectl label node istio-demo-m03 node.kubernetes.io/nodegroup=app --overwrite \
-  && kubectl label node istio-demo-m03 node-role.kubernetes.io/worker=worker --overwrite
-
-# istio-demo-m04 (app Node 3)
+# istio-demo-m04 (app Node 1)
 kubectl label node istio-demo-m04 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node istio-demo-m04 node-role.kubernetes.io/worker=worker --overwrite
 
-# istio-demo-m05 (ingress Node)
-kubectl label node istio-demo-m05 node.kubernetes.io/nodegroup=ingress --overwrite \
+# istio-demo-m05 (app Node 2)
+kubectl label node istio-demo-m05 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node istio-demo-m05 node-role.kubernetes.io/worker=worker --overwrite
 
-# istio-demo-m06 (egress Node)
-kubectl label node istio-demo-m06 node.kubernetes.io/nodegroup=egress --overwrite \
+# istio-demo-m06 (app Node 3)
+kubectl label node istio-demo-m06 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node istio-demo-m06 node-role.kubernetes.io/worker=worker --overwrite
 
-# istio-demo-m07 (system Node 1)
-kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=system --overwrite \
+# istio-demo-m07 (app Node 4)
+kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node istio-demo-m07 node-role.kubernetes.io/worker=worker --overwrite
 
-# istio-demo-m08 (system Node 2)
-kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrite \
+# istio-demo-m08 (ingress Node)
+kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=ingress --overwrite \
   && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m09 (egress Node)
+kubectl label node istio-demo-m09 node.kubernetes.io/nodegroup=egress --overwrite \
+  && kubectl label node istio-demo-m09 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m10 (system Node 1)
+kubectl label node istio-demo-m10 node.kubernetes.io/nodegroup=system --overwrite \
+  && kubectl label node istio-demo-m10 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m11 (system Node 2)
+kubectl label node istio-demo-m11 node.kubernetes.io/nodegroup=system --overwrite \
+  && kubectl label node istio-demo-m11 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
 4. Nodeを確認します。
