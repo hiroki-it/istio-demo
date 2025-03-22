@@ -41,6 +41,7 @@ CPU=5
 MEMORY=7168
 
 minikube start \
+  --ha \
   --profile istio-demo \
   --nodes ${NODE_COUNT} \
   --container-runtime containerd \
