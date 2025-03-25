@@ -10,7 +10,7 @@ releases:
     atomic: true
   - name: grafana-tempo
     chart: grafana/tempo
-    version: 1.18.3
+    version: 1.19.0
     namespace: grafana-tempo
     values:
       - values.yaml
