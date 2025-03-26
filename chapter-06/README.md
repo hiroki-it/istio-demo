@@ -138,6 +138,19 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 ## 機能を実践する
 
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
+```
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
+```
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true circuitBreaker.byOutlierDetection.enabled=true
+```
+
+
 ## 掃除
 
 1. Minikubeを削除します。

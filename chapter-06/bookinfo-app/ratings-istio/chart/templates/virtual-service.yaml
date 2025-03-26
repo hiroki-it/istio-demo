@@ -1,3 +1,29 @@
+{{ if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{- $vDelayed50percentDelayof7s := 100 }}
+{{- $vUnavailable503In60s := 0 }}
+{{- $v2 := 0 }}
+{{- include "virtual-service" . }}
+
+{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled false) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- $vDelayed50percentDelayof7s := 0 }}
+{{- $vUnavailable503In60s := 100 }}
+{{- $v2 := 0 }}
+{{- include "virtual-service" . }}
+
+{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- $vDelayed50percentDelayof7s := 0 }}
+{{- $vUnavailable503In60s := 100 }}
+{{- $v2 := 0 }}
+{{- include "virtual-service" . }}
+
+{{ else }}
+{{- $vDelayed50percentDelayof7s := 0 }}
+{{- $vUnavailable503In60s := 0 }}
+{{- $v2 := 100 }}
+{{- include "virtual-service" . }}
+{{- end }}
+
+{{- define "virtual-service" }}
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
@@ -22,13 +48,13 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v2
-          weight: 0
+          weight: {{ $v2 }}
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-delayed-50percent-delayof7s
-          weight: 0
+          weight: {{ $vDelayed50percentDelayof7s }}
         - destination:
             host: {{ .Values.service.host }}
             port:
@@ -40,7 +66,7 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
-          weight: 100
+          weight: {{ $vUnavailable503In60s }}
         - destination:
             host: {{ .Values.service.host }}
             port:
@@ -52,3 +78,4 @@ spec:
         attempts: 3
         perTryTimeout: 10s
         retryOn: connect-failure,reset,reset-before-request,5xx
+{{- end }}
