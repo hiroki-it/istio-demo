@@ -45,7 +45,7 @@ helmfile -f bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply --set=vSystemFailure.enabled=true   
 
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```

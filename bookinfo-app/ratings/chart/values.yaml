@@ -5,3 +5,6 @@ service:
 database:
   host: dev.istio-demo-mysql
   port: 3306
+
+vSystemFailure:
+  enabled: false

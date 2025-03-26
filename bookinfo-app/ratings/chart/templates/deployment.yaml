@@ -108,6 +108,7 @@ spec:
                     operator: In
                     values:
                       - app
+{{ if eq .Values.vSystemFailure.enabled true }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -308,3 +309,4 @@ spec:
                     operator: In
                     values:
                       - app
+{{- end }}
