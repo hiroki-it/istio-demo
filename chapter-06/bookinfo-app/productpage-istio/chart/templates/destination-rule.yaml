@@ -16,13 +16,3 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
-    connectionPool:
-      http:
-        http1MaxPendingRequests: 100
-        maxRequestsPerConnection: 100
-        idleTimeout: 30m
-    outlierDetection:
-      consecutive5xxErrors: 10
-      interval: 60s
-      baseEjectionTime: 60s
-      maxEjectionPercent: 100
