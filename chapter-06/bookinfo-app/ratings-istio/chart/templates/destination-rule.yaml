@@ -1,3 +1,4 @@
+{{ if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled false) }}
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
@@ -30,11 +31,118 @@ spec:
       simple: LEAST_REQUEST
     connectionPool:
       http:
-        http1MaxPendingRequests: 100
-        maxRequestsPerConnection: 100
+        http1MaxPendingRequests: 5
+        maxRequestsPerConnection: 5
         idleTimeout: 30m
+
+{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled false) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  host: {{ .Values.service.host }}
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+    - name: v-delayed-50percent-delayof7s
+      labels:
+        version: v-delayed-50percent-delayof7s
+    - name: v-faulty-50percent-503
+      labels:
+        version: v-faulty-50percent-503
+    - name: v-unavailable-503-in60s
+      labels:
+        version: v-unavailable-503-in60s
+    - name: v-unhealthy-500-in15m
+      labels:
+        version: v-unhealthy-500-in15m
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
     outlierDetection:
-      consecutive5xxErrors: 1
+      consecutive5xxErrors: 5
       interval: 60s
       baseEjectionTime: 60s
       maxEjectionPercent: 100
+
+{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  host: {{ .Values.service.host }}
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+    - name: v-delayed-50percent-delayof7s
+      labels:
+        version: v-delayed-50percent-delayof7s
+    - name: v-faulty-50percent-503
+      labels:
+        version: v-faulty-50percent-503
+    - name: v-unavailable-503-in60s
+      labels:
+        version: v-unavailable-503-in60s
+    - name: v-unhealthy-500-in15m
+      labels:
+        version: v-unhealthy-500-in15m
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 5
+        maxRequestsPerConnection: 5
+        idleTimeout: 30m
+    outlierDetection:
+      consecutive5xxErrors: 5
+      interval: 60s
+      baseEjectionTime: 60s
+      maxEjectionPercent: 100
+
+{{- else }}
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  host: {{ .Values.service.host }}
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+    - name: v-delayed-50percent-delayof7s
+      labels:
+        version: v-delayed-50percent-delayof7s
+    - name: v-faulty-50percent-503
+      labels:
+        version: v-faulty-50percent-503
+    - name: v-unavailable-503-in60s
+      labels:
+        version: v-unavailable-503-in60s
+    - name: v-unhealthy-500-in15m
+      labels:
+        version: v-unhealthy-500-in15m
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
+{{- end }}
