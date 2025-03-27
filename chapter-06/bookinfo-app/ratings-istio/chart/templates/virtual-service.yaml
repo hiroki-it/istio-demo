@@ -2,6 +2,10 @@
 {{- $vUnavailable503In60s := 0 }}
 {{- $v2 := 0 }}
 
+{{- if or (eq .Values.timeout.enabled true) (eq .Values.retry.enabled true) }}
+{{- $vDelayed50percentDelayof7s = 100 }}
+{{- end }}
+
 {{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 {{- $vDelayed50percentDelayof7s = 100 }}
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
@@ -61,8 +65,12 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unhealthy-500-in15m
           weight: 0
-      timeout: 10s
+      {{- if eq .Values.timeout.enabled true }}
+      timeout: 5s
+      {{- end }}
+      {{- if eq .Values.retry.enabled true }}
       retries:
         attempts: 3
-        perTryTimeout: 10s
+        perTryTimeout: 5s
         retryOn: connect-failure,reset,reset-before-request,5xx
+      {{- end }}

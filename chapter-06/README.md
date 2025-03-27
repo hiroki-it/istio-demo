@@ -138,23 +138,49 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 ## 機能を実践する
 
-### コネクションプールによるサーキットブレイカー
+### タイムアウト
+
+タイムアウトを実践します。
+
+
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set timeout.enabled=true
+```
+
+
+### リトライ
+
+リトライを実践します。
+
+
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set retry.enabled=true
+```
+
+
+### サーキットブレイカー
+
+コネクションプールを条件としたサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
 ```
 
-### 外れ値によるサーキットブレイカー
+外れ値を条件としたサーキットブレイカーを実践します。
 
 
 ```bash
+# 外れ値を条件としたサーキットブレイカー
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
-### コネクションプールと外れ値の両方によるサーキットブレイカー
+コネクションプールと外れ値の両方を条件としたサーキットブレイカーを実践します。
 
 
 ```bash
+# コネクションプールと外れ値の両方を条件としたサーキットブレイカー
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
