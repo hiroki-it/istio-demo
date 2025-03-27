@@ -3,6 +3,12 @@ service:
   host: ratings.bookinfo.svc.cluster.local
   port: 9080
 
+timeout:
+  enabled: false
+
+retry:
+  enabled: false
+
 circuitBreaker:
   byConnectionPool: 
     enabled: false

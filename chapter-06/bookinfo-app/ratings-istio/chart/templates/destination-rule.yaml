@@ -28,28 +28,17 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
-{{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{- if eq .Values.circuitBreaker.byConnectionPool.enabled true }}
     connectionPool:
       http:
         http1MaxPendingRequests: 5
         maxRequestsPerConnection: 5
         idleTimeout: 30m
-{{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- end }}
+{{- if eq .Values.circuitBreaker.byOutlierDetection.enabled true }}
     outlierDetection:
       consecutive5xxErrors: 5
       interval: 60s
       baseEjectionTime: 60s
       maxEjectionPercent: 100
-{{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-    connectionPool:
-      http:
-        http1MaxPendingRequests: 1
-        maxRequestsPerConnection: 1
-        idleTimeout: 30m
-    outlierDetection:
-      consecutive5xxErrors: 1
-      interval: 60s
-      baseEjectionTime: 60s
-      maxEjectionPercent: 100
-{{- else }}
 {{- end }}
