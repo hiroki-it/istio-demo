@@ -151,7 +151,12 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
 リトライを実践します。
 
 ```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.byConnectionReset.enabled=true
+```
+
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
 ```
 
 ### サーキットブレイカー

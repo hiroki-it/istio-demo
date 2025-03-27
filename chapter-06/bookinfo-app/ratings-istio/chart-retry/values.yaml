@@ -2,3 +2,9 @@ service:
   name: ratings
   host: ratings.bookinfo.svc.cluster.local
   port: 9080
+
+retry:
+  byConnectionReset:
+    enabled: false
+  by5xxStatusCode:
+    enabled: false

@@ -22,6 +22,9 @@ spec:
     - name: v-unavailable-503-in60s
       labels:
         version: v-unavailable-503-in60s
+    - name: v-connection-reset-50percent
+      labels:
+        version: v-connection-reset-50percent
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
