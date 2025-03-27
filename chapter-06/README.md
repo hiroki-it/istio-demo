@@ -147,7 +147,7 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circ
 ```
 
 ```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true circuitBreaker.byOutlierDetection.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
 
