@@ -1,16 +1,16 @@
-{{ if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{ if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 {{- $vDelayed50percentDelayof7s := 100 }}
 {{- $vUnavailable503In60s := 0 }}
 {{- $v2 := 0 }}
 {{- include "virtual-service" . }}
 
-{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled false) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 {{- $vDelayed50percentDelayof7s := 0 }}
 {{- $vUnavailable503In60s := 100 }}
 {{- $v2 := 0 }}
 {{- include "virtual-service" . }}
 
-{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 {{- $vDelayed50percentDelayof7s := 0 }}
 {{- $vUnavailable503In60s := 100 }}
 {{- $v2 := 0 }}
