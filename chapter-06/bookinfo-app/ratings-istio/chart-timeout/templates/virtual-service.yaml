@@ -41,7 +41,4 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
           weight: 0
-      retries:
-        attempts: 3
-        perTryTimeout: 5s
-        retryOn: connect-failure,reset,reset-before-request,5xx
+      timeout: 5s
