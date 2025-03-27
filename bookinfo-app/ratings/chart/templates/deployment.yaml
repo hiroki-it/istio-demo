@@ -263,21 +263,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-connection-reset
+  name: {{ .Values.service.name }}-v-connection-reset-50percent
   labels:
     app: {{ .Values.service.name }}
-    version: v-connection-reset
+    version: v-connection-reset-50percent
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-connection-reset
+      version: v-connection-reset-50percent
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-connection-reset
+        version: v-connection-reset-50percent
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
