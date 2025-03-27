@@ -138,13 +138,21 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 ## 機能を実践する
 
+### コネクションプールによるサーキットブレイカー
+
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
 ```
 
+### 外れ値によるサーキットブレイカー
+
+
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
 ```
+
+### コネクションプールと外れ値の両方によるサーキットブレイカー
+
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
