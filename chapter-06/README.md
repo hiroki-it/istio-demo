@@ -81,7 +81,7 @@ helmfile -f chapter-06/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
 helmfile -f chapter-06/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.non-resiliency.yaml apply
 
 helmfile -f chapter-06/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
@@ -154,20 +154,19 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.byConnectionReset.enabled=true
 ```
 
-
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
 ```
 
 ### サーキットブレイカー
 
-コネクションプールを条件としたサーキットブレイカーを実践します。
+コネクションプールのオーバーフローを起因としたサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
 ```
 
-外れ値を条件としたサーキットブレイカーを実践します。
+外れ値の検出を起因としたサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
