@@ -1,29 +1,21 @@
-{{ if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
-{{- $vDelayed50percentDelayof7s := 100 }}
+{{- $vDelayed50percentDelayof7s := 0 }}
 {{- $vUnavailable503In60s := 0 }}
 {{- $v2 := 0 }}
-{{- include "virtual-service" . }}
+
+{{ if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{- $vDelayed50percentDelayof7s = 100 }}
 
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vDelayed50percentDelayof7s := 0 }}
-{{- $vUnavailable503In60s := 100 }}
-{{- $v2 := 0 }}
-{{- include "virtual-service" . }}
+{{- $vUnavailable503In60s = 100 }}
 
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vDelayed50percentDelayof7s := 0 }}
-{{- $vUnavailable503In60s := 100 }}
-{{- $v2 := 0 }}
-{{- include "virtual-service" . }}
+{{- $vUnavailable503In60s = 100 }}
 
 {{ else }}
-{{- $vDelayed50percentDelayof7s := 0 }}
-{{- $vUnavailable503In60s := 0 }}
-{{- $v2 := 100 }}
-{{- include "virtual-service" . }}
+{{- $v2 = 100 }}
+
 {{- end }}
 
-{{- define "virtual-service" }}
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
@@ -78,4 +70,3 @@ spec:
         attempts: 3
         perTryTimeout: 10s
         retryOn: connect-failure,reset,reset-before-request,5xx
-{{- end }}
