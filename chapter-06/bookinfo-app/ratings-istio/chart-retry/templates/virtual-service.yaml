@@ -41,10 +41,4 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
           weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v-unhealthy-500-in15m
-          weight: 0
       timeout: 5s
