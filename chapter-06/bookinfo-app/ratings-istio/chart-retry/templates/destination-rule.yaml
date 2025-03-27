@@ -22,9 +22,6 @@ spec:
     - name: v-unavailable-503-in60s
       labels:
         version: v-unavailable-503-in60s
-    - name: v-unhealthy-500-in15m
-      labels:
-        version: v-unhealthy-500-in15m
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
