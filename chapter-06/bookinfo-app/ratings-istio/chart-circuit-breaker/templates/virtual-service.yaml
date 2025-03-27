@@ -1,0 +1,63 @@
+{{- $vDelayed50percentDelayof7s := 0 }}
+{{- $vUnavailable503In60s := 0 }}
+{{- $v2 := 0 }}
+
+{{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{- $vDelayed50percentDelayof7s = 100 }}
+{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- $vUnavailable503In60s = 100 }}
+{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- $vUnavailable503In60s = 100 }}
+{{ else }}
+{{- $v2 = 100 }}
+{{- end }}
+
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  hosts:
+    - {{ .Values.service.host }}
+  http:
+    - match:
+        - port: {{ .Values.service.port }}
+      route:
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v1
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v2
+          weight: {{ $v2 }}
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-delayed-50percent-delayof7s
+          weight: {{ $vDelayed50percentDelayof7s }}
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-faulty-50percent-503
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-unavailable-503-in60s
+          weight: {{ $vUnavailable503In60s }}
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-unhealthy-500-in15m
+          weight: 0

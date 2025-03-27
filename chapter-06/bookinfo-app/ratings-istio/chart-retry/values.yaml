@@ -1,0 +1,4 @@
+service:
+  name: ratings
+  host: ratings.bookinfo.svc.cluster.local
+  port: 9080
