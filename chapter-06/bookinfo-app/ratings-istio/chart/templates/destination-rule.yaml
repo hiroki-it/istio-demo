@@ -1,4 +1,4 @@
-{{ if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{ if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
@@ -35,7 +35,7 @@ spec:
         maxRequestsPerConnection: 5
         idleTimeout: 30m
 
-{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled false) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
@@ -72,7 +72,7 @@ spec:
       baseEjectionTime: 60s
       maxEjectionPercent: 100
 
-{{ else if eq and (.Values.circuitBreaker.byConnectionPool.enabled true) (.Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
