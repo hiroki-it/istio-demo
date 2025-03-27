@@ -2,18 +2,14 @@
 {{- $vUnavailable503In60s := 0 }}
 {{- $v2 := 0 }}
 
-{{ if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
+{{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 {{- $vDelayed50percentDelayof7s = 100 }}
-
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 {{- $vUnavailable503In60s = 100 }}
-
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 {{- $vUnavailable503In60s = 100 }}
-
 {{ else }}
 {{- $v2 = 100 }}
-
 {{- end }}
 
 apiVersion: networking.istio.io/v1
