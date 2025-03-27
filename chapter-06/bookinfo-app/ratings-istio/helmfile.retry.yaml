@@ -1,0 +1,6 @@
+releases:
+  - name: ratings-istio
+    chart: chart-retry
+    version: 1.0.0
+    namespace: bookinfo
+    atomic: true

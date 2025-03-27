@@ -1,21 +1,3 @@
-{{- $vDelayed50percentDelayof7s := 0 }}
-{{- $vUnavailable503In60s := 0 }}
-{{- $v2 := 0 }}
-
-{{- if or (eq .Values.timeout.enabled true) (eq .Values.retry.enabled true) }}
-{{- $vDelayed50percentDelayof7s = 100 }}
-{{- end }}
-
-{{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
-{{- $vDelayed50percentDelayof7s = 100 }}
-{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vUnavailable503In60s = 100 }}
-{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vUnavailable503In60s = 100 }}
-{{ else }}
-{{- $v2 = 100 }}
-{{- end }}
-
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
@@ -40,13 +22,13 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v2
-          weight: {{ $v2 }}
+          weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-delayed-50percent-delayof7s
-          weight: {{ $vDelayed50percentDelayof7s }}
+          weight: 100
         - destination:
             host: {{ .Values.service.host }}
             port:
@@ -58,19 +40,14 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
-          weight: {{ $vUnavailable503In60s }}
+          weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v-unhealthy-500-in15m
           weight: 0
-      {{- if eq .Values.timeout.enabled true }}
-      timeout: 5s
-      {{- end }}
-      {{- if eq .Values.retry.enabled true }}
       retries:
         attempts: 3
         perTryTimeout: 5s
         retryOn: connect-failure,reset,reset-before-request,5xx
-      {{- end }}

@@ -1,0 +1,50 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  hosts:
+    - {{ .Values.service.host }}
+  http:
+    - match:
+        - port: {{ .Values.service.port }}
+      route:
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v1
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v2
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-delayed-50percent-delayof7s
+          weight: 100
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-faulty-50percent-503
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-unavailable-503-in60s
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-unhealthy-500-in15m
+          weight: 0
+      timeout: 5s
