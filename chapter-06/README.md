@@ -45,7 +45,7 @@ helmfile -f bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply --set=vSystemFailure.enabled=true   
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply --set=vSystemFailure.enabled=true
 
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
@@ -142,48 +142,37 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 タイムアウトを実践します。
 
-
-
 ```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set timeout.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
 ```
-
 
 ### リトライ
 
 リトライを実践します。
 
-
-
 ```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set retry.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply
 ```
-
 
 ### サーキットブレイカー
 
 コネクションプールを条件としたサーキットブレイカーを実践します。
 
 ```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
 ```
 
 外れ値を条件としたサーキットブレイカーを実践します。
 
-
 ```bash
-# 外れ値を条件としたサーキットブレイカー
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
 コネクションプールと外れ値の両方を条件としたサーキットブレイカーを実践します。
 
-
 ```bash
-# コネクションプールと外れ値の両方を条件としたサーキットブレイカー
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
 ```
-
 
 ## 掃除
 

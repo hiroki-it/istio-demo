@@ -90,7 +90,7 @@ kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrit
 kubectl get nodes -L node.kubernetes.io/nodegroup
 
 NAME             STATUS   ROLES           AGE     VERSION   NODEGROUP
-istio-demo       Ready    control-plane   8m29s   v1.32.3   
+istio-demo       Ready    control-plane   8m29s   v1.32.3
 istio-demo-m02   Ready    worker          8m18s   v1.32.3   app
 istio-demo-m03   Ready    worker          8m5s    v1.32.3   app
 istio-demo-m04   Ready    worker          7m50s   v1.32.3   app
