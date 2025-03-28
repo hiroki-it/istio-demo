@@ -147,7 +147,7 @@ minikube delete --profile istio-demo
 
 2. `kubectl port-forward`コマンドのプロセスを明示的に終了します。
 
-```
+```bash
 pkill kubectl -9
 ```
 
