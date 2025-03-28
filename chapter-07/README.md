@@ -1,8 +1,8 @@
-# 7章
+# 6章
 
-6章では、Istioによるブラックボックステストを学びます。
+6章では、Istioによる回復性管理を学びます。
 
-ブラックボックステストは、すでに登場したトラフィック管理系リソースのVirtualServiceで設定します。
+回復性管理は、すでに登場したトラフィック管理系リソースのDestinationRuleで設定します。
 
 ## セットアップ
 
@@ -35,7 +35,7 @@ mysql> SHOW DATABASES;
 3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-kubectl apply --server-side -f chapter-07/shared/namespace.yaml
+kubectl apply --server-side -f chapter-06/shared/namespace.yaml
 ```
 
 4. Bookinfoアプリケーションを作成します。
@@ -45,7 +45,7 @@ helmfile -f bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply --set=vSystemFailure.enabled=true
 
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
@@ -53,37 +53,37 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 5. Istiodコントロールプレーンを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-base/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-base/helmfile.yaml apply
 
-helmfile -f chapter-07/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-istiod/helmfile.yaml apply
 ```
 
 6. Istio IngressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-ingress/helmfile.yaml apply
 ```
 
 7. Istio EgressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-egress/helmfile.yaml apply
 ```
 
 8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/googleapis-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.non-resiliency.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
@@ -95,25 +95,25 @@ kubectl rollout restart deployment -n bookinfo
 10. Prometheusを作成します。
 
 ```bash
-helmfile -f chapter-07/prometheus/helmfile.yaml apply
+helmfile -f chapter-06/prometheus/helmfile.yaml apply
 ```
 
 11. metrics-serverを作成します。
 
 ```bash
-helmfile -f chapter-07/metrics-server/helmfile.yaml apply
+helmfile -f chapter-06/metrics-server/helmfile.yaml apply
 ```
 
 12. Grafanaを作成します。
 
 ```bash
-helmfile -f chapter-07/grafana/grafana/helmfile.yaml apply
+helmfile -f chapter-06/grafana/grafana/helmfile.yaml apply
 ```
 
 13. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-07/kiali/helmfile.yaml apply
+helmfile -f chapter-06/kiali/helmfile.yaml apply
 ```
 
 14. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
@@ -138,46 +138,40 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 ## 機能を実践する
 
-### 遅延障害の注入
+### タイムアウト
 
-遅延障害を正常なマイクロサービスに注入します。
-
-6章と同じ設定で、タイムアウトを実践します。
+タイムアウトを実践します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
 ```
 
-### 503ステータスの注入
+### リトライ
 
-503ステータスレスポンスの障害を正常なマイクロサービスに注入します。
-
-6章と同じ設定で、リトライを実践します。
+503ステータスを起因としたリトライを実践します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
 ```
 
-### 500ステータスの注入
+### サーキットブレイカー
 
-500ステータスレスポンスの障害を正常なマイクロサービスに注入します。
-
-6章と同じ設定で、コネクションプールのオーバーフローを起因としたサーキットブレイカーを実践します。
+コネクションプールのオーバーフローを起因としたサーキットブレイカーを実践します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
 ```
 
-同様に、外れ値の検出を起因としたサーキットブレイカーを実践します。
+外れ値の検出を起因としたサーキットブレイカーを実践します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
-同様に、コネクションプールと外れ値の両方を起因としたサーキットブレイカーを実践します。
+コネクションプールと外れ値の両方を起因としたサーキットブレイカーを実践します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
 ## 掃除

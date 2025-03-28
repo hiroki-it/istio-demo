@@ -29,14 +29,3 @@ spec:
               number: {{ .Values.service.port }}
             subset:  v-internal-server-error-500-50percent
           weight: 0
-      {{- if eq .Values.retry.by5xxStatusCode.enabled true }}
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: connect-failure,reset-before-request,5xx
-      {{- else }}
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: connect-failure,reset-before-request
-      {{- end }}
