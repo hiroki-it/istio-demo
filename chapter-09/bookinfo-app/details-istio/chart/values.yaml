@@ -2,10 +2,3 @@ service:
   name: details
   host: details.bookinfo.svc.cluster.local
   port: 9080
-
-keycloak:
-  realm: dev
-  host:
-    web: localhost
-    api: keycloak-http.keycloak.svc.cluster.local
-  port: 8080

@@ -53,7 +53,6 @@ spec:
         - destination:
             host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
             port:
-              number: {{ .Values.destination.googleapis.port }}
     - match:
         - gateways:
             - {{ .Release.Namespace }}/googleapis-{{ .Values.service.name }}

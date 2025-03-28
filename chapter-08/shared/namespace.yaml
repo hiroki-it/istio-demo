@@ -8,6 +8,13 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: opentelemetry-collector
+  labels:
+    istio.io/rev: stable
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: istio-egress
   labels:
     istio.io/rev: stable

@@ -16,7 +16,9 @@ spec:
           time: 60s
           interval: 60s
         idleTimeout: 30m
-      http:
+      http: 
         http1MaxPendingRequests: 100
+        http2MaxRequests: 100
         maxRequestsPerConnection: 100
+        maxConcurrentStreams: 100
         idleTimeout: 30m

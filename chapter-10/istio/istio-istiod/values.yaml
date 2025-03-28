@@ -48,14 +48,7 @@ meshConfig:
       - prometheus
     accessLogging:
       - envoy-grpc
-    tracing:
-      - opentelemetry-grpc
-  enableTracing: true
   extensionProviders:
-    - name: opentelemetry-grpc
-      opentelemetry:
-        service: opentelemetry-collector.agent.svc.cluster.local
-        port: 4317
     - name: envoy-grpc
       envoyFileAccessLog:
         logFormat:
@@ -73,8 +66,6 @@ meshConfig:
             response_code: '%RESPONSE_CODE%'
             response_flags: '%RESPONSE_FLAGS%'
             start_time: '%START_TIME%'
-            trace_id: '%TRACE_ID%'
-            traceparent: '%REQ(TRACEPARENT)%'
             upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'
             upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
             user_agent: '%REQ(USER-AGENT)%'

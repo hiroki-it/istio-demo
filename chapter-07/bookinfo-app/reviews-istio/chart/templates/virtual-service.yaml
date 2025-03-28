@@ -28,12 +28,6 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v3
-          weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v4
           weight: 100
       timeout: 10s
       retries:

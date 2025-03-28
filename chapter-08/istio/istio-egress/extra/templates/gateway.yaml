@@ -9,9 +9,9 @@ spec:
     - port:
         name: mysql
         protocol: MySQL
-        number: {{ .Values.destination.database.port }}
+        number: 3306
       hosts:
-        - {{ .Values.destination.database.host }}
+        - "*"
 ---
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -24,8 +24,23 @@ spec:
     - port:
         name: tls
         protocol: TLS
-        number: {{ .Values.destination.googleapis.port }}
+        number: 443
       hosts:
-        - {{ .Values.destination.googleapis.host }}
+        - www.googleapis.com
       tls:
         mode: PASSTHROUGH
+---
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: grafana-tempo-{{ .Values.service.name }}
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: grpc
+        protocol: GRPC
+        number: 4317
+      hosts:
+        - grafana-tempo.grafana-tempo.svc.cluster.local
