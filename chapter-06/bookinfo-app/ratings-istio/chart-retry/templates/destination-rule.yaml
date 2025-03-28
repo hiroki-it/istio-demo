@@ -13,9 +13,6 @@ spec:
     - name: v-faulty-50percent-503
       labels:
         version: v-faulty-50percent-503
-    - name: v-faulty-50percent-503
-      labels:
-        version: v-faulty-50percent-503
     - name:  v-internal-server-error-500-50percent
       labels:
         version:  v-internal-server-error-500-50percent
