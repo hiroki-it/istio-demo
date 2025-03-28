@@ -1,6 +1,6 @@
 releases:
   - name: ratings-istio
-    chart: chart-timeout
+    chart: chart-delayed
     version: 1.0.0
     namespace: bookinfo
     atomic: true
