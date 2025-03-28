@@ -7,12 +7,15 @@ spec:
     - "."
   host: {{ .Values.service.host }}
   subsets:
-    - name: v1
+    - name: v-delayed-50percent-delayof7s
       labels:
-        version: v1
-    - name: v2
+        version: v-delayed-50percent-delayof7s
+    - name: v-faulty-50percent-503
       labels:
-        version: v2
+        version: v-faulty-50percent-503
+    - name:  v-internal-server-error-500-50percent
+      labels:
+        version:  v-internal-server-error-500-50percent
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
