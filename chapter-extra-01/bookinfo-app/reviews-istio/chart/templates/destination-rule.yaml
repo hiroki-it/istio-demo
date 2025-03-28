@@ -16,16 +16,3 @@ spec:
     - name: v3
       labels:
         version: v3
-  trafficPolicy:
-    loadBalancer:
-      simple: LEAST_REQUEST
-    connectionPool:
-      http:
-        http1MaxPendingRequests: 100
-        maxRequestsPerConnection: 100
-        idleTimeout: 30m
-    outlierDetection:
-      consecutive5xxErrors: 10
-      interval: 60s
-      baseEjectionTime: 180s
-      maxEjectionPercent: 100
