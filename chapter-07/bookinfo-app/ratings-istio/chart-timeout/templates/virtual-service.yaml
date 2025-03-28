@@ -23,8 +23,9 @@ spec:
               number: {{ .Values.service.port }}
             subset: v2
           weight: 100
-      timeout: 10s
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: connect-failure,reset-before-request
+      timeout: 5s
+      fault:
+        delay:
+          percentage:
+            value: 100
+          fixedDelay: 7s
