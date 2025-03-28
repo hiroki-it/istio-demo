@@ -1,6 +1,6 @@
 releases:
   - name: ratings-istio
-    chart: chart-circuit-breaker
+    chart: chart-500-status
     version: 1.0.0
     namespace: bookinfo
     atomic: true

@@ -35,7 +35,7 @@ mysql> SHOW DATABASES;
 3. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash
-kubectl apply --server-side -f chapter-07/shared/namespace.yaml
+kubectl apply --server-side -f chapter-06/shared/namespace.yaml
 ```
 
 4. Bookinfoアプリケーションを作成します。
@@ -53,37 +53,37 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 5. Istiodコントロールプレーンを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-base/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-base/helmfile.yaml apply
 
-helmfile -f chapter-07/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-istiod/helmfile.yaml apply
 ```
 
 6. Istio IngressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-ingress/helmfile.yaml apply
 ```
 
 7. Istio EgressGatewayを作成します。
 
 ```bash
-helmfile -f chapter-07/istio/istio-egress/helmfile.yaml apply
+helmfile -f chapter-06/istio/istio-egress/helmfile.yaml apply
 ```
 
 8. Istioのトラフィック管理系リソースを作成します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/database-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/googleapis-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-07/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-06/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
@@ -95,25 +95,25 @@ kubectl rollout restart deployment -n bookinfo
 10. Prometheusを作成します。
 
 ```bash
-helmfile -f chapter-07/prometheus/helmfile.yaml apply
+helmfile -f chapter-06/prometheus/helmfile.yaml apply
 ```
 
 11. metrics-serverを作成します。
 
 ```bash
-helmfile -f chapter-07/metrics-server/helmfile.yaml apply
+helmfile -f chapter-06/metrics-server/helmfile.yaml apply
 ```
 
 12. Grafanaを作成します。
 
 ```bash
-helmfile -f chapter-07/grafana/grafana/helmfile.yaml apply
+helmfile -f chapter-06/grafana/grafana/helmfile.yaml apply
 ```
 
 13. Kialiを作成します。
 
 ```bash
-helmfile -f chapter-07/kiali/helmfile.yaml apply
+helmfile -f chapter-06/kiali/helmfile.yaml apply
 ```
 
 14. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
@@ -143,7 +143,7 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 遅延障害を正常なマイクロサービスに注入します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
 ```
 
 ### 503ステータスの注入
@@ -151,7 +151,7 @@ helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
 503ステータスレスポンスの障害を正常なマイクロサービスに注入します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply --set retry.by5xxStatusCode.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply
 ```
 
 ### 500ステータスの注入
@@ -159,7 +159,7 @@ helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply
 500ステータスレスポンスの障害を正常なマイクロサービスに注入します。
 
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.500-status.yaml apply
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.500-status.yaml apply
 ```
 
 ## 掃除
