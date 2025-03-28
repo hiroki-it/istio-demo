@@ -1,10 +1,9 @@
 # 6章
 
-6章では、Istioによるブラックボックステストを学びます。
+以下を実践し、Istioサイドカーモードによる証明書管理を学びます。
 
-Istioでは、ブラックボックスとしてフォールとインジェクションを使用でき、障害時のマイクロサービスの挙動を事前に確認しておくことができます。
-
-ブラックボックステストは、すでに登場したトラフィック管理系リソースのVirtualServiceで設定します。
+- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- 証明書管理系リソース (PeerAuthentication) を作成します
 
 ## セットアップ
 
@@ -139,30 +138,6 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 ```
 
 ## 機能を実践する
-
-### 遅延障害の注入
-
-遅延障害を正常なマイクロサービスに注入します。
-
-```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
-```
-
-### 503ステータスの注入
-
-503ステータスレスポンスの障害を正常なマイクロサービスに注入します。
-
-```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply
-```
-
-### 500ステータスの注入
-
-500ステータスレスポンスの障害を正常なマイクロサービスに注入します。
-
-```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.500-status.yaml apply
-```
 
 ## 掃除
 

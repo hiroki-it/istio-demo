@@ -1,6 +1,6 @@
 # 5章
 
-以下を実践することにより、Istioサイドカーモードによるトラフィック管理を学びます。
+以下を実践し、Istioサイドカーモードによるトラフィック管理を学びます。
 
 - Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
 - Istioのトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を作成する

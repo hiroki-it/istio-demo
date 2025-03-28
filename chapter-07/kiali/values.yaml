@@ -3,7 +3,7 @@ auth:
 
 deployment:
   affinity:
-    node:
+    nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:

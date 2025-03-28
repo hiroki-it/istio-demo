@@ -1,11 +1,8 @@
 # 10章
 
-以下を実践することにより、Istioサイドカーモードによるテレメトリー (ログ、メトリクス、分散トレース) 作成を学びます。
+10章では、Istioによる回復性管理を学びます。
 
-- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
-- Istioのテレメトリー作成系リソース (Telemetry) を作成する
-
-そして、テレメトリー間をトレースIDで紐付け、マイクロサービスアプリケーションのオブザーバビリティーを向上させます
+回復性管理は、すでに登場したトラフィック管理系リソースのDestinationRuleで設定します。
 
 ## セットアップ
 
@@ -48,7 +45,7 @@ helmfile -f bookinfo-app/details/helmfile.yaml apply
 
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply --set=vSystemFailure.enabled=true
 
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
@@ -84,11 +81,9 @@ helmfile -f chapter-10/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
 helmfile -f chapter-10/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.non-resiliency.yaml apply
 
 helmfile -f chapter-10/bookinfo-app/reviews-istio/helmfile.yaml apply
-
-helmfile -f chapter-10/bookinfo-app/share-istio/helmfile.yaml apply
 ```
 
 9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
@@ -121,63 +116,7 @@ helmfile -f chapter-10/grafana/grafana/helmfile.yaml apply
 helmfile -f chapter-10/kiali/helmfile.yaml apply
 ```
 
-14. Minioを作成します。
-
-```bash
-helmfile -f chapter-10/minio/helmfile.yaml apply
-```
-
-15. Grafana Lokiを作成します。
-
-```bash
-helmfile -f chapter-10/grafana/grafana-loki/helmfile.yaml apply
-```
-
-16. Grafana Promtailを作成します。
-
-```bash
-helmfile -f chapter-10/grafana/grafana-promtail/helmfile.yaml apply
-```
-
-17. Grafana Tempoを作成します。
-
-```bash
-helmfile -f chapter-10/grafana/grafana-tempo/helmfile.yaml apply
-```
-
-18. OpenTelemetry Collectorを作成します。
-
-```bash
-helmfile -f chapter-10/opentelemetry-collector/helmfile.yaml apply
-```
-
-19. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
-
-```bash
-kubectl logs <OpenTelemetry CollectorのPod> -n opentelemetry-collector -f
-
-Resource SchemaURL:
-Resource attributes:
-     -> service.name: Str(reviews.app)
-     -> k8s.pod.ip: Str(127.0.0.6)
-ScopeSpans #0
-ScopeSpans SchemaURL:
-InstrumentationScope
-Span #0
-    Trace ID       : e628c2e56566a155a4e60782861c39cf
-    Parent ID      : b3b5bf6e9caa41f0
-    ID             : 5adf8431816989f3
-    Name           : ratings:9080/*
-    Kind           : Client
-    Start time     : 2025-01-13 11:54:43.953816 +0000 UTC
-    End time       : 2025-01-13 11:54:43.967079 +0000 UTC
-    Status code    : Unset
-    Status message :
-Attributes:
-    ...
-```
-
-21. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
+14. Prometheus、Grafana、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続してください。
 
 ```bash
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -185,30 +124,74 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-22. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
-![bookinfo_productpage](../images/bookinfo_productpage.png)
-
-23. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
+16. Bookinfoアプリケーションに定期的にリクエストを送信します。
 
 ```bash
-kubectl port-forward svc/grafana -n grafana 8000:80
+watch -n 3 curl http://localhost:9080/productpage > /dev/null
 ```
-
-24. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
 
 ## 機能を実践する
 
+### タイムアウト
+
+タイムアウトを実践します。
+
+```bash
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
+```
+
+### リトライ
+
+503ステータスを起因としたリトライを実践します。
+
+```bash
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
+```
+
+### サーキットブレイカー
+
+コネクションプールのオーバーフローを起因としたサーキットブレイカーを実践します。
+
+```bash
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
+```
+
+外れ値の検出を起因としたサーキットブレイカーを実践します。
+
+```bash
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
+```
+
+コネクションプールと外れ値の両方を起因としたサーキットブレイカーを実践します。
+
+```bash
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
+```
+
 ## 掃除
 
-Minikubeを削除します。
-
-他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+1. Minikubeを削除します。
 
 ```bash
 minikube delete --profile istio-demo
 ```
+
+2. `kubectl port-forward`コマンドのプロセスを明示的に終了します。
+
+```bash
+pkill kubectl -9
+```
+
+3. dockerコンテナを削除します。
+
+```bash
+docker compose -f databases/docker-compose.yaml down --volumes --remove-orphans
+```
+
+4. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。

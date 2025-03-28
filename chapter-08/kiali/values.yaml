@@ -34,7 +34,10 @@ external_services:
     prometheus:
       url: http://prometheus-server.prometheus.svc.cluster.local:9090
   tracing:
-    enabled: false
+    enabled: true
+    provider: tempo
+    internal_url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3100
+    use_grpc: false
   istio:
     component_status:
       components:
