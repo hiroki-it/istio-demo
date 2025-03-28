@@ -1,3 +1,6 @@
 service:
   name: details
   port: 9080
+
+trafficManagement:
+  enabled: false
