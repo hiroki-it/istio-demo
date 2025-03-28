@@ -6,5 +6,8 @@ database:
   host: dev.istio-demo-mysql
   port: 3306
 
+trafficManagement:
+  enabled: false
+
 vSystemFailure:
   enabled: false
