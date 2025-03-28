@@ -1,0 +1,44 @@
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - system
+
+buckets:
+  - name: grafana-tempo
+    policy: none
+    purge: false
+  - name: grafana-loki-chunks
+    policy: none
+    purge: false
+  - name: grafana-loki-ruler
+    policy: none
+    purge: false
+  - name: grafana-loki-admin
+    policy: none
+    purge: false
+
+mode: standalone
+
+persistence:
+  size: 5Gi
+  storageClass: standard
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 256Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi
+
+rootUser: root
+
+rootPassword: password
+  
+securityContext:
+  enabled: false

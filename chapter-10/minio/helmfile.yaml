@@ -1,0 +1,12 @@
+repositories:
+  - name: minio
+    url: https://charts.min.io/
+
+releases:
+  - name: minio
+    chart: minio/minio
+    version: 5.4.0
+    namespace: minio
+    atomic: true
+    values:
+      - values.yaml
