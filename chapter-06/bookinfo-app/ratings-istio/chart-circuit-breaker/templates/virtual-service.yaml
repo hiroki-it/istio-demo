@@ -4,11 +4,11 @@
 
 {{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 {{- $vDelayed50percentDelayof7s = 100 }}
-{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 {{- $vInternalServerError50050percent = 100 }}
-{{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
+{{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
 {{- $vInternalServerError50050percent = 100 }}
-{{ else }}
+{{- else }}
 {{- $vFaulty50percent503 = 100 }}
 {{- end }}
 
