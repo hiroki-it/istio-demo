@@ -26,25 +26,25 @@ spec:
       {{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
       fault:
         delay:
+          fixedDelay: 7s
           percentage:
             value: 100
-          fixedDelay: 7s
       {{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
       fault:
         abort:
+          httpStatus: 500
           percentage:
             value: 50
-          httpStatus: 500
       {{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
       fault:
         abort:
+          httpStatus: 500
           percentage:
             value: 50
-          httpStatus: 500
       {{- else }}
       fault:
         abort:
+          httpStatus: 503
           percentage:
             value: 50
-          httpStatus: 503
       {{- end }}

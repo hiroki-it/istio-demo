@@ -26,6 +26,6 @@ spec:
       timeout: 5s
       fault:
         delay:
+          fixedDelay: 7s
           percentage:
             value: 100
-          fixedDelay: 7s
