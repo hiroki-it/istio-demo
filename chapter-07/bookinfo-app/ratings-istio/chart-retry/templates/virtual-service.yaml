@@ -26,9 +26,9 @@ spec:
       {{- if eq .Values.retry.by5xxStatusCode.enabled true }}
       fault:
         abort:
+          httpStatus: 503
           percentage:
             value: 50
-          httpStatus: 503
       retries:
         attempts: 3
         perTryTimeout: 10s
