@@ -22,21 +22,20 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v2
-          weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v3
-          weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v4
           weight: 100
-      timeout: 10s
+      {{- if eq .Values.retry.by5xxStatusCode.enabled true }}
+      fault:
+        abort:
+          percentage:
+            value: 50
+          httpStatus: 503
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: connect-failure,reset-before-request,5xx
+      {{- else }}
       retries:
         attempts: 3
         perTryTimeout: 10s
         retryOn: connect-failure,reset-before-request
+      {{- end }}

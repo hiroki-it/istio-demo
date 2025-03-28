@@ -1,0 +1,6 @@
+releases:
+  - name: ratings-istio
+    chart: chart-circuit-breaker
+    version: 1.0.0
+    namespace: bookinfo
+    atomic: true
