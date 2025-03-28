@@ -20,5 +20,6 @@ spec:
         idleTimeout: 30m
       http:
         http1MaxPendingRequests: 100
+        http2MaxRequests: 100
         maxRequestsPerConnection: 100
         idleTimeout: 30m
