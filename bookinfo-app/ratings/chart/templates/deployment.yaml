@@ -119,7 +119,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-delayed-50percent-delayof7s
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -169,7 +169,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-faulty-50percent-503
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -219,7 +219,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-unavailable-503-in60s
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -269,7 +269,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-internal-server-error-500
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
