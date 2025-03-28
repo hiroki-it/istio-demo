@@ -17,17 +17,9 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v1
-          weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
             subset: v2
-          weight: 100
       timeout: 30s
       retries:
         attempts: 3
         perTryTimeout: 30s
         retryOn: connect-failure,reset-before-request
-        
