@@ -1,0 +1,9 @@
+config:
+  clients:
+    - url: http://grafana-loki.grafana-loki.svc.cluster.local:3100/loki/api/v1/push
+
+configmap:
+  enabled: true
+
+podLabels:
+  sidecar.istio.io/inject: "false"

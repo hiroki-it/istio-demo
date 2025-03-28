@@ -1,0 +1,67 @@
+deploymentMode: SingleBinary
+
+loki:
+  auth_enabled: false
+  commonConfig:
+    replication_factor: 1
+  useTestSchema: true
+  storage:
+    type: s3
+    s3:
+      accessKeyId: root
+      secretAccessKey: password
+      endpoint: minio.minio.svc.cluster.local:9000
+      insecure: true
+      s3ForcePathStyle: true
+    bucketNames:
+      chunks: grafana-loki-chunks
+      ruler: grafana-loki-ruler
+      admin: grafana-loki-admin
+  query_range:
+    parallelise_shardable_queries: false
+
+singleBinary:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
+  replicas: 1
+  persistence:
+    enabled: false
+  extraVolumes:
+    - name: data
+      emptyDir: {}
+  extraVolumeMounts:
+    - name: data
+      mountPath: /var/loki
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512MiMi
+
+
+gateway:
+  enabled: false
+
+read:
+  replicas: 0
+
+backend:
+  replicas: 0
+
+write:
+  replicas: 0
+
+lokiCanary:
+  enabled: false
+
+test:
+  enabled: false
