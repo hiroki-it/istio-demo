@@ -15,21 +15,20 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-delayed-50percent-delayof7s
+            subset: v1
           weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-faulty-50percent-503
+            subset: v2
           weight: 100
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset:  v-internal-server-error-500-50percent
-          weight: 0
       {{- if eq .Values.retry.by5xxStatusCode.enabled true }}
+      fault:
+        abort:
+          httpStatus: 503
+          percentage:
+            value: 50
       retries:
         attempts: 3
         perTryTimeout: 10s
