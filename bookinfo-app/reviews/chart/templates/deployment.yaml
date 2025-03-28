@@ -106,7 +106,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v3
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -156,7 +156,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v4
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}

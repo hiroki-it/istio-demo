@@ -4,7 +4,7 @@ service:
   port: 9080
 
 retry:
-  byConnectionReset:
+  by503StatusCode:
     enabled: false
-  by5xxStatusCode:
+  by500StatusCode:
     enabled: false

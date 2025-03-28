@@ -1,11 +1,11 @@
-{{- $vConnectionleReset50percent := 0 }}
 {{- $vFaulty50percent503 := 0 }}
+{{- $vInternalServerError500 := 0 }}
 {{- $v2 := 0 }}
 
-{{- if eq .Values.retry.byConnectionReset.enabled true }}
-{{- $vConnectionleReset50percent = 100 }}
-{{- else if eq .Values.retry.by5xxStatusCode.enabled true }}
+{{- if eq .Values.retry.by503StatusCode.enabled true }}
 {{- $vFaulty50percent503 = 100 }}
+{{- else if eq .Values.retry.by500StatusCode.enabled true }}
+{{- $vInternalServerError500 = 100 }}
 {{- else }}
 {{- $v2 = 100 }}
 {{- end }}
@@ -39,12 +39,6 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-connection-reset-50percent
-          weight: {{ $vConnectionleReset50percent }}
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
             subset: v-delayed-50percent-delayof7s
           weight: 0
         - destination:
@@ -57,17 +51,22 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
+            subset: v-internal-server-error-500
+          weight: {{ $vInternalServerError500 }}
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
           weight: 0
-      {{- if eq .Values.retry.byConnectionReset.enabled true }}
+      {{- if or (eq .Values.retry.by503StatusCode.enabled true) (eq .Values.retry.by500StatusCode.enabled true) }}
       retries:
         attempts: 3
         perTryTimeout: 10s
-        retryOn: connect-failure,reset,reset-before-request
-      {{- else if eq .Values.retry.by5xxStatusCode.enabled true }}
-      retries:
-        attempts: 3
-        perTryTimeout: 10s
-        retryOn: connect-failure,reset,reset-before-request,5xx
+        retryOn: connect-failure,reset-before-request,5xx
       {{- else }}
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: connect-failure,reset-before-request
       {{- end }}

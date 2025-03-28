@@ -27,12 +27,6 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-connection-reset-50percent
-          weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
             subset: v-delayed-50percent-delayof7s
           weight: 0
         - destination:
@@ -41,6 +35,12 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-faulty-50percent-503
           weight: 100
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
+            subset: v-internal-server-error-500
+          weight: 0
         - destination:
             host: {{ .Values.service.host }}
             port:

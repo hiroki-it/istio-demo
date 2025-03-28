@@ -118,7 +118,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-delayed-50percent-delayof7s
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -168,7 +168,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-faulty-50percent-503
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -218,7 +218,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-unavailable-503-in60s
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -263,27 +263,27 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-connection-reset-50percent
+  name: {{ .Values.service.name }}-v-internal-server-error-500
   labels:
     app: {{ .Values.service.name }}
-    version: v-connection-reset-50percent
+    version: v-internal-server-error-500
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-connection-reset-50percent
+      version: v-internal-server-error-500
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-connection-reset-50percent
+        version: v-internal-server-error-500
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-connection-reset:1.20.2-istio-demo
-          imagePullPolicy: IfNotPresent
+          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-internal-server-error:1.20.2-istio-demo
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
           livenessProbe:
