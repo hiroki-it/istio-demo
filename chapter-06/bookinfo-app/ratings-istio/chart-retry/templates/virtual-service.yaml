@@ -4,10 +4,8 @@
 
 {{- if eq .Values.retry.by503StatusCode.enabled true }}
 {{- $vFaulty50percent503 = 100 }}
-{{- else if eq .Values.retry.by500StatusCode.enabled true }}
-{{- $vInternalServerError500 = 100 }}
 {{- else }}
-{{- $v2 = 100 }}
+{{- $vInternalServerError500 = 100 }}
 {{- end }}
 
 apiVersion: networking.istio.io/v1
@@ -23,18 +21,6 @@ spec:
     - match:
         - port: {{ .Values.service.port }}
       route:
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v1
-          weight: 0
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v2
-          weight: {{ $v2 }}
         - destination:
             host: {{ .Values.service.host }}
             port:

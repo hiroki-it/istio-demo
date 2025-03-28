@@ -1,3 +1,4 @@
+{{- if eq .Values.vSystemFailure.enabled false }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -108,7 +109,7 @@ spec:
                     operator: In
                     values:
                       - app
-{{- if eq .Values.vSystemFailure.enabled true }}
+{{- else }}
 ---
 apiVersion: apps/v1
 kind: Deployment
