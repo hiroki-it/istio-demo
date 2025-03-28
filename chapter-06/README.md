@@ -168,7 +168,7 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml 
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
-コネクションプールと外れ値の両方を条件としたサーキットブレイカーを実践します。
+コネクションプールと外れ値の両方を起因としたサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
