@@ -53,5 +53,11 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
+            subset: v-internal-server-error-500
+          weight: 0
+        - destination:
+            host: {{ .Values.service.host }}
+            port:
+              number: {{ .Values.service.port }}
             subset: v-unavailable-503-in60s
           weight: {{ $vUnavailable503In60s }}
