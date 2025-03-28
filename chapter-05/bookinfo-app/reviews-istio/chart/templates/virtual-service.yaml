@@ -16,16 +16,15 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v1
-          weight: 33
+          weight: 100
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
             subset: v2
-          weight: 33
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v3
-          weight: 33
+          weight: 0
+      mirror:
+        host: {{ .Values.service.host }}
+        port: {{ .Values.service.port }}
+        subset: v3
+      mirrorPercent: 100.0
