@@ -142,42 +142,24 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 遅延障害を正常なマイクロサービスに注入します。
 
-6章と同じ設定で、タイムアウトを実践します。
-
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
+helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
 ```
 
 ### 503ステータスの注入
 
 503ステータスレスポンスの障害を正常なマイクロサービスに注入します。
 
-6章と同じ設定で、リトライを実践します。
-
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
+helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply --set retry.by5xxStatusCode.enabled=true
 ```
 
 ### 500ステータスの注入
 
 500ステータスレスポンスの障害を正常なマイクロサービスに注入します。
 
-6章と同じ設定で、コネクションプールのオーバーフローを起因としたサーキットブレイカーを実践します。
-
 ```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
-```
-
-同様に、外れ値の検出を起因としたサーキットブレイカーを実践します。
-
-```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
-```
-
-同様に、コネクションプールと外れ値の両方を起因としたサーキットブレイカーを実践します。
-
-```bash
-helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
+helmfile -f chapter-07/bookinfo-app/ratings-istio/helmfile.500-status.yaml apply
 ```
 
 ## 掃除
