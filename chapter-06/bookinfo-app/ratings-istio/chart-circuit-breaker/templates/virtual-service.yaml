@@ -1,15 +1,15 @@
 {{- $vDelayed50percentDelayof7s := 0 }}
-{{- $vUnavailable500In60s := 0 }}
-{{- $vUnavailable503In60s := 0 }}
+{{- $vInternalServerError50050percent := 0 }}
+{{- $vFaulty50percent503 := 0 }}
 
 {{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 {{- $vDelayed50percentDelayof7s = 100 }}
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vUnavailable500In60s = 100 }}
+{{- $vInternalServerError50050percent = 100 }}
 {{ else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vUnavailable500In60s = 100 }}
+{{- $vInternalServerError50050percent = 100 }}
 {{ else }}
-{{- $vUnavailable503In60s = 100 }}
+{{- $vFaulty50percent503 = 100 }}
 {{- end }}
 
 apiVersion: networking.istio.io/v1
@@ -36,16 +36,10 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-faulty-50percent-503
-          weight: 0
+          weight: {{ $vFaulty50percent503 }}
         - destination:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-internal-server-error-500
-          weight: {{ $vUnavailable500In60s }}
-        - destination:
-            host: {{ .Values.service.host }}
-            port:
-              number: {{ .Values.service.port }}
-            subset: v-unavailable-503-in60s
-          weight: {{ $vUnavailable503In60s }}
+            subset:  v-internal-server-error-500-50percent
+          weight: {{ $vInternalServerError50050percent }}

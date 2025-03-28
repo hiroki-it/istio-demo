@@ -214,77 +214,27 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-unavailable-503-in60s
+  name: {{ .Values.service.name }}-v-internal-server-error-500-50percent
   labels:
     app: {{ .Values.service.name }}
-    version: v-unavailable-503-in60s
+    version: v-internal-server-error-500-50percent
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-unavailable-503-in60s
+      version: v-internal-server-error-500-50percent
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-unavailable-503-in60s
+        version: v-internal-server-error-500-50percent
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-unavailable:1.20.2
+          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-internal-server-error-500-50percent:1.20.2-istio-demo
           imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: {{ .Values.service.port }}
-          livenessProbe:
-            httpGet:
-              port: {{ .Values.service.port }}
-              path: /health
-            initialDelaySeconds: 15
-            timeoutSeconds: 5
-          resources:
-            requests:
-              cpu: 100m
-              memory: 256Mi
-            limits:
-              cpu: 300m
-              memory: 640Mi
-      terminationGracePeriodSeconds: 45
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: node.kubernetes.io/nodegroup
-                    operator: In
-                    values:
-                      - app
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{ .Values.service.name }}-v-internal-server-error-500
-  labels:
-    app: {{ .Values.service.name }}
-    version: v-internal-server-error-500
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: {{ .Values.service.name }}
-      version: v-internal-server-error-500
-  template:
-    metadata:
-      labels:
-        app: {{ .Values.service.name }}
-        version: v-internal-server-error-500
-    spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
-      containers:
-        - name: {{ .Values.service.name }}
-          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-internal-server-error:1.20.2-istio-demo
-          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
           livenessProbe:

@@ -148,12 +148,6 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
 
 ### リトライ
 
-503ステータスを起因としたリトライを実践します。
-
-```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by503StatusCode.enabled=true
-```
-
 500ステータスを起因としたリトライを実践します。
 
 ```bash
