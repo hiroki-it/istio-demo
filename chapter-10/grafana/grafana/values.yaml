@@ -21,6 +21,21 @@ datasources:
         type: prometheus
         url: http://prometheus-server.prometheus.svc.cluster.local:9090
         isDefault: true
+      - name: Loki
+        type: loki
+        url: http://grafana-loki.grafana-loki.svc.cluster.local:3100
+        basicAuth: false
+        jsonData:
+          derivedFields:
+            - name: trace_id
+              matcherRegex: '"trace_id":"([^"]*)"'
+              url: $${__value.raw}
+              urlDisplayLabel: View Grafana Tempo
+              datasourceUid: Tempo
+      - name: Tempo
+        type: tempo
+        url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3100
+        basicAuth: false
 
 dashboards:
   local:
@@ -54,4 +69,3 @@ resources:
   limits:
     cpu: 500m
     memory: 512Mi
-
