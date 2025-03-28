@@ -19,12 +19,12 @@ spec:
     - name: v-faulty-50percent-503
       labels:
         version: v-faulty-50percent-503
+    - name: v-internal-server-error-500
+      labels:
+        version: v-internal-server-error-500
     - name: v-unavailable-503-in60s
       labels:
         version: v-unavailable-503-in60s
-    - name: v-connection-reset-50percent
-      labels:
-        version: v-connection-reset-50percent
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
