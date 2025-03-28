@@ -6,6 +6,9 @@ spec:
   exportTo:
     - "*"
   host: {{ .Values.service.host.http }}
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
 ---
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -15,3 +18,6 @@ spec:
   exportTo:
     - "*"
   host: {{ .Values.service.host.headless }}
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
