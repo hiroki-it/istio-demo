@@ -139,10 +139,10 @@ helmfile -f chapter-08/minio/helmfile.yaml apply
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-17. Grafana Promtailを作成します。
+17. Grafana Alloyを作成します。
 
 ```bash
-helmfile -f chapter-08/grafana/grafana-promtail/helmfile.yaml apply
+helmfile -f chapter-08/grafana/grafana-alloy/helmfile.yaml apply
 ```
 
 18. Grafana Tempoを作成します。
