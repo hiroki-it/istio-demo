@@ -47,11 +47,11 @@ command:
 
 resources:
   requests:
-    cpu: 300m
+    cpu: 100m
     memory: 256Mi
   limits:
     cpu: 300m
-    memory: 256Mi
+    memory: 640Mi
 
 ports:
   jaeger-compact:
