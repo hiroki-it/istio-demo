@@ -1,6 +1,8 @@
 {
   "id": "3b195e41-90a1-4f85-b434-ca963f418488",
   "realm": "dev",
+  "displayName": "",
+  "displayNameHtml": "Login with Keycloak",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -27,13 +29,13 @@
   "oauth2DevicePollingInterval": 5,
   "enabled": true,
   "sslRequired": "external",
-  "registrationAllowed": false,
+  "registrationAllowed": true,
   "registrationEmailAsUsername": false,
-  "rememberMe": false,
+  "rememberMe": true,
   "verifyEmail": false,
   "loginWithEmailAllowed": true,
   "duplicateEmailsAllowed": false,
-  "resetPasswordAllowed": false,
+  "resetPasswordAllowed": true,
   "editUsernameAllowed": false,
   "bruteForceProtected": false,
   "permanentLockout": false,
@@ -730,7 +732,7 @@
       "baseUrl": "",
       "surrogateAuthRequired": false,
       "enabled": true,
-      "alwaysDisplayInConsole": false,
+      "alwaysDisplayInConsole": true,
       "clientAuthenticatorType": "client-secret",
       "secret": "ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY",
       "redirectUris": [
@@ -754,6 +756,7 @@
         "oidc.ciba.grant.enabled": "false",
         "client.secret.creation.time": "1737901783",
         "backchannel.logout.session.required": "true",
+        "login_theme": "keycloak.v2",
         "frontchannel.logout.session.required": "true",
         "post.logout.redirect.uris": "http://localhost:9080/*",
         "display.on.consent.screen": "true",
@@ -1495,6 +1498,10 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
+  "loginTheme": "keycloak.v2",
+  "accountTheme": "keycloak.v3",
+  "adminTheme": "keycloak.v2",
+  "emailTheme": "keycloak",
   "eventsEnabled": false,
   "eventsListeners": [
     "jboss-logging"
@@ -2410,6 +2417,8 @@
     "oauth2DeviceCodeLifespan": "600",
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
+    "frontendUrl": "",
+    "acr.loa.map": "{}",
     "darkMode": "false"
   },
   "keycloakVersion": "26.1.4",
