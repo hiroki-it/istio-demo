@@ -100,7 +100,7 @@ kubectl rollout restart deployment -n bookinfo
 10. Keycloakを作成します。
 
 ```bash
-helmfile -f chapter-07/keycloak/helmfile.yaml apply
+helmfile -f chapter-08/keycloak/helmfile.yaml apply
 ```
 
 11. Prometheusを作成します。
