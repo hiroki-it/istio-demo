@@ -54,7 +54,7 @@ alloy:
         }
 
         rule {
-          source_labels = ["namespace", "app"]
+          source_labels = ["namespace", "bookinfo"]
           separator     = "/"
           target_label  = "job"
         }
