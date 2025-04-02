@@ -7,8 +7,8 @@ alloy:
       }
 
       loki.source.file "collect_logs" {
-        targets       = local.file_match.kubernetes_pods.targets
-        forward_to    = [loki.write.grafana_loki.receiver]
+        targets       = local.file_match.match_logs.targets
+        forward_to    = [loki.write.send_logs.receiver]
         tail_from_end = true
       }
 
