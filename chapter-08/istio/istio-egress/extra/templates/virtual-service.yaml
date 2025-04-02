@@ -85,7 +85,7 @@ spec:
           port: {{ .Values.destination.grafanaTempo.port }}
       route:
         - destination:
-            host: istio-egressgateway.istio-egress.svc.cluster.local
+            host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: {{ .Values.destination.grafanaTempo.port }}
     - match:
