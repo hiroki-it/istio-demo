@@ -14,11 +14,11 @@ deployment:
   service_type: NodePort
   resources:
     requests:
-      cpu: 300m
+      cpu: 100m
       memory: 256Mi
     limits:
       cpu: 300m
-      memory: 256Mi
+      memory: 512Mi
 
 external_services:
   grafana:
