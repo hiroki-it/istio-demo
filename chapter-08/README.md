@@ -160,7 +160,7 @@ helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
 20. OpenTelemetry CollectorのPodのログから、istio-proxyの送信したスパンを確認します。
 
 ```bash
-kubectl logs <OpenTelemetry CollectorのPod> -n opentelemetry-collector -f
+kubectl logs <OpenTelemetry CollectorのPod名> -n opentelemetry-collector -f
 
 Resource SchemaURL:
 Resource attributes:
