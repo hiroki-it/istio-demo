@@ -3,9 +3,10 @@ repositories:
     url: https://grafana.github.io/helm-charts
 
 releases:
-  - name: grafana-promtail
-    chart: grafana/promtail
-    version: 6.16.6
-    namespace: grafana-promtail
+  - name: grafana-alloy
+    chart: grafana/alloy
+    version: 0.12.5
+    namespace: grafana-alloy
+    atomic: true
     values:
       - values.yaml
