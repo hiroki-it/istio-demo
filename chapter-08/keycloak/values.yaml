@@ -11,6 +11,7 @@ affinity: |
 args:
   - start-dev
   - --import-realm
+  - --log-console-output=json
 
 replicas: 2
 
