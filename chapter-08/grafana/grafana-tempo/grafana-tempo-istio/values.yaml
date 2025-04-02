@@ -1,4 +1,0 @@
-service:
-  name: grafana-tempo
-  host: grafana-tempo.grafana-tempo.svc.cluster.local
-  port: 4317
