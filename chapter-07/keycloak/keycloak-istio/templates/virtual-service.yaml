@@ -31,7 +31,10 @@ spec:
     - match:
         - port: {{ .Values.service.port.http }}
           uri:
-            prefix: /realms
+            prefix: /realms/dev/protocol/openid-connect/certs
+        - port: {{ .Values.service.port.http }}
+          uri:
+            prefix: /realms/dev/protocol/openid-connect/token
       route:
         - destination:
             host: {{ .Values.service.host.http }}
