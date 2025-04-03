@@ -12,7 +12,7 @@ releases:
       - values.yaml
   - name: opentelemetry-collector
     chart: opentelemetry/opentelemetry-collector
-    version: 0.119.1
+    version: 0.120.1
     namespace: opentelemetry-collector
     atomic: true
     values:
