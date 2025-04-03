@@ -17,44 +17,4 @@ spec:
             host: {{ .Values.service.host.http }}
             port:
               number: {{ .Values.service.port.http }}
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.service.name }}-http-token-verification
-spec:
-  exportTo:
-    - "*"
-  hosts:
-    - {{ .Values.service.host.http }}
-  http:
-    - match:
-        - port: {{ .Values.service.port.http }}
-          uri:
-            prefix: /realms/dev/protocol/openid-connect/certs
-        - port: {{ .Values.service.port.http }}
-          uri:
-            prefix: /realms/dev/protocol/openid-connect/token
-      route:
-        - destination:
-            host: {{ .Values.service.host.http }}
-            port:
-              number: {{ .Values.service.port.http }}
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: {{ .Values.service.name }}-headless
-spec:
-  exportTo:
-    - "."
-  hosts:
-    - {{ .Values.service.host.headless }}
-  http:
-    - match:
-        - port: {{ .Values.service.port.http }}
-      route:
-        - destination:
-            host: {{ .Values.service.host.headless }}
-            port:
-              number: {{ .Values.service.port.http }}
+
