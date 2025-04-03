@@ -29,3 +29,18 @@ spec:
         - {{ .Values.destination.googleapis.host }}
       tls:
         mode: PASSTHROUGH
+---
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: opentelemetry-collector-{{ .Values.service.name }}
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: grpc
+        protocol: GRPC
+        number: {{ .Values.destination.opentelemetryCollector.port }}
+      hosts:
+        - {{ .Values.destination.opentelemetryCollector.host }}
