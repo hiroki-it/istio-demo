@@ -16,9 +16,9 @@ defaultArgs:
   - --kubelet-insecure-tls
 
 resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      cpu: 300m
-      memory: 512Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 1000m
+    memory: 1024Mi
