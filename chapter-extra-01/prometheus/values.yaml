@@ -8,7 +8,6 @@ affinity:
               values:
                 - system
 
-
 alertmanager:
   enabled: false
 
@@ -34,6 +33,15 @@ extraScrapeConfigs: |
           - __meta_kubernetes_pod_container_port_name
         action: keep
         regex: .*-envoy-prom
+
+kube-state-metrics:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
 
 prometheus-node-exporter:
   enabled: false
