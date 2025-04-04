@@ -17,7 +17,7 @@ deployment:
       cpu: 50m
       memory: 64Mi
     limits:
-      cpu: 600m
+      cpu: 1000m
       memory: 1024Mi
 
 external_services:

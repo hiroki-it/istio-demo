@@ -11,10 +11,10 @@ affinity:
 tempo:
   resources:
     requests:
-      cpu: 100m
-      memory: 256Mi
+      cpu: 50m
+      memory: 65Mi
     limits:
-      cpu: 300m
+      cpu: 500m
       memory: 640Mi
   storage:
     trace:
