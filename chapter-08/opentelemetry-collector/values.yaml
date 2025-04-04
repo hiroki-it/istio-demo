@@ -45,7 +45,7 @@ image:
 command:
   name: otelcol-contrib
 
-replicas: 2
+replicaCount: 2
 
 resources:
   requests:
