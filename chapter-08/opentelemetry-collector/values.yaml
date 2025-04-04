@@ -46,12 +46,12 @@ command:
   name: otelcol-contrib
 
 resources:
-  requests:
-    cpu: 100m
-    memory: 256Mi
-  limits:
-    cpu: 300m
-    memory: 640Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
 
 ports:
   jaeger-compact:

@@ -12,6 +12,7 @@ args:
   - start-dev
   - --import-realm
   - --log-console-output=json
+  - --tracing-enabled=true
 
 replicas: 2
 
