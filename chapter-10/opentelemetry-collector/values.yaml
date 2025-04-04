@@ -45,6 +45,8 @@ image:
 command:
   name: otelcol-contrib
 
+replicaCount: 2
+
 resources:
   requests:
     cpu: 50m
