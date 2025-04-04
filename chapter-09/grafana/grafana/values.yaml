@@ -65,7 +65,7 @@ dashboardProviders:
 resources:
   requests:
     cpu: 50m
-    memory: 64Mi
+    memory: 51Mi
   limits:
     cpu: 600m
     memory: 1024Mi
