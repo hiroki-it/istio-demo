@@ -37,7 +37,7 @@ spec:
               memory: 64Mi
             limits:
               cpu: 500m
-              memory: 640Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -88,7 +88,7 @@ spec:
               memory: 64Mi
             limits:
               cpu: 500m
-              memory: 640Mi
+              memory: 512Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
