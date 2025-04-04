@@ -45,13 +45,15 @@ image:
 command:
   name: otelcol-contrib
 
+replicas: 2
+
 resources:
-    requests:
-      cpu: 50m
-      memory: 51Mi
-    limits:
-      cpu: 500m
-      memory: 512Mi
+  requests:
+    cpu: 50m
+    memory: 51Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
 
 ports:
   jaeger-compact:
