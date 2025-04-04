@@ -11,6 +11,38 @@ affinity:
 alertmanager:
   enabled: false
 
+extraScrapeConfigs: |
+  - job_name: istiod
+    kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+            - istio-system
+    relabel_configs:
+      - source_labels:
+          - __meta_kubernetes_service_name
+          - __meta_kubernetes_endpoint_port_name
+        action: keep
+        regex: istiod;http-monitoring
+  - job_name: istio-proxy
+    metrics_path: /stats/prometheus
+    kubernetes_sd_configs:
+      - role: pod
+    relabel_configs:
+      - source_labels:
+          - __meta_kubernetes_pod_container_port_name
+        action: keep
+        regex: .*-envoy-prom
+
+kube-state-metrics:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
 prometheus-node-exporter:
   enabled: false
 
@@ -27,8 +59,8 @@ server:
     servicePort: 9090
   resources:
     requests:
-      cpu: 100m
-      memory: 256Mi
+      cpu: 50m
+      memory: 64Mi
     limits:
-      cpu: 600m
+      cpu: 1000m
       memory: 1024Mi
