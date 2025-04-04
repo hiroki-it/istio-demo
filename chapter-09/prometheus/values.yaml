@@ -34,6 +34,15 @@ extraScrapeConfigs: |
         action: keep
         regex: .*-envoy-prom
 
+kube-state-metrics:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
+
 prometheus-node-exporter:
   enabled: false
 
@@ -41,9 +50,9 @@ prometheus-pushgateway:
   enabled: false
 
 server:
+  replicaCount: 2
   persistentVolume:
     enabled: false
-  replicaCount: 2
   service:
     type: NodePort
     nodePort: 32004
