@@ -17,9 +17,8 @@ defaultArgs:
 
 resources:
   requests:
-    cpu: 100m
-    memory: 256Mi
+    cpu: 50m
+    memory: 64Mi
   limits:
-    cpu: 300m
-    memory: 512Mi
-  
+    cpu: 1000m
+    memory: 1024Mi
