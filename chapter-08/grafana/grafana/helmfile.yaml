@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: grafana
     chart: grafana/grafana
-    version: 8.11.0
+    version: 8.11.2
     namespace: grafana
     values:
       - values.yaml
