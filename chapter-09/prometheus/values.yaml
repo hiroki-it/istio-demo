@@ -40,7 +40,7 @@ kube-state-metrics:
       cpu: 50m
       memory: 64Mi
     limits:
-      cpu: 300m
+      cpu: 500m
       memory: 512Mi
 
 prometheus-node-exporter:
@@ -59,8 +59,8 @@ server:
     servicePort: 9090
   resources:
     requests:
-      cpu: 100m
-      memory: 256Mi
+      cpu: 50m
+      memory: 64Mi
     limits:
-      cpu: 600m
+      cpu: 1000m
       memory: 1024Mi
