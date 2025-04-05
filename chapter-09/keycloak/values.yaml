@@ -54,6 +54,10 @@ http:
 image:
   tag: 26.1.4
 
+podAnnotations:
+  traffic.sidecar.istio.io/excludeInboundPorts: "7800,57800"
+  traffic.sidecar.istio.io/excludeOutboundPorts: "7800,7801,7802,7803,7804,7805,7806,7807,7808,7809,7810,57800"
+
 resources:
   requests:
     cpu: 50m
