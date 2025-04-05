@@ -52,7 +52,7 @@ $ mise install
 
 ```bash
 # バージョン
-KUBERNETES_VERSION=1.32.3
+KUBERNETES_VERSION=1.32.0
 
 # コントロールプレーンを含むNode数
 NODE_COUNT=7
