@@ -11,6 +11,7 @@ deployment:
                 operator: In
                 values:
                   - system
+  replicas: 2
   service_type: NodePort
   resources:
     requests:
