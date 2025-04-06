@@ -35,7 +35,7 @@ extraEnv: |
   - name: KC_PROXY
     value: edge
   - name: KC_TRACING_ENABLED
-    value: true
+    value: "true"
   - name: KC_TRACING_SAMPLER_TYPE
     value: parentbased_traceidratio
   - name: JAVA_OPTS_APPEND
