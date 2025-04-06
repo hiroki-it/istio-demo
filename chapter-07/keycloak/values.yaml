@@ -11,7 +11,6 @@ affinity: |
 args:
   - start-dev
   - --import-realm
-  - --log-console-output=json
 
 replicas: 2
 
@@ -31,6 +30,8 @@ extraEnv: |
     value: admin
   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
     value: admin
+  - name: KC_LOG_CONSOLE_OUTPUT
+    values: json
   - name: KC_PROXY
     values: edge
   - name: JAVA_OPTS_APPEND
