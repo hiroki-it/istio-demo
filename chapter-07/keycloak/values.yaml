@@ -31,9 +31,9 @@ extraEnv: |
   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
     value: admin
   - name: KC_LOG_CONSOLE_OUTPUT
-    values: json
+    value: json
   - name: KC_PROXY
-    values: edge
+    value: edge
   - name: JAVA_OPTS_APPEND
     value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 

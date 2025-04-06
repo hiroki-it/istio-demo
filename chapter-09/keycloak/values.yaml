@@ -31,13 +31,13 @@ extraEnv: |
   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
     value: admin
   - name: KC_LOG_CONSOLE_OUTPUT
-    values: json
+    value: json
   - name: KC_PROXY
-    values: edge
+    value: edge
   - name: KC_TRACING_ENABLED
-    values: true
+    value: true
   - name: KC_TRACING_SAMPLER_TYPE
-    values: parentbased_traceidratio
+    value: parentbased_traceidratio
   - name: JAVA_OPTS_APPEND
     value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 
