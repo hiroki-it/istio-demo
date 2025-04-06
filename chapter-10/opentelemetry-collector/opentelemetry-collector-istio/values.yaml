@@ -1,4 +1,0 @@
-service:
-  name: opentelemetry-collector
-  host: opentelemetry-collector.opentelemetry-collector.svc.cluster.local
-  port: 4317

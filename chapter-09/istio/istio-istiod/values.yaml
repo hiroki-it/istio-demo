@@ -52,10 +52,6 @@ meshConfig:
       - opentelemetry-grpc
   enableTracing: true
   extensionProviders:
-    - name: opentelemetry-grpc
-      opentelemetry:
-        service: opentelemetry-collector.opentelemetry-collector.svc.cluster.local
-        port: 4317
     - name: envoy-grpc
       envoyFileAccessLog:
         logFormat:

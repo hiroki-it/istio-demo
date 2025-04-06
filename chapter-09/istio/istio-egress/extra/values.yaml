@@ -8,6 +8,3 @@ destination:
   googleapis:
     host: www.googleapis.com
     port: 443
-  opentelemetryCollector:
-    host: opentelemetry-collector.opentelemetry-collector.svc.cluster.local
-    port: 4317
