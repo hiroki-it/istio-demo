@@ -87,6 +87,14 @@ pilot:
     PILOT_ENABLE_AMBIENT: true
     PILOT_ENABLE_AMBIENT_WAYPOINTS: true
 
+resources:
+  requests:
+    cpu: 50m
+    memory: 51Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
 revision: 1-25-0
 
 revisionTags:
