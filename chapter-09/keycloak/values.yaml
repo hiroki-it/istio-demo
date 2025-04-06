@@ -11,8 +11,6 @@ affinity: |
 args:
   - start-dev
   - --import-realm
-  - --log-console-output=json
-  - --tracing-enabled=true
 
 replicas: 2
 
@@ -32,8 +30,14 @@ extraEnv: |
     value: admin
   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
     value: admin
+  - name: KC_LOG_CONSOLE_OUTPUT
+    values: json
   - name: KC_PROXY
     values: edge
+  - name: KC_TRACING_ENABLED
+    values: true
+  - name: KC_TRACING_SAMPLER_TYPE
+    values: parentbased_traceidratio
   - name: JAVA_OPTS_APPEND
     value: -Djgroups.dns.query=keycloak-headless.keycloak.svc.cluster.local
 
