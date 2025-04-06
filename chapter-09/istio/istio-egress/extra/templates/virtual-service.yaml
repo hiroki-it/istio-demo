@@ -65,39 +65,3 @@ spec:
             host: {{ .Values.destination.googleapis.host }}
             port:
               number: {{ .Values.destination.googleapis.port }}
----
-apiVersion: networking.istio.io/v1
-kind: VirtualService
-metadata:
-  name: opentelemetry-collector-{{ .Values.service.name }}
-spec:
-  exportTo:
-    - "*"
-  hosts:
-    - {{ .Values.destination.opentelemetryCollector.host }}
-  gateways:
-    - mesh
-    - {{ .Release.Namespace }}/opentelemetry-collector-{{ .Values.service.name }}
-  tls:
-    - match:
-        - gateways:
-            - mesh
-          port: {{ .Values.destination.opentelemetryCollector.port }}
-          sniHosts:
-            - {{ .Values.destination.opentelemetryCollector.host }}
-      route:
-        - destination:
-            host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
-            port:
-              number: {{ .Values.destination.opentelemetryCollector.port }}
-    - match:
-        - gateways:
-            - {{ .Release.Namespace }}/opentelemetry-collector-{{ .Values.service.name }}
-          port: {{ .Values.destination.opentelemetryCollector.port }}
-          sniHosts:
-            - {{ .Values.destination.opentelemetryCollector.host }}
-      route:
-        - destination:
-            host: {{ .Values.destination.opentelemetryCollector.host }}
-            port:
-              number: {{ .Values.destination.opentelemetryCollector.port }}

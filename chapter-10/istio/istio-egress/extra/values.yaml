@@ -8,6 +8,3 @@ destination:
   googleapis:
     host: www.googleapis.com
     port: 443
-  grafanaTempo:
-    host: grafana-tempo.grafana-tempo.svc.cluster.local
-    port: 4317

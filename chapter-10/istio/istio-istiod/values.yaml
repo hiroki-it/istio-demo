@@ -48,9 +48,6 @@ meshConfig:
       - prometheus
     accessLogging:
       - envoy-grpc
-    tracing:
-      - opentelemetry-grpc
-  enableTracing: true
   extensionProviders:
     - name: envoy-grpc
       envoyFileAccessLog:
