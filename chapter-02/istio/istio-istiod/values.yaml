@@ -71,6 +71,14 @@ meshConfig:
             user_agent: '%REQ(USER-AGENT)%'
             x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
 
+resources:
+  requests:
+    cpu: 50m
+    memory: 51Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
 revision: 1-25-0
 
 revisionTags:

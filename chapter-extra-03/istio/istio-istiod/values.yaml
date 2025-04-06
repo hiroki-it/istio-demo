@@ -68,6 +68,14 @@ pilot:
   env:
     ENABLE_NATIVE_SIDECARS: true
 
+resources:
+  requests:
+    cpu: 50m
+    memory: 51Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
 revision: 1-25-0
 
 revisionTags:
