@@ -6,7 +6,7 @@ releases:
   - name: opentelemetry-collector-istio
     chart: opentelemetry-collector-istio
     version: 1.0.0
-    namespace: opentelemetry-collector
+    namespace: bookinfo
     atomic: true
     values:
       - values.yaml
