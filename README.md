@@ -44,7 +44,7 @@ $ mise install
 
 1. Docker Desktopの[リソース](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) で、以下を設定します。
 
-- ハードウェアリソースの割り当てで、CPUを`4`コア、メモリを`11`GB (Minikubeの割当量より少し多め) 、スワップを`1`GB以上にしてください。
+- ハードウェアリソースの割り当てで、CPUを`5`コア、メモリを`11`GB (Minikubeの割当量より少し多め) にしてください。
 - ファイルシェアリングで、`/User`以外のパスを削除してください。もし`/User`以外のパスを他のコンテナで使用している場合は、そのままで問題ありません
 
 2. Minikubeを使用して、Kubernetesクラスターを作成します。
@@ -56,8 +56,8 @@ KUBERNETES_VERSION=1.32.0
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
 
-# 4コア
-CPU=4
+# 5コア
+CPU=5
 # 10GiB
 MEMORY=10240	
 
