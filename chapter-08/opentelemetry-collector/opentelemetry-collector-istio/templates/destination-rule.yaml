@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  exportTo:
+    - "."
+  host: {{ .Values.service.host }}
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
