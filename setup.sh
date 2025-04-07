@@ -6,8 +6,8 @@ KUBERNETES_VERSION=1.32.0
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
 
-# 4コア
-CPU=4
+# 5コア
+CPU=5
 # 10GiB
 MEMORY=10240
 
