@@ -69,35 +69,35 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: opentelemetry-collector-{{ .Values.service.name }}
+  name: grafana-tempo-{{ .Values.service.name }}
 spec:
   exportTo:
     - "*"
   hosts:
-    - {{ .Values.destination.opentelemetryCollector.host }}
+    - {{ .Values.destination.grafanaTempo.host }}
   gateways:
     - mesh
-    - {{ .Release.Namespace }}/opentelemetry-collector-{{ .Values.service.name }}
+    - {{ .Release.Namespace }}/grafana-tempo-{{ .Values.service.name }}
   tls:
     - match:
         - gateways:
             - mesh
-          port: {{ .Values.destination.opentelemetryCollector.port }}
+          port: {{ .Values.destination.grafanaTempo.port }}
           sniHosts:
-            - {{ .Values.destination.opentelemetryCollector.host }}
+            - {{ .Values.destination.grafanaTempo.host }}
       route:
         - destination:
             host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
             port:
-              number: {{ .Values.destination.opentelemetryCollector.port }}
+              number: {{ .Values.destination.grafanaTempo.port }}
     - match:
         - gateways:
-            - {{ .Release.Namespace }}/opentelemetry-collector-{{ .Values.service.name }}
-          port: {{ .Values.destination.opentelemetryCollector.port }}
+            - {{ .Release.Namespace }}/grafana-tempo-{{ .Values.service.name }}
+          port: {{ .Values.destination.grafanaTempo.port }}
           sniHosts:
-            - {{ .Values.destination.opentelemetryCollector.host }}
+            - {{ .Values.destination.grafanaTempo.host }}
       route:
         - destination:
-            host: {{ .Values.destination.opentelemetryCollector.host }}
+            host: {{ .Values.destination.grafanaTempo.host }}
             port:
-              number: {{ .Values.destination.opentelemetryCollector.port }}
+              number: {{ .Values.destination.grafanaTempo.port }}

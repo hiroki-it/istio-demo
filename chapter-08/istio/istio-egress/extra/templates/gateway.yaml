@@ -33,7 +33,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: opentelemetry-collector-{{ .Values.service.name }}
+  name: grafana-tempo-{{ .Values.service.name }}
 spec:
   selector:
     istio: egressgateway
@@ -41,6 +41,6 @@ spec:
     - port:
         name: grpc
         protocol: GRPC
-        number: {{ .Values.destination.opentelemetryCollector.port }}
+        number: {{ .Values.destination.grafanaTempo.port }}
       hosts:
-        - {{ .Values.destination.opentelemetryCollector.host }}
+        - {{ .Values.destination.grafanaTempo.host }}
