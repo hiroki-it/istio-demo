@@ -10,6 +10,13 @@ releases:
     atomic: true
     values:
       - values.yaml
+  - name: opentelemetry-collector-istio
+    chart: opentelemetry-collector-istio
+    version: 1.0.0
+    namespace: keycloak
+    atomic: true
+    values:
+      - values.yaml
   - name: opentelemetry-collector
     chart: opentelemetry/opentelemetry-collector
     version: 0.120.2
