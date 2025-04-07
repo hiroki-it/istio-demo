@@ -7,5 +7,6 @@ releases:
     chart: grafana/loki
     version: 6.29.0
     namespace: grafana-loki
+    atomic: true
     values:
       - values.yaml
