@@ -4,4 +4,4 @@ metadata:
   name: {{ .Release.Namespace }}
 spec:
   mtls:
-    mode: STRICT
+    mode: PERMISSIVE
