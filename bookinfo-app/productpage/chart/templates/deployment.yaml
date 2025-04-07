@@ -36,8 +36,8 @@ spec:
               cpu: 50m
               memory: 51Mi
             limits:
-              cpu: 2000m
-              memory: 2048Mi
+              cpu: 1000m
+              memory: 1024Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
@@ -87,8 +87,8 @@ spec:
               cpu: 50m
               memory: 51Mi
             limits:
-              cpu: 2000m
-              memory: 2048Mi
+              cpu: 1000m
+              memory: 1024Mi
       terminationGracePeriodSeconds: 45
       affinity:
         nodeAffinity:
