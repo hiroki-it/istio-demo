@@ -36,6 +36,8 @@ extraEnv: |
     value: edge
   - name: KC_TRACING_ENABLED
     value: "true"
+  - name: KC_TRACING_ENDPOINT
+    value: http://opentelemetry-collector.opentelemetry-collector.svc.cluster.local:4317
   - name: KC_TRACING_SAMPLER_TYPE
     value: parentbased_traceidratio
   - name: JAVA_OPTS_APPEND
