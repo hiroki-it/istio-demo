@@ -7,6 +7,16 @@ grafana.ini:
   users:
     default_theme: light
 
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node.kubernetes.io/nodegroup
+              operator: In
+              values:
+                - system
+
 replicas: 2
 
 service:
