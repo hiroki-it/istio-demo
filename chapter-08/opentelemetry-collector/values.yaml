@@ -56,6 +56,8 @@ resources:
     memory: 512Mi
 
 ports:
+  otlp-http:
+    enabled: false
   jaeger-compact:
     enabled: false
   jaeger-thrift:
