@@ -3,9 +3,6 @@ kind: Telemetry
 metadata:
   name: {{ .Release.Namespace }}
 spec:
-  accessLogging:
-    - providers:
-        - name: envoy-grpc
   tracing:
     - providers:
         - name: opentelemetry-grpc
