@@ -7,5 +7,7 @@ releases:
     chart: grafana/grafana
     version: 8.11.3
     namespace: grafana
+    atomic: true
     values:
       - values.yaml
+

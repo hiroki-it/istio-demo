@@ -59,8 +59,8 @@ NODE_COUNT=8
 
 # 4コア
 CPU=4
-# 8GiB
-MEMORY=8192
+# 10GiB
+MEMORY=9216	
 
 minikube start \
   --profile istio-demo \
