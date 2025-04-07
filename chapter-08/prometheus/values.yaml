@@ -1,14 +1,13 @@
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: node.kubernetes.io/nodegroup
-              operator: In
-              values:
-                - system
-
 alertmanager:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
   enabled: false
 
 extraScrapeConfigs: |
@@ -35,6 +34,15 @@ extraScrapeConfigs: |
         regex: .*-envoy-prom
 
 kube-state-metrics:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
   replicas: 2
   resources:
     requests:
@@ -51,9 +59,18 @@ prometheus-pushgateway:
   enabled: false
 
 server:
-  replicaCount: 2
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
   persistentVolume:
     enabled: false
+  replicaCount: 2
   service:
     type: NodePort
     nodePort: 32004

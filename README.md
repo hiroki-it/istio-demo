@@ -55,7 +55,7 @@ $ mise install
 KUBERNETES_VERSION=1.32.0
 
 # コントロールプレーンを含むNode数
-NODE_COUNT=7
+NODE_COUNT=8
 
 # 4コア
 CPU=4
@@ -100,6 +100,10 @@ kubectl label node istio-demo-m06 node.kubernetes.io/nodegroup=system --overwrit
 # istio-demo-m07 (system Node 2)
 kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=system --overwrite \
   && kubectl label node istio-demo-m07 node-role.kubernetes.io/worker=worker --overwrite
+
+# istio-demo-m08 (system Node 3)
+kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrite \
+  && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
 4. Nodeを確認します。
@@ -107,12 +111,12 @@ kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=system --overwrit
 ```bash
 kubectl get nodes -L node.kubernetes.io/nodegroup
 
-NAME             STATUS   ROLES           AGE     VERSION   NODEGROUP
-istio-demo       Ready    control-plane   7h54m   v1.32.3   
-istio-demo-m02   Ready    worker          7h54m   v1.32.3   app
-istio-demo-m03   Ready    worker          7h53m   v1.32.3   app
-istio-demo-m04   Ready    worker          7h53m   v1.32.3   ingress
-istio-demo-m05   Ready    worker          7h53m   v1.32.3   egress
-istio-demo-m06   Ready    worker          7h53m   v1.32.3   system
-istio-demo-m07   Ready    worker          7h52m   v1.32.3   system
+istio-demo       Ready    control-plane   42h   v1.32.0
+istio-demo-m02   Ready    worker          42h   v1.32.0
+istio-demo-m03   Ready    worker          42h   v1.32.0
+istio-demo-m04   Ready    worker          42h   v1.32.0
+istio-demo-m05   Ready    worker          42h   v1.32.0
+istio-demo-m06   Ready    worker          42h   v1.32.0
+istio-demo-m07   Ready    worker          42h   v1.32.0
+istio-demo-m08   Ready    worker          37s   v1.32.0
 ```
