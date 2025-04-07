@@ -78,13 +78,11 @@ spec:
   gateways:
     - mesh
     - {{ .Release.Namespace }}/grafana-tempo-{{ .Values.service.name }}
-  tls:
+  http:
     - match:
         - gateways:
             - mesh
           port: {{ .Values.destination.grafanaTempo.port }}
-          sniHosts:
-            - {{ .Values.destination.grafanaTempo.host }}
       route:
         - destination:
             host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
@@ -94,8 +92,6 @@ spec:
         - gateways:
             - {{ .Release.Namespace }}/grafana-tempo-{{ .Values.service.name }}
           port: {{ .Values.destination.grafanaTempo.port }}
-          sniHosts:
-            - {{ .Values.destination.grafanaTempo.host }}
       route:
         - destination:
             host: {{ .Values.destination.grafanaTempo.host }}
