@@ -76,6 +76,9 @@ service:
   httpPort: 8080
   httpsPort: 8443
 
+statefulsetLabels:
+  app: keycloak
+
 secrets:
   realms:
     data:
