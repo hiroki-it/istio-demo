@@ -10,9 +10,9 @@ spec:
     - name: v1
       labels:
         version: v1
-    - name: v2
+    - name: v3
       labels:
-        version: v2
+        version: v3
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
