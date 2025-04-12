@@ -15,7 +15,7 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v2
+            subset: v3
       timeout: 10s
       retries:
         attempts: 3

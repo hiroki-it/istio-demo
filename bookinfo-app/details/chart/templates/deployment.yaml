@@ -53,27 +53,27 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v2
+  name: {{ .Values.service.name }}-v3
   labels:
     app: {{ .Values.service.name }}
-    version: v2
+    version: v3
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v2
+      version: v3
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v2
+        version: v3
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2
-          imagePullPolicy: IfNotPresent
+          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v3:1.20.2-istio-demo
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
           livenessProbe:
