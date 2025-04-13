@@ -7,7 +7,7 @@ spec:
     - "."
   host: {{ .Values.service.host }}
   subsets:
-    - name: v2
+    - name: v3
       labels:
-        version: v2
+        version: v3
 
