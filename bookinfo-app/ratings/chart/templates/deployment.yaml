@@ -73,8 +73,8 @@ spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2
-          imagePullPolicy: IfNotPresent
+          image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v3:1.20.2-istio-demo
+          imagePullPolicy: Always
           env:
             - name: DB_TYPE
               value: mysql
