@@ -38,7 +38,7 @@ datasources:
         jsonData:
           derivedFields:
             - name: trace_id
-              matcherRegex: '"trace_id":"([^"]*)"'
+              matcherRegex: '"trace_id":\s*"([^"]+)"'
               url: $${__value.raw}
               urlDisplayLabel: View Grafana Tempo
               datasourceUid: Tempo
