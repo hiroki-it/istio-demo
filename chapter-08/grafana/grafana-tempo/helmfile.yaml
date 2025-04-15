@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: grafana-tempo
     chart: grafana/tempo
-    version: 1.20.0
+    version: 1.21.0
     namespace: grafana-tempo
     atomic: true
     values:
