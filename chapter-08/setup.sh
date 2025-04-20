@@ -46,7 +46,7 @@ helmfile -f chapter-08/bookinfo-app/share-istio/helmfile.yaml apply
 
 # 8. Kubernetes Podのロールアウト
 echo "Rolling out Kubernetes Pods..."
-kubectl rollout restart deployment -n bookinfo
+# kubectl rollout restart deployment -n bookinfo
 
 # 9. Keycloakの作成
 echo "Deploying Keycloak..."
