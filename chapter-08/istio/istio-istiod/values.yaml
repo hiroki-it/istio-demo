@@ -39,6 +39,7 @@ meshConfig:
         - ".*ssl.*"
         - ".*upstream_rq_.*"
         - ".*upstream_cx_.*"
+    tracingServiceName: CANONICAL_NAME_AND_NAMESPACE
   rootNamespace: null
   discoverySelectors:
     - matchLabels:
