@@ -14,8 +14,8 @@ tempo:
       cpu: 50m
       memory: 65Mi
     limits:
-      cpu: 1000m
-      memory: 1024Mi
+      cpu: 500m
+      memory: 512Mi
   storage:
     trace:
       backend: s3
