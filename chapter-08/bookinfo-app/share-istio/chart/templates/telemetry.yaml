@@ -8,9 +8,13 @@ spec:
         - name: opentelemetry-grpc
       randomSamplingPercentage: 100
       customTags:
-        system_name:
+        http.url.path:
+          header:
+            name: :path
+            defaultValue: unknown
+        system.name:
           literal:
             value: istio-demo
-        environment:
+        system.environment:
           literal:
             value: dev
