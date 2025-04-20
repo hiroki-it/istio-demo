@@ -17,6 +17,16 @@ config:
     jaeger: null
     prometheus: null
     zipkin: null
+  processors:
+    span:
+      name:
+        from_attributes: 
+          - http.url.path
+      include:
+        match_type: strict
+        attributes:
+          - key: component
+            value: proxy
   exporters:
     debug:
       verbosity: detailed
@@ -33,6 +43,9 @@ config:
       logs: null
       metrics: null
       traces:
+        processors:
+          - batch
+          - span
         receivers:
           - otlp
         exporters:
