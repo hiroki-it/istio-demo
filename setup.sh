@@ -6,12 +6,6 @@ KUBERNETES_VERSION=1.32.0
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
 
-# 6コア
-CPU=6
-# 10GiB
-MEMORY=10240
-
-# Minikubeクラスターの開始
 minikube start \
   --profile istio-demo \
   --nodes ${NODE_COUNT} \
@@ -20,8 +14,8 @@ minikube start \
   --mount true \
   --mount-string "$(dirname $(pwd))/istio-demo:/data" \
   --kubernetes-version v${KUBERNETES_VERSION} \
-  --cpus ${CPU} \
-  --memory ${MEMORY}
+  --cpus max \
+  --memory max
 
 # ワーカーNodeにラベルを設定
 # istio-demo-m02 (app Node 1)
