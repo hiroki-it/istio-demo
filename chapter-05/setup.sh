@@ -43,7 +43,7 @@ helmfile -f chapter-05/bookinfo-app/reviews-istio/helmfile.yaml apply
 
 # Kubernetes Podのロールアウト
 echo "Rolling out Kubernetes Pods..."
-kubectl rollout restart deployment -n bookinfo
+# kubectl rollout restart deployment -n bookinfo
 
 # Prometheusの作成
 echo "Deploying Prometheus..."
