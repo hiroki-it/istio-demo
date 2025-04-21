@@ -56,10 +56,10 @@ KUBERNETES_VERSION=1.32.0
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
 
-# 5コア
+# 6コア
 CPU=6
-# 10GiB
-MEMORY=10240	
+# 12GiB
+MEMORY=12288
 
 minikube start \
   --profile istio-demo \
