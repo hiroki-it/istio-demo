@@ -12,4 +12,7 @@ spec:
         version: v4
   trafficPolicy:
     loadBalancer:
-      simple: LEAST_REQUEST
+      warmup:
+        duration: 30s
+        minimumPercent: 10
+        aggression: 1
