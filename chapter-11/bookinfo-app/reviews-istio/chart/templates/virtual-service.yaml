@@ -15,4 +15,4 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v3
+            subset: v4
