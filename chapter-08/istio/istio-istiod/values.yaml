@@ -15,6 +15,7 @@ global:
   imagePullPolicy: IfNotPresent
   defaultPodDisruptionBudget:
     minAvailable: 1
+  logAsJson: true
   proxy:
     resources:
       requests:
