@@ -21,7 +21,9 @@ config:
     span:
       name:
         from_attributes: 
+          - http.method
           - http.url.path
+        separator: " "
       include:
         match_type: strict
         attributes:
