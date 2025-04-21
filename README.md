@@ -56,6 +56,11 @@ KUBERNETES_VERSION=1.32.0
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
 
+# 5コア
+CPU=6
+# 10GiB
+MEMORY=10240	
+
 minikube start \
   --profile istio-demo \
   --nodes ${NODE_COUNT} \
@@ -64,8 +69,8 @@ minikube start \
   --mount true \
   --mount-string "$(dirname $(pwd))/istio-demo:/data" \
   --kubernetes-version v${KUBERNETES_VERSION} \
-  --cpus max \
-  --memory max
+  --cpus ${CPU} \
+  --memory ${MEMORY}
 ```
 
 3. ワーカーNodeにNodeグループを表すラベルを設定します。
