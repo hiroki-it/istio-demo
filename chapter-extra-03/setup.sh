@@ -44,3 +44,4 @@ echo "Deploying metrics-server..."
 helmfile -f chapter-extra-03/metrics-server/helmfile.yaml apply
 
 echo "Setup Extra 3 completed successfully!"
+exit 0

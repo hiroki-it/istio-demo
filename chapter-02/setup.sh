@@ -54,3 +54,4 @@ echo "Deploying Kiali..."
 helmfile -f chapter-02/kiali/helmfile.yaml apply
 
 echo "Setup Chapter 2 completed successfully!"
+exit 0

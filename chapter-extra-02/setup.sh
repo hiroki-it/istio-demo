@@ -43,3 +43,4 @@ echo "Rolling out Kubernetes Pods..."
 kubectl rollout restart deployment -n bookinfo
 
 echo "Setup Extra 2 completed successfully!"
+exit 0
