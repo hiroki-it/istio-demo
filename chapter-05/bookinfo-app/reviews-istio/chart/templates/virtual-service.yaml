@@ -31,6 +31,7 @@ spec:
           weight: 0
       mirror:
         host: {{ .Values.service.host }}
-        port: {{ .Values.service.port }}
+        port: 
+          number: {{ .Values.service.port }}
         subset: v4
       mirrorPercent: 100.0
