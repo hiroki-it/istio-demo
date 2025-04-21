@@ -87,3 +87,4 @@ echo "Deploying OpenTelemetry Collector..."
 helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
 
 echo "Setup Chapter 8 completed successfully!"
+exit 0

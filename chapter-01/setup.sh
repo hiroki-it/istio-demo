@@ -32,3 +32,4 @@ echo "Deploying Kiali..."
 helmfile -f chapter-10/grafana/kiali/helmfile.yaml apply
 
 echo "Setup Chapter 1 completed successfully!"
+exit 0
