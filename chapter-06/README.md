@@ -2,7 +2,7 @@
 
 以下を実践し、Istioサイドカーモードによる証明書管理を学びます。
 
-- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- Istioコントロールプレーン、Istio Ingress Gateway、およびIstio Egress Gatewayを導入する
 - 証明書管理系リソース (PeerAuthentication) を作成します
 
 ## セットアップ

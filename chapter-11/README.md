@@ -2,7 +2,7 @@
 
 以下を実践し、Istioアンビエントモードによるマイクロサービスの横断的管理を学びます。
 
-- Istioコントロールプレーン、Istio IngressGateway、Istio waypoint-proxy、およびIstio CNI、Istio Ztunnelを導入する
+- Istioコントロールプレーン、Istio Ingress Gateway、Istio waypoint-proxy、およびIstio CNI、Istio Ztunnelを導入する
 - Istioのトラフィック管理系リソース (DestinationRule、Gateway、VirtualService) を作成する
 
 ## セットアップ
