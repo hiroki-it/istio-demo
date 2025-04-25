@@ -2,7 +2,7 @@
 
 以下を実践し、Istioサイドカーモードによるテレメトリー (ログ、メトリクス、分散トレース) 作成を学びます。
 
-- Istioコントロールプレーン、Istio IngressGateway、およびIstio Egress Gatewayを導入する
+- Istioコントロールプレーン、Istio Ingress Gateway、およびIstio Egress Gatewayを導入する
 - Istioのテレメトリー作成系リソース (Telemetry) を作成する
 
 そして、テレメトリー間をトレースIDで紐付け、マイクロサービスアプリケーションのオブザーバビリティーを向上させます
