@@ -1,9 +1,9 @@
 # 6章
 
-以下を実践し、Istioサイドカーモードによる証明書管理を学びます。
+以下を実践し、Istioサイドカーモードによるパケット暗号化を学びます。
 
 - Istioコントロールプレーン、Istio Ingress Gateway、およびIstio Egress Gatewayを導入する
-- 証明書管理系リソース (PeerAuthentication) を作成します
+- パケット暗号化系リソース (PeerAuthentication) を作成します
 
 ## セットアップ
 
