@@ -27,7 +27,7 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset:  v-50percent-internal-server-error-500
+            subset: v-50percent-internal-server-error-500
           weight: 0
       {{- if eq .Values.retry.by5xxStatusCode.enabled true }}
       retries:
