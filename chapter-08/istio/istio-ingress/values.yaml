@@ -14,8 +14,8 @@ service:
       nodePort: 30000
       port: 9080
       targetPort: 9080
-    - appProtocol: http
-      name: http-keycloak
+    - name: http-keycloak
+      appProtocol: http
       nodePort: 30001
       port: 8080
       targetPort: 8080
