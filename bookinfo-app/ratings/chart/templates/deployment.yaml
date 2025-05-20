@@ -216,26 +216,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}-v-internal-server-error-500-50percent
+  name: {{ .Values.service.name }}-v-50percent-internal-server-error-500
   labels:
     app: {{ .Values.service.name }}
-    version: v-internal-server-error-500-50percent
+    version: v-50percent-internal-server-error-500
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
-      version: v-internal-server-error-500-50percent
+      version: v-50percent-internal-server-error-500
   template:
     metadata:
       labels:
         app: {{ .Values.service.name }}
-        version: v-internal-server-error-500-50percent
+        version: v-50percent-internal-server-error-500
     spec:
       serviceAccountName: bookinfo-{{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
-          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-internal-server-error-500-50percent:1.20.2-istio-demo
+          image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-50percent-internal-server-error-500:1.20.2-istio-demo
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.service.port }}
