@@ -41,5 +41,5 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset:  v-50percent-internal-server-error-500
+            subset: v-50percent-internal-server-error-500
           weight: {{ $v50percentInternalServerError500 }}
