@@ -236,7 +236,7 @@ spec:
       containers:
         - name: {{ .Values.service.name }}
           image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-50percent-internal-server-error-500:1.20.2-istio-demo
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
           livenessProbe:
