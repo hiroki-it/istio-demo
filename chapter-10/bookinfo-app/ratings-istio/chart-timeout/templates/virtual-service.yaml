@@ -27,6 +27,6 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset:  v-internal-server-error-500-50percent
+            subset: v-internal-server-error-500-50percent
           weight: 0
       timeout: 5s
