@@ -16,7 +16,7 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v-delayed-50percent-delayof7s
-          weight: 100
+          weight: 
         - destination:
             host: {{ .Values.service.host }}
             port:
@@ -27,5 +27,5 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset: v-internal-server-error-500-50percent
+            subset: v-50percent-internal-server-error-500
           weight: 0

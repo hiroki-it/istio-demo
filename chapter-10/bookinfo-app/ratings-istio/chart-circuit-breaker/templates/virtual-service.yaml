@@ -1,13 +1,13 @@
 {{- $vDelayed50percentDelayof7s := 0 }}
-{{- $vInternalServerError50050percent := 0 }}
+{{- $v50percentInternalServerError500 := 0 }}
 {{- $vFaulty50percent503 := 0 }}
 
 {{- if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled false) }}
 {{- $vDelayed50percentDelayof7s = 100 }}
 {{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled false) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vInternalServerError50050percent = 100 }}
+{{- $v50percentInternalServerError500 = 100 }}
 {{- else if and (eq .Values.circuitBreaker.byConnectionPool.enabled true) (eq .Values.circuitBreaker.byOutlierDetection.enabled true) }}
-{{- $vInternalServerError50050percent = 100 }}
+{{- $v50percentInternalServerError500 = 100 }}
 {{- else }}
 {{- $vFaulty50percent503 = 100 }}
 {{- end }}
@@ -41,5 +41,5 @@ spec:
             host: {{ .Values.service.host }}
             port:
               number: {{ .Values.service.port }}
-            subset:  v-internal-server-error-500-50percent
-          weight: {{ $vInternalServerError50050percent }}
+            subset:  v-50percent-internal-server-error-500
+          weight: {{ $v50percentInternalServerError500 }}
