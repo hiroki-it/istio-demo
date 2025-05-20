@@ -1,4 +1,3 @@
-{{- if eq .Values.trafficManagement.enabled true }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,7 +47,6 @@ spec:
                     operator: In
                     values:
                       - app   
-{{- end }}          
 ---
 apiVersion: apps/v1
 kind: Deployment
