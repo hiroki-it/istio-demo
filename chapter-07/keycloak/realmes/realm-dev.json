@@ -2421,7 +2421,7 @@
     "acr.loa.map": "{}",
     "darkMode": "false"
   },
-  "keycloakVersion": "26.2.0",
+  "keycloakVersion": "26.4.0",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
   "verifiableCredentialsEnabled": false,
