@@ -156,19 +156,19 @@ helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --se
 
 ### サーキットブレイカー
 
-コネクションプールのオーバーフローを起因としたサーキットブレイカーを実践します。
+接続プールに基づくサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
 ```
 
-外れ値の検出を起因としたサーキットブレイカーを実践します。
+外れ値検出に基づくサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
 ```
 
-コネクションプールと外れ値の両方を起因としたサーキットブレイカーを実践します。
+接続プールと外れ値検出に基づくサーキットブレイカーを実践します。
 
 ```bash
 helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
