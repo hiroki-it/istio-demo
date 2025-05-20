@@ -18,8 +18,8 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v2
-      timeout: 30s
+      timeout: 25s
       retries:
         attempts: 3
-        perTryTimeout: 30s
+        perTryTimeout: 25s
         retryOn: connect-failure,reset-before-request

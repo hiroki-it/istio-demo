@@ -29,4 +29,4 @@ spec:
               number: {{ .Values.service.port }}
             subset: v-50percent-internal-server-error-500
           weight: 0
-      timeout: 3s
+      timeout: 5s
