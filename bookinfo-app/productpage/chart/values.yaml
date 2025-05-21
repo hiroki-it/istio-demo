@@ -4,3 +4,6 @@ service:
 
 trafficManagement:
   enabled: false
+
+loggedIn:
+  enabled: false
