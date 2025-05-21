@@ -22,8 +22,8 @@ spec:
 {{- if eq .Values.circuitBreaker.byConnectionPool.enabled true }}
     connectionPool:
       http:
-        http1MaxPendingRequests: 5
-        maxRequestsPerConnection: 5
+        http1MaxPendingRequests: 3
+        maxRequestsPerConnection: 3
         idleTimeout: 30m
 {{- end }}
 {{- if eq .Values.circuitBreaker.byOutlierDetection.enabled true }}
