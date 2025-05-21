@@ -45,7 +45,7 @@ kubectl apply --server-side -f chapter-09/shared/namespace.yaml
 ```bash
 helmfile -f bookinfo-app/details/helmfile.yaml apply
 
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set loggedIn.enabled=true
 
 helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 
