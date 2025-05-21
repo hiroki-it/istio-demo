@@ -140,20 +140,20 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 ## 機能を実践する
 
-### タイムアウト
-
-タイムアウトを実践します。
-
-```bash
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
-```
-
 ### リトライ
 
 503ステータスを起因としたリトライを実践します。
 
 ```bash
 helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
+```
+
+### タイムアウト
+
+タイムアウトを実践します。
+
+```bash
+helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
 ```
 
 ### サーキットブレイカー
