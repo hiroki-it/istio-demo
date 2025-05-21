@@ -139,6 +139,14 @@ watch -n 3 curl http://localhost:9080/productpage > /dev/null
 
 ## 機能を実践する
 
+### クライアント証明書の無効化
+
+相互TLS認証を要求されている状態で、ratingsサービスに対するリクエストでクライアント証明書を無効します。
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set nonClientCertificate.enabled=true
+```
+
 ## 掃除
 
 1. Minikubeを削除します。
