@@ -5,3 +5,10 @@ service:
 
 istioIngressGateway:
   namespace: istio-ingress
+
+keycloak:
+  realm: dev
+  host:
+    web: localhost
+    api: keycloak-http.keycloak.svc.cluster.local
+  port: 8080
