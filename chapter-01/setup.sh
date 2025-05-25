@@ -27,9 +27,5 @@ helmfile -f chapter-01/nginx/helmfile.yaml apply
 echo "Deploying Prometheus..."
 helmfile -f chapter-01/prometheus/helmfile.yaml apply
 
-# Kialiの作成
-echo "Deploying Kiali..."
-helmfile -f chapter-10/grafana/kiali/helmfile.yaml apply
-
 echo "Setup Chapter 1 completed successfully!"
 exit 0
