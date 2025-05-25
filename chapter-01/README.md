@@ -44,30 +44,19 @@ helmfile -f chapter-01/nginx/helmfile.yaml apply
 helmfile -f chapter-01/prometheus/helmfile.yaml apply
 ```
 
-6. Kialiを作成します。
+6. Prometheusのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) に接続してください。
 
 ```bash
-helmfile -f chapter-10/grafana/kiali/helmfile.yaml apply
+kubectl port-forward svc/prometheus-server -n prometheus 9090:9090
 ```
 
-7. Prometheus、Kialiのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) 、Kiali (`http://localhost:20001`) に接続してください。
-
-```bash
-kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
-  kubectl port-forward svc/kiali 20001:20001 -n istio-system
-```
-
-8. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
+7. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続します。
 
 ```bash
 kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
 ```
 
 ![bookinfo_productpage](../images/bookinfo_productpage.png)
-
-
-
-## 機能を実践する
 
 ## 掃除
 
