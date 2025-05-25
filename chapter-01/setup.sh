@@ -4,6 +4,10 @@ set -e
 
 echo "Starting setup for Chapter 1..."
 
+# MySQLコンテナの作成
+echo "Creating MySQL container..."
+docker compose -f databases/docker-compose.yaml up -d
+
 # Namespaceの作成
 echo "Creating Namespace..."
 kubectl apply --server-side -f chapter-01/shared/namespace.yaml
@@ -11,7 +15,7 @@ kubectl apply --server-side -f chapter-01/shared/namespace.yaml
 # Bookinfoアプリケーションの作成
 echo "Deploying Bookinfo application..."
 helmfile -f bookinfo-app/details/helmfile.yaml apply
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set loggedIn.enabled=true
 helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 
