@@ -1,5 +1,15 @@
 #!/bin/bash
 
+set -e
+
+echo "Trusting mise..."
+mise trust -a
+
+echo "Installing mise..."
+mise install
+
+echo "Starting minikube..."
+
 # バージョン
 KUBERNETES_VERSION=1.32.0
 
@@ -8,6 +18,7 @@ NODE_COUNT=8
 
 # 6コア
 CPU=6
+
 # 10GiB
 MEMORY=10240
 
@@ -21,6 +32,8 @@ minikube start \
   --kubernetes-version v${KUBERNETES_VERSION} \
   --cpus ${CPU} \
   --memory ${MEMORY}
+
+echo "Labeling node ..."
 
 # ワーカーNodeにラベルを設定
 # istio-demo-m02 (app Node 1)
@@ -51,5 +64,9 @@ kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=system --overwrit
 kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrite \
   && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
 
+echo "Getting nodes..."
 # Nodeの確認
 kubectl get nodes -L node.kubernetes.io/nodegroup
+
+echo "Setup minikube completed successfully!"
+exit 0
