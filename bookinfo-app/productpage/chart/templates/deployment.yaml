@@ -92,7 +92,7 @@ spec:
           {{- if eq .Values.loggedIn.enabled true }}
           env:
             - name: LOGGED_IN
-              value: "true"
+              value: "True"
           {{- end }}
       terminationGracePeriodSeconds: 45
       affinity:
