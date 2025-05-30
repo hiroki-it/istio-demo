@@ -1,6 +1,6 @@
 [tools]
 helm = '3.18.1'
-helmfile = '0.171.0'
+helmfile = '1.1.0'
 helm-diff = '3.10.0'
 istioctl = '1.25.0'
 kubectl = '1.32.3'
