@@ -49,7 +49,7 @@ meshConfig:
         - ".*ssl.*"
         - ".*upstream_rq_.*"
         - ".*upstream_cx_.*"
-  rootNamespace: null
+  rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
