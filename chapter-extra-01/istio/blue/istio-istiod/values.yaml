@@ -33,7 +33,7 @@ meshConfig:
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
-  rootNamespace: null
+  rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable

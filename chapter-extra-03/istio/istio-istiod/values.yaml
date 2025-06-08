@@ -31,7 +31,7 @@ meshConfig:
     holdApplicationUntilProxyStarts: true
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
-  rootNamespace: null
+  rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable

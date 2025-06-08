@@ -41,7 +41,7 @@ meshConfig:
         - ".*upstream_rq_.*"
         - ".*upstream_cx_.*"
     tracingServiceName: CANONICAL_NAME_AND_NAMESPACE
-  rootNamespace: null
+  rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
         istio.io/rev: stable
