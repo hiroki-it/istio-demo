@@ -4,4 +4,8 @@ metadata:
   name: {{ .Release.Namespace }}
 spec:
   mtls:
+    {{- if eq .Values.permissiveMode.enabled false }}
     mode: STRICT
+    {{- else }}
+    mode: PERMISSIVE
+    {{- end }}

@@ -13,7 +13,7 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
-    {{- if eq .Values.nonClientCertificate.enabled true }}
+    {{- if eq .Values.unEncrypted.enabled true }}
     tls:
       mode: DISABLE
     {{- end }}
