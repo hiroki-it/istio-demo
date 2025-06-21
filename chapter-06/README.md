@@ -139,7 +139,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 相互TLS認証を要求されている状態で、ratingsサービスに対するリクエストでクライアント証明書を無効します。
 
 ```bash
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set nonClientCertificate.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set unEncrypted.enabled=true
 ```
 
 ## 掃除
