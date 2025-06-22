@@ -16,4 +16,7 @@ spec:
     {{- if eq .Values.unEncrypted.enabled true }}
     tls:
       mode: DISABLE
+    {{- else if eq .Values.serverAuthentication.enabled true }}
+    tls:
+      mode: SIMPLE
     {{- end }}
