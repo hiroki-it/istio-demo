@@ -135,7 +135,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 
 ### 厳密モード
 
-厳密モードが特定の認証モードを拒否する様子を実践します。
+厳密モードが特定の証明書ベース認証モードを拒否する様子を実践します。
 
 送信元istio-proxyを無認証モードに変更します。
 
@@ -151,7 +151,7 @@ helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set serv
 
 ### 任意モード
 
-任意モードが特定の認証モードを許可する様子を実践します。
+任意モードが特定の証明書ベース認証モードを許可する様子を実践します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/share-istio/helmfile.yaml apply --set permissiveMode.enabled=true
