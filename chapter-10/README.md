@@ -132,7 +132,6 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-
 ## 機能を実践する
 
 ### リトライ
