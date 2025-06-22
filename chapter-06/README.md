@@ -131,15 +131,30 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
-
 ## 機能を実践する
 
-### クライアント証明書の無効化
+### 厳密モード
 
-相互TLS認証を要求されている状態で、ratingsサービスに対するリクエストでクライアント証明書を無効します。
+厳密モードが安全ではないマイクロサービス間通信を拒否する様子を実践します。
+
+送信元istio-proxyを無認証モードに変更します。
 
 ```bash
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set unEncrypted.enabled=true
+```
+
+送信元istio-proxyをサーバー認証モードに変更します。
+
+```bash
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set serverAuthentication.enabled=true
+```
+
+### 任意モード
+
+任意モードが安全ではないマイクロサービス間通信を許可する様子を実践します。
+
+```bash
+helmfile -f chapter-06/bookinfo-app/share-istio/helmfile.yaml apply --set permissiveMode.enabled=true
 ```
 
 ## 掃除
