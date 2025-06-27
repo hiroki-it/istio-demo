@@ -121,9 +121,7 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
-![bookinfo_productpage](../images/bookinfo_productpage.png)
-
-## 機能を実践する
+## 実践する（詳しくは本書を参照）
 
 ## 掃除
 
@@ -133,4 +131,4 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 minikube delete --profile istio-demo
 ```
 
-2. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+2. 他の章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。

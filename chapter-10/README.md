@@ -132,7 +132,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-## 機能を実践する
+## 実践する（詳しくは本書を参照）
 
 ### リトライ
 
@@ -190,4 +190,4 @@ pkill kubectl -9
 docker compose -f databases/docker-compose.yaml down --volumes --remove-orphans
 ```
 
-4. 他の章を実践するときは、事前に [Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+4. 他の章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
