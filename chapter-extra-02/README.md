@@ -88,14 +88,14 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 kubectl port-forward svc/ingress-istio -n istio-ingress 9080:9080
 ```
 
-## 機能を実践する
+## 実践する（詳しくは本書を参照）
 
 ## 掃除
 
-Minikubeを削除します。
-
-他の章を実践するときは、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+1. Minikubeを削除します。
 
 ```bash:ターミナル
 minikube delete --profile istio-demo
 ```
+
+2. 他の章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
