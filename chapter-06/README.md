@@ -140,13 +140,13 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 送信元istio-proxyを無認証モードに変更します。
 
 ```bash:ターミナル
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set unEncrypted.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set tlsMode.unEncrypted.enabled=true
 ```
 
 送信元istio-proxyをサーバー認証モードに変更します。
 
 ```bash:ターミナル
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set serverAuthentication.enabled=true
+helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set tlsMode.serverAuthentication.enabled=true
 ```
 
 ### 任意モード
