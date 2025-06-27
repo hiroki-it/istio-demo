@@ -3,5 +3,8 @@ service:
   host: ratings.bookinfo.svc.cluster.local
   port: 9080
 
-unEncrypted:
-  enabled: false
+tlsMode:
+  unEncrypted:
+    enabled: false
+  serverAuthentication:
+    enabled: false
