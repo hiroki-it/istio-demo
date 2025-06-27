@@ -34,7 +34,7 @@ Bookinfoアプリケーションを使用して、Istioをデモンストレー�
 
 2. miseを使用して、そのほかに必要なツールをインストールします。
 
-```bash
+```bash:ターミナル
 $ mise trust -a
 
 $ mise install
@@ -49,7 +49,7 @@ $ mise install
 
 2. Minikubeを使用して、Kubernetesクラスターを作成します。
 
-```bash
+```bash:ターミナル
 # バージョン
 KUBERNETES_VERSION=1.32.0
 
@@ -75,7 +75,7 @@ minikube start \
 
 3. ワーカーNodeにNodeグループを表すラベルを設定します。
 
-```bash
+```bash:ターミナル
 # istio-demo-m02 (app Node 1)
 kubectl label node istio-demo-m02 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node istio-demo-m02 node-role.kubernetes.io/worker=worker --overwrite
@@ -107,7 +107,7 @@ kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrit
 
 4. Nodeを確認します。
 
-```bash
+```bash:ターミナル
 kubectl get nodes -L node.kubernetes.io/nodegroup
 
 istio-demo       Ready    control-plane   42h   v1.32.0
