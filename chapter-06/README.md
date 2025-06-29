@@ -1,10 +1,5 @@
 # 6章
 
-以下を実践し、Istioサイドカーモードによるパケット暗号化を学びます。
-
-- Istioコントロールプレーン、Istio Ingress Gateway、およびIstio Egress Gatewayを導入する
-- パケット暗号化系リソース (PeerAuthentication) を作成します
-
 ## セットアップ
 
 1. サービスメッシュ外に、MySQLコンテナを作成します。

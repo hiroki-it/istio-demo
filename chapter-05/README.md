@@ -1,12 +1,5 @@
 # 5章
 
-以下を実践し、Istioサイドカーモードによるトラフィック管理を学びます。
-
-- Istioコントロールプレーン、Istio Ingress Gateway、およびIstio Egress Gatewayを導入する
-- Istioのトラフィック管理系リソース (DestinationRule、Gateway、ServiceEntry、VirtualService) を作成する
-
-これらのリソースはサービスメッシュに必須であり、以降の全ての章で登場します。
-
 ## セットアップ
 
 1. サービスメッシュ外に、MySQLコンテナを作成します。
