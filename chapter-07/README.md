@@ -1,10 +1,5 @@
 # 7章
 
-以下を実践し、Istioサイドカーモードによる認証認可を学びます。
-
-- Istioコントロールプレーン、Istio Ingress Gateway、およびIstio Egress Gatewayを導入する
-- 認証認可系リソース (AuthorizationPolicy、RequestAuthentication) を作成します
-
 ## セットアップ
 
 1. サービスメッシュ外に、MySQLコンテナを作成します。
