@@ -22,4 +22,7 @@ spec:
             - /logout*
             - /productpage*
             - /static*
-
+    - from:
+        - source:
+            principals:
+              - spiffe://cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
