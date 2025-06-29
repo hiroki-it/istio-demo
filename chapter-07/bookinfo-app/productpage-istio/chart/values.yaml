@@ -4,6 +4,7 @@ service:
   port: 9080
 
 istioIngressGateway:
+  name: istio-ingressgateway
   namespace: istio-ingress
 
 keycloak:
