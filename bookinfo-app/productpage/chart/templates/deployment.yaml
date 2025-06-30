@@ -17,7 +17,7 @@ spec:
         app: {{ .Values.service.name }}
         version: v2
     spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      serviceAccountName: {{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
           image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v2:1.20.2-istio-demo
