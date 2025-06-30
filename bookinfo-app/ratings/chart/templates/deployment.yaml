@@ -19,7 +19,7 @@ spec:
         app: {{ .Values.service.name }}
         version: v1
     spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      serviceAccountName: {{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
           image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v1:1.20.2
@@ -70,7 +70,7 @@ spec:
         app: {{ .Values.service.name }}
         version: v3
     spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      serviceAccountName: {{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
           image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v3:1.20.2-istio-demo
@@ -132,7 +132,7 @@ spec:
         app: {{ .Values.service.name }}
         version: v-delayed-50percent-delayof7s
     spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      serviceAccountName: {{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
           image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-delayed:1.20.2
@@ -182,7 +182,7 @@ spec:
         app: {{ .Values.service.name }}
         version: v-faulty-50percent-503
     spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      serviceAccountName: {{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
           image: docker.io/istio/examples-bookinfo-{{ .Values.service.name }}-v-faulty:1.20.2
@@ -232,7 +232,7 @@ spec:
         app: {{ .Values.service.name }}
         version: v-50percent-internal-server-error-500
     spec:
-      serviceAccountName: bookinfo-{{ .Values.service.name }}
+      serviceAccountName: {{ .Values.service.name }}
       containers:
         - name: {{ .Values.service.name }}
           image: hirokihasegawa/examples-bookinfo-{{ .Values.service.name }}-v-50percent-internal-server-error-500:1.20.2-istio-demo
