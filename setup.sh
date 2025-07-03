@@ -20,7 +20,7 @@ NODE_COUNT=8
 CPU=6
 
 # 10GiB
-MEMORY=10240
+MEMORY=12288
 
 minikube start \
   --profile istio-demo \
