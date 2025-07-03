@@ -15,5 +15,5 @@ spec:
       from:
         - source:
             principals:
-              - spiffe://cluster.local/ns/{{ .Release.Namespace }}/sa/productpage
-              - spiffe://cluster.local/ns/{{ .Release.Namespace }}/sa/reviews
+              - cluster.local/ns/{{ .Release.Namespace }}/sa/productpage
+              - cluster.local/ns/{{ .Release.Namespace }}/sa/reviews

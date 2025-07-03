@@ -15,4 +15,4 @@ spec:
       from:
         - source:
             principals:
-              - spiffe://cluster.local/ns/{{ .Release.Namespace }}/sa/productpage
+              - cluster.local/ns/{{ .Release.Namespace }}/sa/productpage
