@@ -11,7 +11,7 @@ spec:
     - from:
         - source:
             principals:
-              - spiffe://cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
+              - cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
       when:
         - key: request.auth.claims[iss]
           values:
@@ -19,7 +19,7 @@ spec:
     - from:
         - source:
             principals:
-              - spiffe://cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
+              - cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
       to:
         - operation:
             paths: 
