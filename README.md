@@ -44,7 +44,7 @@ $ mise install
 
 1. Docker Desktopの[リソース](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) で、以下を設定します。
 
-- ハードウェアリソースの割り当てで、CPUを`7`コア、メモリを`11`GB (Minikubeの割当量より少し多め) にしてください。
+- ハードウェアリソースの割り当てで、CPUを`6`コア以上、メモリを`12`GB以上 (Minikubeへの割当量以上) にしてください。
 - ファイルシェアリングで、`/User`以外のパスを削除してください。もし`/User`以外のパスを他のコンテナで使用している場合は、そのままで問題ありません
 
 2. Minikubeを使用して、Kubernetesクラスターを作成します。
@@ -58,8 +58,8 @@ NODE_COUNT=8
 
 # 6コア
 CPU=6
-# 10GiB
-MEMORY=10240
+# 12GiB
+MEMORY=12288
 
 minikube start \
   --profile istio-demo \
