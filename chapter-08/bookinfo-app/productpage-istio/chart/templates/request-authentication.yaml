@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.service.name }}
+  jwtRules:
+    - issuer: http://{{ .Values.keycloak.host.web }}:{{ .Values.keycloak.port }}/realms/{{ .Values.keycloak.realm }}
+      jwksUri: http://{{ .Values.keycloak.host.api }}:{{ .Values.keycloak.port }}/realms/{{ .Values.keycloak.realm }}/protocol/openid-connect/certs
+      forwardOriginalToken: true
+      fromCookies:
+        - access_token
