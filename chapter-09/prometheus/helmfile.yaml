@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: prometheus
     chart: prometheus-community/prometheus
-    version: 27.23.0
+    version: 27.24.0
     namespace: prometheus
     atomic: true
     values:
