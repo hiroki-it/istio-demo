@@ -44,7 +44,7 @@ datasources:
               datasourceUid: Tempo
       - name: Tempo
         type: tempo
-        url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3100
+        url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3200
         basicAuth: false
 
 dashboards:
