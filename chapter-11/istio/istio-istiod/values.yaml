@@ -57,9 +57,9 @@ meshConfig:
     metrics:
       - prometheus
     accessLogging:
-      - envoy-grpc
+      - envoy-stdout
   extensionProviders:
-    - name: envoy-grpc
+    - name: envoy-stdout
       envoyFileAccessLog:
         logFormat:
           labels:

@@ -49,7 +49,7 @@ meshConfig:
     metrics:
       - prometheus
     accessLogging:
-      - envoy-grpc
+      - envoy-stdout
     tracing:
       - opentelemetry-grpc
   enableTracing: true
@@ -58,7 +58,7 @@ meshConfig:
       opentelemetry:
         service: opentelemetry-collector.opentelemetry-collector.svc.cluster.local
         port: 4317
-    - name: envoy-grpc
+    - name: envoy-stdout
       envoyFileAccessLog:
         logFormat:
           labels:
