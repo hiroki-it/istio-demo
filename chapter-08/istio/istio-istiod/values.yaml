@@ -60,6 +60,7 @@ meshConfig:
         port: 4317
     - name: envoy-stdout
       envoyFileAccessLog:
+        path: /dev/stdout
         logFormat:
           labels:
             access_log_type: '%ACCESS_LOG_TYPE%'
