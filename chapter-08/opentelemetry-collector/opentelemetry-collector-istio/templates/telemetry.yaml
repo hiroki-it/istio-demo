@@ -3,5 +3,12 @@ kind: Telemetry
 metadata:
   name: {{ .Release.Namespace }}
 spec:
+  metrics:
+    overrides:
+      - tagOverrides:
+          system_name:
+            value: istio-demo
+          system_environment:
+            value: dev
   tracing:
     - disableSpanReporting: true
