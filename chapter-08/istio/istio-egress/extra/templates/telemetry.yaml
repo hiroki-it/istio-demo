@@ -4,12 +4,14 @@ metadata:
   name: {{ .Release.Namespace }}
 spec:
   metrics:
-    overrides:
-      - tagOverrides:
-          system_name:
-            value: istio-demo
-          system_environment:
-            value: dev
+    - providers:
+        - name: prometheus
+      overrides:
+        - tagOverrides:
+            system_name:
+              value: istio-demo
+            system_environment:
+              value: dev
   tracing:
     - providers:
         - name: opentelemetry-grpc
