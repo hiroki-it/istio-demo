@@ -49,9 +49,6 @@ meshConfig:
       - prometheus
     accessLogging:
       - envoy-stdout
-    tracing:
-      - opentelemetry-grpc
-  enableTracing: true
   extensionProviders:
     - name: envoy-stdout
       envoyFileAccessLog:
