@@ -58,6 +58,8 @@ meshConfig:
       opentelemetry:
         service: opentelemetry-collector.opentelemetry-collector.svc.cluster.local
         port: 4317
+        grpc:
+          timeout: 10s
     - name: envoy-stdout
       envoyFileAccessLog:
         path: /dev/stdout
