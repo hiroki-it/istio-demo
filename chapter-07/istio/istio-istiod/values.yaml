@@ -40,6 +40,7 @@ meshConfig:
         - ".*ssl.*"
         - ".*upstream_rq_.*"
         - ".*upstream_cx_.*"
+    controlPlaneAuthPolicy: MUTUAL_TLS
   rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
