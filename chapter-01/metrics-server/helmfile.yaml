@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: metrics-server
     chart: metrics-server/metrics-server
-    version: 3.12.2
+    version: 3.13.0
     namespace: kube-system
     atomic: true
     values:
