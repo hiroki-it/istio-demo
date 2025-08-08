@@ -2,6 +2,6 @@
 helm = '3.18.4'
 helmfile = '1.1.3'
 helm-diff = '3.10.0'
-istioctl = '1.25.3'
+istioctl = '1.25.4'
 kubectl = '1.32.7'
 minikube = '1.36.0'
