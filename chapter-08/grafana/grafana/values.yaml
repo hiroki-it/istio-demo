@@ -4,8 +4,10 @@ grafana.ini:
     org_role: Admin
   date_formats:
     default_timezone: Asia/Tokyo
+    default_week_start: monday
   users:
     default_theme: light
+    default_language: ja-JP
 
 affinity:
   nodeAffinity:
