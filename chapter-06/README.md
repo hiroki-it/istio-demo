@@ -126,31 +126,9 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
-## 実践する（詳しくは本書を参照）
+## 実践する
 
-### 厳密モード
-
-厳密モードが特定の証明書ベース認証モードを拒否する様子を実践します。
-
-送信元istio-proxyを無認証モードに変更します。
-
-```bash:ターミナル
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set tlsMode.unEncrypted.enabled=true
-```
-
-送信元istio-proxyをサーバー認証モードに変更します。
-
-```bash:ターミナル
-helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply --set tlsMode.serverAuthentication.enabled=true
-```
-
-### 任意モード
-
-任意モードが特定の証明書ベース認証モードを許可する様子を実践します。
-
-```bash:ターミナル
-helmfile -f chapter-06/bookinfo-app/share-istio/helmfile.yaml apply --set permissiveMode.enabled=true
-```
+書籍の６章を参照してください。
 
 ## 掃除
 

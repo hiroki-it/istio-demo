@@ -196,9 +196,9 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 kubectl port-forward svc/grafana -n grafana 8000:80
 ```
 
-24. 以下のようにGrafana Lokiでログをクエリすると、検索結果のトレースIDの横にView Grafana Tempoボタンが表示されます。これをクリックすると、トレースIDを介して、ログにひもづいたレースを確認できます。
+## 実践する
 
-## 実践する（詳しくは本書を参照）
+書籍の８章を参照してください。
 
 ## 掃除
 

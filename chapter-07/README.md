@@ -134,7 +134,9 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-## 実践する（詳しくは本書を参照）
+## 実践する
+
+書籍の７章を参照してください。
 
 ## 掃除
 

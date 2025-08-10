@@ -116,7 +116,9 @@ kubectl port-forward svc/kiali 20001:20001 -n istio-system
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
 ```
 
-## 実践する（詳しくは本書を参照）
+## 実践する
+
+書籍の11章を参照してください。
 
 ## 掃除
 
