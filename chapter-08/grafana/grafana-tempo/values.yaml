@@ -16,6 +16,9 @@ tempo:
     limits:
       cpu: 500m
       memory: 512Mi
+  metricsGenerator:
+    enabled: true
+    remoteWriteUrl: http://prometheus-server.prometheus.svc.cluster.local:9090/api/v1/write
   storage:
     trace:
       backend: s3
