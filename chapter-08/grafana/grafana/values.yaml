@@ -7,7 +7,6 @@ grafana.ini:
     default_week_start: monday
   users:
     default_theme: light
-    default_language: ja-JP
 
 affinity:
   nodeAffinity:
