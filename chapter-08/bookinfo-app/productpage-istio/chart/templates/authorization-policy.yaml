@@ -12,14 +12,6 @@ spec:
         - source:
             principals:
               - cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
-      when:
-        - key: request.auth.claims[iss]
-          values:
-            - http://{{ .Values.keycloak.host.web }}:{{ .Values.keycloak.port }}/realms/{{ .Values.keycloak.realm }}
-    - from:
-        - source:
-            principals:
-              - cluster.local/ns/{{ .Values.istioIngressGateway.namespace }}/sa/{{ .Values.istioIngressGateway.name }}
       to:
         - operation:
             paths: 
