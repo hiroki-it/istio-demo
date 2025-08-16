@@ -35,11 +35,7 @@ meshConfig:
       MINIMUM_DRAIN_DURATION: 10s
     proxyStatsMatcher:
       inclusionRegexps:
-        - ".*lb_.*"
-        - ".*membership_.*"
-        - ".*outlier_detection_.*"
-        - ".*ssl_.*"
-        - ".*upstream_*"
+        - ".*cluster.*"
   rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:

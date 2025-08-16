@@ -36,11 +36,7 @@ meshConfig:
     controlPlaneAuthPolicy: MUTUAL_TLS
     proxyStatsMatcher:
       inclusionRegexps:
-        - ".*lb_.*"
-        - ".*membership_.*"
-        - ".*outlier_detection_.*"
-        - ".*ssl_.*"
-        - ".*upstream_*"
+        - ".*cluster.*"
     tracingServiceName: CANONICAL_NAME_AND_NAMESPACE
   rootNamespace: istio-system
   discoverySelectors:
