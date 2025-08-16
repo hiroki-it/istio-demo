@@ -40,8 +40,7 @@ meshConfig:
         - ".*membership_.*"
         - ".*outlier_detection_.*"
         - ".*ssl_.*"
-        - ".*upstream_rq_.*"
-        - ".*upstream_cx_.*"
+        - ".*upstream_*"
     tracingServiceName: CANONICAL_NAME_AND_NAMESPACE
   rootNamespace: istio-system
   discoverySelectors:

@@ -48,8 +48,7 @@ meshConfig:
         - ".*membership_.*"
         - ".*outlier_detection_.*"
         - ".*ssl_.*"
-        - ".*upstream_rq_.*"
-        - ".*upstream_cx_.*"
+        - ".*upstream_*"
   rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
