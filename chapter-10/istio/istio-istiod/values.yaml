@@ -32,6 +32,7 @@ meshConfig:
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
+    controlPlaneAuthPolicy: MUTUAL_TLS
     proxyStatsMatcher:
       inclusionRegexps:
         - ".*cluster.*"
