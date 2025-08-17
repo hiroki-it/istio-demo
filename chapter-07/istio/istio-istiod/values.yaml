@@ -65,6 +65,7 @@ meshConfig:
             downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
             duration: '%DURATION%'
             grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
+            level: 'info'
             method: '%REQ(:METHOD)%'
             path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
             protocol: '%PROTOCOL%'
