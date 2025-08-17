@@ -51,7 +51,7 @@ $ mise install
 
 ```bash:ターミナル
 # バージョン
-KUBERNETES_VERSION=1.33.4
+KUBERNETES_VERSION=1.33.1
 
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
