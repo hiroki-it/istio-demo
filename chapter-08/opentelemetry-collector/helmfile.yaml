@@ -15,7 +15,7 @@ releases:
     atomic: true
   - name: opentelemetry-collector
     chart: opentelemetry/opentelemetry-collector
-    version: 0.130.2
+    version: 0.131.0
     namespace: opentelemetry-collector
     atomic: true
     values:
