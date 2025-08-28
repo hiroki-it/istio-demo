@@ -71,8 +71,9 @@ meshConfig:
             access_log_type: '%ACCESS_LOG_TYPE%'
             bytes_received: '%BYTES_RECEIVED%'
             bytes_sent: '%BYTES_SENT%'
-            downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
+            destination: "%UPSTREAM_CLUSTER%"
             downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
+            downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
             duration: '%DURATION%'
             grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
             level: 'info'
@@ -88,6 +89,54 @@ meshConfig:
             upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
             user_agent: '%REQ(USER-AGENT)%'
             x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
+    - name: envoy-inbound-stdout
+      envoyFileAccessLog:
+        path: /dev/stdout
+        logFormat:
+          labels:
+            access_log_type: '%ACCESS_LOG_TYPE%'
+            bytes_received: '%BYTES_RECEIVED%'
+            bytes_sent: '%BYTES_SENT%'
+            direction: 'inbound'
+            downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
+            downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
+            duration: '%DURATION%'
+            grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
+            level: 'info'
+            method: '%REQ(:METHOD)%'
+            path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+            protocol: '%PROTOCOL%'
+            response_code: '%RESPONSE_CODE%'
+            response_flags: '%RESPONSE_FLAGS%'
+            start_time: '%START_TIME%'
+            trace_id: '%TRACE_ID%'
+            traceparent: '%REQ(TRACEPARENT)%'
+            user_agent: '%REQ(USER-AGENT)%'
+            x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
+    - name: envoy-outbound-stdout
+      envoyFileAccessLog:
+        path: /dev/stdout
+        logFormat:
+          labels:
+            access_log_type: '%ACCESS_LOG_TYPE%'
+            bytes_received: '%BYTES_RECEIVED%'
+            bytes_sent: '%BYTES_SENT%'
+            destination: "%UPSTREAM_CLUSTER%"
+            direction: 'outbound'
+            duration: '%DURATION%'
+            grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
+            level: 'info'
+            method: '%REQ(:METHOD)%'
+            path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+            protocol: '%PROTOCOL%'
+            response_code: '%RESPONSE_CODE%'
+            response_flags: '%RESPONSE_FLAGS%'
+            start_time: '%START_TIME%'
+            trace_id: '%TRACE_ID%'
+            traceparent: '%REQ(TRACEPARENT)%'
+            upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'
+            upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
+            user_agent: '%REQ(USER-AGENT)%'
 
 resources:
   requests:
