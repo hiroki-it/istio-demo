@@ -32,8 +32,6 @@ extraEnv: |
     value: admin
   - name: KC_LOG_CONSOLE_OUTPUT
     value: json
-  - name: KC_LOG_CONSOLE_FORMAT
-    value: '{"timestamp":"%d{yyyy-MM-dd''T''HH:mm:ss.SSSXXX}","message":"%m","level":"%p","path":"%X{path:-}","trace_id":"%X{traceId:-}","response_code":"%X{responseCode:-}","method":"%X{method:-}"}%n'
   - name: KC_PROXY
     value: edge
   - name: KC_TRACING_ENABLED
