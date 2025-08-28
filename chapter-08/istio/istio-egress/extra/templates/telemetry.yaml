@@ -3,6 +3,15 @@ kind: Telemetry
 metadata:
   name: {{ .Release.Namespace }}
 spec:
+  accessLogging:
+    - match:
+        mode: SERVER
+      providers:
+        - name: envoy-inbound-stdout
+    - match:
+        mode: CLIENT
+      providers:
+        - name: envoy-outbound-stdout
   metrics:
     - providers:
         - name: prometheus
