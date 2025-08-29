@@ -12,7 +12,7 @@ args:
   - start-dev
   - --import-realm
 
-replicas: 2
+replicas: 1
 
 command:
   - /opt/keycloak/bin/kc.sh
