@@ -180,7 +180,7 @@ Attributes:
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
-  kubectl port-forward svc/grafana -n grafana 8000:80 & \
+  kubectl port-forward svc/grafana -n grafana 3000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
@@ -193,7 +193,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 23. `http://localhost:8000`から、Grafanaのダッシュボードに接続します。
 
 ```bash:ターミナル
-kubectl port-forward svc/grafana -n grafana 8000:80
+kubectl port-forward svc/grafana -n grafana 3000:80
 ```
 
 ## 実践する
