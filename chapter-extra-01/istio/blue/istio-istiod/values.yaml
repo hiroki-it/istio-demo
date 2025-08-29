@@ -51,7 +51,7 @@ meshConfig:
             access_log_type: '%ACCESS_LOG_TYPE%'
             bytes_received: '%BYTES_RECEIVED%'
             bytes_sent: '%BYTES_SENT%'
-            destination: "%UPSTREAM_HOST%"
+            destination: "%UPSTREAM_CLUSTER%"
             downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'
             downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
             duration: '%DURATION%'
