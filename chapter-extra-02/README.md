@@ -78,7 +78,7 @@ kubectl rollout restart deployment -n bookinfo
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
-  kubectl port-forward svc/grafana -n grafana 8000:80 & \
+  kubectl port-forward svc/grafana -n grafana 3000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
