@@ -72,7 +72,7 @@ meshConfig:
             protocol: '%PROTOCOL%'
             response_code: '%RESPONSE_CODE%'
             response_flags: '%RESPONSE_FLAGS%'
-            start_time: '%START_TIME%'
+            timestamp: '%START_TIME(%Y-%m-%dT%H:%M:%S.%fZ)%'
             upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'
             upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
             user_agent: '%REQ(USER-AGENT)%'
