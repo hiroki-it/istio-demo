@@ -59,7 +59,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v3
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -121,7 +121,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-delayed-50percent-delayof7s
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -171,7 +171,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-faulty-50percent-503
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
@@ -221,7 +221,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v-50percent-internal-server-error-500
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}

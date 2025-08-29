@@ -108,7 +108,7 @@ metadata:
     app: {{ .Values.service.name }}
     version: v4
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.service.name }}
