@@ -30,7 +30,7 @@ singleBinary:
                 operator: In
                 values:
                   - system
-  replicas: 1
+  replicas: 2
   persistence:
     enabled: false
   extraVolumes:
