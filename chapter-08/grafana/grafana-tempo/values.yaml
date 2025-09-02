@@ -8,6 +8,8 @@ affinity:
               values:
                 - system
 
+replicas: 2
+
 tempo:
   resources:
     requests:
