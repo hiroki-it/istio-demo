@@ -75,7 +75,6 @@ meshConfig:
             downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'
             duration: '%DURATION%'
             grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'
-            is_connection_pool_overflow: '%REQ(X-ENVOY-OVERLOADED)%'
             level: 'info'
             message: 'Communication received successfully'
             method: '%REQ(:METHOD)%'
