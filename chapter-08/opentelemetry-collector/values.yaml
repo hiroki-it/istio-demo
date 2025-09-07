@@ -30,8 +30,6 @@ config:
           - key: component
             value: proxy
   exporters:
-    debug:
-      verbosity: detailed
     otlp:
       endpoint: grafana-tempo.grafana-tempo.svc.cluster.local:4317
       tls:
@@ -39,8 +37,7 @@ config:
   service:
     telemetry:
       logs:
-        output_paths:
-          - stdout
+        encoding: json
     pipelines:
       logs: null
       metrics: null
@@ -52,7 +49,6 @@ config:
           - otlp
         exporters:
           - otlp
-          - debug
 
 image:
   repository: otel/opentelemetry-collector-contrib
