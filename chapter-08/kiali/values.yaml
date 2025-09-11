@@ -24,7 +24,8 @@ deployment:
 external_services:
   grafana:
     enabled: true
-    in_cluster_url: http://grafana.grafana.svc.cluster.local:80
+    external_url: http://localhost:3000
+    internal_url: http://grafana.grafana.svc.cluster.local:3000
     auth:
       type: basic
       username: admin
