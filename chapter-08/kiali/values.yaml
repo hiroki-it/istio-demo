@@ -40,6 +40,8 @@ external_services:
     provider: tempo
     internal_url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3200
     use_grpc: false
+    tempo_config:
+      datasource_uid: Tempo
   istio:
     component_status:
       components:
@@ -49,11 +51,7 @@ external_services:
         - app_label: istio-egressgateway
           namespace: istio-egress
       enabled: true
-    config_map_name: istio-1-25-4
-    istio_sidecar_injector_config_map_name: istio-sidecar-injector-1-25-4
-    istiod_deployment_name: istiod-1-25-4
     root_namespace: istio-system
-    url_service_version: http://istiod-1-25-4:15014/version
 
 server:
   node_port: 32001
