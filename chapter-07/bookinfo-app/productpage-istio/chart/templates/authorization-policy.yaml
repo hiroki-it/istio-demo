@@ -17,6 +17,7 @@ spec:
             paths: 
               - /
               - /callback*
+              - /favicon*
               - /index.html
               - /login*
               - /logout*
