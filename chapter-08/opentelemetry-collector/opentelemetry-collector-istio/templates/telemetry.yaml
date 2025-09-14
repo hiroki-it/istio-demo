@@ -4,14 +4,7 @@ metadata:
   name: {{ .Release.Namespace }}
 spec:
   accessLogging:
-    - match:
-        mode: SERVER
-      providers:
-        - name: envoy-inbound-stdout
-    - match:
-        mode: CLIENT
-      providers:
-        - name: envoy-outbound-stdout
+    - disabled: true
   metrics:
     - providers:
         - name: prometheus
