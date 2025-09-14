@@ -29,7 +29,6 @@ deployment:
 
 external_services:
   grafana:
-    enabled: true
     external_url: http://localhost:3000
     internal_url: http://grafana.grafana.svc.cluster.local:80
   prometheus:
@@ -48,7 +47,6 @@ external_services:
           namespace: istio-ingress
         - app_label: istio-egressgateway
           namespace: istio-egress
-      enabled: true
     root_namespace: istio-system
 
 login_token: 
