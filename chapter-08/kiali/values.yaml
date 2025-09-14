@@ -11,6 +11,12 @@ deployment:
                 operator: In
                 values:
                   - system
+  discovery_selectors:
+    default:
+      - matchLabels:
+          istio.io/rev: stable
+  logger:
+    log_format: json
   replicas: 2
   service_type: NodePort
   resources:
@@ -25,11 +31,7 @@ external_services:
   grafana:
     enabled: true
     external_url: http://localhost:3000
-    internal_url: http://grafana.grafana.svc.cluster.local:3000
-    auth:
-      type: basic
-      username: admin
-      password: prom-operator
+    internal_url: http://grafana.grafana.svc.cluster.local:80
   prometheus:
     url: http://prometheus-server.prometheus.svc.cluster.local:9090
   custom_dashboards:
@@ -46,12 +48,16 @@ external_services:
     component_status:
       components:
         - app_label: istiod
+          namespace: istio-system
         - app_label: istio-ingressgateway
           namespace: istio-ingress
         - app_label: istio-egressgateway
           namespace: istio-egress
       enabled: true
     root_namespace: istio-system
+
+login_token: 
+  signing_key: kiali
 
 server:
   node_port: 32001
