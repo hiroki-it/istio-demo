@@ -6,13 +6,7 @@ spec:
   accessLogging:
     - disabled: true
   metrics:
-    - providers:
-        - name: prometheus
-      overrides:
-        - tagOverrides:
-            system_name:
-              value: istio-demo
-            system_environment:
-              value: dev
+    - overrides:
+        - disabled: true
   tracing:
     - disableSpanReporting: true
