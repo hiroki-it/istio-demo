@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: istio-istiod-1-25-5
     chart: istio/istiod
-    version: 1.25.5
+    version: 1.26.4
     namespace: istio-system
     atomic: true
     values:
