@@ -10,8 +10,8 @@ affinity:
 
 imagePullPolicy: IfNotPresent
 
-revision: 1-25-4
+revision: 1-25-5
 
-tag: 1.25.4
+tag: 1.25.5
 
 variant: distroless
