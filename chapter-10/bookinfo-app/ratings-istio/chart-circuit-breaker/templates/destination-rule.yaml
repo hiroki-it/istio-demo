@@ -24,7 +24,6 @@ spec:
       http:
         http1MaxPendingRequests: 3
         maxRequestsPerConnection: 3
-        idleTimeout: 30m
 {{- end }}
 {{- if eq .Values.circuitBreaker.byOutlierDetection.enabled true }}
     outlierDetection:
