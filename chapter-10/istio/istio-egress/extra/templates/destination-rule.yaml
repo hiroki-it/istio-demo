@@ -9,13 +9,3 @@ spec:
   trafficPolicy:
     loadBalancer:
       simple: LEAST_REQUEST
-    connectionPool:
-      http:
-        idleTimeout: 60s
-      tcp:
-        connectTimeout: 10s
-        tcpKeepalive:
-          interval: 75s
-          probes: 9
-          time: 7200s
-        idleTimeout: 60s
