@@ -22,17 +22,4 @@ spec:
             system_environment:
               value: dev
   tracing:
-    - providers:
-        - name: opentelemetry-grpc
-      randomSamplingPercentage: 100
-      customTags:
-        http.url.path:
-          header:
-            name: :path
-            defaultValue: unknown
-        system.name:
-          literal:
-            value: istio-demo
-        system.environment:
-          literal:
-            value: dev
+    - disableSpanReporting: true
