@@ -33,6 +33,9 @@ spec:
         system.name:
           literal:
             value: istio-demo
+        system.namespace:
+          literal:
+            value: {{ .Release.Namespace }}
         system.environment:
           literal:
             value: dev
