@@ -11,7 +11,7 @@ affinity:
 autoscaleMin: 2
 
 global:
-  tag: 1.25.5
+  tag: 1.27.1
   imagePullPolicy: IfNotPresent
   defaultPodDisruptionBudget:
     minAvailable: 1
@@ -86,7 +86,7 @@ resources:
     cpu: 500m
     memory: 512Mi
 
-revision: 1-25-5
+revision: 1-27-1
 
 revisionTags:
   - stable
