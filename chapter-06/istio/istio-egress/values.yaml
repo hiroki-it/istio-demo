@@ -1,4 +1,4 @@
-revision: 1-25-5
+revision: 1-27-1
 
 autoscaling:
   minReplicas: 2
