@@ -8,7 +8,7 @@ istioIngressGateway:
   namespace: istio-ingress
 
 keycloak:
-  realm: dev
+  realm: bookinfo
   host:
     web: localhost
     api: keycloak-http.keycloak.svc.cluster.local
