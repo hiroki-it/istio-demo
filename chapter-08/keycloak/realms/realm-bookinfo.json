@@ -1,6 +1,6 @@
 {
   "id": "3b195e41-90a1-4f85-b434-ca963f418488",
-  "realm": "dev",
+  "realm": "bookinfo",
   "displayName": "",
   "displayNameHtml": "Login with Keycloak",
   "notBefore": 0,
@@ -47,26 +47,11 @@
   "quickLoginCheckMilliSeconds": 1000,
   "maxDeltaTimeSeconds": 43200,
   "failureFactor": 30,
-  "users": [
-    {
-      "username": "izzy",
-      "firstName": "izzy",
-      "lastName": "izzy",
-      "email": "izzy@gmail.com",
-      "enabled": true,
-      "credentials": [
-        {
-          "type": "password",
-          "value": "izzy"
-        }
-      ]
-      }
-  ],
   "roles": {
     "realm": [
       {
         "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-        "name": "default-roles-dev",
+        "name": "default-roles",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -312,8 +297,8 @@
         }
       ],
       "security-admin-console": [],
-      "service": [],
       "admin-cli": [],
+      "productpage": [],
       "account-console": [],
       "broker": [],
       "account": [
@@ -345,7 +330,18 @@
       ]
     }
   },
-  "groups": [],
+  "groups": [
+    {
+      "id": "ac01f42a-3ef7-47d2-8b99-6bd4e6e37cf0",
+      "name": "reviewers",
+      "description": "",
+      "path": "/reviewers",
+      "subGroups": [],
+      "attributes": {},
+      "realmRoles": [],
+      "clientRoles": {}
+    }
+  ],
   "defaultRole": {
     "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
     "name": "default-roles-dev",
@@ -423,13 +419,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/dev/account/",
+      "baseUrl": "/realms/bookinfo/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/dev/account/*"
+        "/realms/bookinfo/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -470,13 +466,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/dev/account/",
+      "baseUrl": "/realms/bookinfo/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/dev/account/*"
+        "/realms/bookinfo/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -611,6 +607,68 @@
       ]
     },
     {
+      "id": "033f1115-baf8-4ca6-87b4-5d2938bcc665",
+      "clientId": "productpage",
+      "name": "productpage",
+      "description": "",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY",
+      "redirectUris": [
+        "http://localhost:9080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:9080"
+      ],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": false,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "realm_client": "false",
+        "oidc.ciba.grant.enabled": "false",
+        "client.secret.creation.time": "1737901783",
+        "backchannel.logout.session.required": "true",
+        "standard.token.exchange.enabled": "false",
+        "login_theme": "keycloak.v2",
+        "frontchannel.logout.session.required": "true",
+        "post.logout.redirect.uris": "http://localhost:9080/*",
+        "display.on.consent.screen": "true",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "use.jwks.url": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "roles",
+        "profile",
+        "basic",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "offline_access",
+        "organization",
+        "microprofile-jwt"
+      ]
+    },
+    {
       "id": "18534b58-c221-4434-9b51-0e7196e8d5f4",
       "clientId": "realm-management",
       "name": "${client_realm-management}",
@@ -658,13 +716,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/dev/console/",
+      "baseUrl": "/admin/bookinfo/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/dev/console/*"
+        "/admin/bookinfo/console/*"
       ],
       "webOrigins": [
         "+"
@@ -706,66 +764,6 @@
           }
         }
       ],
-      "defaultClientScopes": [
-        "web-origins",
-        "acr",
-        "roles",
-        "profile",
-        "basic",
-        "email"
-      ],
-      "optionalClientScopes": [
-        "address",
-        "phone",
-        "offline_access",
-        "organization",
-        "microprofile-jwt"
-      ]
-    },
-    {
-      "id": "033f1115-baf8-4ca6-87b4-5d2938bcc665",
-      "clientId": "service",
-      "name": "service",
-      "description": "",
-      "rootUrl": "",
-      "adminUrl": "",
-      "baseUrl": "",
-      "surrogateAuthRequired": false,
-      "enabled": true,
-      "alwaysDisplayInConsole": true,
-      "clientAuthenticatorType": "client-secret",
-      "secret": "ZQBzxI5CU36UiQmrWtDbJkY3VOX5LJRY",
-      "redirectUris": [
-        "http://localhost:9080/*"
-      ],
-      "webOrigins": [
-        "http://localhost:9080"
-      ],
-      "notBefore": 0,
-      "bearerOnly": false,
-      "consentRequired": true,
-      "standardFlowEnabled": true,
-      "implicitFlowEnabled": false,
-      "directAccessGrantsEnabled": true,
-      "serviceAccountsEnabled": false,
-      "publicClient": false,
-      "frontchannelLogout": true,
-      "protocol": "openid-connect",
-      "attributes": {
-        "realm_client": "false",
-        "oidc.ciba.grant.enabled": "false",
-        "client.secret.creation.time": "1737901783",
-        "backchannel.logout.session.required": "true",
-        "login_theme": "keycloak.v2",
-        "frontchannel.logout.session.required": "true",
-        "post.logout.redirect.uris": "http://localhost:9080/*",
-        "display.on.consent.screen": "true",
-        "oauth2.device.authorization.grant.enabled": "false",
-        "backchannel.logout.revoke.offline.tokens": "false"
-      },
-      "authenticationFlowBindingOverrides": {},
-      "fullScopeAllowed": true,
-      "nodeReRegistrationTimeout": -1,
       "defaultClientScopes": [
         "web-origins",
         "acr",
@@ -1521,14 +1519,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
+            "oidc-usermodel-attribute-mapper",
             "oidc-sha256-pairwise-sub-mapper",
-            "saml-role-list-mapper",
-            "oidc-address-mapper",
+            "saml-user-attribute-mapper",
             "oidc-full-name-mapper",
             "saml-user-property-mapper",
-            "saml-user-attribute-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper"
+            "oidc-address-mapper",
+            "oidc-usermodel-property-mapper",
+            "saml-role-list-mapper"
           ]
         }
       },
@@ -1607,13 +1605,13 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-full-name-mapper",
-            "oidc-usermodel-property-mapper",
             "oidc-address-mapper",
-            "saml-role-list-mapper",
-            "saml-user-attribute-mapper",
+            "oidc-usermodel-property-mapper",
             "oidc-sha256-pairwise-sub-mapper",
+            "saml-user-attribute-mapper",
             "oidc-usermodel-attribute-mapper",
+            "saml-role-list-mapper",
+            "oidc-full-name-mapper",
             "saml-user-property-mapper"
           ]
         }
@@ -1673,7 +1671,6 @@
     ]
   },
   "internationalizationEnabled": false,
-  "supportedLocales": [],
   "authenticationFlows": [
     {
       "id": "3ba4db8d-6997-42a7-8ce1-5bf72e1d83cc",
@@ -2388,6 +2385,15 @@
       "config": {}
     },
     {
+      "alias": "idp_link",
+      "name": "Linking Identity Provider",
+      "providerId": "idp_link",
+      "enabled": true,
+      "defaultAction": false,
+      "priority": 110,
+      "config": {}
+    },
+    {
       "alias": "update_user_locale",
       "name": "Update User Locale",
       "providerId": "update_user_locale",
@@ -2415,6 +2421,7 @@
     "realmReusableOtpCode": "false",
     "cibaExpiresIn": "120",
     "oauth2DeviceCodeLifespan": "600",
+    "saml.signature.algorithm": "",
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
     "frontendUrl": "",
