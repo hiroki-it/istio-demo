@@ -12,6 +12,9 @@ spec:
         - key: request.auth.claims[iss]
           values:
             - http://{{ .Values.keycloak.host.web }}:{{ .Values.keycloak.port }}/realms/{{ .Values.keycloak.realm }}
+        - key: request.auth.claims[groups]
+          values:
+            - /reviewers            
       from:
         - source:
             principals:

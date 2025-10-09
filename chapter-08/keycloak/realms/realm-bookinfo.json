@@ -51,7 +51,7 @@
     "realm": [
       {
         "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-        "name": "default-roles",
+        "name": "default-roles-dev",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -657,6 +657,7 @@
         "acr",
         "roles",
         "profile",
+        "microprofile-jwt",
         "basic",
         "email"
       ],
@@ -664,8 +665,7 @@
         "address",
         "phone",
         "offline_access",
-        "organization",
-        "microprofile-jwt"
+        "organization"
       ]
     },
     {
@@ -1247,20 +1247,20 @@
           }
         },
         {
-          "id": "9ddce354-399a-412f-93bd-ed0051a14446",
+          "id": "7969e4c9-6bd8-4aae-a7b3-da53a1cbab3d",
           "name": "groups",
           "protocol": "openid-connect",
-          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "protocolMapper": "oidc-group-membership-mapper",
           "consentRequired": false,
           "config": {
+            "full.path": "true",
             "introspection.token.claim": "true",
-            "multivalued": "true",
             "userinfo.token.claim": "true",
-            "user.attribute": "foo",
+            "multivalued": "true",
             "id.token.claim": "true",
+            "lightweight.claim": "false",
             "access.token.claim": "true",
-            "claim.name": "groups",
-            "jsonType.label": "String"
+            "claim.name": "groups"
           }
         }
       ]
@@ -2428,7 +2428,7 @@
     "acr.loa.map": "{}",
     "darkMode": "false"
   },
-  "keycloakVersion": "26.3.3",
+  "keycloakVersion": "26.4.0",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
   "verifiableCredentialsEnabled": false,
