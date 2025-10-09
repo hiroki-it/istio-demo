@@ -51,7 +51,7 @@
     "realm": [
       {
         "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-        "name": "default-roles",
+        "name": "default-roles-dev",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
