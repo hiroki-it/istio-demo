@@ -4,7 +4,7 @@ service:
   port: 9080
 
 keycloak:
-  realm: dev
+  realm: bookinfo
   host:
     web: localhost
     api: keycloak-http.keycloak.svc.cluster.local
