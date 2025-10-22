@@ -11,7 +11,7 @@ services:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
       interval: 60s
       retries: 5
-    image: mysql:8.0.30
+    image: mysql:8.0.44
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d
       - db_data:/var/lib/mysql
