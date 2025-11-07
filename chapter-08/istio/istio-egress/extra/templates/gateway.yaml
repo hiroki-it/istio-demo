@@ -8,7 +8,7 @@ spec:
   servers:
     - port:
         name: mysql
-        protocol: MySQL
+        protocol: MYSQL
         number: {{ .Values.destination.database.port }}
       hosts:
         - {{ .Values.destination.database.host }}
