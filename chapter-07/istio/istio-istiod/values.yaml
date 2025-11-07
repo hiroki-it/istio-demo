@@ -33,6 +33,7 @@ meshConfig:
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
+    controlPlaneAuthPolicy: MUTUAL_TLS
     proxyStatsMatcher:
       inclusionRegexps:
         - ".*lb.*"
@@ -43,7 +44,6 @@ meshConfig:
         - ".*upstream_cx.*"
         - ".*upstream_rq.*"
         - ".*http_local_rate_limit.*"
-    controlPlaneAuthPolicy: MUTUAL_TLS
   rootNamespace: istio-system
   discoverySelectors:
     - matchLabels:
