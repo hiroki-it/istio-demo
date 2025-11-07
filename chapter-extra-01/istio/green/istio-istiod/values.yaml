@@ -80,6 +80,10 @@ meshConfig:
             user_agent: '%REQ(USER-AGENT)%'
             x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
 
+pilot:
+  env:
+    PILOT_ENABLE_MYSQL_FILTER: true
+
 resources:
   requests:
     cpu: 50m
