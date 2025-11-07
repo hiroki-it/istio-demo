@@ -47,6 +47,7 @@ meshConfig:
       inclusionRegexps:
         - ".*lb.*"
         - ".*membership.*"
+        - ".*mysql.*"
         - ".*outlier_detection.*"
         - ".*ssl.*"
         - ".*upstream_cx.*"
@@ -92,6 +93,7 @@ pilot:
   env:
     PILOT_ENABLE_AMBIENT: true
     PILOT_ENABLE_AMBIENT_WAYPOINTS: true
+    PILOT_ENABLE_MYSQL_FILTER: true
 
 resources:
   requests:

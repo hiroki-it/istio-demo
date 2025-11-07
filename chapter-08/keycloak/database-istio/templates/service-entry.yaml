@@ -11,5 +11,5 @@ spec:
   ports:
     - number: {{ .Values.service.port }}
       name: mysql
-      protocol: MySQL
+      protocol: MYSQL
   resolution: DNS

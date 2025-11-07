@@ -38,6 +38,7 @@ meshConfig:
       inclusionRegexps:
         - ".*lb.*"
         - ".*membership.*"
+        - ".*mysql.*"
         - ".*outlier_detection.*"
         - ".*ssl.*"
         - ".*upstream_cx.*"

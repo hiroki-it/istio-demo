@@ -37,6 +37,7 @@ meshConfig:
       inclusionRegexps:
         - ".*lb.*"
         - ".*membership.*"
+        - ".*mysql.*"
         - ".*outlier_detection.*"
         - ".*ssl.*"
         - ".*upstream_cx.*"
@@ -77,6 +78,10 @@ meshConfig:
             upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'
             user_agent: '%REQ(USER-AGENT)%'
             x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
+
+pilot:
+  env:
+    PILOT_ENABLE_MYSQL_FILTER: true
 
 resources:
   requests:
