@@ -1,0 +1,56 @@
+auth:
+  strategy: anonymous
+
+deployment:
+  affinity:
+    node:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/nodegroup
+                operator: In
+                values:
+                  - system
+  discovery_selectors:
+    default:
+      - matchLabels:
+          istio.io/rev: stable
+  logger:
+    log_format: json
+  replicas: 2
+  service_type: NodePort
+  resources:
+    requests:
+      cpu: 50m
+      memory: 51Mi
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+
+external_services:
+  grafana:
+    external_url: http://localhost:3000
+    internal_url: http://grafana.grafana.svc.cluster.local:80
+  prometheus:
+    url: http://prometheus-server.prometheus.svc.cluster.local:9090
+  custom_dashboards:
+    prometheus:
+      url: http://prometheus-server.prometheus.svc.cluster.local:9090
+  tracing:
+    enabled: false
+  istio:
+    component_status:
+      components:
+        - app_label: istiod
+          namespace: istio-system
+        - app_label: istio-ingressgateway
+          namespace: istio-ingress
+        - app_label: istio-egressgateway
+          namespace: istio-egress
+    root_namespace: istio-system
+
+login_token: 
+  signing_key: kiali
+
+server:
+  node_port: 32001

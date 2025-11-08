@@ -1,0 +1,12 @@
+repositories:
+  - name: kiali
+    url: https://kiali.org/helm-charts
+
+releases:
+  - name: kiali
+    chart: kiali/kiali-server
+    version: 2.18.0
+    namespace: istio-system
+    atomic: true
+    values:
+      - values.yaml
