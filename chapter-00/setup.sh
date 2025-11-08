@@ -10,7 +10,7 @@ docker compose -f databases/docker-compose.yaml up -d
 
 # Namespaceの作成
 echo "Creating Namespace..."
-kubectl apply --server-side -f chapter-01/shared/namespace.yaml
+kubectl apply --server-side -f chapter-00/shared/namespace.yaml
 
 # Bookinfoアプリケーションの作成
 echo "Deploying Bookinfo application..."
@@ -21,15 +21,15 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 
 # Ingressの作成
 echo "Creating Ingress..."
-helmfile -f chapter-01/ingress/productpage/helmfile.yaml apply
+helmfile -f chapter-00/ingress/productpage/helmfile.yaml apply
 
 # Nginx Ingress Controllerの作成
 echo "Deploying Nginx Ingress Controller..."
-helmfile -f chapter-01/nginx/helmfile.yaml apply
+helmfile -f chapter-00/nginx/helmfile.yaml apply
 
 # Prometheusの作成
 echo "Deploying Prometheus..."
-helmfile -f chapter-01/prometheus/helmfile.yaml apply
+helmfile -f chapter-00/prometheus/helmfile.yaml apply
 
 echo "Setup Chapter 1 completed successfully!"
 exit 0

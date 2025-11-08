@@ -17,7 +17,7 @@ docker compose -f databases/docker-compose.yaml up -d
 2. Namespaceを作成します。
 
 ```bash:ターミナル
-kubectl apply --server-side -f chapter-01/shared/namespace.yaml
+kubectl apply --server-side -f chapter-00/shared/namespace.yaml
 ```
 
 3. Bookinfoアプリケーションを作成します。
@@ -35,19 +35,19 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 4. Ingressを作成します。
 
 ```bash:ターミナル
-helmfile -f chapter-01/ingress/productpage/helmfile.yaml apply
+helmfile -f chapter-00/ingress/productpage/helmfile.yaml apply
 ```
 
 5. Nginx Ingress Controllerを作成します。
 
 ```bash:ターミナル
-helmfile -f chapter-01/nginx/helmfile.yaml apply
+helmfile -f chapter-00/nginx/helmfile.yaml apply
 ```
 
 6. Prometheusを作成します。
 
 ```bash:ターミナル
-helmfile -f chapter-01/prometheus/helmfile.yaml apply
+helmfile -f chapter-00/prometheus/helmfile.yaml apply
 ```
 
 7. Prometheusのダッシュボードに接続します。ブラウザから、Prometheus (`http://localhost:20001`) に接続してください。

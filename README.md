@@ -8,7 +8,7 @@ Bookinfoアプリケーションを使用して、Istioをデモンストレー�
 
 ## 章の構成
 
-- [1章](./chapter-01/README.md)
+- [1章](./chapter-00/README.md)
 - [2章](./chapter-02/README.md)
 - [3章](./chapter-03/README.md)
 - [4章](./chapter-04/README.md)
