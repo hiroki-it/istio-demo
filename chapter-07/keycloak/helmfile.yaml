@@ -15,7 +15,7 @@ releases:
     atomic: true
   - name: keycloak
     chart: codecentric/keycloakx
-    version: 7.1.4
+    version: 7.1.5
     namespace: keycloak
     atomic: true
     values:
