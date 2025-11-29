@@ -2,9 +2,7 @@
 
 ## プロジェクトについて
 
-Bookinfoアプリケーションを使用して、Istioをデモンストレーションします。
-
-![mesh-topology](./images/mesh-topology.png)
+Istioをデモンストレーションします。
 
 ## 章の構成
 
