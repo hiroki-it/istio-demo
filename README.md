@@ -19,7 +19,6 @@ Istioをデモンストレーションします。
 - [11章](./chapter-11/README.md)
 - [おまけ1章](./chapter-extra-01/README.md)
 - [おまけ2章](./chapter-extra-02/README.md)
-- [おまけ2章](./chapter-extra-03/README.md)
 
 ## 始める
 
