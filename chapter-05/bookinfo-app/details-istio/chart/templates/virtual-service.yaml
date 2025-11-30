@@ -22,4 +22,5 @@ spec:
         port: 
           number: {{ .Values.service.port }}
         subset: v3
-      mirrorPercentage: 100.0
+      mirrorPercentage: 
+        value: 100.0
