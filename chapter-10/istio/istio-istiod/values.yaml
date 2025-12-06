@@ -27,7 +27,7 @@ global:
 
 meshConfig:
   defaultConfig:
-    drainDuration: 10s
+    drainDuration: 15s
     proxyMetadata:
       EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
       MINIMUM_DRAIN_DURATION: 10s
