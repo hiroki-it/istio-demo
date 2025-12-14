@@ -1,6 +1,0 @@
-releases:
-  - name: details-istio
-    chart: chart
-    version: 1.0.0
-    namespace: bookinfo
-    atomic: true
