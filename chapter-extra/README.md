@@ -1,6 +1,6 @@
-# 付録2
+# 付録
 
-付録2では、IstioサイドカーモードとGateway APIの統合を学びます。
+付録では、IstioサイドカーモードとGateway APIの統合を学びます。
 
 Istioのトラフィック管理系リソースの一部は、Gateway APIリソースに置き換えられます。
 
@@ -87,10 +87,6 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 ```bash:ターミナル
 kubectl port-forward svc/ingress-istio -n istio-ingress 9080:9080
 ```
-
-## 実践する
-
-書籍の付録２章を参照してください。
 
 ## 掃除
 
