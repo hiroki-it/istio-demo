@@ -15,7 +15,7 @@ Istioのトラフィック管理系リソースの一部は、Gateway APIリソ�
 1. Namespaceを作成します。`.metadata`キーにサービスメッシュの管理下であるリビジョンラベルを設定しています。
 
 ```bash:ターミナル
-kubectl apply -f chapter-extra-02/shared/namespace.yaml
+kubectl apply -f chapter-extra/shared/namespace.yaml
 ```
 
 2. Bookinfoアプリケーションを作成します。
@@ -33,9 +33,9 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 3. Istiodコントロールプレーンを作成します。
 
 ```bash:ターミナル
-helmfile -f chapter-extra-02/istio/istio-base/helmfile.yaml apply
+helmfile -f chapter-extra/istio/istio-base/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/istio/istio-istiod/helmfile.yaml apply
+helmfile -f chapter-extra/istio/istio-istiod/helmfile.yaml apply
 ```
 
 4. Istio IngressGatewayがあれば、これを削除します。
@@ -57,15 +57,15 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 6. Istioのトラフィック管理系リソースをGateway APIリソースに置き換えます。
 
 ```bash:ターミナル
-helmfile -f chapter-extra-02/istio/istio-ingress/helmfile.yaml apply
+helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-extra/bookinfo-app/details-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-extra/bookinfo-app/productpage-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-extra/bookinfo-app/ratings-istio/helmfile.yaml apply
 
-helmfile -f chapter-extra-02/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-extra/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
 7. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに`istio-proxy`をインジェクションします。
