@@ -182,4 +182,4 @@ pkill kubectl -9
 docker compose -f databases/docker-compose.yaml down --volumes --remove-orphans
 ```
 
-4. 他の章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+4. ほかの章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。

@@ -96,4 +96,4 @@ kubectl port-forward svc/ingress-istio -n istio-ingress 9080:9080
 minikube delete --profile istio-demo
 ```
 
-2. 他の章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+2. ほかの章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
