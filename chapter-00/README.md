@@ -76,4 +76,4 @@ minikube delete --profile istio-demo
 pkill kubectl -9
 ```
 
-3. 他の章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
+3. ほかの章を実践する前に、[Kubernetesクラスターのセットアップ手順](../README.md) を改めて実施してください。
