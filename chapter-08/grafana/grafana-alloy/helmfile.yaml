@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: grafana-alloy
     chart: grafana/alloy
-    version: 1.5.0
+    version: 1.5.2
     namespace: grafana-alloy
     values:
       - values.yaml
