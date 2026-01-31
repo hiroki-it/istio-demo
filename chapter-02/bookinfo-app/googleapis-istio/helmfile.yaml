@@ -1,6 +1,6 @@
 releases:
-  - name: database-istio
+  - name: googleapis-istio
     chart: chart
-    version: 1.0.0
     namespace: istio-egress
     atomic: true
+

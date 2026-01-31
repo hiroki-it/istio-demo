@@ -3,6 +3,11 @@ repositories:
     url: https://grafana.github.io/helm-charts
 
 releases:
+  - name: grafana-tempo-istio
+    chart: grafana-tempo-istio
+    version: 1.0.0
+    namespace: istio-egress
+    atomic: true
   - name: grafana-tempo
     chart: grafana/tempo
     version: 1.24.3
