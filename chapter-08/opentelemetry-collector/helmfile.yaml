@@ -3,11 +3,6 @@ repositories:
     url: https://open-telemetry.github.io/opentelemetry-helm-charts
 
 releases:
-  - name: telemetry-backend-istio
-    chart: telemetry-backend-istio
-    version: 1.0.0
-    namespace: opentelemetry-collector
-    atomic: true
   - name: opentelemetry-collector-istio
     chart: opentelemetry-collector-istio
     version: 1.0.0

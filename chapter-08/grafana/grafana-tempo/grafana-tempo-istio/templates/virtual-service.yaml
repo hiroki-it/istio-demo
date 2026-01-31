@@ -10,7 +10,7 @@ spec:
   gateways:
     - mesh
     - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
-  tcp:
+  http:
     - match:
         - gateways:
             - mesh

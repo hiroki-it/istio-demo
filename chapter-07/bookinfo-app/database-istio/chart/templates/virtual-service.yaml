@@ -9,7 +9,7 @@ spec:
     - {{ .Values.service.host }}
   gateways:
     - mesh
-    - {{ .Values.istioEgressGateway.namespace }}/{{ .Values.service.name }}-egress
+    - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
   tcp:
     - match:
         - gateways:
@@ -17,12 +17,12 @@ spec:
           port: {{ .Values.service.port }}
       route:
         - destination:
-            host: istio-egressgateway.{{ .Values.istioEgressGateway.namespace }}.svc.cluster.local
+            host: istio-egressgateway.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: {{ .Values.service.port }}
     - match:
         - gateways:
-            - {{ .Values.istioEgressGateway.namespace }}/{{ .Values.service.name }}-egress
+            - {{ .Release.Namespace }}/{{ .Values.service.name }}-egress
           port: {{ .Values.service.port }}
       route:
         - destination:
