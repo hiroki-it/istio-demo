@@ -10,7 +10,7 @@ releases:
     atomic: true
   - name: grafana-tempo
     chart: grafana/tempo
-    version: 1.24.3
+    version: 1.24.4
     namespace: grafana-tempo
     atomic: true
     values:
