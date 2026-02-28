@@ -11,7 +11,7 @@ mise install
 echo "Starting minikube..."
 
 # バージョン
-KUBERNETES_VERSION=1.33.1
+KUBERNETES_VERSION=1.35.1
 
 # コントロールプレーンを含むNode数
 NODE_COUNT=8
