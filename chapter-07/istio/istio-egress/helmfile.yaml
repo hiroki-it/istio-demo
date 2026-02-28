@@ -10,7 +10,7 @@ releases:
     atomic: true
   - name: istio-egressgateway
     chart: istio/gateway
-    version: 1.27.1
+    version: 1.28.4
     namespace: istio-egress
     atomic: true
     values:
