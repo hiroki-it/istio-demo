@@ -37,7 +37,7 @@ echo "Creating Istio traffic management resources..."
 helmfile -f chapter-05/bookinfo-app/database-istio/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/details-istio/helmfile.only-v3.yaml apply
 helmfile -f chapter-05/bookinfo-app/googleapis-istio/helmfile.yaml apply
-helmfile -f chapter-05/bookinfo-app/productpage-istio/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/productpage-istio/helmfile.only-v2.yaml apply
 helmfile -f chapter-05/bookinfo-app/ratings-istio/helmfile.only-v3.yaml apply
 helmfile -f chapter-05/bookinfo-app/reviews-istio/helmfile.only-v4.yaml apply
 
