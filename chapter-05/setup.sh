@@ -35,11 +35,11 @@ helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 # Istioのトラフィック管理系リソースの作成
 echo "Creating Istio traffic management resources..."
 helmfile -f chapter-05/bookinfo-app/database-istio/helmfile.yaml apply
-helmfile -f chapter-05/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/details-istio/helmfile.only-v3.yaml apply
 helmfile -f chapter-05/bookinfo-app/googleapis-istio/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/productpage-istio/helmfile.yaml apply
-helmfile -f chapter-05/bookinfo-app/ratings-istio/helmfile.yaml apply
-helmfile -f chapter-05/bookinfo-app/reviews-istio/helmfile.yaml apply
+helmfile -f chapter-05/bookinfo-app/ratings-istio/helmfile.only-v3.yaml apply
+helmfile -f chapter-05/bookinfo-app/reviews-istio/helmfile.only-v4.yaml apply
 
 # Kubernetes Podのロールアウト
 echo "Rolling out Kubernetes Pods..."
