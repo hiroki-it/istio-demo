@@ -1,6 +1,6 @@
 releases:
-  - name: details-istio
-    chart: chart
+  - name: reviews-istio
+    chart: chart-only-v4
     version: 1.0.0
     namespace: bookinfo
     atomic: true

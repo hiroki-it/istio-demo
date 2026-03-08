@@ -1,0 +1,5 @@
+service:
+  name: reviews
+  namespace: bookinfo
+  host: reviews.bookinfo.svc.cluster.local
+  port: 9080
