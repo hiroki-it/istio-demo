@@ -11,8 +11,6 @@ spec:
       labels:
         version: v3
   trafficPolicy:
-    loadBalancer:
-      simple: LEAST_REQUEST
     {{- if eq .Values.tlsMode.unEncrypted.enabled true }}
     tls:
       mode: DISABLE

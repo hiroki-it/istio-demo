@@ -6,6 +6,3 @@ spec:
   exportTo:
     - "."
   host: {{ .Values.service.host }}
-  trafficPolicy:
-    loadBalancer:
-      simple: LEAST_REQUEST

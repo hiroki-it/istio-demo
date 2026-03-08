@@ -4,9 +4,15 @@ metadata:
   name: {{ .Values.service.name }}
 spec:
   exportTo:
-    - "*"
+    - "."
   host: {{ .Values.service.host }}
   subsets:
-    - name: v2
+    - name: v1
       labels:
-        version: v2
+        version: v1
+    - name: v3
+      labels:
+        version: v3
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST

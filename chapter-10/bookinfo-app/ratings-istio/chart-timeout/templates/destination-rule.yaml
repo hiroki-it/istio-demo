@@ -16,9 +16,6 @@ spec:
     - name: v-50percent-internal-server-error-500
       labels:
         version: v-50percent-internal-server-error-500
-  trafficPolicy:
-    loadBalancer:
-      simple: LEAST_REQUEST
     connectionPool:
       http:
         idleTimeout: 60s

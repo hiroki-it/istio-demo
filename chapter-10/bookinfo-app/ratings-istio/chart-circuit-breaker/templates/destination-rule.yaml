@@ -17,8 +17,6 @@ spec:
       labels:
         version: v-50percent-internal-server-error-500
   trafficPolicy:
-    loadBalancer:
-      simple: LEAST_REQUEST
 {{- if eq .Values.circuitBreaker.byConnectionPool.enabled true }}
     connectionPool:
       http:

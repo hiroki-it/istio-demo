@@ -1,6 +1,6 @@
 releases:
   - name: productpage-istio
-    chart: chart
+    chart: chart-load-balancing
     version: 1.0.0
     namespace: bookinfo
     atomic: true
