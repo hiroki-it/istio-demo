@@ -1,0 +1,6 @@
+releases:
+  - name: details-istio
+    namespace: bookinfo
+    chart: chart-connection-between-component
+    version: 1.0.0
+    atomic: true
