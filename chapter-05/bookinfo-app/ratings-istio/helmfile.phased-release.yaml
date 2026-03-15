@@ -1,6 +1,0 @@
-releases:
-  - name: ratings-istio
-    chart: chart-phased-release
-    version: 1.0.0
-    namespace: bookinfo
-    atomic: true
