@@ -16,7 +16,7 @@ kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 echo "Deploying Bookinfo application..."
 helmfile -f bookinfo-app/details/helmfile.yaml apply --set trafficManagement.enabled=true
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set loggedIn.enabled=true
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply --set trafficManagement.enabled=true
+helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply --set trafficManagement.enabled=true
 
 # Istiodコントロールプレーンの作成

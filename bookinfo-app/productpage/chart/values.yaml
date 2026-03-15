@@ -2,8 +2,5 @@ service:
   name: productpage
   port: 9080
 
-trafficManagement:
-  enabled: false
-
 loggedIn:
   enabled: false
