@@ -32,8 +32,8 @@ helmfile -f chapter-08/istio/istio-ingress/helmfile.yaml apply
 echo "Deploying Istio EgressGateway..."
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 
-# Istioのトラフィック管理系リソースの作成
-echo "Creating Istio traffic management resources..."
+# Istioリソースの作成
+echo "Creating Istio resources..."
 helmfile -f chapter-08/bookinfo-app/database-istio/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/googleapis-istio/helmfile.yaml apply
