@@ -1,6 +1,6 @@
 releases:
   - name: ratings-istio
-    chart: chart-fault-injection-503
+    chart: chart-fault-injection-testing-500
     version: 1.0.0
     namespace: bookinfo
     atomic: true

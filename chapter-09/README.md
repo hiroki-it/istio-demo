@@ -143,7 +143,7 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 遅延障害を正常なマイクロサービスに注入します。
 
 ```bash:ターミナル
-helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
+helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.fault-injection-testing-delay.yaml apply
 ```
 
 ### 503ステータスの注入
@@ -151,7 +151,7 @@ helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.delayed.yaml apply
 503ステータスレスポンスの障害を正常なマイクロサービスに注入します。
 
 ```bash:ターミナル
-helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply
+helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.fault-injection-testing-503.yaml apply
 ```
 
 ### 500ステータスの注入
@@ -159,7 +159,7 @@ helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.503-status.yaml apply
 500ステータスレスポンスの障害を正常なマイクロサービスに注入します。
 
 ```bash:ターミナル
-helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.500-status.yaml apply
+helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.fault-injection-testing-500.yaml apply
 ```
 
 ## 掃除
