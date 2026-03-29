@@ -38,7 +38,7 @@ helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/googleapis-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply
-helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/ratings-istio/helmfile.non-fault-injection-testing.yaml apply
 helmfile -f chapter-09/bookinfo-app/reviews-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/share-istio/helmfile.yaml apply
 
