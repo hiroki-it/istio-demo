@@ -1,26 +1,27 @@
-controller:
+nginxGateway:
+  gatewayClassName: nginx
+
+nginx:
   service:
     type: NodePort
     nodePorts:
-      http: 30000
-    ports:
-      http: 9080
-  containerPort:
-    http: 80
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: node.kubernetes.io/nodegroup
-                operator: In
-                values:
-                  - ingress
-  resources:
-    requests:
-      cpu: 50m
-      memory: 51Mi
-    limits:
-      cpu: 500m
-      memory: 512Mi
-  progressDeadlineSeconds: null
+      - port: 30000
+        listenerPort: 9080
+  pod:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node.kubernetes.io/nodegroup
+                  operator: In
+                  values:
+                    - ingress
+  container:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 51Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi

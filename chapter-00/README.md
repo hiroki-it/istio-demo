@@ -32,7 +32,7 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 helmfile -f chapter-00/ingress/productpage/helmfile.yaml apply
 ```
 
-5. Nginx Ingress Controllerを作成する。
+5. Nginx Gateway Controllerを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-00/nginx/helmfile.yaml apply

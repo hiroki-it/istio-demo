@@ -23,8 +23,8 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 echo "Creating Ingress..."
 helmfile -f chapter-00/ingress/productpage/helmfile.yaml apply
 
-# Nginx Ingress Controllerの作成
-echo "Deploying Nginx Ingress Controller..."
+# Nginx Gateway Controllerの作成
+echo "Deploying Nginx Gateway Controller..."
 helmfile -f chapter-00/nginx/helmfile.yaml apply
 
 # Prometheusの作成
