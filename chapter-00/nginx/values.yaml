@@ -1,6 +1,18 @@
 nginxGateway:
   gatewayClassName: nginx
 
+gateways:
+  - name: nginx-gateway
+    spec:
+      gatewayClassName: nginx
+      listeners:
+        - name: http-productpage
+          protocol: HTTP
+          port: 9080
+          allowedRoutes:
+            namespaces:
+              from: All
+
 nginx:
   service:
     type: NodePort

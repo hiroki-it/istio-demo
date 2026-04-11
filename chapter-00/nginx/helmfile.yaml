@@ -1,7 +1,7 @@
 releases:
   - name: nginx-gateway-fabric
     chart: oci://ghcr.io/nginx/charts/nginx-gateway-fabric
-    version: 2.5.0
+    version: 2.5.1
     namespace: nginx-gateway
     atomic: true
     values:
