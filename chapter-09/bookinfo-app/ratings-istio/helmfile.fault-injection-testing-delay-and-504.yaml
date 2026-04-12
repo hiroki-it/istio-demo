@@ -1,6 +1,6 @@
 releases:
   - name: ratings-istio
-    chart: chart-fault-injection-testing-delay
+    chart: chart-fault-injection-testing-delay-and-504
     version: 1.0.0
     namespace: bookinfo
     atomic: true
