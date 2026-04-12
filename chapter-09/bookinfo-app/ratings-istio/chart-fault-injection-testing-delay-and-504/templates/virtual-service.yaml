@@ -16,8 +16,11 @@ spec:
             port:
               number: {{ .Values.service.port }}
             subset: v3
-      timeout: 5s
       fault:
+        abort:
+          httpStatus: 504
+          percentage:
+            value: 100      
         delay:
           fixedDelay: 7s
           percentage:
