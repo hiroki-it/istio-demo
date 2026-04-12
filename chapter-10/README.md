@@ -132,42 +132,6 @@ kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:90
 
 書籍の10章を参照してください。
 
-### リトライ
-
-503ステータスを起因としたリトライを実践する。
-
-```bash:ターミナル
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.retry.yaml apply --set retry.by5xxStatusCode.enabled=true
-```
-
-### タイムアウト
-
-タイムアウトを実践する。
-
-```bash:ターミナル
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.timeout.yaml apply
-```
-
-### サーキットブレイカー
-
-接続プールに基づくサーキットブレイカーを実践する。
-
-```bash:ターミナル
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true
-```
-
-外れ値検出に基づくサーキットブレイカーを実践する。
-
-```bash:ターミナル
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byOutlierDetection.enabled=true
-```
-
-接続プールと外れ値検出に基づくサーキットブレイカーを実践する。
-
-```bash:ターミナル
-helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.circuit-breaker.yaml apply --set circuitBreaker.byConnectionPool.enabled=true --set circuitBreaker.byOutlierDetection.enabled=true
-```
-
 ## 掃除
 
 1. Minikubeを削除する。
