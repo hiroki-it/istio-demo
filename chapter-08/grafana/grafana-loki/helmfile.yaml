@@ -5,7 +5,7 @@ repositories:
 releases:
   - name: grafana-loki
     chart: grafana/loki
-    version: 6.55.0
+    version: 7.0.0
     namespace: grafana-loki
     atomic: true
     values:
