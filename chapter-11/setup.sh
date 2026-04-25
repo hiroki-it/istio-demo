@@ -41,7 +41,6 @@ helmfile -f chapter-11/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/reviews-istio/helmfile.yaml apply
-helmfile -f chapter-11/bookinfo-app/share-istio/helmfile.yaml apply
 
 # Kubernetes Podのロールアウト
 echo "Rolling out Kubernetes Pods..."
@@ -54,10 +53,6 @@ helmfile -f chapter-11/prometheus/helmfile.yaml apply
 # metrics-serverの作成
 echo "Deploying metrics-server..."
 helmfile -f chapter-11/metrics-server/helmfile.yaml apply
-
-# Grafanaの作成
-echo "Deploying Grafana..."
-helmfile -f chapter-11/grafana/grafana/helmfile.yaml apply
 
 # Kialiの作成
 echo "Deploying Kiali..."

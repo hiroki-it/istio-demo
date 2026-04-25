@@ -62,8 +62,6 @@ helmfile -f chapter-11/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/ratings-istio/helmfile.yaml apply
 
 helmfile -f chapter-11/bookinfo-app/reviews-istio/helmfile.yaml apply
-
-helmfile -f chapter-11/bookinfo-app/share-istio/helmfile.yaml apply
 ```
 
 8. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
@@ -84,33 +82,26 @@ helmfile -f chapter-11/prometheus/helmfile.yaml apply
 helmfile -f chapter-11/metrics-server/helmfile.yaml apply
 ```
 
-11. Grafanaを作成する。
-
-```bash:ターミナル
-helmfile -f chapter-11/grafana/grafana/helmfile.yaml apply
-```
-
-12. Kialiを作成する。
+11. Kialiを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/kiali/helmfile.yaml apply
 ```
 
-13. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
+12. Prometheus と Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) と Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
-  kubectl port-forward svc/grafana -n grafana 3000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-14. `http://localhost:20001` から、Kialiのダッシュボードに接続する。
+13. `http://localhost:20001` から、Kialiのダッシュボードに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
