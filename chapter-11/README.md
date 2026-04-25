@@ -2,7 +2,7 @@
 
 ## セットアップ
 
-1. Namespaceを作成する。`.metadata` キーにアンビエントメッシュの管理下を表すラベルを設定している。
+1. Namespaceを作成する。`.metadata` キーにアンビエントメッシュの管理下であるラベルを設定している。
 
 ```bash:ターミナル
 kubectl apply -f chapter-11/shared/namespace.yaml
@@ -28,7 +28,7 @@ helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-istiod/helmfile.yaml apply
 ```
 
-4. Istio Ztunnelを作成する。これにより、Podに対する L4 トラフィックを管理できるようになる。
+4. Istio Ztunnelを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
@@ -36,7 +36,7 @@ helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-cni/helmfile.yaml apply
 ```
 
-5. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。これにより、Podに対する L7 トラフィックを管理できるようになる。
+5. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
 
 ```bash:ターミナル
 CRD_VERSION=1.2.0
@@ -52,10 +52,20 @@ helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istioのトラフィック管理系リソースを作成する。
+7. Istio EgressGatewayを作成する。
 
 ```bash:ターミナル
+helmfile -f chapter-11/istio/istio-egress/helmfile.yaml apply
+```
+
+8. Istioのトラフィック管理系リソースを作成する。
+
+```bash:ターミナル
+helmfile -f chapter-11/bookinfo-app/database-istio/helmfile.yaml apply
+
 helmfile -f chapter-11/bookinfo-app/details-istio/helmfile.yaml apply
+
+helmfile -f chapter-11/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
 helmfile -f chapter-11/bookinfo-app/productpage-istio/helmfile.yaml apply
 
@@ -64,41 +74,35 @@ helmfile -f chapter-11/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-8. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
+9. Kubernetes Podをロールアウトする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-9. Prometheusを作成する。
+10. Prometheusを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/prometheus/helmfile.yaml apply
 ```
 
-10. metrics-serverを作成する。
+11. metrics-serverを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/metrics-server/helmfile.yaml apply
 ```
 
-11. Kialiを作成する。
+12. Kialiを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/kiali/helmfile.yaml apply
 ```
 
-12. Prometheus と Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) と Kiali (`http://localhost:20001`) に接続する。
+13. Prometheus と Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) と Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
-```
-
-13. `http://localhost:20001` から、Kialiのダッシュボードに接続する。
-
-```bash:ターミナル
-kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
 14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。

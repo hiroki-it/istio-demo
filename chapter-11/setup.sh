@@ -35,9 +35,15 @@ helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
 echo "Deploying Istio IngressGateway..."
 helmfile -f chapter-11/istio/istio-ingress/helmfile.yaml apply
 
+# Istio EgressGatewayの作成
+echo "Deploying Istio EgressGateway..."
+helmfile -f chapter-11/istio/istio-egress/helmfile.yaml apply
+
 # Istioリソースの作成
 echo "Creating Istio resources..."
+helmfile -f chapter-11/bookinfo-app/database-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-11/bookinfo-app/googleapis-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/reviews-istio/helmfile.yaml apply
