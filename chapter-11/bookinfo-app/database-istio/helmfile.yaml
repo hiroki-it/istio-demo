@@ -1,6 +1,6 @@
 releases:
-  - name: share-istio
+  - name: database-istio
     chart: chart
     version: 1.0.0
-    namespace: bookinfo
+    namespace: istio-egress
     atomic: true
