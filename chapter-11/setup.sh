@@ -20,10 +20,13 @@ echo "Deploying Istiod control plane..."
 helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-istiod/helmfile.yaml apply
 
+# Istio CNIの作成
+echo "Deploying Istio CNI..."
+helmfile -f chapter-11/istio/istio-cni/helmfile.yaml apply
+
 # Istio Ztunnelの作成
 echo "Deploying Istio Ztunnel..."
 helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
-helmfile -f chapter-11/istio/istio-cni/helmfile.yaml apply
 
 # Gateway APIのカスタムリソース定義とIstio Waypointの作成
 echo "Creating Gateway API CRDs and Istio Waypoint..."

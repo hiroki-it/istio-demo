@@ -28,15 +28,19 @@ helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-istiod/helmfile.yaml apply
 ```
 
-4. Istio Ztunnelを作成する。
+4. Istio CNIを作成する。
 
 ```bash:ターミナル
-helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
-
 helmfile -f chapter-11/istio/istio-cni/helmfile.yaml apply
 ```
 
-5. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
+5. Istio Ztunnelを作成する。
+
+```bash:ターミナル
+helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
+```
+
+6. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
 
 ```bash:ターミナル
 CRD_VERSION=1.2.0
@@ -46,19 +50,19 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayを作成する。
+7. Istio IngressGatewayを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istio EgressGatewayを作成する。
+8. Istio EgressGatewayを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-egress/helmfile.yaml apply
 ```
 
-8. Istioのトラフィック管理系リソースを作成する。
+9. Istioのトラフィック管理系リソースを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/bookinfo-app/database-istio/helmfile.yaml apply
@@ -74,38 +78,38 @@ helmfile -f chapter-11/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-9. Kubernetes Podをロールアウトする。
+10. Kubernetes Podをロールアウトする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-10. Prometheusを作成する。
+11. Prometheusを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/prometheus/helmfile.yaml apply
 ```
 
-11. metrics-serverを作成する。
+12. metrics-serverを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/metrics-server/helmfile.yaml apply
 ```
 
-12. Kialiを作成する。
+13. Kialiを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/kiali/helmfile.yaml apply
 ```
 
-13. Prometheus と Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) と Kiali (`http://localhost:20001`) に接続する。
+14. Prometheus と Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) と Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+15. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
