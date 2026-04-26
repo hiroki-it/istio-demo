@@ -7,7 +7,7 @@ metadata:
 spec:
   gatewayClassName: istio-waypoint
   listeners:
-    - name: tcp-ztunnel
+    - name: ztunnel
       port: 15008
       protocol: HBONE
       allowedRoutes:
