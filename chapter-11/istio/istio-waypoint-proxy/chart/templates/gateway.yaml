@@ -3,7 +3,7 @@ kind: Gateway
 metadata:
   labels:
     istio.io/waypoint-for: service
-  name: {{ .Release.Namespace }}
+  name: istio-waypoint-proxy
 spec:
   gatewayClassName: istio-waypoint
   listeners:
