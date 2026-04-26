@@ -30,7 +30,7 @@ helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
 
 # Gateway APIのカスタムリソース定義とIstio Waypointの作成
 echo "Creating Gateway API CRDs and Istio Waypoint..."
-CRD_VERSION=1.2.0
+CRD_VERSION=1.3.0
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
 
