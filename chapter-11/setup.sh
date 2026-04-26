@@ -10,10 +10,10 @@ kubectl apply -f chapter-11/shared/namespace.yaml
 
 # Bookinfoアプリケーションの作成
 echo "Deploying Bookinfo application..."
-helmfile -f bookinfo-app/details/helmfile.yaml apply
+helmfile -f bookinfo-app/details/helmfile.yaml apply --set trafficManagement.enabled=true
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set loggedIn.enabled=true
 helmfile -f bookinfo-app/ratings/helmfile.yaml apply
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app/reviews/helmfile.yaml apply --set trafficManagement.enabled=true
 
 # Istiodコントロールプレーンの作成
 echo "Deploying Istiod control plane..."
