@@ -56,7 +56,6 @@ meshConfig:
   discoverySelectors:
     - matchLabels:
         istio.io/dataplane-mode: ambient
-        istio.io/rev: stable
   defaultProviders:
     metrics:
       - prometheus
