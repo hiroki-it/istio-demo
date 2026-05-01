@@ -44,7 +44,7 @@ external_services:
         - app_label: istiod
           namespace: istio-system
         - app_label: ztunnel
-          namespace: istio-system
+          namespace: bookinfo
         - app_label: istio-ingressgateway
           namespace: istio-ingress
         - app_label: istio-egressgateway

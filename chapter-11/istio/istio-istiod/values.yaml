@@ -108,4 +108,4 @@ revision: 1-29-0
 revisionTags:
   - stable
 
-trustedZtunnelNamespace: istio-system
+trustedZtunnelNamespace: bookinfo
