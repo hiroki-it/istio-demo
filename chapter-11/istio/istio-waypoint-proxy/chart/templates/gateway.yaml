@@ -2,6 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   labels:
+    istio.io/rev: stable
     istio.io/waypoint-for: service
   name: istio-waypoint-proxy
 spec:
