@@ -1,1 +1,3 @@
 defaultRevision: 1-29-0
+base:
+  validationFailurePolicy: Fail
