@@ -6,7 +6,7 @@ releases:
   - name: istio-ztunnel
     chart: istio/ztunnel
     version: 1.29.0
-    namespace: bookinfo
+    namespace: istio-system
     atomic: true
     values:
       - values.yaml
