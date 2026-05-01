@@ -15,7 +15,6 @@ deployment:
     default:
       - matchLabels:
           istio.io/dataplane-mode: ambient
-          istio.io/rev: stable
   logger:
     log_format: json
   replicas: 2
