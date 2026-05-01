@@ -43,11 +43,28 @@ external_services:
       components:
         - app_label: istiod
           namespace: istio-system
+        - app_label: ztunnel
+          namespace: istio-system
         - app_label: istio-ingressgateway
           namespace: istio-ingress
         - app_label: istio-egressgateway
           namespace: istio-egress
+        - app_label: gateway.networking.k8s.io/gateway-name
+          app_label_value: istio-waypoint-proxy
+          namespace: bookinfo
+        - app_label: gateway.networking.k8s.io/gateway-name
+          app_label_value: istio-waypoint-proxy
+          namespace: istio-ingress
+        - app_label: gateway.networking.k8s.io/gateway-name
+          app_label_value: istio-waypoint-proxy
+          namespace: istio-egress
     root_namespace: istio-system
+
+kiali_feature_flags:
+  ui_defaults:
+    graph:
+      traffic:
+        ambient: total
 
 login_token: 
   signing_key: kiali
