@@ -13,7 +13,6 @@ metadata:
   name: istio-egress
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: istio-waypoint-proxy
     istio.io/rev: stable
 ---
 apiVersion: v1
@@ -22,5 +21,4 @@ metadata:
   name: istio-ingress
   labels:
     istio.io/dataplane-mode: ambient
-    istio.io/use-waypoint: istio-waypoint-proxy
     istio.io/rev: stable

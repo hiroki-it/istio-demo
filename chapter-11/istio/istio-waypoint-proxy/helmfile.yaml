@@ -4,13 +4,3 @@ releases:
     version: 1.0.0
     namespace: bookinfo
     atomic: true
-  - name: istio-waypoint-proxy
-    chart: chart
-    version: 1.0.0
-    namespace: istio-ingress
-    atomic: true
-  - name: istio-waypoint-proxy
-    chart: chart
-    version: 1.0.0
-    namespace: istio-egress
-    atomic: true

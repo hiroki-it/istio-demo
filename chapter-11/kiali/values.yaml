@@ -52,12 +52,6 @@ external_services:
         - app_label: gateway.networking.k8s.io/gateway-name
           app_label_value: istio-waypoint-proxy
           namespace: bookinfo
-        - app_label: gateway.networking.k8s.io/gateway-name
-          app_label_value: istio-waypoint-proxy
-          namespace: istio-ingress
-        - app_label: gateway.networking.k8s.io/gateway-name
-          app_label_value: istio-waypoint-proxy
-          namespace: istio-egress
     root_namespace: istio-system
 
 kiali_feature_flags:
