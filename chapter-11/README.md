@@ -2,17 +2,18 @@
 
 ## セットアップ
 
-1. Namespaceを作成する。`.metadata` キーにアンビエントメッシュの管理下であるラベルを設定している。
+1. サービスメッシュ外に、MySQLコンテナを作成する。
 
 ```bash:ターミナル
-kubectl apply -f chapter-11/shared/namespace.yaml
+docker compose -f databases/docker-compose.yaml up -d
 ```
+
 2. `keycloak` と `test` というデータベースがあることを確認する。
 
 ```bash:ターミナル
 docker exec -it istio-demo-mysql /bin/sh
 
-sh-4.4# mysql -h istio-demo.mysql.internal -u root -proot
+sh-4.4# mysql -h dev.istio-demo.mysql.internal -u root -proot
 
 mysql> SHOW DATABASES;
 +--------------------+
@@ -27,7 +28,13 @@ mysql> SHOW DATABASES;
 +--------------------+
 ```
 
-3. Bookinfoアプリケーションを作成する。
+3. Namespaceを作成する。`.metadata` キーにアンビエントメッシュの管理下であるラベルを設定している。
+
+```bash:ターミナル
+kubectl apply -f chapter-11/shared/namespace.yaml
+```
+
+4. Bookinfoアプリケーションを作成する。
 
 ```bash:ターミナル
 helmfile -f bookinfo-app/details/helmfile.yaml apply --set trafficManagement.enabled=true
@@ -39,7 +46,7 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply --set trafficManagement.enabled=true
 ```
 
-4. Istiodコントロールプレーンを作成する。
+5. Istiodコントロールプレーンを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
@@ -47,19 +54,19 @@ helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-istiod/helmfile.yaml apply
 ```
 
-5. Istio CNIを作成する。
+6. Istio CNIを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-cni/helmfile.yaml apply
 ```
 
-6. Istio Ztunnelを作成する。
+7. Istio Ztunnelを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
 ```
 
-7. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
+8. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
 
 ```bash:ターミナル
 CRD_VERSION=1.3.0
@@ -69,7 +76,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
 ```
 
-8. Istio IngressGatewayを作成する。
+9. Istio IngressGatewayを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-ingress/helmfile.yaml apply
