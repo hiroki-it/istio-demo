@@ -1,4 +1,4 @@
 service:
   name: mysql
-  host: dev.istio-demo-mysql
+  host: istio-demo.mysql.internal
   port: 3306
