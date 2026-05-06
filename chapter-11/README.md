@@ -7,8 +7,27 @@
 ```bash:ターミナル
 kubectl apply -f chapter-11/shared/namespace.yaml
 ```
+2. `keycloak` と `test` というデータベースがあることを確認する。
 
-2. Bookinfoアプリケーションを作成する。
+```bash:ターミナル
+docker exec -it istio-demo-mysql /bin/sh
+
+sh-4.4# mysql -h istio-demo.mysql.internal -u root -proot
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| keycloak           |
+| mysql              |
+| performance_schema |
+| sys                |
+| test               |
++--------------------+
+```
+
+3. Bookinfoアプリケーションを作成する。
 
 ```bash:ターミナル
 helmfile -f bookinfo-app/details/helmfile.yaml apply --set trafficManagement.enabled=true
@@ -20,7 +39,7 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply --set trafficManagement.enabled=true
 ```
 
-3. Istiodコントロールプレーンを作成する。
+4. Istiodコントロールプレーンを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
@@ -28,19 +47,19 @@ helmfile -f chapter-11/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-11/istio/istio-istiod/helmfile.yaml apply
 ```
 
-4. Istio CNIを作成する。
+5. Istio CNIを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-cni/helmfile.yaml apply
 ```
 
-5. Istio Ztunnelを作成する。
+6. Istio Ztunnelを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
 ```
 
-6. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
+7. Gateway APIのカスタムリソース定義とIstio Waypointを作成する。
 
 ```bash:ターミナル
 CRD_VERSION=1.3.0
@@ -50,19 +69,19 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
 ```
 
-7. Istio IngressGatewayを作成する。
+8. Istio IngressGatewayを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-ingress/helmfile.yaml apply
 ```
 
-8. Istio EgressGatewayを作成する。
+9. Istio EgressGatewayを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/istio/istio-egress/helmfile.yaml apply
 ```
 
-9. Istioのトラフィック管理系リソースを作成する。
+10. Istioのトラフィック管理系リソースを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/bookinfo-app/mysql-istio/helmfile.yaml apply
@@ -78,37 +97,37 @@ helmfile -f chapter-11/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-10. Kubernetes Podをロールアウトする。
+11. Kubernetes Podをロールアウトする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-11. Prometheusを作成する。
+12. Prometheusを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/prometheus/helmfile.yaml apply
 ```
 
-12. metrics-serverを作成する。
+13. metrics-serverを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/metrics-server/helmfile.yaml apply
 ```
 
-13. Grafanaを作成する。
+14. Grafanaを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/grafana/grafana/helmfile.yaml apply
 ```
 
-14. Kialiを作成する。
+15. Kialiを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-11/kiali/helmfile.yaml apply
 ```
 
-15. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) 、Grafana (`http://localhost:3000`) 、Kiali (`http://localhost:20001`) に接続する。
+16. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) 、Grafana (`http://localhost:3000`) 、Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -116,7 +135,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-16. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+17. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 9080:9080
