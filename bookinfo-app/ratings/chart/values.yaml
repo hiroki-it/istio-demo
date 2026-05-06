@@ -2,7 +2,7 @@ service:
   name: ratings
   port: 9080
 
-database:
+mysql:
   host: dev.istio-demo-mysql
   port: 3306
 

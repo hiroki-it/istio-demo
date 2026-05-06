@@ -3,8 +3,8 @@ repositories:
     url: https://codecentric.github.io/helm-charts
 
 releases:
-  - name: database-istio
-    chart: database-istio
+  - name: mysql-istio
+    chart: mysql-istio
     version: 1.0.0
     namespace: keycloak
     atomic: true

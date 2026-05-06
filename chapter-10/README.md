@@ -69,7 +69,7 @@ helmfile -f chapter-10/istio/istio-egress/helmfile.yaml apply
 8. Istioのトラフィック管理系リソースを作成する。
 
 ```bash:ターミナル
-helmfile -f chapter-10/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/mysql-istio/helmfile.yaml apply
 
 helmfile -f chapter-10/bookinfo-app/details-istio/helmfile.yaml apply
 

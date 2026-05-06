@@ -34,7 +34,7 @@ helmfile -f chapter-09/istio/istio-egress/helmfile.yaml apply
 
 # Istioリソースの作成
 echo "Creating Istio resources..."
-helmfile -f chapter-09/bookinfo-app/database-istio/helmfile.yaml apply
+helmfile -f chapter-09/bookinfo-app/mysql-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/googleapis-istio/helmfile.yaml apply
 helmfile -f chapter-09/bookinfo-app/productpage-istio/helmfile.yaml apply

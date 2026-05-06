@@ -2,7 +2,7 @@ service:
   name: egress
 
 destination:
-  database:
+  mysql:
     host: dev.istio-demo-mysql
     port: 3306
   googleapis:

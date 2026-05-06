@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: database-{{ .Values.service.name }}
+  name: mysql-{{ .Values.service.name }}
 spec:
   selector:
     istio: egressgateway
@@ -9,9 +9,9 @@ spec:
     - port:
         name: mysql
         protocol: MYSQL
-        number: {{ .Values.destination.database.port }}
+        number: {{ .Values.destination.mysql.port }}
       hosts:
-        - {{ .Values.destination.database.host }}
+        - {{ .Values.destination.mysql.host }}
 ---
 apiVersion: networking.istio.io/v1
 kind: Gateway
