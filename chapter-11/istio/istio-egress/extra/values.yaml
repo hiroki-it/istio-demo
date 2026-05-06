@@ -3,7 +3,7 @@ service:
 
 destination:
   mysql:
-    host: istio-demo.mysql.internal
+    host: dev.istio-demo.mysql.internal
     port: 3306
   googleapis:
     host: www.googleapis.com

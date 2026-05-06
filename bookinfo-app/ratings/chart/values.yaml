@@ -3,7 +3,7 @@ service:
   port: 9080
 
 mysql:
-  host: istio-demo.mysql.internal
+  host: dev.istio-demo.mysql.internal
   port: 3306
 
 vSystemFailure:

@@ -13,7 +13,7 @@ docker compose -f databases/docker-compose.yaml up -d
 ```bash:ターミナル
 docker exec -it istio-demo-mysql /bin/sh
 
-sh-4.4# mysql -h istio-demo.mysql.internal -u root -proot
+sh-4.4# mysql -h dev.istio-demo.mysql.internal -u root -proot
 
 mysql> SHOW DATABASES;
 +--------------------+
