@@ -47,11 +47,26 @@
   "quickLoginCheckMilliSeconds": 1000,
   "maxDeltaTimeSeconds": 43200,
   "failureFactor": 30,
+  "users": [
+    {
+      "username": "izzy",
+      "firstName": "izzy",
+      "lastName": "izzy",
+      "email": "izzy@gmail.com",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "izzy"
+        }
+      ]
+      }
+  ],  
   "roles": {
     "realm": [
       {
         "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-        "name": "default-roles-dev",
+        "name": "default-roles-bookinfo",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -344,7 +359,7 @@
   ],
   "defaultRole": {
     "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-    "name": "default-roles-dev",
+    "name": "default-roles-bookinfo",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
@@ -657,7 +672,6 @@
         "acr",
         "roles",
         "profile",
-        "microprofile-jwt",
         "basic",
         "email"
       ],
@@ -665,7 +679,8 @@
         "address",
         "phone",
         "offline_access",
-        "organization"
+        "organization",
+        "microprofile-jwt"
       ]
     },
     {
@@ -1247,20 +1262,20 @@
           }
         },
         {
-          "id": "7969e4c9-6bd8-4aae-a7b3-da53a1cbab3d",
+          "id": "9ddce354-399a-412f-93bd-ed0051a14446",
           "name": "groups",
           "protocol": "openid-connect",
-          "protocolMapper": "oidc-group-membership-mapper",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
           "consentRequired": false,
           "config": {
-            "full.path": "true",
             "introspection.token.claim": "true",
-            "userinfo.token.claim": "true",
             "multivalued": "true",
+            "userinfo.token.claim": "true",
+            "user.attribute": "foo",
             "id.token.claim": "true",
-            "lightweight.claim": "false",
             "access.token.claim": "true",
-            "claim.name": "groups"
+            "claim.name": "groups",
+            "jsonType.label": "String"
           }
         }
       ]
@@ -2428,7 +2443,7 @@
     "acr.loa.map": "{}",
     "darkMode": "false"
   },
-  "keycloakVersion": "26.5.6",
+  "keycloakVersion": "26.3.3",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
   "verifiableCredentialsEnabled": false,

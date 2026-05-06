@@ -47,11 +47,26 @@
   "quickLoginCheckMilliSeconds": 1000,
   "maxDeltaTimeSeconds": 43200,
   "failureFactor": 30,
+  "users": [
+    {
+      "username": "izzy",
+      "firstName": "izzy",
+      "lastName": "izzy",
+      "email": "izzy@gmail.com",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "izzy"
+        }
+      ]
+      }
+  ],  
   "roles": {
     "realm": [
       {
         "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-        "name": "default-roles-dev",
+        "name": "default-roles-bookinfo",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -344,7 +359,7 @@
   ],
   "defaultRole": {
     "id": "48e19c2c-6343-4530-ae70-6cfc13092240",
-    "name": "default-roles-dev",
+    "name": "default-roles-bookinfo",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
@@ -2428,7 +2443,7 @@
     "acr.loa.map": "{}",
     "darkMode": "false"
   },
-  "keycloakVersion": "26.5.6",
+  "keycloakVersion": "26.3.3",
   "userManagedAccessAllowed": false,
   "organizationsEnabled": false,
   "verifiableCredentialsEnabled": false,
