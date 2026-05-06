@@ -49,7 +49,7 @@ kubectl delete service istio-ingressgateway -n istio-ingress
 5. Gateway APIのカスタムリソース定義を作成する。
 
 ```bash:ターミナル
-CRD_VERSION=1.2.0
+CRD_VERSION=1.3.0
 
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 ```

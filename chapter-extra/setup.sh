@@ -4,6 +4,10 @@ set -e
 
 echo "Starting setup for Appendix 2..."
 
+# MySQLコンテナの作成
+echo "Creating MySQL container..."
+docker compose -f databases/docker-compose.yaml up -d
+
 # Namespaceの作成
 echo "Creating Namespace..."
 kubectl apply -f chapter-extra/shared/namespace.yaml
@@ -27,7 +31,7 @@ kubectl delete service istio-ingressgateway -n istio-ingress
 
 # Gateway APIのカスタムリソース定義の作成
 echo "Creating Gateway API CRDs..."
-CRD_VERSION=1.2.0
+CRD_VERSION=1.3.0
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 
 # Istioのトラフィック管理系リソースをGateway APIリソースに置き換え
