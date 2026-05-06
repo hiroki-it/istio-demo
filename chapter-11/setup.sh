@@ -4,6 +4,10 @@ set -e
 
 echo "Starting setup for Chapter 11..."
 
+# MySQLコンテナの作成
+echo "Creating MySQL container..."
+docker compose -f databases/docker-compose.yaml up -d
+
 # Namespaceの作成
 echo "Creating Namespace..."
 kubectl apply -f chapter-11/shared/namespace.yaml
