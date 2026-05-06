@@ -1,22 +1,20 @@
 services:
-
   mysql:
     container_name: istio-demo-mysql
-    hostname: dev.istio-demo-mysql
-    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
-      TZ: 'Asia/Tokyo'
+      TZ: Asia/Tokyo
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p" ]
       interval: 60s
       retries: 5
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+    hostname: dev.istio-demo-mysql
     image: mysql:8.4.9
+    networks:
+      - istio-demo
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d
       - db_data:/var/lib/mysql
-    networks:
-      - istio-demo
 
 volumes:
   db_data:
