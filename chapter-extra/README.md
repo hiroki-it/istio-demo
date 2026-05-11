@@ -2,7 +2,7 @@
 
 付録では、IstioサイドカーモードとGateway APIの統合を学びます。
 
-Istioのトラフィック管理系リソースの一部は、Gateway APIリソースに置き換えられます。
+IstioのL4/L7トラフィック管理系リソースの一部は、Gateway APIリソースに置き換えられます。
 
 ただし、以下の注意点があります。
 
@@ -54,7 +54,7 @@ CRD_VERSION=1.3.0
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 ```
 
-6. Istioのトラフィック管理系リソースをGateway APIリソースに置き換える。
+6. IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換える。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply

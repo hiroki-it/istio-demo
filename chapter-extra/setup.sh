@@ -34,7 +34,7 @@ echo "Creating Gateway API CRDs..."
 CRD_VERSION=1.3.0
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 
-# Istioのトラフィック管理系リソースをGateway APIリソースに置き換え
+# IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換え
 echo "Replacing Istio traffic management resources with Gateway API resources..."
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/details-istio/helmfile.yaml apply
