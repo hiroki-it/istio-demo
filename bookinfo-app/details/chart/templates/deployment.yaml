@@ -76,6 +76,11 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
+          {{- if .Values.env.googleBooksApiKey }}
+          env:
+            - name: GOOGLE_BOOKS_API_KEY
+              value: {{ .Values.env.googleBooksApiKey | quote }}
+          {{- end }}
           livenessProbe:
             httpGet:
               port: {{ .Values.service.port }}

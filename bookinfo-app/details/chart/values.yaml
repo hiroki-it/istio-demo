@@ -2,5 +2,8 @@ service:
   name: details
   port: 9080
 
+env:
+  googleBooksApiKey: ""
+
 trafficManagement:
   enabled: false
