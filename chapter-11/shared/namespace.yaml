@@ -13,6 +13,7 @@ metadata:
   labels:
     istio.io/dataplane-mode: ambient
     istio.io/rev: stable
+    istio.io/use-waypoint: istio-waypoint-proxy
 ---
 apiVersion: v1
 kind: Namespace
