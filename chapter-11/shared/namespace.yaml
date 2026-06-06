@@ -4,6 +4,7 @@ metadata:
   name: bookinfo
   labels:
     istio.io/dataplane-mode: ambient
+    istio.io/ingress-use-waypoint: "true"
     istio.io/use-waypoint: istio-waypoint-proxy
 ---
 apiVersion: v1
