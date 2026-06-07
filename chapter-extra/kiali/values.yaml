@@ -43,8 +43,6 @@ external_services:
       components:
         - app_label: istiod
           namespace: istio-system
-        - app_label: istio-ingress-istio
-          namespace: istio-ingress
         - app_label: istio-egressgateway
           namespace: istio-egress
     root_namespace: istio-system
