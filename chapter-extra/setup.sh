@@ -5,11 +5,11 @@ set -e
 echo "Starting setup for Chapter Extra..."
 
 # MySQLコンテナの作成
-echo "Creating MySQL container..."
+echo "Deploying MySQL container..."
 docker compose -f databases/docker-compose.yaml up -d
 
 # Namespaceの作成
-echo "Creating Namespace..."
+echo "Deploying Namespace..."
 kubectl apply --server-side -f chapter-extra/shared/namespace.yaml
 
 # Bookinfoアプリケーションの作成
@@ -25,7 +25,7 @@ helmfile -f chapter-extra/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-extra/istio/istio-istiod/helmfile.yaml apply
 
 # Gateway APIのカスタムリソース定義の作成
-echo "Creating Gateway API CRDs..."
+echo "Deploying Gateway API CRDs..."
 CRD_VERSION=1.5.1
 kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 
@@ -34,7 +34,7 @@ echo "Deploying Istio IngressGateway..."
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
 
 # Istioリソースの作成
-echo "Creating Istio resources..."
+echo "Deploying Istio resources..."
 helmfile -f chapter-extra/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/ratings-istio/helmfile.yaml apply
@@ -47,6 +47,10 @@ kubectl rollout restart deployment -n bookinfo
 # Prometheusの作成
 echo "Deploying Prometheus..."
 helmfile -f chapter-extra/prometheus/helmfile.yaml apply
+
+# Grafanaの作成
+echo "Deploying Grafana..."
+helmfile -f chapter-extra/grafana/grafana/helmfile.yaml apply
 
 # Kialiの作成
 echo "Deploying Kiali..."

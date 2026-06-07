@@ -82,20 +82,27 @@ kubectl rollout restart deployment -n bookinfo
 helmfile -f chapter-extra/prometheus/helmfile.yaml apply
 ```
 
-10. Kialiを作成する。
+10. Grafanaを作成する。
+
+```bash:ターミナル
+helmfile -f chapter-extra/grafana/grafana/helmfile.yaml apply
+```
+
+11. Kialiを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/kiali/helmfile.yaml apply
 ```
 
-11. Prometheus、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) 、Kiali (`http://localhost:20001`) に接続する。
+12. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
+  kubectl port-forward svc/grafana -n grafana 3000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-12. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingress-istio -n istio-ingress 9080:9080
