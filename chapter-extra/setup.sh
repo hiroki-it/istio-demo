@@ -24,6 +24,11 @@ echo "Deploying Istiod control plane..."
 helmfile -f chapter-extra/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-extra/istio/istio-istiod/helmfile.yaml apply
 
+# Gateway APIのカスタムリソース定義の作成
+echo "Creating Gateway API CRDs..."
+CRD_VERSION=1.3.0
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
+
 # Istio IngressGatewayの作成
 echo "Deploying Istio IngressGateway..."
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
