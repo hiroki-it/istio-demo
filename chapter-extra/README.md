@@ -98,7 +98,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
 12. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
-kubectl port-forward svc/ingress-istio -n istio-ingress 9080:9080
+kubectl port-forward svc/istio-ingress-istio -n istio-ingress 9080:9080
 ```
 
 ## 掃除
