@@ -5,11 +5,11 @@ set -e
 echo "Starting setup for Chapter 1..."
 
 # MySQLコンテナの作成
-echo "Creating MySQL container..."
+echo "Deploying MySQL container..."
 docker compose -f databases/docker-compose.yaml up -d
 
 # Namespaceの作成
-echo "Creating Namespace..."
+echo "Deploying Namespace..."
 kubectl apply --server-side -f chapter-00/shared/namespace.yaml
 
 # Bookinfoアプリケーションの作成
@@ -20,7 +20,7 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 
 # Ingressの作成
-echo "Creating Ingress..."
+echo "Deploying Ingress..."
 helmfile -f chapter-00/ingress/productpage/helmfile.yaml apply
 
 # Nginx Gateway Controllerの作成

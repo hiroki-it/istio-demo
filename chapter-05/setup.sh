@@ -5,11 +5,11 @@ set -e
 echo "Starting setup for Chapter 5..."
 
 # MySQLコンテナの作成
-echo "Creating MySQL container..."
+echo "Deploying MySQL container..."
 docker compose -f databases/docker-compose.yaml up -d
 
 # Namespaceの作成
-echo "Creating Namespace..."
+echo "Deploying Namespace..."
 kubectl apply --server-side -f chapter-05/shared/namespace.yaml
 
 # Bookinfoアプリケーションの作成
@@ -33,7 +33,7 @@ echo "Deploying Istio EgressGateway..."
 helmfile -f chapter-05/istio/istio-egress/helmfile.yaml apply
 
 # Istioリソースの作成
-echo "Creating Istio resources..."
+echo "Deploying Istio resources..."
 helmfile -f chapter-05/bookinfo-app/mysql-istio/helmfile.yaml apply
 helmfile -f chapter-05/bookinfo-app/details-istio/helmfile.only-v3.yaml apply
 helmfile -f chapter-05/bookinfo-app/googleapis-istio/helmfile.yaml apply

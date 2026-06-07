@@ -5,11 +5,11 @@ set -e
 echo "Starting setup for Chapter 11..."
 
 # MySQLコンテナの作成
-echo "Creating MySQL container..."
+echo "Deploying MySQL container..."
 docker compose -f databases/docker-compose.yaml up -d
 
 # Namespaceの作成
-echo "Creating Namespace..."
+echo "Deploying Namespace..."
 kubectl apply -f chapter-11/shared/namespace.yaml
 
 # Bookinfoアプリケーションの作成
@@ -33,7 +33,7 @@ echo "Deploying Istio Ztunnel..."
 helmfile -f chapter-11/istio/istio-ztunnel/helmfile.yaml apply
 
 # Gateway APIのカスタムリソース定義とIstio Waypointの作成
-echo "Creating Gateway API CRDs and Istio Waypoint..."
+echo "Deploying Gateway API CRDs and Istio Waypoint..."
 CRD_VERSION=1.5.1
 kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 helmfile -f chapter-11/istio/istio-waypoint-proxy/helmfile.yaml apply
@@ -47,7 +47,7 @@ echo "Deploying Istio EgressGateway..."
 helmfile -f chapter-11/istio/istio-egress/helmfile.yaml apply
 
 # Istioリソースの作成
-echo "Creating Istio resources..."
+echo "Deploying Istio resources..."
 helmfile -f chapter-11/bookinfo-app/mysql-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-11/bookinfo-app/googleapis-istio/helmfile.yaml apply
