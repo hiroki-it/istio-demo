@@ -33,9 +33,15 @@ kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/re
 echo "Deploying Istio IngressGateway..."
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
 
+# Istio EgressGatewayの作成
+echo "Deploying Istio EgressGateway..."
+helmfile -f chapter-extra/istio/istio-egress/helmfile.yaml apply
+
 # Istioリソースの作成
 echo "Deploying Istio resources..."
+helmfile -f chapter-extra/bookinfo-app/mysql-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/details-istio/helmfile.yaml apply
+helmfile -f chapter-extra/bookinfo-app/googleapis-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/reviews-istio/helmfile.yaml apply

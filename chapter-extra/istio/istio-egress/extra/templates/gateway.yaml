@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: mysql-{{ .Values.service.name }}
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: mysql
+        protocol: MYSQL
+        number: {{ .Values.destination.mysql.port }}
+      hosts:
+        - {{ .Values.destination.mysql.host }}
+---
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: googleapis-{{ .Values.service.name }}
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+    - port:
+        name: tls
+        protocol: TLS
+        number: {{ .Values.destination.googleapis.port }}
+      hosts:
+        - {{ .Values.destination.googleapis.host }}
+      tls:
+        mode: PASSTHROUGH

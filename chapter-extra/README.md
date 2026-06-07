@@ -58,10 +58,20 @@ kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/re
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換える。
+7. Istio EgressGatewayを作成する。
 
 ```bash:ターミナル
+helmfile -f chapter-extra/istio/istio-egress/helmfile.yaml apply
+```
+
+8. IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換える。
+
+```bash:ターミナル
+helmfile -f chapter-extra/bookinfo-app/mysql-istio/helmfile.yaml apply
+
 helmfile -f chapter-extra/bookinfo-app/details-istio/helmfile.yaml apply
+
+helmfile -f chapter-extra/bookinfo-app/googleapis-istio/helmfile.yaml apply
 
 helmfile -f chapter-extra/bookinfo-app/productpage-istio/helmfile.yaml apply
 
@@ -70,31 +80,31 @@ helmfile -f chapter-extra/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-8. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
+9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-9. Prometheusを作成する。
+10. Prometheusを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/prometheus/helmfile.yaml apply
 ```
 
-10. Grafanaを作成する。
+11. Grafanaを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/grafana/grafana/helmfile.yaml apply
 ```
 
-11. Kialiを作成する。
+12. Kialiを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/kiali/helmfile.yaml apply
 ```
 
-12. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
+13. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -102,7 +112,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-13. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingress-istio -n istio-ingress 9080:9080

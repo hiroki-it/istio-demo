@@ -1,0 +1,10 @@
+service:
+  name: egress
+
+destination:
+  mysql:
+    host: dev.istio-demo.mysql.internal
+    port: 3306
+  googleapis:
+    host: www.googleapis.com
+    port: 443
