@@ -12,13 +12,19 @@ IstioのL4/L7トラフィック管理系リソースの一部は、Gateway API�
 
 ## セットアップ
 
-1. Namespaceを作成する。`.metadata` キーにサービスメッシュの管理下であるリビジョンラベルを設定している。
+1. サービスメッシュ外に、MySQLコンテナを作成する。
 
 ```bash:ターミナル
-kubectl apply -f chapter-extra/shared/namespace.yaml
+docker compose -f databases/docker-compose.yaml up -d
 ```
 
-2. Bookinfoアプリケーションを作成する。
+2. Namespaceを作成する。`.metadata` キーにサービスメッシュの管理下であるリビジョンラベルを設定している。
+
+```bash:ターミナル
+kubectl apply --server-side -f chapter-extra/shared/namespace.yaml
+```
+
+3. Bookinfoアプリケーションを作成する。
 
 ```bash:ターミナル
 helmfile -f bookinfo-app/details/helmfile.yaml apply
@@ -30,20 +36,12 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-3. Istiodコントロールプレーンを作成する。
+4. Istiodコントロールプレーンを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/istio/istio-base/helmfile.yaml apply
 
 helmfile -f chapter-extra/istio/istio-istiod/helmfile.yaml apply
-```
-
-4. Istio IngressGatewayがあれば、これを削除する。
-
-```bash:ターミナル
-kubectl delete deployment istio-ingressgateway -n istio-ingress
-
-kubectl delete service istio-ingressgateway -n istio-ingress
 ```
 
 5. Gateway APIのカスタムリソース定義を作成する。
@@ -54,11 +52,15 @@ CRD_VERSION=1.5.1
 kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 ```
 
-6. IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換える。
+6. Istio IngressGatewayを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
+```
 
+7. IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換える。
+
+```bash:ターミナル
 helmfile -f chapter-extra/bookinfo-app/details-istio/helmfile.yaml apply
 
 helmfile -f chapter-extra/bookinfo-app/productpage-istio/helmfile.yaml apply
@@ -68,21 +70,32 @@ helmfile -f chapter-extra/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-7. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
+8. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-8. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
+9. Prometheusを作成する。
+
+```bash:ターミナル
+helmfile -f chapter-extra/prometheus/helmfile.yaml apply
+```
+
+10. Kialiを作成する。
+
+```bash:ターミナル
+helmfile -f chapter-extra/kiali/helmfile.yaml apply
+```
+
+11. Prometheus、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:9090`) 、Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
-  kubectl port-forward svc/grafana -n grafana 3000:80 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-9. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+12. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/ingress-istio -n istio-ingress 9080:9080
