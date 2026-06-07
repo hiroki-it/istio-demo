@@ -3,7 +3,7 @@ service:
   port: 9080
 
 env:
-  # Google Books APIが429レスポンスを返信する場合、発行したAPIキーを設定する
+  # Google Books APIが429レスポンスを返信する場合、APIキーを発行し、それを設定する
   googleBooksApiKey: ""
 
 trafficManagement:
