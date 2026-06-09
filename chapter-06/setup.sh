@@ -4,35 +4,35 @@ set -e
 
 echo "Starting setup for Chapter 6..."
 
-# MySQLコンテナの作成
+# MySQL コンテナの作成
 echo "Deploying MySQL container..."
 docker compose -f databases/docker-compose.yaml up -d
 
-# Namespaceの作成
+# Namespace の作成
 echo "Deploying Namespace..."
 kubectl apply --server-side -f chapter-06/shared/namespace.yaml
 
-# Bookinfoアプリケーションの作成
+# Bookinfo アプリケーションの作成
 echo "Deploying Bookinfo application..."
 helmfile -f bookinfo-app/details/helmfile.yaml apply
 helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set env.loggedIn=true
 helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 
-# Istiodコントロールプレーンの作成
+# Istiod コントロールプレーンの作成
 echo "Deploying Istiod control plane..."
 helmfile -f chapter-06/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-06/istio/istio-istiod/helmfile.yaml apply
 
-# Istio IngressGatewayの作成
+# Istio IngressGateway の作成
 echo "Deploying Istio IngressGateway..."
 helmfile -f chapter-06/istio/istio-ingress/helmfile.yaml apply
 
-# Istio EgressGatewayの作成
+# Istio EgressGateway の作成
 echo "Deploying Istio EgressGateway..."
 helmfile -f chapter-06/istio/istio-egress/helmfile.yaml apply
 
-# IstioのL4/L7トラフィック管理系リソースの作成
+# Istio の L4/L7 トラフィック管理系リソースの作成
 echo "Deploying Istio traffic management resources..."
 helmfile -f chapter-06/bookinfo-app/mysql-istio/helmfile.yaml apply
 helmfile -f chapter-06/bookinfo-app/details-istio/helmfile.yaml apply
@@ -41,23 +41,23 @@ helmfile -f chapter-06/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-06/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-06/bookinfo-app/reviews-istio/helmfile.yaml apply
 
-# Kubernetes Podのロールアウト
+# Kubernetes Pod のロールアウト
 echo "Rolling out Kubernetes Pods..."
 kubectl rollout restart deployment -n bookinfo
 
-# Prometheusの作成
+# Prometheus の作成
 echo "Deploying Prometheus..."
 helmfile -f chapter-06/prometheus/helmfile.yaml apply
 
-# metrics-serverの作成
+# metrics-server の作成
 echo "Deploying metrics-server..."
 helmfile -f chapter-06/metrics-server/helmfile.yaml apply
 
-# Grafanaの作成
+# Grafana の作成
 echo "Deploying Grafana..."
 helmfile -f chapter-06/grafana/grafana/helmfile.yaml apply
 
-# Kialiの作成
+# Kiali の作成
 echo "Deploying Kiali..."
 helmfile -f chapter-06/kiali/helmfile.yaml apply
 

@@ -13,10 +13,10 @@ echo "Starting minikube..."
 # バージョン
 KUBERNETES_VERSION=1.35.1
 
-# コントロールプレーンを含むNode数
+# コントロールプレーンを含む Node 数
 NODE_COUNT=8
 
-# 7コア
+# 7 コア
 CPU=7
 
 # 10GiB
@@ -35,7 +35,7 @@ minikube start \
 
 echo "Labeling node ..."
 
-# ワーカーNodeにラベルを設定
+# ワーカーNode にラベルを設定
 # istio-demo-m02 (app Node 1)
 kubectl label node istio-demo-m02 node.kubernetes.io/nodegroup=app --overwrite \
   && kubectl label node istio-demo-m02 node-role.kubernetes.io/worker=worker --overwrite
@@ -65,7 +65,7 @@ kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrit
   && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
 
 echo "Getting nodes..."
-# Nodeの確認
+# Node の確認
 kubectl get nodes -L node.kubernetes.io/nodegroup
 
 echo "Setup minikube completed successfully!"
