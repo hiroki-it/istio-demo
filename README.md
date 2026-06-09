@@ -2,7 +2,7 @@
 
 ## プロジェクトについて
 
-Istioをデモンストレーションする。
+Istio をデモンストレーションする。
 
 ## 章の構成
 
@@ -28,7 +28,7 @@ Istioをデモンストレーションする。
 - [mise](https://mise.jdx.dev/getting-started.html)
 - [Docker Desktop](https://docs.docker.com/desktop/)
 
-2. miseを使用して、そのほかに必要なツールをインストールする。
+2. mise を使用して、そのほかに必要なツールをインストールする。
 
 ```bash:ターミナル
 $ mise trust -a
@@ -38,12 +38,12 @@ $ mise install
 
 ### Kubernetesクラスターのセットアップ
 
-1. Docker Desktopの[リソース](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) で、以下を設定する。
+1. Docker Desktop の[リソース](https://docs.docker.com/desktop/settings-and-maintenance/settings/#resources) で、以下を設定する。
 
-- パフォーマンスを最適化するために、最新のDocker Desktopを使用する。
-- ハードウェアリソースの割り当てで、CPUを `6` コア以上、メモリを `10`GB以上 (Minikubeへの割当量以上) にする。
+- パフォーマンスを最適化するために、最新の Docker Desktop を使用する。
+- ハードウェアリソースの割り当てで、CPU を `6` コア以上、メモリを `10`GB 以上 (Minikube への割当量以上) にする。
 
-2. Minikubeを使用して、Kubernetesクラスターを作成する。
+2. Minikube を使用して、Kubernetes クラスターを作成する。
 
 ```bash:ターミナル
 # バージョン
@@ -69,7 +69,7 @@ minikube start \
   --memory ${MEMORY}
 ```
 
-3. ワーカーNodeにNodeグループを表すラベルを設定する。
+3. ワーカーNode に Node グループを表すラベルを設定する。
 
 ```bash:ターミナル
 # istio-demo-m02 (app Node 1)
@@ -101,7 +101,7 @@ kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrit
   && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
 ```
 
-4. Nodeを確認する。
+4. Node を確認する。
 
 ```bash:ターミナル
 kubectl get nodes -L node.kubernetes.io/nodegroup

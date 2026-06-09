@@ -2,7 +2,7 @@
 
 ## セットアップ
 
-1. サービスメッシュ外に、MySQLコンテナを作成する。
+1. サービスメッシュ外に、MySQL コンテナを作成する。
 
 ```bash:ターミナル
 docker compose -f databases/docker-compose.yaml up -d
@@ -28,13 +28,13 @@ mysql> SHOW DATABASES;
 +--------------------+
 ```
 
-3. Namespaceを作成する。`.metadata` キーにサービスメッシュの管理下であるリビジョンラベルを設定している。
+3. Namespace を作成する。`.metadata` キーにサービスメッシュの管理下であるリビジョンラベルを設定している。
 
 ```bash:ターミナル
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 ```
 
-4. Bookinfoアプリケーションを作成する。
+4. Bookinfo アプリケーションを作成する。
 
 ```bash:ターミナル
 helmfile -f bookinfo-app/details/helmfile.yaml apply
@@ -46,7 +46,7 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-5. Istiodコントロールプレーンを作成する。
+5. Istiod コントロールプレーンを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/istio/istio-base/helmfile.yaml apply
@@ -54,19 +54,19 @@ helmfile -f chapter-08/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 ```
 
-6. Istio IngressGatewayを作成する。
+6. Istio IngressGateway を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istio EgressGatewayを作成する。
+7. Istio EgressGateway を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 ```
 
-8. IstioのL4/L7トラフィック管理系リソースを作成する。
+8. Istio の L4/L7 トラフィック管理系リソースを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/bookinfo-app/mysql-istio/helmfile.yaml apply
@@ -84,73 +84,73 @@ helmfile -f chapter-08/bookinfo-app/reviews-istio/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/share-istio/helmfile.yaml apply
 ```
 
-9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
+9. Kubernetes Pod をロールアウトし、Bookinfo アプリケーションの Pod に `istio-proxy` をインジェクションする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-10. Keycloakを作成する。
+10. Keycloak を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/keycloak/helmfile.yaml apply
 ```
 
-11. Prometheusを作成する。
+11. Prometheus を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
-12. metrics-serverを作成する。
+12. metrics-server を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/metrics-server/helmfile.yaml apply
 ```
 
-13. Grafanaを作成する。
+13. Grafana を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 ```
 
-14. Kialiを作成する。
+14. Kiali を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/kiali/helmfile.yaml apply
 ```
 
-15. Minioを作成する。
+15. Minio を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/minio/helmfile.yaml apply
 ```
 
-16. Grafana Lokiを作成する。
+16. Grafana Loki を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 ```
 
-17. Grafana Alloyを作成する。
+17. Grafana Alloy を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/grafana/grafana-alloy/helmfile.yaml apply
 ```
 
-18. Grafana Tempoを作成する。
+18. Grafana Tempo を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/grafana/grafana-tempo/helmfile.yaml apply
 ```
 
-19. OpenTelemetry Collectorを作成する。
+19. OpenTelemetry Collector を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
 ```
 
-20. OpenTelemetry CollectorのPodのログから、istio-proxyが送信したスパンを確認する。
+20. OpenTelemetry Collector の Pod のログから、istio-proxy が送信したスパンを確認する。
 
 ```bash:ターミナル
 kubectl logs <OpenTelemetry CollectorのPod名> -n opentelemetry-collector -f
@@ -176,7 +176,7 @@ Attributes:
     ...
 ```
 
-21. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
+21. Prometheus、Grafana、Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -184,13 +184,13 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-22. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+22. `http://localhost:9080/productpage?u=normal` から、Bookinfo アプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingressgateway -n istio-ingress 8080:8080 9080:9080
 ```
 
-23. `http://localhost:8000` から、Grafanaのダッシュボードに接続する。
+23. `http://localhost:8000` から、Grafana のダッシュボードに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/grafana -n grafana 3000:80
@@ -202,7 +202,7 @@ kubectl port-forward svc/grafana -n grafana 3000:80
 
 ## 掃除
 
-1. Minikubeを削除する。
+1. Minikube を削除する。
 
 ```bash:ターミナル
 minikube delete --profile istio-demo
@@ -214,7 +214,7 @@ minikube delete --profile istio-demo
 pkill kubectl -9
 ```
 
-3. dockerコンテナを削除する。
+3. docker コンテナを削除する。
 
 ```bash:ターミナル
 docker compose -f databases/docker-compose.yaml down --volumes --remove-orphans

@@ -1,30 +1,30 @@
 # 付録
 
-付録では、IstioサイドカーモードとGateway APIの統合を学びます。
+付録では、Istio サイドカーモードと Gateway API の統合を学びます。
 
-IstioのL4/L7トラフィック管理系リソースの一部は、Gateway APIリソースに置き換えられます。
+Istio の L4/L7 トラフィック管理系リソースの一部は、Gateway API リソースに置き換えられます。
 
 ただし、以下の注意点があります。
 
-- Gateway APIを適用したい Namespace をサービスメッシュの管理下にする必要がある
-- Gateway APIで代替できるIstioの機能は、執筆時点でトラフィック管理の一部のみである
-- KialiはIstioのトラフィック系リソースのメトリクスに基づいてメッシュトポロジーを作成しているため、Kialiのダッシュボード上でメッシュトポロジーを確認できなくなる
+- Gateway API を適用したい Namespace をサービスメッシュの管理下にする必要がある
+- Gateway API で代替できる Istio の機能は、執筆時点でトラフィック管理の一部のみである
+- Kiali は Istio のトラフィック系リソースのメトリクスに基づいてメッシュトポロジーを作成しているため、Kiali のダッシュボード上でメッシュトポロジーを確認できなくなる
 
 ## セットアップ
 
-1. サービスメッシュ外に、MySQLコンテナを作成する。
+1. サービスメッシュ外に、MySQL コンテナを作成する。
 
 ```bash:ターミナル
 docker compose -f databases/docker-compose.yaml up -d
 ```
 
-2. Namespaceを作成する。`.metadata` キーにサービスメッシュの管理下であるリビジョンラベルを設定している。
+2. Namespace を作成する。`.metadata` キーにサービスメッシュの管理下であるリビジョンラベルを設定している。
 
 ```bash:ターミナル
 kubectl apply --server-side -f chapter-extra/shared/namespace.yaml
 ```
 
-3. Bookinfoアプリケーションを作成する。
+3. Bookinfo アプリケーションを作成する。
 
 ```bash:ターミナル
 helmfile -f bookinfo-app/details/helmfile.yaml apply
@@ -36,7 +36,7 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-4. Istiodコントロールプレーンを作成する。
+4. Istiod コントロールプレーンを作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/istio/istio-base/helmfile.yaml apply
@@ -44,7 +44,7 @@ helmfile -f chapter-extra/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-extra/istio/istio-istiod/helmfile.yaml apply
 ```
 
-5. Gateway APIのカスタムリソース定義を作成する。
+5. Gateway API のカスタムリソース定義を作成する。
 
 ```bash:ターミナル
 CRD_VERSION=1.5.1
@@ -52,19 +52,19 @@ CRD_VERSION=1.5.1
 kubectl apply --server-side -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v${CRD_VERSION}/standard-install.yaml
 ```
 
-6. Istio IngressGatewayを作成する。
+6. Istio IngressGateway を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/istio/istio-ingress/helmfile.yaml apply
 ```
 
-7. Istio EgressGatewayを作成する。
+7. Istio EgressGateway を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/istio/istio-egress/helmfile.yaml apply
 ```
 
-8. IstioのL4/L7トラフィック管理系リソースをGateway APIリソースに置き換える。
+8. Istio の L4/L7 トラフィック管理系リソースを Gateway API リソースに置き換える。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/bookinfo-app/mysql-istio/helmfile.yaml apply
@@ -80,31 +80,31 @@ helmfile -f chapter-extra/bookinfo-app/ratings-istio/helmfile.yaml apply
 helmfile -f chapter-extra/bookinfo-app/reviews-istio/helmfile.yaml apply
 ```
 
-9. Kubernetes Podをロールアウトし、BookinfoアプリケーションのPodに `istio-proxy` をインジェクションする。
+9. Kubernetes Pod をロールアウトし、Bookinfo アプリケーションの Pod に `istio-proxy` をインジェクションする。
 
 ```bash:ターミナル
 kubectl rollout restart deployment -n bookinfo
 ```
 
-10. Prometheusを作成する。
+10. Prometheus を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/prometheus/helmfile.yaml apply
 ```
 
-11. Grafanaを作成する。
+11. Grafana を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/grafana/grafana/helmfile.yaml apply
 ```
 
-12. Kialiを作成する。
+12. Kiali を作成する。
 
 ```bash:ターミナル
 helmfile -f chapter-extra/kiali/helmfile.yaml apply
 ```
 
-13. Prometheus、Grafana、Kialiのダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
+13. Prometheus、Grafana、Kiali のダッシュボードに接続する。ブラウザから、Prometheus (`http://localhost:20001`) 、Grafana (`http://localhost:8000`) 、Kiali (`http://localhost:20001`) に接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
@@ -112,7 +112,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090 & \
   kubectl port-forward svc/kiali 20001:20001 -n istio-system
 ```
 
-14. `http://localhost:9080/productpage?u=normal` から、Bookinfoアプリケーションに接続する。
+14. `http://localhost:9080/productpage?u=normal` から、Bookinfo アプリケーションに接続する。
 
 ```bash:ターミナル
 kubectl port-forward svc/istio-ingress-istio -n istio-ingress 9080:9080
@@ -120,7 +120,7 @@ kubectl port-forward svc/istio-ingress-istio -n istio-ingress 9080:9080
 
 ## 掃除
 
-1. Minikubeを削除する。
+1. Minikube を削除する。
 
 ```bash:ターミナル
 minikube delete --profile istio-demo
