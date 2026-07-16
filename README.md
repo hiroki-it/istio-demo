@@ -49,10 +49,10 @@ $ mise install
 # バージョン
 KUBERNETES_VERSION=1.35.1
 
-# コントロールプレーンを含むNode数
+# コントロールプレーンを含む Node 数
 NODE_COUNT=8
 
-# 7コア
+# 7 コア
 CPU=7
 # 10GiB
 MEMORY=10240
