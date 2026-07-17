@@ -1,7 +1,7 @@
 [tools]
 helm = '4.2.0'
 helmfile = '1.5.2'
-helm-diff = '3.15.7'
+helm-diff = '3.15.10'
 istioctl = '1.30.0'
 kubectl = '1.36.1'
 minikube = '1.38.1'
