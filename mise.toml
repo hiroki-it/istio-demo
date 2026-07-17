@@ -1,5 +1,5 @@
 [tools]
-helm = '4.2.0'
+helm = '4.2.3'
 helmfile = '1.5.2'
 helm-diff = '3.15.7'
 istioctl = '1.30.0'
