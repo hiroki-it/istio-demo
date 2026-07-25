@@ -21,7 +21,7 @@ helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 
 # Ingress の作成
 echo "Deploying Ingress..."
-helmfile -f chapter-00/ingress/productpage/helmfile.yaml apply
+helmfile -f chapter-00/bookinfo-app/productpage-istio/helmfile.yaml apply
 
 # Nginx Gateway Controller の作成
 echo "Deploying Nginx Gateway Controller..."
