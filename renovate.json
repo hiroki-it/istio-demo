@@ -3,6 +3,7 @@
   "extends": [
     "config:base"
   ],
+  "enabled": false,
   "labels": ["renovate"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
