@@ -36,16 +36,16 @@ helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 ```
 
-4. Ingress を作成します。
-
-```bash:ターミナル
-helmfile -f chapter-00/bookinfo-app/productpage-istio/helmfile.yaml apply
-```
-
-5. Nginx Gateway Controller を作成します。
+4. Nginx Gateway Controller を作成します。
 
 ```bash:ターミナル
 helmfile -f chapter-00/nginx/helmfile.yaml apply
+```
+
+5. HTTPRoute を作成します。
+
+```bash:ターミナル
+helmfile -f chapter-00/bookinfo-app/productpage-istio/helmfile.yaml apply
 ```
 
 6. Prometheus を作成します。
@@ -63,7 +63,7 @@ kubectl port-forward svc/prometheus-server -n prometheus 9090:9090
 8. `http://localhost:9080/productpage?u=normal` から、Bookinfo アプリケーションに接続します。
 
 ```bash:ターミナル
-kubectl port-forward svc/ingress-nginx-controller -n ingress-nginx 9080:9080
+kubectl port-forward svc/nginx-gateway -n nginx-gateway 9080:9080
 ```
 
 ## 掃除

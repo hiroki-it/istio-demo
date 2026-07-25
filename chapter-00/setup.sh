@@ -19,13 +19,13 @@ helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set env.loggedIn=true
 helmfile -f bookinfo-app/ratings/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews/helmfile.yaml apply
 
-# Ingress の作成
-echo "Deploying Ingress..."
-helmfile -f chapter-00/bookinfo-app/productpage-istio/helmfile.yaml apply
-
 # Nginx Gateway Controller の作成
 echo "Deploying Nginx Gateway Controller..."
 helmfile -f chapter-00/nginx/helmfile.yaml apply
+
+# HTTPRoute の作成
+echo "Deploying HTTPRoute..."
+helmfile -f chapter-00/bookinfo-app/productpage-istio/helmfile.yaml apply
 
 # Prometheus の作成
 echo "Deploying Prometheus..."
