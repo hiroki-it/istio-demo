@@ -1,5 +1,5 @@
 releases:
-  - name: ratings
+  - name: ratings-app
     chart: chart
     version: 1.0.0
     namespace: bookinfo

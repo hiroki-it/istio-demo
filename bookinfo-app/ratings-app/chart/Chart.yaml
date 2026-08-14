@@ -1,3 +1,3 @@
 apiVersion: v2
-name: ratings
+name: ratings-app
 version: 1.0.0

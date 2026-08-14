@@ -14,10 +14,10 @@ kubectl apply --server-side -f chapter-06/shared/namespace.yaml
 
 # Bookinfo アプリケーションの作成
 echo "Deploying Bookinfo application..."
-helmfile -f bookinfo-app/details/helmfile.yaml apply
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply --set env.loggedIn=true
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app/details-app/helmfile.yaml apply
+helmfile -f bookinfo-app/productpage-app/helmfile.yaml apply --set env.loggedIn=true
+helmfile -f bookinfo-app/ratings-app/helmfile.yaml apply
+helmfile -f bookinfo-app/reviews-app/helmfile.yaml apply
 
 # Istiod コントロールプレーンの作成
 echo "Deploying Istiod control plane..."

@@ -47,13 +47,13 @@ kubectl apply --server-side -f chapter-07/shared/namespace.yaml
 4. Bookinfo アプリケーションを作成します。
 
 ```bash:ターミナル
-helmfile -f bookinfo-app/details/helmfile.yaml apply
+helmfile -f bookinfo-app/details-app/helmfile.yaml apply
 
-helmfile -f bookinfo-app/productpage/helmfile.yaml apply
+helmfile -f bookinfo-app/productpage-app/helmfile.yaml apply
 
-helmfile -f bookinfo-app/ratings/helmfile.yaml apply
+helmfile -f bookinfo-app/ratings-app/helmfile.yaml apply
 
-helmfile -f bookinfo-app/reviews/helmfile.yaml apply
+helmfile -f bookinfo-app/reviews-app/helmfile.yaml apply
 ```
 
 5. Istiod コントロールプレーンを作成します。
