@@ -1,5 +1,5 @@
 releases:
-  - name: share-istio
+  - name: shared-istio
     chart: chart
     version: 1.0.0
     namespace: bookinfo

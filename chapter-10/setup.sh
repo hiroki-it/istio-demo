@@ -40,7 +40,7 @@ helmfile -f chapter-10/bookinfo-app/googleapis-istio/helmfile.yaml apply
 helmfile -f chapter-10/bookinfo-app/productpage-istio/helmfile.yaml apply
 helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.non-resiliency.yaml apply
 helmfile -f chapter-10/bookinfo-app/reviews-istio/helmfile.yaml apply
-helmfile -f chapter-10/bookinfo-app/share-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/shared-istio/helmfile.yaml apply
 
 # Kubernetes Pod のロールアウト
 echo "Rolling out Kubernetes Pods..."

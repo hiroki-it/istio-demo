@@ -91,7 +91,7 @@ helmfile -f chapter-10/bookinfo-app/ratings-istio/helmfile.non-resiliency.yaml a
 
 helmfile -f chapter-10/bookinfo-app/reviews-istio/helmfile.yaml apply
 
-helmfile -f chapter-10/bookinfo-app/share-istio/helmfile.yaml apply
+helmfile -f chapter-10/bookinfo-app/shared-istio/helmfile.yaml apply
 ```
 
 9. Kubernetes Pod をロールアウトし、Bookinfo アプリケーションの Pod に `istio-proxy` をインジェクションします。
