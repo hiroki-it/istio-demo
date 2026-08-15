@@ -106,7 +106,7 @@ kubectl rollout restart deployment -n bookinfo
 helmfile -f chapter-09/prometheus/helmfile.yaml apply
 ```
 
-11. metrics-server を作成します。
+11. Kubernetes Metrics Server を作成します。
 
 ```bash:ターミナル
 helmfile -f chapter-09/metrics-server/helmfile.yaml apply

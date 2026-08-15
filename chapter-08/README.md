@@ -112,7 +112,7 @@ helmfile -f chapter-08/keycloak/helmfile.yaml apply
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 ```
 
-12. metrics-server を作成します。
+12. Kubernetes Metrics Server を作成します。
 
 ```bash:ターミナル
 helmfile -f chapter-08/metrics-server/helmfile.yaml apply
