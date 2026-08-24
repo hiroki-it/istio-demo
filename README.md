@@ -19,6 +19,8 @@
 $ mise trust -a
 
 $ mise install
+
+$ mise exec -- helm plugin install https://github.com/databus23/helm-diff --version v3.15.7 --verify=false
 ```
 
 ### Kubernetesクラスターのセットアップ

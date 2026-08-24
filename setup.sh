@@ -8,6 +8,13 @@ mise trust -a
 echo "Installing mise..."
 mise install
 
+HELM_DIFF_VERSION=3.15.7
+
+if ! mise exec -- helm plugin list | grep -q '^diff[[:space:]]'; then
+  echo "Installing helm-diff plugin..."
+  mise exec -- helm plugin install https://github.com/databus23/helm-diff --version "v${HELM_DIFF_VERSION}" --verify=false
+fi
+
 echo "Starting minikube..."
 
 # バージョン
