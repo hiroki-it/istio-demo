@@ -2,34 +2,34 @@
 
 set -e
 
-echo "Starting setup for Chapter 1..."
+echo "まえがき 〜サンプルプロダクトを Istio なしで使ってみよう〜 のセットアップを開始します"
 
 # MySQL コンテナの作成
-echo "Deploying MySQL container..."
+echo "MySQL コンテナを作成します"
 docker compose -f databases/docker-compose.yaml up -d
 
 # Namespace の作成
-echo "Deploying Namespace..."
+echo "Namespace を作成します"
 kubectl apply --server-side -f chapter-00/shared/namespace.yaml
 
 # Bookinfo アプリケーションの作成
-echo "Deploying Bookinfo application..."
+echo "Bookinfo アプリケーションを作成します"
 helmfile -f bookinfo-app/details-app/helmfile.yaml apply
 helmfile -f bookinfo-app/productpage-app/helmfile.yaml apply --set env.loggedIn=true
 helmfile -f bookinfo-app/ratings-app/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews-app/helmfile.yaml apply
 
 # Nginx Gateway Controller の作成
-echo "Deploying Nginx Gateway Controller..."
+echo "Nginx Gateway Controller を作成します"
 helmfile -f chapter-00/nginx/helmfile.yaml apply
 
 # HTTPRoute の作成
-echo "Deploying HTTPRoute..."
+echo "HTTPRoute を作成します"
 helmfile -f chapter-00/bookinfo-app/productpage-istio/helmfile.yaml apply
 
 # Prometheus の作成
-echo "Deploying Prometheus..."
+echo "Prometheus を作成します"
 helmfile -f chapter-00/prometheus/helmfile.yaml apply
 
-echo "Setup Chapter 1 completed successfully!"
+echo "まえがき 〜サンプルプロダクトを Istio なしで使ってみよう〜 のセットアップが完了しました！"
 exit 0

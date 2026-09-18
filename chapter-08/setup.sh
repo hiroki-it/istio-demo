@@ -2,38 +2,38 @@
 
 set -e
 
-echo "Starting setup for Chapter 8..."
+echo "8章のセットアップを開始します"
 
 # MySQL コンテナの作成
-echo "Deploying MySQL container..."
+echo "MySQL コンテナを作成します"
 docker compose -f databases/docker-compose.yaml up -d
 
 # Namespace の作成
-echo "Deploying Namespace..."
+echo "Namespace を作成します"
 kubectl apply --server-side -f chapter-08/shared/namespace.yaml
 
 # Bookinfo アプリケーションの作成
-echo "Deploying Bookinfo application..."
+echo "Bookinfo アプリケーションを作成します"
 helmfile -f bookinfo-app/details-app/helmfile.yaml apply
 helmfile -f bookinfo-app/productpage-app/helmfile.yaml apply
 helmfile -f bookinfo-app/ratings-app/helmfile.yaml apply
 helmfile -f bookinfo-app/reviews-app/helmfile.yaml apply
 
 # Istiod コントロールプレーンの作成
-echo "Deploying Istiod control plane..."
+echo "Istiod コントロールプレーンを作成します"
 helmfile -f chapter-08/istio/istio-base/helmfile.yaml apply
 helmfile -f chapter-08/istio/istio-istiod/helmfile.yaml apply
 
 # Istio IngressGateway の作成
-echo "Deploying Istio IngressGateway..."
+echo "Istio Ingress Gateway を作成します"
 helmfile -f chapter-08/istio/istio-ingress/helmfile.yaml apply
 
 # Istio EgressGateway の作成
-echo "Deploying Istio EgressGateway..."
+echo "Istio Egress Gateway を作成します"
 helmfile -f chapter-08/istio/istio-egress/helmfile.yaml apply
 
 # Istio リソースの作成
-echo "Deploying Istio resources..."
+echo "Istio リソースを作成します"
 helmfile -f chapter-08/bookinfo-app/mysql-istio/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/details-istio/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/googleapis-istio/helmfile.yaml apply
@@ -43,48 +43,48 @@ helmfile -f chapter-08/bookinfo-app/reviews-istio/helmfile.yaml apply
 helmfile -f chapter-08/bookinfo-app/shared-istio/helmfile.yaml apply
 
 # Kubernetes Pod のロールアウト
-echo "Rolling out Kubernetes Pods..."
+echo "Kubernetes Pod を再起動します"
 kubectl rollout restart deployment -n bookinfo
 
 # Keycloak の作成
-echo "Deploying Keycloak..."
+echo "Keycloak を作成します"
 helmfile -f chapter-08/keycloak/helmfile.yaml apply
 
 # Prometheus の作成
-echo "Deploying Prometheus..."
+echo "Prometheus を作成します"
 helmfile -f chapter-08/prometheus/helmfile.yaml apply
 
 # metrics-server の作成
-echo "Deploying metrics-server..."
+echo "metrics-server を作成します"
 helmfile -f chapter-08/metrics-server/helmfile.yaml apply
 
 # Grafana の作成
-echo "Deploying Grafana..."
+echo "Grafana を作成します"
 helmfile -f chapter-08/grafana/grafana/helmfile.yaml apply
 
 # Kiali の作成
-echo "Deploying Kiali..."
+echo "Kiali を作成します"
 helmfile -f chapter-08/kiali/helmfile.yaml apply
 
 # Minio の作成
-echo "Deploying Minio..."
+echo "MinIO を作成します"
 helmfile -f chapter-08/minio/helmfile.yaml apply
 
 # Grafana Loki の作成
-echo "Deploying Grafana Loki..."
+echo "Grafana Loki を作成します"
 helmfile -f chapter-08/grafana/grafana-loki/helmfile.yaml apply
 
 # Grafana Alloy の作成
-echo "Deploying Grafana Alloy..."
+echo "Grafana Alloy を作成します"
 helmfile -f chapter-08/grafana/grafana-alloy/helmfile.yaml apply
 
 # Grafana Tempo の作成
-echo "Deploying Grafana Tempo..."
+echo "Grafana Tempo を作成します"
 helmfile -f chapter-08/grafana/grafana-tempo/helmfile.yaml apply
 
 # OpenTelemetry Collector の作成
-echo "Deploying OpenTelemetry Collector..."
+echo "OpenTelemetry Collector を作成します"
 helmfile -f chapter-08/opentelemetry-collector/helmfile.yaml apply
 
-echo "Setup Chapter 8 completed successfully!"
+echo "8章のセットアップが完了しました！"
 exit 0

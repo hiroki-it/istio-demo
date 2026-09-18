@@ -2,20 +2,20 @@
 
 set -e
 
-echo "Trusting mise..."
+echo "mise の設定を信頼します"
 mise trust -a
 
-echo "Installing mise..."
+echo "mise でツールをインストールします"
 mise install
 
 HELM_DIFF_VERSION=3.15.7
 
 if ! mise exec -- helm plugin list | grep -q '^diff[[:space:]]'; then
-  echo "Installing helm-diff plugin..."
+  echo "helm-diff プラグインをインストールします"
   mise exec -- helm plugin install https://github.com/databus23/helm-diff --version "v${HELM_DIFF_VERSION}" --verify=false
 fi
 
-echo "Starting minikube..."
+echo "Minikube を起動します"
 
 # バージョン
 KUBERNETES_VERSION=1.35.1
@@ -40,7 +40,7 @@ minikube start \
   --cpus ${CPU} \
   --memory ${MEMORY}
 
-echo "Labeling node ..."
+echo "Node にラベルを設定します"
 
 # ワーカーNode にラベルを設定
 # istio-demo-m02 (app Node 1)
@@ -71,9 +71,9 @@ kubectl label node istio-demo-m07 node.kubernetes.io/nodegroup=system --overwrit
 kubectl label node istio-demo-m08 node.kubernetes.io/nodegroup=system --overwrite \
   && kubectl label node istio-demo-m08 node-role.kubernetes.io/worker=worker --overwrite
 
-echo "Getting nodes..."
+echo "Node を確認します"
 # Node の確認
 kubectl get nodes -L node.kubernetes.io/nodegroup
 
-echo "Setup minikube completed successfully!"
+echo "Minikube のセットアップが完了しました！"
 exit 0
